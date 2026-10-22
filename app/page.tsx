@@ -1,69 +1,144 @@
-import Image from "next/image";
+import Link from "next/link";
+import { getCatalog } from "@/lib/catalog";
+import { formatVND, UNIT_LABEL } from "@/lib/format";
+import { ServiceDial } from "@/components/service-dial";
+import { Arrow, Check, ServiceEmoji } from "@/components/ui";
+import { ScrollScene } from "@/components/scroll-scene";
 
-export default function Home() {
+export const dynamic = "force-dynamic";
+export default async function Home() {
+  const { categories, services } = await getCatalog();
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="home-page">
+      <ScrollScene>
+        <section className="hero container">
+          <div className="hero-copy">
+            <h1>
+              Việc giặt giũ,
+              <br />
+              để <span>Sạch Sạch</span> lo.
+            </h1>
+            <p>
+              Quần áo, đôi giày hay chiếc chăn yêu thích.
+              <br className="desktop-break" /> Bạn đặt lịch, chúng mình đến lấy
+              và giao lại gọn gàng.
+            </p>
+            <div className="actions">
+              <Link className="button" href="/dat-lich">
+                Đặt lịch ngay <Arrow />
+              </Link>
+              <Link className="text-link" href="/bang-gia">
+                Xem bảng giá <Arrow />
+              </Link>
+            </div>
+            <div className="hero-note">
+              <span className="tiny-check">
+                <Check />
+              </span>{" "}
+              Không cần tài khoản <span className="dot" /> Biết giá trước khi
+              đặt
+            </div>
+            <a className="scroll-invitation" href="#dich-vu">
+              <span className="scroll-icon" aria-hidden="true">
+                <Arrow />
+              </span>
+              Cuộn xuống, nhẹ việc nhà
+            </a>
+          </div>
+          <ServiceDial categories={categories} services={services} />
+        </section>
+      </ScrollScene>
+      <section className="service-section container" id="dich-vu">
+        <div className="section-heading">
+          <div>
+            <h2>
+              Từ đồ hằng ngày
+              <br />
+              đến món đồ bạn thương.
+            </h2>
+            <p>Sáu dịch vụ, một chỗ gửi gắm.</p>
+          </div>
+          <Link href="/bang-gia" className="text-link">
+            Bảng giá chi tiết <Arrow />
+          </Link>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div className="service-grid">
+          {categories.map((c) => {
+            const group = services.filter((s) => s.category_id === c.id);
+            const min = group.reduce(
+              (a, s) => (!a || s.price < a.price ? s : a),
+              undefined as (typeof group)[number] | undefined,
+            );
+            return (
+              <Link
+                className="service-card"
+                href={`/bang-gia#${c.slug}`}
+                key={c.id}
+              >
+                <div className="service-top">
+                  <ServiceEmoji id={c.id} />
+                  <Arrow />
+                </div>
+                <h3>{c.name}</h3>
+                <p>{c.description}</p>
+                <div className="service-price">
+                  {min ? (
+                    <>
+                      Từ <strong>{formatVND(min.price)}</strong> /{" "}
+                      {UNIT_LABEL[min.unit]}
+                    </>
+                  ) : (
+                    "Liên hệ cửa hàng"
+                  )}
+                </div>
+              </Link>
+            );
+          })}
         </div>
-      </main>
+      </section>
+      <section className="process-section">
+        <div className="container">
+          <div className="section-heading">
+            <h2>
+              Một lịch hẹn.
+              <br />
+              Nhẹ cả việc nhà.
+            </h2>
+            <p>
+              Bạn dành thời gian cho điều mình thích.
+              <br />
+              Phần giặt giũ cứ để chúng mình.
+            </p>
+          </div>
+          <ol className="process-grid">
+            {[
+              ["Đặt lịch", "Chọn dịch vụ và hẹn giờ lấy đồ phù hợp với bạn."],
+              ["Lấy đồ", "Cửa hàng liên hệ xác nhận và đến địa chỉ đã hẹn."],
+              ["Xử lý", "Giặt, sấy, ủi hoặc sửa theo dịch vụ bạn chọn."],
+              ["Giao tận nơi", "Nhận lại đồ sạch và thanh toán khi nhận đồ."],
+            ].map(([title, description], i) => (
+              <li key={title}>
+                <span className="step-number">0{i + 1}</span>
+                <h3>{title}</h3>
+                <p>{description}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+      <section className="closing container">
+        <div>
+          <h2>
+            Giỏ đồ đầy rồi?
+            <br />
+            Mình hẹn nhau nhé.
+          </h2>
+          <p>Chọn dịch vụ, xem tạm tính và đặt lịch trong cùng một trang.</p>
+        </div>
+        <Link className="button" href="/dat-lich">
+          Đặt lịch lấy đồ <Arrow />
+        </Link>
+      </section>
     </div>
   );
 }

@@ -1,0 +1,895 @@
+/* The home page uses one physical, scroll-linked scene; task pages stay still. */
+.scroll-invitation {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  margin-top: 38px;
+  font-size: 11px;
+  color: var(--muted);
+}
+.scroll-invitation:hover {
+  color: var(--blue);
+}
+.scroll-icon {
+  width: 31px;
+  height: 42px;
+  border: 1px solid #c0ccdb;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+}
+.scroll-icon svg {
+  transform: rotate(90deg);
+  width: 15px;
+}
+.washer-stage {
+  position: relative;
+  perspective: 1400px;
+  min-width: 0;
+  padding: 25px 28px 40px 10px;
+  isolation: isolate;
+}
+.washer-orbit {
+  position: absolute;
+  width: 113%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #e0ebef;
+  top: 5%;
+  left: -3%;
+  z-index: -2;
+}
+.washer-wordmark {
+  position: absolute;
+  right: -7%;
+  top: -9%;
+  color: #c4d7e2;
+  font-size: 100px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  transform: rotate(-9deg);
+  z-index: -1;
+  user-select: none;
+}
+.washer-ground {
+  position: absolute;
+  width: 77%;
+  height: 50px;
+  background: #9aafc0;
+  bottom: 1%;
+  left: 18%;
+  border-radius: 50%;
+  filter: blur(22px);
+  opacity: 0.28;
+  transform: scaleX(calc(1 - var(--scene-progress) * 0.15));
+  pointer-events: none;
+}
+.washer-model {
+  position: relative;
+  transform-style: preserve-3d;
+  transform: translateY(calc(var(--scene-progress) * -24px))
+    rotateX(calc(-9deg + var(--scene-progress) * 15deg))
+    rotateY(calc(-18deg + var(--scene-progress) * 36deg))
+    rotateZ(calc(4deg - var(--scene-progress) * 8deg));
+}
+.washer-side {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 64px;
+  background: linear-gradient(90deg, #b2c9da, #cbdce8);
+  backface-visibility: hidden;
+  border-radius: 12px;
+}
+.washer-side-right {
+  left: calc(100% - 1px);
+  transform-origin: left;
+  transform: rotateY(90deg);
+}
+.washer-side-left {
+  right: calc(100% - 1px);
+  transform-origin: right;
+  transform: rotateY(-90deg);
+}
+.washer-top {
+  position: absolute;
+  top: -63px;
+  height: 64px;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(#d0e2ed, #faffff);
+  transform-origin: bottom;
+  transform: rotateX(90deg);
+  border-radius: 12px;
+  backface-visibility: hidden;
+}
+.home-page .wash-panel {
+  position: relative;
+  overflow: visible;
+  transform-style: preserve-3d;
+  background: linear-gradient(120deg, #fdfefe, #e7eff4);
+  padding: 22px 25px 0;
+  border-radius: 14px;
+  box-shadow: 14px 32px 45px -28px #355d7855;
+}
+.home-page .panel-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-weight: 500;
+  padding-bottom: 14px;
+  font-size: 11px;
+  color: #415f7a;
+}
+.panel-lights {
+  display: flex;
+  gap: 5px;
+}
+.panel-lights i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #90acc8;
+}
+.panel-lights i:first-child {
+  background: var(--blue);
+}
+.washer-console {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 0 19px;
+  border-bottom: 1px solid #c7d5df;
+}
+.washer-drawer {
+  width: 26%;
+  height: 30px;
+  background: #d9e5ed;
+  border-radius: 5px;
+  position: relative;
+}
+.washer-drawer::after {
+  content: "";
+  position: absolute;
+  left: 15%;
+  right: 15%;
+  bottom: 8px;
+  height: 2px;
+  background: #9fb7c9;
+  border-radius: 2px;
+}
+.washer-knob {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(130deg, #fff, #b8ccda);
+  box-shadow: 2px 4px 7px #597b932d;
+  position: relative;
+}
+.washer-knob::after {
+  content: "";
+  position: absolute;
+  width: 3px;
+  height: 8px;
+  background: var(--orange);
+  top: 4px;
+  left: 17px;
+  border-radius: 2px;
+  transform: rotate(-25deg);
+}
+.washer-screen {
+  margin-left: auto;
+  font-weight: 800;
+  font-size: 16px;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+}
+.home-page .dial {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  width: min(100%, 274px);
+  border: 13px solid #adc3d5;
+  background: linear-gradient(145deg, #fff, #d6e4ee);
+  padding: 9px;
+  margin: 23px auto;
+  transform: translateZ(calc(24px + var(--scene-progress) * 26px));
+  box-shadow: 5px 14px 22px -12px #42627d70;
+}
+.home-page .dial-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  border: 1px solid #c5d8e7;
+  border-radius: 50%;
+  background: #e5eff7;
+  padding: 14px 6px;
+}
+.home-page .dial .service-emoji {
+  font-size: 46px;
+  line-height: 1.4;
+  margin-bottom: 2px;
+}
+.home-page .dial h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  letter-spacing: -0.02em;
+}
+.home-page .dial p {
+  font-size: 12px;
+  color: var(--ink);
+}
+.home-page .dial p strong {
+  font-size: 27px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.home-page .dial small {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 7px;
+}
+.home-page .dial-marker {
+  position: absolute;
+  inset: -13px;
+  border-radius: 50%;
+  transform: rotate(var(--dial-angle));
+  transition: transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+.dial-marker::before {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 9px;
+  background: var(--orange);
+  border-radius: 4px;
+  left: calc(50% - 11px);
+  top: 0;
+}
+.home-page .dial-choices {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 7px;
+  margin-bottom: 15px;
+}
+.home-page .dial-choices button {
+  color: var(--ink);
+  min-height: 44px;
+  border: 0;
+  background: #dae6ef;
+  font-size: 11px;
+  border-radius: 7px;
+  padding: 8px 5px;
+  font-weight: 500;
+  transition: background-color 160ms;
+}
+.home-page .dial-choices button:hover {
+  background: #c9dce9;
+}
+.home-page .dial-choices button[aria-pressed="true"] {
+  background: var(--ink);
+  color: white;
+}
+.home-page .panel-book {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 0 17px;
+  border-top: 1px solid #c7d5df;
+  font-size: 12px;
+  font-weight: 600;
+}
+.panel-book:hover {
+  color: var(--blue);
+}
+.washer-base {
+  position: absolute;
+  inset: auto 20px -9px;
+  display: flex;
+  justify-content: space-between;
+  transform: translateZ(-12px);
+  z-index: -1;
+}
+.washer-base span {
+  width: 35px;
+  height: 12px;
+  background: #516c83;
+  border-radius: 0 0 5px 5px;
+}
+.home-page {
+  --scene-progress: 0;
+  --surface-blue: #edf4fb;
+  overflow: clip;
+}
+.hero-scroll {
+  position: relative;
+  min-height: calc(100svh + 260px);
+  background: #f1f5f5;
+  border-radius: 0 0 48px 48px;
+}
+.home-page .hero {
+  position: sticky;
+  top: 0;
+  min-height: min(820px, 100svh);
+  grid-template-columns: 1.1fr 1fr;
+  gap: 48px;
+  padding-block: 58px 78px;
+}
+.home-page .hero-copy {
+  position: relative;
+  z-index: 2;
+}
+.home-page .hero h1 {
+  font-size: clamp(46px, 4.6vw, 68px);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.04em;
+  margin-bottom: 28px;
+}
+.home-page .hero h1 span {
+  font-weight: 800;
+}
+.home-page .hero-copy > p {
+  font-size: 16px;
+  line-height: 1.9;
+  max-width: 44ch;
+  margin-bottom: 32px;
+}
+.home-page .hero .desktop-break {
+  display: none;
+}
+.home-page .hero-note {
+  font-size: 12px;
+  gap: 10px;
+  margin-top: 24px;
+}
+.home-page .service-section {
+  padding-block: 90px 100px;
+}
+.home-page .section-heading {
+  margin-bottom: 40px;
+}
+.home-page .section-heading h2 {
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.home-page .section-heading p {
+  font-size: 15px;
+}
+.home-page .service-grid {
+  gap: 20px;
+  border: 0;
+  align-items: start;
+}
+.home-page .service-card {
+  background: var(--surface-blue);
+  border: 0;
+  border-radius: 16px;
+  padding: 28px;
+  min-height: 254px;
+  transition: background-color 180ms ease-out;
+}
+.home-page .service-card:nth-child(3n + 2) {
+  margin-top: 30px;
+  background: #f1eee5;
+}
+.home-page .service-card:nth-child(3n) {
+  background: #eaf0e9;
+}
+.home-page .service-card:hover {
+  background: #e0eaf6;
+}
+.home-page .service-top {
+  margin-bottom: 23px;
+}
+.home-page .service-top .service-emoji {
+  font-size: 39px;
+}
+.home-page .service-top svg {
+  width: 22px;
+  height: 22px;
+  color: var(--ink);
+}
+.home-page .service-card h3 {
+  font-size: 22px;
+}
+.home-page .service-card p {
+  font-size: 14px;
+  line-height: 1.85;
+  min-height: 52px;
+  max-width: 30ch;
+}
+.home-page .service-price {
+  font-size: 12px;
+  margin-top: 22px;
+}
+.home-page .service-price strong {
+  font-size: 18px;
+}
+.home-page .process-section {
+  border-radius: 36px;
+  margin-inline: 24px;
+  padding-block: 65px;
+  background: #e7eef3;
+}
+.home-page .process-grid {
+  gap: 30px;
+}
+.home-page .process-grid li {
+  border-top: 0;
+  padding: 0;
+}
+.home-page .step-number {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  background: var(--white);
+  border-radius: 50%;
+  font-size: 13px;
+  margin-bottom: 21px;
+  color: var(--blue);
+}
+.home-page .process-grid h3 {
+  font-size: 20px;
+}
+.home-page .process-grid p {
+  font-size: 14px;
+  color: #405a78;
+}
+.home-page .process-section .section-heading > p {
+  font-size: 14px;
+}
+.home-page .closing {
+  padding-block: 95px;
+}
+.home-page .closing h2 {
+  font-size: 43px;
+  font-weight: 600;
+}
+.home-page .closing p {
+  font-size: 15px;
+}
+
+/* Shared controls: a quieter frame and comfortable type on every route. */
+.site-header {
+  border-bottom: 0;
+}
+.navigation {
+  gap: 5px;
+  padding: 5px;
+  background: #edf1f3;
+  border-radius: 12px;
+}
+.navigation a {
+  border-radius: 8px;
+  padding: 9px 15px;
+}
+.navigation a[aria-current] {
+  background: var(--white);
+  color: var(--ink);
+  text-decoration: none;
+  box-shadow: 0 3px 8px #183b690c;
+}
+.navigation a:hover {
+  text-decoration: none;
+  color: var(--blue);
+}
+.button {
+  border-radius: 12px;
+}
+.page-heading p {
+  font-size: 16px;
+}
+.price-row h3 {
+  font-size: 15px;
+}
+.price-row span,
+.pricing-title p {
+  font-size: 12px;
+}
+.price-row strong {
+  font-size: 17px;
+}
+.pricing-group {
+  border-top-color: #bbcbd9;
+}
+.booking-service label {
+  font-size: 14px;
+}
+label {
+  font-size: 13px;
+}
+input:not([type="radio"]):not([type="checkbox"]),
+select,
+textarea {
+  font-size: 15px;
+}
+.field-help {
+  font-size: 12px;
+}
+.footer-grid h3 {
+  font-size: 13px;
+}
+.footer-grid p,
+.footer-grid > div > a {
+  font-size: 12px;
+}
+.demo-label {
+  font-size: 11px;
+}
+.footer-bottom {
+  font-size: 11px;
+}
+
+@media (max-width: 1100px) and (min-width: 761px) {
+  .home-page .hero {
+    gap: 30px;
+  }
+  .home-page .hero h1 {
+    font-size: 48px;
+  }
+  .home-page .hero-copy > p {
+    font-size: 15px;
+  }
+  .home-page .service-card {
+    padding: 24px;
+  }
+  .home-page .service-card h3 {
+    font-size: 19px;
+  }
+  .home-page .service-card p {
+    font-size: 13px;
+  }
+}
+@media (max-width: 760px) {
+  .hero-scroll {
+    min-height: auto;
+    border-radius: 0 0 28px 28px;
+  }
+  .home-page .hero {
+    position: relative;
+    min-height: 0;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+    padding-block: 35px 46px;
+  }
+  .home-page .hero h1 {
+    font-size: clamp(36px, 8.8vw, 56px);
+    line-height: 1.28;
+    margin-bottom: 20px;
+  }
+  .home-page .hero-copy > p {
+    font-size: 15px;
+    line-height: 1.85;
+    margin-bottom: 25px;
+  }
+  .home-page .hero-note {
+    font-size: 11px;
+    gap: 7px;
+  }
+  .home-page .hero .actions {
+    gap: 18px;
+  }
+  .home-page .service-section {
+    padding-block: 50px 54px;
+  }
+  .home-page .section-heading {
+    gap: 13px;
+    margin-bottom: 26px;
+  }
+  .home-page .section-heading h2 {
+    font-size: 28px;
+  }
+  .home-page .section-heading p {
+    font-size: 14px;
+  }
+  .home-page .service-grid {
+    gap: 12px;
+  }
+  .home-page .service-card {
+    padding: 20px 16px;
+    min-height: 253px;
+  }
+  .home-page .service-card:nth-child(3n + 2) {
+    margin-top: 0;
+  }
+  .home-page .service-card:nth-child(even) {
+    margin-top: 18px;
+  }
+  .home-page .service-top {
+    margin-bottom: 20px;
+  }
+  .home-page .service-top .service-emoji {
+    font-size: 32px;
+  }
+  .home-page .service-top svg {
+    width: 18px;
+    height: 18px;
+  }
+  .home-page .service-card h3 {
+    font-size: 17px;
+  }
+  .home-page .service-card p {
+    font-size: 12px;
+    min-height: 67px;
+    line-height: 1.8;
+  }
+  .home-page .service-price {
+    font-size: 10px;
+    margin-top: 18px;
+  }
+  .home-page .service-price strong {
+    font-size: 14px;
+  }
+  .home-page .process-section {
+    margin-inline: 12px;
+    border-radius: 22px;
+    padding-block: 35px;
+  }
+  .home-page .process-section .container {
+    padding-inline: 20px;
+  }
+  .home-page .process-grid {
+    gap: 27px 20px;
+  }
+  .home-page .step-number {
+    margin-bottom: 14px;
+    width: 35px;
+    height: 35px;
+    font-size: 12px;
+  }
+  .home-page .process-grid h3 {
+    font-size: 17px;
+  }
+  .home-page .process-grid p {
+    font-size: 12px;
+  }
+  .home-page .process-section .section-heading > p {
+    font-size: 13px;
+  }
+  .home-page .closing {
+    padding-block: 50px 55px;
+  }
+  .home-page .closing h2 {
+    font-size: 32px;
+  }
+  .home-page .closing p {
+    font-size: 14px;
+  }
+  .navigation {
+    background: none;
+    padding-inline: 0;
+    border-radius: 0;
+  }
+  .navigation a {
+    padding-inline: 12px;
+  }
+  .navigation a[aria-current] {
+    background: var(--enamel);
+    box-shadow: none;
+  }
+  .page-heading p {
+    font-size: 14px;
+  }
+  .price-row h3 {
+    font-size: 14px;
+  }
+  .price-row strong {
+    font-size: 15px;
+  }
+  .price-row span,
+  .pricing-title p {
+    font-size: 11px;
+  }
+  input:not([type="radio"]):not([type="checkbox"]),
+  select,
+  textarea {
+    font-size: 16px;
+  }
+  .footer-grid p,
+  .footer-grid > div > a {
+    font-size: 11px;
+  }
+  .demo-label,
+  .footer-bottom {
+    font-size: 10px;
+  }
+}
+@media (max-width: 359px) {
+  .home-page .hero h1 {
+    font-size: 33px;
+  }
+  .home-page .hero-note {
+    font-size: 10px;
+  }
+  .home-page .service-card {
+    padding-inline: 13px;
+  }
+  .home-page .service-card h3 {
+    font-size: 15px;
+  }
+  .home-page .service-card p {
+    font-size: 11px;
+  }
+  .home-page .service-price strong {
+    font-size: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-scroll {
+    min-height: auto;
+  }
+  .home-page .hero {
+    position: relative;
+  }
+}
+@media (max-height: 650px) and (min-width: 761px) {
+  .hero-scroll {
+    min-height: auto;
+  }
+  .home-page .hero {
+    position: relative;
+    min-height: 0;
+  }
+}
+
+@media (max-width: 1100px) and (min-width: 761px) {
+  .washer-stage {
+    padding-inline: 0 25px;
+  }
+  .home-page .wash-panel {
+    padding-inline: 18px;
+  }
+  .home-page .dial {
+    width: 230px;
+  }
+  .home-page .dial .service-emoji {
+    font-size: 36px;
+  }
+  .home-page .dial h2 {
+    font-size: 19px;
+  }
+  .home-page .dial p strong {
+    font-size: 23px;
+  }
+  .home-page .dial-choices button {
+    font-size: 10px;
+  }
+  .washer-wordmark {
+    font-size: 75px;
+    top: -5%;
+    right: 0;
+  }
+}
+@media (max-width: 760px) {
+  .scroll-invitation {
+    margin-top: 23px;
+    font-size: 11px;
+  }
+  .scroll-icon {
+    width: 26px;
+    height: 35px;
+  }
+  .washer-stage {
+    width: min(100%, 410px);
+    margin: 5px auto 0;
+    padding: 25px 30px 25px 8px;
+  }
+  .washer-model {
+    transform: translateY(calc(var(--scene-progress) * -10px))
+      rotateX(calc(-7deg + var(--scene-progress) * 7deg))
+      rotateY(calc(-12deg + var(--scene-progress) * 24deg))
+      rotateZ(calc(3deg - var(--scene-progress) * 4deg));
+  }
+  .washer-side {
+    width: 42px;
+  }
+  .washer-top {
+    top: -41px;
+    height: 42px;
+  }
+  .washer-wordmark {
+    font-size: 78px;
+    top: -4%;
+    right: 3%;
+  }
+  .washer-orbit {
+    width: 100%;
+    left: 0;
+    top: 10%;
+  }
+  .home-page .wash-panel {
+    padding: 17px 17px 0;
+    margin: 0;
+    max-width: none;
+  }
+  .home-page .panel-top {
+    font-size: 10px;
+    padding-bottom: 12px;
+  }
+  .washer-console {
+    gap: 14px;
+    padding-bottom: 14px;
+  }
+  .washer-screen {
+    font-size: 14px;
+  }
+  .washer-knob {
+    width: 32px;
+    height: 32px;
+  }
+  .washer-knob::after {
+    left: 15px;
+  }
+  .home-page .dial {
+    width: min(100%, 233px);
+    margin-block: 20px;
+    border-width: 11px;
+    transform: translateZ(calc(17px + var(--scene-progress) * 14px));
+  }
+  .home-page .dial-marker {
+    inset: -11px;
+  }
+  .home-page .dial .service-emoji {
+    font-size: 35px;
+  }
+  .home-page .dial h2 {
+    font-size: 19px;
+  }
+  .home-page .dial p strong {
+    font-size: 24px;
+  }
+  .home-page .dial p {
+    font-size: 11px;
+  }
+  .home-page .dial small {
+    font-size: 10px;
+  }
+  .home-page .dial-choices {
+    gap: 6px;
+  }
+  .home-page .dial-choices button {
+    font-size: 10px;
+    min-height: 42px;
+  }
+  .home-page .panel-book {
+    font-size: 11px;
+  }
+}
+@media (max-width: 359px) {
+  .washer-stage {
+    padding-inline: 4px 21px;
+  }
+  .home-page .wash-panel {
+    padding-inline: 13px;
+  }
+  .home-page .dial {
+    width: 210px;
+  }
+  .home-page .dial-choices button {
+    font-size: 9px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .washer-model {
+    transform: rotateX(-5deg) rotateY(-10deg);
+  }
+  .home-page .dial {
+    transform: translateZ(20px);
+  }
+  .washer-ground {
+    transform: none;
+  }
+  .dial-marker {
+    transition-duration: 0.01ms;
+  }
+}
