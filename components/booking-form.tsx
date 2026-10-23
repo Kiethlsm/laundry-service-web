@@ -86,7 +86,7 @@ export function BookingForm({
       });
       const result = await response.json();
       if (!response.ok) {
-        setError(response.status === 409 ? "Nội dung đã thay đổi so với lần gửi trước. Hãy tải lại để đặt lịch mới." : response.status === 429 ? "Bản demo đã đạt giới hạn đặt lịch. Vui lòng thử lại sau." : "Chưa thể đặt lịch. Vui lòng kiểm tra thông tin rồi thử lại.");
+        setError(response.status === 409 ? "Nội dung đã thay đổi so với lần gửi trước. Hãy tải lại để đặt lịch mới." : response.status === 429 ? "Đã đạt giới hạn đặt lịch. Vui lòng thử lại sau." : "Chưa thể đặt lịch. Vui lòng kiểm tra thông tin rồi thử lại.");
         requestAnimationFrame(() => errorRef.current?.focus());
         return;
       }
@@ -338,8 +338,8 @@ export function BookingForm({
           Chi phí được xác nhận lại theo khối lượng thực tế trước khi xử lý.
         </p>
         <div className="consent-fields">
-          <p><strong>Chỉ dùng dữ liệu giả.</strong> Đơn, báo giá và thanh toán trong bản portfolio đều mô phỏng.</p>
-          <label><input type="checkbox" name="consent" required disabled={busy} /> Tôi đồng ý báo giá v0, chính sách portfolio-v1.2 và dữ liệu demo.</label>
+          <p>Đây là chi phí dự kiến. Cửa hàng xác nhận khối lượng và báo giá trước khi xử lý.</p>
+          <label><input type="checkbox" name="consent" required disabled={busy} /> Tôi đồng ý với báo giá dự kiến và việc cửa hàng liên hệ để xác nhận lịch hẹn.</label>
           <label><input type="checkbox" name="tolerance_consent" checked={toleranceConsent} onChange={e => setToleranceConsent(e.target.checked)} disabled={busy} /> Cho phép cân thực tế trong ±10% hoặc ±0,30 kg, lấy mức lớn hơn cho từng dòng kg gốc.</label>
           <p aria-live="polite">Mức tối đa được đồng ý: <strong>{formatVND(maximum)}</strong>. Không chọn dung sai: mọi thay đổi cân nặng cần báo giá mới.</p>
         </div>

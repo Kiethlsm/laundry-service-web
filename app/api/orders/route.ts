@@ -3,13 +3,13 @@ const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-
 const messages: Record<string, [number, string]> = {
   IDEMPOTENCY_CONFLICT: [409, "Lần gửi này khác nội dung đã lưu. Hãy tải lại để đặt lịch mới."],
   OPERATION_EXPIRED: [409, "Phiên đặt lịch đã hết hạn. Hãy tải lại trang."],
-  ORDER_RATE_LIMIT: [429, "Số điện thoại demo đã đạt ba đơn trong một giờ. Vui lòng thử lại sau."],
-  ORDER_PENDING_LIMIT: [429, "Số điện thoại demo có quá nhiều đơn đang chờ."],
-  DEMO_CAPACITY: [429, "Bản demo đã đủ đơn mẫu. Vui lòng thử lại sau."],
+  ORDER_RATE_LIMIT: [429, "Số điện thoại đã đạt ba đơn trong một giờ. Vui lòng thử lại sau."],
+  ORDER_PENDING_LIMIT: [429, "Số điện thoại có quá nhiều đơn đang chờ."],
+  DEMO_CAPACITY: [429, "Hiện chưa thể nhận thêm lịch hẹn. Vui lòng thử lại sau."],
   PICKUP_NOT_FUTURE: [400, "Vui lòng chọn thời gian lấy đồ trong tương lai."],
   PICKUP_TOO_FAR: [400, "Vui lòng chọn lịch trong 90 ngày tới."],
   INVALID_PICKUP: [400, "Thời gian lấy đồ không hợp lệ."],
-  INVALID_ORDER: [400, "Vui lòng kiểm tra thông tin và xác nhận báo giá demo."],
+  INVALID_ORDER: [400, "Vui lòng kiểm tra thông tin và xác nhận báo giá."],
   INVALID_QUANTITY: [400, "Dịch vụ hoặc số lượng không hợp lệ."],
   SERVICE_UNAVAILABLE: [400, "Dịch vụ đã thay đổi. Hãy tải lại bảng giá."],
 };

@@ -12,7 +12,7 @@ test('P03_ADMIN_DETAIL_UI — version/consent/evidence UI and role-free action p
  const {DemoWorkspace}=load('components/demo-workspace.tsx',{'./demo-action-form':{DemoActionForm:({children})=>React.createElement('form',null,children)},'./demo-money':{DemoMoney:()=>null},'@/lib/format':{formatVND:n=>String(n),UNIT_LABEL:{kg:'kg'}}});
  const data={order:{id:'20000000-0000-4000-8000-000000000001',revision:2,status:'picked_up',total:50000},eligible:false,quotes:[{id:'q',version:1,state:'issued',base_total:50000,max_weight_total:50000,content_hash:'hash',tolerance_consent:false,items:[{order_item_id:1,snapshot_name:'Laundry',snapshot_unit:'kg',snapshot_rate:25000,quantity:2},{order_item_id:2,snapshot_name:'Shoes',snapshot_unit:'doi',snapshot_rate:80000,quantity:1}],approvals:[{verification_state:'unverified',method:'phone_note'}]}],bags:[],settlements:[],charges:[],issues:[],custody:[]};
  const html=renderToStaticMarkup(React.createElement(DemoWorkspace,{data}));
- for(const text of ['Báo giá','v1','mô phỏng','Chưa xác minh','quantity:1'])assert.ok(html.includes(text),text);
+ for(const text of ['Báo giá','Lần 2','mô phỏng','Chưa xác minh','quantity:1'])assert.ok(html.includes(text),text);
  const discrete=html.match(/<input\b[^>]*name="quantity:2"[^>]*>/)?.[0];
  assert.match(discrete,/min="1"/);
  assert.match(discrete,/step="1"/);

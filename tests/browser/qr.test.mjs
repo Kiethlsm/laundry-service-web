@@ -40,7 +40,7 @@ test('QR_BANK_BOOKING — cash isolation, static QR/memo/copy errors and no auto
   assert.ok(await page.evaluate(`document.querySelector('.bank-transfer').textContent.includes(${JSON.stringify('SACHSACH ')}+${JSON.stringify(code)})`));
   assert.match(await page.evaluate("document.querySelector('.bank-transfer').textContent"),/Tạm tính/);
   assert.match(await page.evaluate("document.querySelector('.bank-transfer').textContent"),/QR tĩnh/);
-  assert.match(await page.evaluate("document.querySelector('.bank-transfer').textContent"),/không chuyển tiền thật/);
+  assert.match(await page.evaluate("document.querySelector('.bank-transfer').textContent"),/không tự xác nhận đã thanh toán/);
   await page.evaluate("window.qrCopied=[];Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:async value=>window.qrCopied.push(value)}});document.querySelector('[data-copy=memo]').click()");await until(()=>page.evaluate('window.qrCopied.length===1'));assert.deepEqual(await page.evaluate('window.qrCopied'),['SACHSACH '+code]);
   assert.equal(await page.evaluate("document.querySelector('.bank-transfer a[download]').getAttribute('href')"),'/payments/techcombank-qr.png');
   const img=await fetch(site.base+'/payments/techcombank-qr.png');assert.equal(img.status,200);assert.deepEqual(Buffer.from(await img.arrayBuffer()),fs.readFileSync('public/payments/techcombank-qr.png'));

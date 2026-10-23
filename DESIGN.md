@@ -31,14 +31,14 @@ typography:
     fontFamily: "Be Vietnam Pro, sans-serif"
     fontSize: "clamp(46px, 4.6vw, 68px)"
     fontWeight: 600
-    lineHeight: 1.25
-    letterSpacing: "-0.04em"
+    lineHeight: 1.32
+    letterSpacing: "-0.025em"
   headline:
     fontFamily: "Be Vietnam Pro, sans-serif"
     fontSize: "34px"
     fontWeight: 600
     lineHeight: 1.4
-    letterSpacing: "-0.035em"
+    letterSpacing: "-0.02em"
   title:
     fontFamily: "Be Vietnam Pro, sans-serif"
     fontSize: "18px"
@@ -46,12 +46,12 @@ typography:
     lineHeight: 1.5
   body:
     fontFamily: "Be Vietnam Pro, sans-serif"
-    fontSize: "15px"
+    fontSize: "16px"
     fontWeight: 400
     lineHeight: 1.7
   label:
     fontFamily: "Be Vietnam Pro, sans-serif"
-    fontSize: "13px"
+    fontSize: "14px"
     fontWeight: 500
     lineHeight: 1.7
   home-headline:
@@ -59,7 +59,7 @@ typography:
     fontSize: "40px"
     fontWeight: 600
     lineHeight: 1.4
-    letterSpacing: "-0.035em"
+    letterSpacing: "-0.02em"
   hero-body:
     fontFamily: "Be Vietnam Pro, sans-serif"
     fontSize: "16px"
@@ -160,3 +160,7 @@ The CSS washer contains a console drawer, knob, circular service readout, six ca
 - Keep native scroll, the reduced-motion fallback and accessible service buttons.
 - Preserve the user-selected CSS panel presentation; do not restore the rejected WebGL model without a new request.
 - Keep operational forms still and readable.
+
+## Readability refinement · 2026-10-24
+
+Retain Be Vietnam Pro and the existing cobalt/enamel identity. Shared reading text is 16px with 1.7–1.75 line height; supporting text and labels are 14px; actions are 15px. Headings use -0.02em tracking (-0.025em for the hero) and the hero emphasis inherits its weight. Financial values use tabular numerals. Decorative washer controls retain their separate compact scale. Public pages omit project/version branding and invented contact details. Recipient display is Nguyễn Thị Mai, account 38606688, explicitly reconfirmed by the owner; QR bytes are unchanged and bank-app verification remains required.

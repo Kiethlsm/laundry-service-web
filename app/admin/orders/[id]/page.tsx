@@ -36,10 +36,10 @@ export default async function AdminOrder({
   if (data.is_synthetic) {
     const auth = await authClient();
     const result = await auth.rpc("demo_order_detail", {p_order:id});
-    if (result.error || !result.data?.order) throw new Error("Chưa tải được quy trình demo. Hãy thử lại.");
+    if (result.error || !result.data?.order) throw new Error("Chưa tải được quy trình xử lý. Hãy thử lại.");
     workspace = result.data as DemoWorkspaceData;
     const payment = await auth.rpc("demo_payment_summary",{p_order:id});
-    if(payment.error || !payment.data) throw new Error("Chưa tải được sổ tiền demo.");
+    if(payment.error || !payment.data) throw new Error("Chưa tải được sổ tiền.");
     workspace.money = payment.data;
   }
   return (
@@ -52,7 +52,7 @@ export default async function AdminOrder({
         Liên hệ khách:{" "}
         <a href={`tel:${order.customer_phone}`}>{order.customer_phone}</a>
       </p>
-      {workspace ? <DemoWorkspace data={workspace}/> : <p className="demo-notice">Đơn cũ chỉ đọc và cần xem xét lại; chưa có bằng chứng đồng ý hoặc thanh toán theo quy trình demo.</p>}
+      {workspace ? <DemoWorkspace data={workspace}/> : <p className="demo-notice">Đơn cũ chỉ đọc và cần xem xét lại; chưa có bằng chứng đồng ý hoặc thanh toán theo quy trình xử lý.</p>}
     </div>
   );
 }

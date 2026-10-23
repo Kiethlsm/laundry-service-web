@@ -1,0 +1,50 @@
+[
+  {
+    "route": "/",
+    "width": 390,
+    "overflow": false,
+    "bodyFont": "16px",
+    "vietnameseFontLoaded": true,
+    "projectLabelsAbsent": true
+  },
+  {
+    "route": "/",
+    "width": 1440,
+    "overflow": false,
+    "bodyFont": "16px",
+    "vietnameseFontLoaded": true,
+    "projectLabelsAbsent": true
+  },
+  {
+    "route": "/dat-lich",
+    "width": 390,
+    "overflow": false,
+    "bodyFont": "16px",
+    "vietnameseFontLoaded": true,
+    "projectLabelsAbsent": true
+  },
+  {
+    "route": "/dat-lich",
+    "width": 1440,
+    "overflow": false,
+    "bodyFont": "16px",
+    "vietnameseFontLoaded": true,
+    "projectLabelsAbsent": true
+  },
+  {
+    "route": "/dang-nhap",
+    "width": 390,
+    "overflow": false,
+    "bodyFont": "16px",
+    "vietnameseFontLoaded": true,
+    "projectLabelsAbsent": true
+  },
+  {
+    "route": "/dang-nhap",
+    "width": 1440,
+    "overflow": false,
+    "bodyFont": "16px",
+    "vietnameseFontLoaded": true,
+    "projectLabelsAbsent": true
+  }
+]

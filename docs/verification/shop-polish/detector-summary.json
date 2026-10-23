@@ -1,0 +1,9 @@
+{
+  "total": 275,
+  "grouped": {
+    "design-system-color / advisory": 50,
+    "design-system-radius / advisory": 11,
+    "design-system-font-size / advisory": 214
+  },
+  "note": "Existing global CSS includes legacy washer decoration, display sizes and superseded declarations; reviewed changed shared reading styles with six desktop/mobile captures. Detector findings are not a visual acceptance test."
+}

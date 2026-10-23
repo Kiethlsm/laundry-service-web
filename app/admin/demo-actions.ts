@@ -55,5 +55,5 @@ export async function performDemoAction(_state:DemoActionState,form:FormData):Pr
   }
  }catch{console.error(JSON.stringify({event:'demo_rpc_failed',rpc:'order_command',code:'TRANSPORT',operation_key:key,action}));return {error:"Mất kết nối. Giữ nguyên thao tác và thử lại; không đánh dấu hoàn tất khi chưa có xác nhận."};}
  revalidatePath('/admin');revalidatePath('/admin/orders/'+order);
- return {error:'',success:'Đã lưu thao tác demo.'};
+ return {error:'',success:'Đã lưu thao tác.'};
 }

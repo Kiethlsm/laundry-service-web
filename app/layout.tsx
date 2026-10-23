@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     template: "%s | Sạch Sạch",
   },
   description:
-    "Demo dịch vụ giặt sấy, giặt giày, mền chăn, ủi đồ, sửa đồ và giặt gấu bông. Đặt lịch lấy đồ không cần tài khoản.",
+    "Dịch vụ giặt sấy, giặt giày, mền chăn, ủi đồ, sửa đồ và giặt gấu bông. Đặt lịch lấy đồ và theo dõi đơn cùng Sạch Sạch.",
 };
 export default function RootLayout({
   children,
@@ -43,18 +43,11 @@ export default function RootLayout({
                 <Brand />
               </Link>
               <p>Nhẹ việc giặt, thêm thời gian.</p>
-              <span className="demo-label">
-                Dự án demo · Thông tin tiệm minh họa
-              </span>
             </div>
             <div>
-              <h3>Ghé Sạch Sạch</h3>
+              <h3>Lịch hẹn của bạn</h3>
               <p>
-                123 Đường Mẫu, TP. Hồ Chí Minh
-                <br />
-                08:00 – 20:00, Thứ Hai – Chủ Nhật
-                <br />
-                SĐT minh họa: 0900 000 000
+                Cửa hàng sẽ liên hệ xác nhận thời gian lấy và giao đồ theo lịch hẹn của bạn.
               </p>
             </div>
             <div>
@@ -65,7 +58,7 @@ export default function RootLayout({
             </div>
           </div>
           <div className="container footer-bottom">
-            <span>© 2026 Sạch Sạch. Website minh họa cho CV.</span>
+            <span>© 2026 Sạch Sạch.</span>
             <Link href="/admin">
               Dành cho quản trị viên <Arrow />
             </Link>

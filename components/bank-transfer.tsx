@@ -6,7 +6,7 @@ import { formatVND } from "@/lib/format";
 
 // Public receiving details supplied by the user with the QR image.
 const account = "38606688";
-const recipient = "CONG TY TNHH THUONG MAI DICH VU VAN TAI AN LINH";
+const recipient = "Nguyễn Thị Mai";
 const qr = "/payments/techcombank-qr.png";
 
 export function BankTransfer({ amount, orderCode }: { amount: number; orderCode?: string }) {
@@ -29,7 +29,7 @@ export function BankTransfer({ amount, orderCode }: { amount: number; orderCode?
         <h3 id={heading}>Chuyển khoản Techcombank</h3>
         <span>Đối soát thủ công</span>
       </header>
-      <p className="bank-transfer-demo">Bản portfolio đang mô phỏng — không chuyển tiền thật.</p>
+      <p className="bank-transfer-demo">Chỉ thanh toán sau khi cửa hàng xác nhận báo giá và tài khoản nhận.</p>
       <div className="bank-transfer-layout">
         <div className="bank-transfer-image">
           <div className="bank-transfer-qr-frame">
@@ -39,7 +39,7 @@ export function BankTransfer({ amount, orderCode }: { amount: number; orderCode?
         </div>
         <div className="bank-transfer-info">
           <dl>
-            <div><dt>Người nhận theo QR</dt><dd className="bank-transfer-recipient">{recipient}</dd></div>
+            <div><dt>Tên người nhận</dt><dd className="bank-transfer-recipient">{recipient}</dd></div>
             <div><dt>Số tài khoản</dt><dd className="bank-transfer-account">{account}</dd></div>
           </dl>
           <button className="bank-transfer-copy" type="button" data-copy="account" onClick={() => copy(account, "số tài khoản")}>Sao chép số tài khoản</button>

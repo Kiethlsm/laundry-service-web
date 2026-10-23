@@ -47,7 +47,7 @@
   color: #c4d7e2;
   font-size: 100px;
   font-weight: 800;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.025em;
   transform: rotate(-9deg);
   z-index: -1;
   user-select: none;
@@ -892,4 +892,33 @@ textarea {
   .dial-marker {
     transition-duration: 0.01ms;
   }
+}
+
+/* Shared reading scale: Vietnamese accents, clear labels and steady numerals. */
+h1, h2, h3 { letter-spacing: -0.02em; }
+.hero h1 { letter-spacing: -0.025em; line-height: 1.32; }
+.hero h1 span { font-weight: inherit; }
+.brand { letter-spacing: -0.025em; }
+.navigation a, .header-cta, .hero-note, .scroll-invitation,
+.field-help, .summary-note, .field-grid label, .consent-fields,
+.price-row span, .pricing-title p, .booking-service-name span,
+.footer-bottom, footer p, footer a, .bank-transfer-note {
+  font-size: 0.875rem;
+  line-height: 1.65;
+}
+.button, .text-link { font-size: 0.9375rem; }
+input, textarea, select { font-size: 1rem; line-height: 1.5; }
+.hero-copy > p, .section-heading p, .service-card p,
+.process-grid p, .closing p, .page-heading p {
+  font-size: 1rem;
+  line-height: 1.75;
+}
+.hero-copy > p, .page-heading p, .section-heading p { max-width: 65ch; }
+.booking-service-name strong, .price-row h3 { font-size: 1rem; font-weight: 600; }
+.summary-total strong, .price-row strong, .service-price strong,
+.bank-transfer-account, .bank-transfer-amount, .demo-scroll {
+  font-variant-numeric: tabular-nums;
+}
+@media (min-width: 901px) {
+  .navigation { gap: 20px; }
 }
