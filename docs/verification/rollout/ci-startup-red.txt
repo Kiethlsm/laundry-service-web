@@ -1,0 +1,86 @@
+﻿portfolio-minimal	Disposable database (no hosted credentials)	﻿2026-10-23T13:31:52.4407777Z ##[group]Run docker run --name sachsach-hosted-defaults-tests --label purpose=sachsach-hosted-defaults-test -e POSTGRES_HOST_AUTH_METHOD=trust -d postgres:17.11
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:52.4414823Z ^[[36;1mdocker run --name sachsach-hosted-defaults-tests --label purpose=sachsach-hosted-defaults-test -e POSTGRES_HOST_AUTH_METHOD=trust -d postgres:17.11^[[0m
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:52.4415235Z ^[[36;1mfor attempt in $(seq 1 30); do^[[0m
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:52.4415493Z ^[[36;1m  if docker exec sachsach-hosted-defaults-tests pg_isready -U postgres; then break; fi^[[0m
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:52.4415742Z ^[[36;1m  sleep 1^[[0m
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:52.4415858Z ^[[36;1mdone^[[0m
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:52.4416203Z ^[[36;1mdocker exec sachsach-hosted-defaults-tests psql -U postgres -v ON_ERROR_STOP=1 -c 'CREATE ROLE anon; CREATE ROLE authenticated; CREATE ROLE service_role BYPASSRLS;'^[[0m
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:52.4473010Z shell: /usr/bin/bash -e {0}
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:52.4473173Z ##[endgroup]
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:52.5339135Z Unable to find image 'postgres:17.11' locally
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.1632887Z 17.11: Pulling from library/postgres
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.3247146Z f2be67225471: Pulling fs layer
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.3249116Z e0428ef87eb8: Pulling fs layer
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.3249793Z c9b382b1f732: Pulling fs layer
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.3250134Z 0f6d195ee345: Pulling fs layer
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.3250685Z d1b142a2d3ac: Pulling fs layer
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.3250932Z 2ab475e318db: Pulling fs layer
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.3251190Z bee16f784947: Pulling fs layer
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.3251433Z 633cb7982454: Pulling fs layer
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.3251676Z 0ec7842b4287: Pulling fs layer
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.3251914Z 515b4b00cc07: Pulling fs layer
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.3252158Z 90d33c82e6b4: Pulling fs layer
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.3252402Z a5bccd2244f9: Pulling fs layer
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.3252705Z d38aaa71d21a: Pulling fs layer
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.3252947Z 99b43abe6052: Pulling fs layer
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.3253168Z 0f6d195ee345: Waiting
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.3253394Z d1b142a2d3ac: Waiting
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.3253667Z 2ab475e318db: Waiting
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.3253861Z bee16f784947: Waiting
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.3254057Z 633cb7982454: Waiting
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.3254248Z 0ec7842b4287: Waiting
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.3254440Z 515b4b00cc07: Waiting
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.3254630Z 90d33c82e6b4: Waiting
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.3254832Z a5bccd2244f9: Waiting
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.3254958Z d38aaa71d21a: Waiting
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.3255083Z 99b43abe6052: Waiting
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.4600976Z e0428ef87eb8: Verifying Checksum
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.4601652Z e0428ef87eb8: Download complete
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.6001198Z c9b382b1f732: Verifying Checksum
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.6016854Z c9b382b1f732: Download complete
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.6594226Z 0f6d195ee345: Verifying Checksum
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.6596768Z 0f6d195ee345: Download complete
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.6647412Z f2be67225471: Verifying Checksum
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.6647924Z f2be67225471: Download complete
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.7938993Z bee16f784947: Verifying Checksum
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.7939457Z bee16f784947: Download complete
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.8677373Z d1b142a2d3ac: Verifying Checksum
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.8677815Z d1b142a2d3ac: Download complete
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.9051490Z 2ab475e318db: Verifying Checksum
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.9056328Z 2ab475e318db: Download complete
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.9431216Z 633cb7982454: Verifying Checksum
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:53.9432187Z 633cb7982454: Download complete
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:54.0632076Z 515b4b00cc07: Verifying Checksum
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:54.0635735Z 515b4b00cc07: Download complete
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:54.1024853Z 90d33c82e6b4: Verifying Checksum
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:54.1029953Z 90d33c82e6b4: Download complete
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:54.2550506Z a5bccd2244f9: Verifying Checksum
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:54.2553154Z a5bccd2244f9: Download complete
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:54.2557761Z d38aaa71d21a: Verifying Checksum
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:54.2558426Z d38aaa71d21a: Download complete
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:54.4030144Z 99b43abe6052: Verifying Checksum
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:54.4034818Z 99b43abe6052: Download complete
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:54.4249206Z 0ec7842b4287: Verifying Checksum
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:54.4249911Z 0ec7842b4287: Download complete
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:31:55.5574608Z f2be67225471: Pull complete
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:32:02.9554757Z e0428ef87eb8: Pull complete
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:32:03.3026061Z c9b382b1f732: Pull complete
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:32:03.3796245Z 0f6d195ee345: Pull complete
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:32:03.8929782Z d1b142a2d3ac: Pull complete
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:32:03.9922372Z 2ab475e318db: Pull complete
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:32:04.0119470Z bee16f784947: Pull complete
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:32:04.0310639Z 633cb7982454: Pull complete
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:32:09.5966390Z 0ec7842b4287: Pull complete
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:32:09.6161262Z 515b4b00cc07: Pull complete
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:32:09.6286408Z 90d33c82e6b4: Pull complete
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:32:09.6456148Z a5bccd2244f9: Pull complete
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:32:09.6545925Z d38aaa71d21a: Pull complete
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:32:09.6633298Z 99b43abe6052: Pull complete
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:32:09.6676868Z Digest: sha256:b8faeff7712663c2773a190181e1246e37e364b887611c04658c28b44e2408fe
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:32:09.6686843Z Status: Downloaded newer image for postgres:17.11
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:32:09.6799498Z 5b63ca4d7bf67dbbabdf36a48b1a7e4c53f5b7cc17894e7d319a6066acefb715
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:32:09.8978174Z /var/run/postgresql:5432 - no response
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:32:10.9696207Z /var/run/postgresql:5432 - accepting connections
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:32:11.0383821Z psql: error: connection to server on socket "/var/run/postgresql/.s.PGSQL.5432" failed: No such file or directory
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:32:11.0384346Z 	Is the server running locally and accepting connections on that socket?
+portfolio-minimal	Disposable database (no hosted credentials)	2026-10-23T13:32:11.0445380Z ##[error]Process completed with exit code 2.
