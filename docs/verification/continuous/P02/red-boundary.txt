@@ -1,0 +1,46 @@
+✖ P02_V0_SNAPSHOT — server snapshots, consent and maximum weight total (2382.6623ms)
+✖ P02_INPUT_RULES — invalid carts/time/consent roll back atomically (2397.0852ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 0
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4848.8166
+
+✖ failing tests:
+
+test at tests\domain\phase02.test.mjs:12:1
+✖ P02_V0_SNAPSHOT — server snapshots, consent and maximum weight total (2382.6623ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/phase02.test.mjs:23:9)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.start (node:internal/test_runner/test:944:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /IMMUTABLE/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests\domain\phase02.test.mjs:25:1
+✖ P02_INPUT_RULES — invalid carts/time/consent roll back atomically (2397.0852ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/phase02.test.mjs:27:113)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /INVALID_|PICKUP_|SERVICE_/,
+    operator: 'throws',
+    diff: 'simple'
+  }

@@ -9,8 +9,8 @@ function assigned(db){sql(db,`UPDATE profiles SET role='staff' WHERE id IN ('${i
 
 test('P01_MIGRATE_EXISTING — preserve legacy amounts/history; consent remains unknown',()=>{
  const {db,before}=setup(); const original=JSON.parse(before);
- const after=JSON.parse(sql(db,"SELECT jsonb_build_object('orders',(SELECT jsonb_agg(to_jsonb(o)-'revision'-'legacy_review_required'-'is_synthetic'-'ready_at'-'delivered_at' ORDER BY id) FROM orders o),'items',(SELECT jsonb_agg(to_jsonb(i) ORDER BY id) FROM order_items i),'history',(SELECT jsonb_agg(to_jsonb(h) ORDER BY id) FROM order_status_history h));"));
- assert.deepEqual(after,original);
+ const after=JSON.parse(sql(db,"SELECT jsonb_build_object('orders',(SELECT jsonb_agg(to_jsonb(o) ORDER BY id) FROM orders o),'items',(SELECT jsonb_agg(to_jsonb(i) ORDER BY id) FROM order_items i),'history',(SELECT jsonb_agg(to_jsonb(h) ORDER BY id) FROM order_status_history h));"));
+ for(const table of Object.keys(original))assert.deepEqual(after[table].map(row=>Object.fromEntries(Object.keys(original[table][0]).map(key=>[key,row[key]]))),original[table]);
  assert.equal(sql(db,'SELECT bool_and(legacy_review_required AND NOT is_synthetic AND revision=0) FROM orders;'),'t');
  assert.equal(sql(db,"SELECT count(*) FROM information_schema.tables WHERE table_schema='public' AND table_name IN ('order_assignments','audit_events','idempotency_keys');"),'3');
 });

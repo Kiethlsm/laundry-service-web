@@ -22,7 +22,7 @@ export function concurrentSql(db, text) {
     p.on('close', status=>resolve({status,out,err})); p.on('error', e=>resolve({status:1,err:e.message})); p.stdin.end(text);
   });
 }
-export function fixture({baseline=false}={}) {
+export function fixture({baseline=false,through}={}) {
   if (docker(['inspect','--format','{{index .Config.Labels "purpose"}}',container]) !== purpose) throw new Error('Unapproved container');
   const db='ss_p01_'+randomUUID().replaceAll('-','');
   sql('postgres',`CREATE DATABASE ${db};`);
@@ -42,7 +42,7 @@ export function fixture({baseline=false}={}) {
     ('${orders.guest}',NULL,'ZZ TEST','0000000000','Synthetic address',25000,'Internal evidence');
     INSERT INTO order_items(order_id,service_id,quantity,unit_price) VALUES ('${orders.a}',1,2,25000);`);
   const before=sql(db,"SELECT jsonb_build_object('orders',(SELECT jsonb_agg(to_jsonb(o) ORDER BY id) FROM orders o),'items',(SELECT jsonb_agg(to_jsonb(i) ORDER BY id) FROM order_items i),'history',(SELECT jsonb_agg(to_jsonb(h) ORDER BY id) FROM order_status_history h));");
-  if(!baseline) for(const file of readdirSync('supabase/migrations').filter(f=>f.endsWith('.sql')).sort()) sql(db,readFileSync('supabase/migrations/'+file,'utf8'));
+  if(!baseline) for(const file of readdirSync('supabase/migrations').filter(f=>f.endsWith('.sql')&&(!through||f<=through)).sort()) sql(db,readFileSync('supabase/migrations/'+file,'utf8'));
   return {db,before};
 }
 export const ids={admin:'10000000-0000-4000-8000-000000000001',admin2:'10000000-0000-4000-8000-000000000002',staff:'10000000-0000-4000-8000-000000000003',other:'10000000-0000-4000-8000-000000000004',a:'10000000-0000-4000-8000-000000000005',b:'10000000-0000-4000-8000-000000000006'};

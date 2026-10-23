@@ -23,5 +23,5 @@ jobs:
           docker exec sachsach-hosted-defaults-tests psql -U postgres -v ON_ERROR_STOP=1 -c 'CREATE ROLE anon; CREATE ROLE authenticated; CREATE ROLE service_role BYPASSRLS;'
       - run: npm run lint
       - run: npm run typecheck
-      - run: npm run test:gate -- P01
+      - run: npm test
       - run: npm run build

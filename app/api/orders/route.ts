@@ -1,101 +1,44 @@
 import { isConfigured, serviceClient } from "@/lib/supabase-server";
-
+const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+const messages: Record<string, [number, string]> = {
+  IDEMPOTENCY_CONFLICT: [409, "Lần gửi này khác nội dung đã lưu. Hãy tải lại để đặt lịch mới."],
+  OPERATION_EXPIRED: [409, "Phiên đặt lịch đã hết hạn. Hãy tải lại trang."],
+  ORDER_RATE_LIMIT: [429, "Số điện thoại demo đã đạt ba đơn trong một giờ. Vui lòng thử lại sau."],
+  ORDER_PENDING_LIMIT: [429, "Số điện thoại demo có quá nhiều đơn đang chờ."],
+  DEMO_CAPACITY: [429, "Bản demo đã đủ đơn mẫu. Vui lòng thử lại sau."],
+  PICKUP_NOT_FUTURE: [400, "Vui lòng chọn thời gian lấy đồ trong tương lai."],
+  PICKUP_TOO_FAR: [400, "Vui lòng chọn lịch trong 90 ngày tới."],
+  INVALID_PICKUP: [400, "Thời gian lấy đồ không hợp lệ."],
+  INVALID_ORDER: [400, "Vui lòng kiểm tra thông tin và xác nhận báo giá demo."],
+  INVALID_QUANTITY: [400, "Dịch vụ hoặc số lượng không hợp lệ."],
+  SERVICE_UNAVAILABLE: [400, "Dịch vụ đã thay đổi. Hãy tải lại bảng giá."],
+};
 export async function POST(request: Request) {
-  if (!isConfigured())
-    return Response.json(
-      {
-        error:
-          "Đặt lịch chưa được kích hoạt. Đây là bản xem trước giao diện, chưa tiếp nhận đơn.",
-      },
-      { status: 503 },
-    );
+  if (!isConfigured()) return Response.json({ error: "Đặt lịch chưa được kích hoạt." }, { status: 503 });
+  const key = request.headers.get("Idempotency-Key") || "";
+  if (!uuid.test(key)) return Response.json({ error: "Phiên đặt lịch không hợp lệ. Hãy tải lại trang." }, { status: 400 });
   let body;
+  try { body = await request.json(); } catch { return Response.json({ error: "Dữ liệu không hợp lệ." }, { status: 400 }); }
+  const pickup = typeof body?.pickup === "string" ? body.pickup : "";
+  const timestamp = Date.parse(pickup);
+  if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,3})?(?:Z|[+-]\d{2}:\d{2})$/.test(pickup) || !Number.isFinite(timestamp) || timestamp <= Date.now() || timestamp > Date.now() + 90 * 86400000)
+    return Response.json({ error: "Vui lòng chọn thời gian lấy đồ hợp lệ trong 90 ngày tới." }, { status: 400 });
+  if (!body || typeof body !== "object" || Array.isArray(body)) return Response.json({ error: "Dữ liệu không hợp lệ." }, { status: 400 });
+  // Contact does not establish ownership; client rates/actor/owner are ignored.
+  const payload = { name: body.name, phone: body.phone, address: body.address, pickup: new Date(timestamp).toISOString(), payment: body.payment, note: body.note ?? "", consent: body.consent, tolerance_consent: body.tolerance_consent, items: body.items };
   try {
-    body = await request.json();
-  } catch {
-    return Response.json({ error: "Dữ liệu không hợp lệ." }, { status: 400 });
-  }
-  if (!body || typeof body !== "object")
-    return Response.json({ error: "Dữ liệu không hợp lệ." }, { status: 400 });
-  const { name, phone, address, pickup, payment, note, items } = body;
-  if (
-    typeof name !== "string" ||
-    name.trim().length < 2 ||
-    name.length > 100 ||
-    typeof phone !== "string" ||
-    !/^0\d{9}$/.test(phone) ||
-    typeof address !== "string" ||
-    address.trim().length < 5 ||
-    address.length > 500 ||
-    typeof pickup !== "string" ||
-    !Number.isFinite(Date.parse(pickup)) ||
-    Date.parse(pickup) <= Date.now() ||
-    !["cash", "bank_transfer"].includes(payment) ||
-    (note !== undefined && (typeof note !== "string" || note.length > 1000)) ||
-    !Array.isArray(items) ||
-    items.length < 1 ||
-    items.length > 50 ||
-    items.some(
-      (item: { service_id: number; quantity: number }) =>
-        !item ||
-        !Number.isInteger(item.service_id) ||
-        item.service_id < 1 ||
-        typeof item.quantity !== "number" ||
-        !Number.isFinite(item.quantity) ||
-        item.quantity <= 0 ||
-        item.quantity > 1000 ||
-        Math.abs(item.quantity * 100 - Math.round(item.quantity * 100)) >
-          0.000001,
-    ) ||
-    new Set(items.map((item: { service_id: number }) => item.service_id))
-      .size !== items.length
-  ) {
-    return Response.json(
-      {
-        error:
-          "Kiểm tra họ tên, SĐT 10 số bắt đầu bằng 0, địa chỉ, lịch lấy đồ trong tương lai và số lượng dịch vụ.",
-      },
-      { status: 400 },
-    );
-  }
-  try {
-    // Prices and totals come exclusively from current database rows, inside one transaction.
-    const { data, error } = await serviceClient().rpc("create_guest_order", {
-      p_name: name.trim(),
-      p_phone: phone,
-      p_address: address.trim(),
-      p_pickup: pickup,
-      p_payment: payment,
-      p_note: note || "",
-      p_items: items.map(
-        ({
-          service_id,
-          quantity,
-        }: {
-          service_id: number;
-          quantity: number;
-        }) => ({ service_id, quantity }),
-      ),
-    });
+    const { data, error } = await serviceClient().rpc("book_demo_order", { p_payload: payload, p_key: key, p_customer_id: null });
     if (error) {
-      const invalid = /INVALID_|SERVICE_UNAVAILABLE/.test(error.message);
-      return Response.json(
-        {
-          error: invalid
-            ? "Dịch vụ hoặc số lượng không hợp lệ. Hãy tải lại bảng giá và kiểm tra đơn."
-            : "Chưa thể tạo đơn. Vui lòng thử lại sau.",
-        },
-        { status: invalid ? 400 : 503 },
-      );
+      const known = messages[error.message];
+      if (known) return Response.json({ code: error.message, error: known[1] }, { status: known[0] });
+      console.error(JSON.stringify({ event: "booking_rpc_failed", code: "DB_ERROR", operation_key: key }));
+      return Response.json({ error: "Chưa thể đặt lịch. Vui lòng thử lại sau." }, { status: 503 });
     }
-    return Response.json(data, {
-      status: 201,
-      headers: { "Cache-Control": "no-store" },
-    });
+    if (!data || !/^LD\d+$/.test(data.code) || !Number.isSafeInteger(data.total) || data.total < 0 || !Number.isSafeInteger(data.max_weight_total) || data.max_weight_total < data.total || typeof data.replayed !== "boolean")
+      return Response.json({ error: "Chưa xác nhận được kết quả. Hãy thử lại cùng phiên đặt lịch." }, { status: 503 });
+    return Response.json(data, { status: data.replayed ? 200 : 201, headers: { "Cache-Control": "no-store" } });
   } catch {
-    return Response.json(
-      { error: "Không kết nối được cửa hàng. Vui lòng thử lại sau." },
-      { status: 503 },
-    );
+    console.error(JSON.stringify({ event: "booking_rpc_failed", code: "TRANSPORT", operation_key: key }));
+    return Response.json({ error: "Mất kết nối. Vui lòng thử lại cùng phiên đặt lịch." }, { status: 503 });
   }
 }

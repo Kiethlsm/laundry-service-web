@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "test": "node --test --test-reporter=spec --test-concurrency=1 tests/phase01/*.test.mjs",
+    "test": "node scripts/test-gate.mjs",
     "test:gate": "node scripts/test-gate.mjs",
     "check:phase": "node scripts/full-gate.mjs"
   },

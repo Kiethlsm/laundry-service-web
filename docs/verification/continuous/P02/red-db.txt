@@ -1,0 +1,123 @@
+✖ P02_IDEMPOTENT_BOOK — one v0 on retry; changed body conflicts (1116.4151ms)
+✖ P02_V0_SNAPSHOT — server snapshots, consent and maximum weight total (1169.9118ms)
+✖ P02_INPUT_RULES — invalid carts/time/consent roll back atomically (1067.7936ms)
+✖ P02_LOOKUP_PRIVACY — code/phone exposes only progress and amount (1133.7641ms)
+✖ P02_SHARED_RATE — shared phone cap, independent phone and global demo cap (1243.0601ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 0
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5812.9498
+
+✖ failing tests:
+
+test at tests\domain\phase02.test.mjs:5:1
+✖ P02_IDEMPOTENT_BOOK — one v0 on retry; changed body conflicts (1116.4151ms)
+  Error: ERROR:  function book_demo_order(jsonb, unknown, unknown) does not exist
+  LINE 1: SELECT book_demo_order('{"name":"ZZ TEST","phone":"000000000...
+                 ^
+  HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+  
+      at docker (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:12:29)
+      at sql (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:16:10)
+      at book (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/helpers.mjs:7:20)
+      at TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/phase02.test.mjs:6:73)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.start (node:internal/test_runner/test:944:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+
+test at tests\domain\phase02.test.mjs:12:1
+✖ P02_V0_SNAPSHOT — server snapshots, consent and maximum weight total (1169.9118ms)
+  Error: ERROR:  function book_demo_order(jsonb, unknown, unknown) does not exist
+  LINE 1: SELECT book_demo_order('{"name":"ZZ TEST","phone":"000000000...
+                 ^
+  HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+  
+      at docker (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:12:29)
+      at sql (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:16:10)
+      at book (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/helpers.mjs:7:20)
+      at TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/phase02.test.mjs:13:31)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+
+test at tests\domain\phase02.test.mjs:23:1
+✖ P02_INPUT_RULES — invalid carts/time/consent roll back atomically (1067.7936ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /INVALID_|PICKUP_|SERVICE_/. Input:
+  
+  'Error: ERROR:  function book_demo_order(jsonb, unknown, unknown) does not exist\n' +
+    `LINE 1: SELECT book_demo_order('{"name":"ZZ TEST","phone":"000000000...\n` +
+    '               ^\n' +
+    'HINT:  No function matches the given name and argument types. You might need to add explicit type casts.\n'
+  
+      at TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/phase02.test.mjs:25:36)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:744:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: ERROR:  function book_demo_order(jsonb, unknown, unknown) does not exist
+    LINE 1: SELECT book_demo_order('{"name":"ZZ TEST","phone":"000000000...
+                   ^
+    HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+    
+        at docker (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:12:29)
+        at sql (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:16:10)
+        at book (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/helpers.mjs:7:20)
+        at file:///C:/Users/Kieth/Documents/Juinior/tests/domain/phase02.test.mjs:25:47
+        at getActual (node:assert:609:5)
+        at Function.throws (node:assert:757:24)
+        at TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/phase02.test.mjs:25:36)
+        at Test.runInAsyncScope (node:async_hooks:214:14)
+        at Test.run (node:internal/test_runner/test:1047:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:744:18),
+    expected: /INVALID_|PICKUP_|SERVICE_/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests\domain\phase02.test.mjs:28:1
+✖ P02_LOOKUP_PRIVACY — code/phone exposes only progress and amount (1133.7641ms)
+  Error: ERROR:  function book_demo_order(jsonb, unknown, uuid) does not exist
+  LINE 1: SELECT book_demo_order('{"name":"ZZ TEST","phone":"000000000...
+                 ^
+  HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+  
+      at docker (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:12:29)
+      at sql (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:16:10)
+      at book (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/helpers.mjs:7:20)
+      at TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/phase02.test.mjs:29:31)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+
+test at tests\domain\phase02.test.mjs:34:1
+✖ P02_SHARED_RATE — shared phone cap, independent phone and global demo cap (1243.0601ms)
+  Error: ERROR:  function book_demo_order(jsonb, unknown, unknown) does not exist
+  LINE 1: SELECT book_demo_order('{"name":"ZZ TEST","phone":"000000000...
+                 ^
+  HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+  
+      at docker (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:12:29)
+      at sql (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:16:10)
+      at book (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/helpers.mjs:7:20)
+      at TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/phase02.test.mjs:35:43)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:744:7)

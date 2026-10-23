@@ -1,4 +1,9 @@
 export const required=['P01_MIGRATE_EXISTING','P01_RLS_MATRIX','P01_SERVICE_ROLE_GUARD','P01_REVOKE_AND_LAST_ADMIN','P01_SERVER_SESSION_GUARD','P01_CI_REQUIRED','P01_AUTHORIZATION_MATRIX','P01_HOSTED_DEFAULTS'];
-export function validateGate(output,status) {
- return status===0 && required.every(id=>new RegExp('^ok \\d+ - '+id+'[^\\n]*(?:\\n|$)','m').test(output)) && !/^(?:not )?ok [^\n]* # (?:SKIP|TODO)\b/im.test(output);
+const p01Files=['tests/phase01/access.test.mjs','tests/phase01/server.test.mjs','tests/phase01/gate.test.mjs','tests/phase01/matrix.test.mjs','tests/phase01/hosted-defaults.test.mjs'];
+export const manifests={
+ P01:{required,files:p01Files},
+ P02:{required:[...required,'P02_IDEMPOTENT_BOOK','P02_V0_SNAPSHOT','P02_INPUT_RULES','P02_LOOKUP_PRIVACY','P02_SHARED_RATE','P02_BOOKING_UI','P02_HTTP_CONTRACT'],files:[...p01Files,'tests/domain/phase02.test.mjs','tests/domain/http02.test.mjs','tests/browser/booking.test.mjs']}
+};
+export function validateGate(output,status,phase='P01') {
+ return status===0 && Boolean(manifests[phase]) && manifests[phase].required.every(id=>new RegExp('^ok \\d+ - '+id+'(?:[ \\n]|$)[^\\n]*(?:\\n|$)','m').test(output)) && !/^(?:not )?ok [^\n]* # (?:SKIP|TODO)\b/im.test(output);
 }

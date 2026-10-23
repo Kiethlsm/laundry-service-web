@@ -825,6 +825,9 @@ select {
   padding-block: 18px 8px;
   font-size: 12px;
 }
+.consent-fields { display: grid; gap: 16px; margin: 24px 0; font-size: 14px; }
+.consent-fields label { display: grid; grid-template-columns: 18px minmax(0,1fr); align-items: start; gap: 10px; }
+.consent-fields input[type="checkbox"] { width: 18px; height: 18px; min-height: 18px; padding: 0; margin: 4px 0 0; accent-color: var(--blue); }
 .summary-total strong {
   font-size: 23px;
   font-weight: 700;

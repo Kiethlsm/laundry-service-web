@@ -1,7 +1,6 @@
 "use client";
 import { useRef, useState } from "react";
-import type { Order } from "@/lib/types";
-import { OrderDetail } from "./order-detail";
+import { formatVND, STATUS_LABEL, type OrderStatus } from "@/lib/format";
 import { Arrow } from "./ui";
 export function TrackForm({
   initialCode,
@@ -12,7 +11,7 @@ export function TrackForm({
 }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
-  const [order, setOrder] = useState<Order | null>(null);
+  const [order, setOrder] = useState<{code:string;status:OrderStatus;total:number} | null>(null);
   const resultRef = useRef<HTMLDivElement>(null);
   async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -33,12 +32,11 @@ export function TrackForm({
       const result = await response.json();
       if (!response.ok)
         throw new Error(result.error || "Chưa thể tra cứu. Vui lòng thử lại.");
+      if (!result || !/^LD\d+$/.test(result.code) || !Object.hasOwn(STATUS_LABEL,result.status) || !Number.isSafeInteger(result.total) || result.total<0) throw new Error("INVALID_RESULT");
       setOrder(result);
       requestAnimationFrame(() => resultRef.current?.focus());
-    } catch (err) {
-      setError(
-        err instanceof Error ? err.message : "Mất kết nối. Hãy thử lại.",
-      );
+    } catch {
+      setError("Chưa thể tra cứu. Kiểm tra thông tin rồi thử lại.");
     } finally {
       setBusy(false);
     }
@@ -86,7 +84,9 @@ export function TrackForm({
       </form>
       {order ? (
         <div ref={resultRef} tabIndex={-1}>
-          <OrderDetail order={order} />
+          <h2>{order.code}</h2>
+          <p>{STATUS_LABEL[order.status]} · {formatVND(order.total)}</p>
+          <p className="field-help">Tra cứu công khai chỉ hiển thị tiến độ và số tiền; không hiển thị địa chỉ, liên hệ hay bằng chứng nội bộ.</p>
           <p className="field-help track-help">
             Muốn cập nhật tiến độ? Nhấn “Tra cứu đơn” lần nữa.
           </p>

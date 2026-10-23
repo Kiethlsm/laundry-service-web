@@ -1,0 +1,22 @@
+node --test --test-reporter=spec tests/browser/booking.test.mjs
+✖ P02_BOOKING_UI — responsive keyboard consent and lost-response retry keeps one order (69170.0606ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 69319.6601
+
+✖ failing tests:
+
+test at tests\browser\booking.test.mjs:6:1
+✖ P02_BOOKING_UI — responsive keyboard consent and lost-response retry keeps one order (69170.0606ms)
+  Error: Local test deadline
+      at until (file:///C:/Users/Kieth/Documents/Juinior/tests/browser/cdp.mjs:6:183)
+      at async TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/browser/booking.test.mjs:10:3)
+      at async Test.run (node:internal/test_runner/test:1054:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+
+Exit 1. The baseline form had no checkout consent field.

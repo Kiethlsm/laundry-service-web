@@ -22,6 +22,8 @@ export function BookingForm({
   initialCategory?: string;
 }) {
   const [quantities, setQuantities] = useState<Record<number, number>>({});
+  const [operationKey] = useState(() => crypto.randomUUID());
+  const [toleranceConsent, setToleranceConsent] = useState(false);
   const [active, setActive] = useState(
     categories.find((c) => c.slug === initialCategory)?.id || categories[0]?.id,
   );
@@ -34,14 +36,18 @@ export function BookingForm({
   const errorRef = useRef<HTMLDivElement>(null);
   const successRef = useRef<HTMLDivElement>(null);
   const chosen = services.filter((s) => (quantities[s.id] || 0) > 0);
-  const total = Math.round(
-    chosen.reduce((sum, s) => sum + s.price * quantities[s.id], 0),
-  );
+  const total = chosen.reduce((sum, s) => sum + Math.round(s.price * quantities[s.id]), 0);
+  const maximum = chosen.reduce((sum, s) => sum + Math.round(s.price * (quantities[s.id] + (toleranceConsent && s.unit === "kg" ? Math.max(quantities[s.id] * .1, .3) : 0))), 0);
   const setQuantity = (id: number, value: string) =>
-    setQuantities({ ...quantities, [id]: value === "" ? 0 : Number(value) });
+    setQuantities((current) => ({ ...current, [id]: value === "" ? 0 : Number(value) }));
   async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setError("");
+    if (Object.entries(quantities).some(([id, q]) => !Number.isFinite(q) || q < 0 || q > 1000 || Math.abs(q * 100 - Math.round(q * 100)) > .000001 || (services.find(s => s.id === Number(id))?.unit !== "kg" && !Number.isInteger(q)))) {
+      setError("Kiểm tra số lượng ở tất cả nhóm: tối đa 1.000, số món phải nguyên, kg tối đa hai số lẻ.");
+      requestAnimationFrame(() => errorRef.current?.focus());
+      return;
+    }
     if (!chosen.length) {
       setError(
         "Bạn chưa chọn dịch vụ. Hãy nhập số lượng cho ít nhất một món đồ.",
@@ -60,7 +66,7 @@ export function BookingForm({
     try {
       const response = await fetch("/api/orders", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", "Idempotency-Key": operationKey },
         body: JSON.stringify({
           name: form.get("name"),
           phone: form.get("phone"),
@@ -68,6 +74,8 @@ export function BookingForm({
           pickup: pickup.toISOString(),
           payment: form.get("payment"),
           note: form.get("note"),
+          consent: form.get("consent") === "on",
+          tolerance_consent: form.get("tolerance_consent") === "on",
           items: chosen.map((s) => ({
             service_id: s.id,
             quantity: quantities[s.id],
@@ -75,8 +83,12 @@ export function BookingForm({
         }),
       });
       const result = await response.json();
-      if (!response.ok)
-        throw new Error(result.error || "Chưa thể đặt lịch. Vui lòng thử lại.");
+      if (!response.ok) {
+        setError(response.status === 409 ? "Nội dung đã thay đổi so với lần gửi trước. Hãy tải lại để đặt lịch mới." : response.status === 429 ? "Bản demo đã đạt giới hạn đặt lịch. Vui lòng thử lại sau." : "Chưa thể đặt lịch. Vui lòng kiểm tra thông tin rồi thử lại.");
+        requestAnimationFrame(() => errorRef.current?.focus());
+        return;
+      }
+      if (!result || !/^LD\d+$/.test(result.code) || !Number.isSafeInteger(result.total) || result.total < 0 || !Number.isSafeInteger(result.max_weight_total) || result.max_weight_total < result.total) throw new Error("INVALID_RESULT");
       setSuccess(result);
       requestAnimationFrame(() => {
         successRef.current?.focus();
@@ -85,10 +97,8 @@ export function BookingForm({
           behavior: "smooth",
         });
       });
-    } catch (err) {
-      setError(
-        err instanceof Error ? err.message : "Mất kết nối. Vui lòng thử lại.",
-      );
+    } catch {
+      setError("Chưa xác nhận được kết quả. Giữ nguyên thông tin và thử lại; phiên này không tạo trùng đơn.");
       requestAnimationFrame(() => errorRef.current?.focus());
     } finally {
       setBusy(false);
@@ -128,6 +138,7 @@ export function BookingForm({
           </p>
           <div
             className="category-nav booking-tabs"
+            role="group"
             aria-label="Chọn nhóm dịch vụ"
           >
             {categories.map((c) => (
@@ -319,6 +330,12 @@ export function BookingForm({
         <p className="field-help">
           Chi phí được xác nhận lại theo khối lượng thực tế trước khi xử lý.
         </p>
+        <div className="consent-fields">
+          <p><strong>Chỉ dùng dữ liệu giả.</strong> Đơn, báo giá và thanh toán trong bản portfolio đều mô phỏng.</p>
+          <label><input type="checkbox" name="consent" required disabled={busy} /> Tôi đồng ý báo giá v0, chính sách portfolio-v1.2 và dữ liệu demo.</label>
+          <label><input type="checkbox" name="tolerance_consent" checked={toleranceConsent} onChange={e => setToleranceConsent(e.target.checked)} disabled={busy} /> Cho phép cân thực tế trong ±10% hoặc ±0,30 kg, lấy mức lớn hơn cho từng dòng kg gốc.</label>
+          <p aria-live="polite">Mức tối đa được đồng ý: <strong>{formatVND(maximum)}</strong>. Không chọn dung sai: mọi thay đổi cân nặng cần báo giá mới.</p>
+        </div>
         {error && (
           <div className="form-error" role="alert" ref={errorRef} tabIndex={-1}>
             {error}

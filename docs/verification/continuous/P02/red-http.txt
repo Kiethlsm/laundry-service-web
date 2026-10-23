@@ -1,0 +1,28 @@
+✖ P02_HTTP_CONTRACT — status/retry/validation and safe unavailable errors (69.8205ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 385.8475
+
+✖ failing tests:
+
+test at tests\domain\http02.test.mjs:8:1
+✖ P02_HTTP_CONTRACT — status/retry/validation and safe unavailable errors (69.8205ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  503 !== 400
+  
+      at TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/http02.test.mjs:13:9)
+      at async Test.run (node:internal/test_runner/test:1054:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 503,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
