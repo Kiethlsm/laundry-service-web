@@ -25,7 +25,7 @@ test('QR_BANK_BOOKING — cash isolation, static QR/memo/copy errors and no auto
   assert.match(await page.evaluate("document.querySelector('.bank-transfer').textContent"),/TECHCOMBANK|Techcombank/);
   assert.equal(await page.evaluate("document.querySelector('.bank-transfer img').getAttribute('src')"),'/payments/techcombank-qr.png');
   assert.equal(await page.evaluate("document.querySelector('.bank-transfer img').getAttribute('srcset')"),null);
-  for(const width of [360,390,768,1440]){await page.send('Emulation.setDeviceMetricsOverride',{width,height:950,deviceScaleFactor:1,mobile:width<768});assert.equal(await page.evaluate('document.documentElement.scrollWidth<=innerWidth'),true);}
+  for(const width of [360,390,768,1440]){await page.send('Emulation.setDeviceMetricsOverride',{width,height:950,deviceScaleFactor:1,mobile:width<768});assert.equal(await page.evaluate('document.documentElement.scrollWidth<=innerWidth'),true);assert.equal(await page.evaluate('getComputedStyle(document.querySelector("input[name=name]")).fontSize'),'16px');}
   await page.evaluate("window.qrCopied=[];Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:async value=>window.qrCopied.push(value)}});document.querySelector('[data-copy=account]').click()");
   await until(()=>page.evaluate("window.qrCopied.length===1"));assert.deepEqual(await page.evaluate('window.qrCopied'),['38606688']);
   await page.evaluate("Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:async()=>{throw new Error('PRIVATE_CLIPBOARD')}}});document.querySelector('[data-copy=account]').click()");

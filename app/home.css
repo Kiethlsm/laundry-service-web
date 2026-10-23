@@ -511,7 +511,8 @@ label {
 input:not([type="radio"]):not([type="checkbox"]),
 select,
 textarea {
-  font-size: 15px;
+  font-size: 16px;
+  line-height: 1.5;
 }
 .field-help {
   font-size: 12px;
@@ -907,7 +908,6 @@ h1, h2, h3 { letter-spacing: -0.02em; }
   line-height: 1.65;
 }
 .button, .text-link { font-size: 0.9375rem; }
-input, textarea, select { font-size: 1rem; line-height: 1.5; }
 .hero-copy > p, .section-heading p, .service-card p,
 .process-grid p, .closing p, .page-heading p {
   font-size: 1rem;
