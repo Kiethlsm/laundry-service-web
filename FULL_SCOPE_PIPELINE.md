@@ -1,6 +1,8 @@
 # Sạch Sạch - portfolio pipeline v1.2
 
-**Decision recorded: portfolio only - Vercel Hobby + Supabase Free - 23 October 2026.**
+**Current direction:** [website for a two-owner family shop](docs/SMALL_SHOP_SCOPE.md), selected by the owner on 23 October 2026. The v1.2 portfolio plan below is historical and remains unchanged for its committed test evidence.
+
+**Historical decision: portfolio only - Vercel Hobby + Supabase Free - 23 October 2026.**
 
 Phase 00 is accepted; Phase 01 is authorized locally on a fresh branch from master. Later domain slices remain planned and hosted changes need separate approval. The parked booking-validation branch is excluded. See the [execution route](docs/pipeline-v1.2/minimal-demo-route.md). This index supersedes v1.1's parallel tracks; the [real-shop appendix](docs/pipeline-v1.2/appendix-real-shop.md) is inactive reference, outside every phase checklist.
 
