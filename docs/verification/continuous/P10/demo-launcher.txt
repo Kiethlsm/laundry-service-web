@@ -1,0 +1,17 @@
+Command: npm run demo:local (PTY, loopback only)
+[
+  {
+    "path": "/",
+    "status": 200
+  },
+  {
+    "path": "/dat-lich",
+    "status": 200
+  },
+  {
+    "path": "/admin/login",
+    "status": 200
+  }
+]
+Fixture Auth only; no hosted credentials. Ctrl+C cleanup tested separately.
+After Ctrl+C: loopback connection closed (expected). Windows npm/PTY wrapper exited 1 on interruption; no success exit is claimed for SIGINT.

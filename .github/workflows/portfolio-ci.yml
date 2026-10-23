@@ -3,11 +3,13 @@ on: [push, pull_request]
 permissions:
   contents: read
 jobs:
-  phase-01:
+  portfolio-minimal:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 24
@@ -21,7 +23,4 @@ jobs:
             sleep 1
           done
           docker exec sachsach-hosted-defaults-tests psql -U postgres -v ON_ERROR_STOP=1 -c 'CREATE ROLE anon; CREATE ROLE authenticated; CREATE ROLE service_role BYPASSRLS;'
-      - run: npm run lint
-      - run: npm run typecheck
-      - run: npm test
-      - run: npm run build
+      - run: npm run check:phase -- P10

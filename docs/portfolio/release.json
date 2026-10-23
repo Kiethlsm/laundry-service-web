@@ -1,0 +1,82 @@
+{
+  "branch": "feat/portfolio-phase-01",
+  "phases": [
+    {
+      "phase": "P01",
+      "commit": "acdf9a5",
+      "tests": 8
+    },
+    {
+      "phase": "P02",
+      "commit": "e8981bb",
+      "tests": 15
+    },
+    {
+      "phase": "P03",
+      "commit": "8e7f976",
+      "tests": 23
+    },
+    {
+      "phase": "P05",
+      "commit": "09560b1",
+      "tests": 31
+    },
+    {
+      "phase": "P09",
+      "commit": "4aa231b",
+      "tests": 35
+    }
+  ],
+  "required": [
+    "P01_MIGRATE_EXISTING",
+    "P01_RLS_MATRIX",
+    "P01_SERVICE_ROLE_GUARD",
+    "P01_REVOKE_AND_LAST_ADMIN",
+    "P01_SERVER_SESSION_GUARD",
+    "P01_CI_REQUIRED",
+    "P01_AUTHORIZATION_MATRIX",
+    "P01_HOSTED_DEFAULTS",
+    "P02_IDEMPOTENT_BOOK",
+    "P02_V0_SNAPSHOT",
+    "P02_INPUT_RULES",
+    "P02_LOOKUP_PRIVACY",
+    "P02_SHARED_RATE",
+    "P02_BOOKING_UI",
+    "P02_HTTP_CONTRACT",
+    "P03_TOLERANCE_BOUNDARY",
+    "P03_TOLERANCE_SCOPE",
+    "P03_QUOTE_RACE",
+    "P03_APPROVAL_EVIDENCE",
+    "P03_SETTLEMENT_IMMUTABLE",
+    "P03_BAG_INTEGRITY",
+    "P03_WORK_TRANSITIONS",
+    "P03_ADMIN_DETAIL_UI",
+    "P05_ATOMIC_DELIVER_COLLECT",
+    "P05_CASH_ROLLBACK",
+    "P05_RETRY_RACE",
+    "P05_LEDGER_INVARIANTS",
+    "P05_REPORT",
+    "P05_CANCEL_INCIDENT",
+    "P05_END_TO_END",
+    "P05_LEDGER_UI",
+    "P09_REGRESSION",
+    "P09_PROJECTIONS_LOGS",
+    "P09_STATE_COVERAGE",
+    "P09_BROWSER_WORKFLOW",
+    "P10_MANIFEST",
+    "P10_DEMO_SMOKE",
+    "P10_SAFE_LABELS",
+    "P10_ROLLBACK"
+  ],
+  "optionalSelected": [],
+  "mockOnly": [
+    "payments",
+    "customer-message evidence",
+    "recipient evidence",
+    "local Auth transport"
+  ],
+  "hostedApplied": false,
+  "pushed": false,
+  "remoteCI": "not run",
+  "currentPhase": "P10 local gate; result in committed verification logs, commit recorded by Git"
+}

@@ -1,0 +1,58 @@
+TAP version 13
+# Subtest: P10_MANIFEST — prior committed gates, exact optional selection and mandatory release IDs
+not ok 1 - P10_MANIFEST — prior committed gates, exact optional selection and mandatory release IDs
+  ---
+  duration_ms: 133.0431
+  type: 'test'
+  location: 'C:\\Users\\Kieth\\Documents\\Juinior\\tests\\domain\\phase10.test.mjs:6:1'
+  failureType: 'testCodeFailure'
+  error: 'CI needs prior commit evidence, not a shallow checkout'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual: |-
+    name: Portfolio checks
+    on: [push, pull_request]
+    permissions:
+      contents: read
+    jobs:
+      phase-01:
+        runs-on: ubuntu-latest
+        timeout-minutes: 10
+        steps:
+          - uses: actions/checkout@v4
+          - uses: actions/setup-node@v4
+            with:
+              node-version: 24
+              cache: npm
+          - run: npm ci
+          - name: Disposable database (no hosted credentials)
+            run: |
+              docker run --name sachsach-hosted-defaults-tests --label purpose=sachsach-hosted-defaults-test -e POSTGRES_HOST_AUTH_METHOD=trust -d postgres:17.11
+              for attempt in $(seq 1 30); do
+                if docker exec sachsach-hosted-defaults-tests pg_isready -U postgres; then break; fi
+                sleep 1
+              done
+              docker exec sachsach-hosted-defaults-tests psql -U postgres -v ON_ERROR_STOP=1 -c 'CREATE ROLE anon; CREATE ROLE authenticated; CREATE ROLE service_role BYPASSRLS;'
+          - run: npm run lint
+          - run: npm run typecheck
+          - run: npm test
+          - run: npm run build
+    
+  operator: 'match'
+  stack: |-
+    TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/phase10.test.mjs:17:9)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 0
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 215.2517
