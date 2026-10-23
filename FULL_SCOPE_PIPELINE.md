@@ -1,66 +1,49 @@
-# Sạch Sạch — full-scope pipeline v1.1
+# Sạch Sạch - portfolio pipeline v1.2
 
-**23 October 2026 · Proposal for review only. No implementation authorized.**
+**Decision recorded: portfolio only - Vercel Hobby + Supabase Free - 23 October 2026.**
 
-## Decision #1: portfolio piece or real shop?
+Only Phase 00 is authorized for implementation in this turn. Everything after 00 remains a proposal. This index supersedes v1.1's parallel tracks; the [real-shop appendix](docs/pipeline-v1.2/appendix-real-shop.md) is inactive reference, outside every phase checklist.
 
-- [ ] **Portfolio:** synthetic data, demonstrable domain correctness, non-commercial deployment.
-- [ ] **Real shop:** real customers/money, operational ownership, paid hosting and provider dependencies.
+## Minimal demo: 8-12 focused person-days
 
-This decision is still open. Confirmed current plans: **Vercel Hobby + Supabase Free** (owner confirmation, 23 October 2026). Configuration and successful MCP reads do not establish a production deployment or successful admin login.
+Show one synthetic order end to end: guest books v0 - assigned staff records a bag and weight - out-of-tolerance v1 gets explicit simulated approval - processing/QC - atomic deliver-and-collect - immutable receipt/refund history. Demonstrate customer A/B isolation, stale-role denial and CI checks. Existing pages are reused; no redesign, provider accounts or new infrastructure product is required.
 
-## Two cut lines
+Required phases: **00 - 01 - 02(core) - 03 - 05 - 09 - 10**. Phase 05 depends on 03, not optional 04. Customers A/B and staff are seeded test identities in 01; testing ownership does not require building the customer portal in 06. One processor/courier identity can have both assignments. Bag-level handover is part of 03/05, so it does not depend on the optional scheduling screen.
 
-| Deliverable | Portfolio cut | Real-shop cut |
-|---|---|---|
-| Core R1 | Versioned quotes including v0, tagged items, atomic handover/payment, immutable ledger, roles/RLS tests, CI | Same, plus real staff onboarding and operational prerequisites |
-| R2 | Seeded customer accounts, ownership checks, quote approval and account demo; messages simulated | Customer accounts, SMS-first notifications and durable outbox |
-| R3 | Local signed-webhook mock required; SePay Test Mode optional. Stop before live payments | SePay bank-transfer integration, reconciliation and controlled live verification |
-| Operations | Functional/security tests and deployment smoke tests | Also load test, backups including objects, restore drill, alerts and runbooks |
-| Explicitly omitted | Load tests, restore drills, runbooks, outbox, live notifications and live online payments | Real-shop gates require evidence |
-| Hosting | Existing Hobby + Free; second Free project only if a slot is available, otherwise local test stack | Vercel Pro; Supabase Pro production + separate staging compute, external backup target, providers |
+| Phase | Active portfolio purpose | Person-days | First overrun cut |
+|---|---|---:|---|
+| [00](docs/pipeline-v1.2/phase-00.md) | Reproduce/fix lint; lint, types, build | 0.5-1 | Extra screenshots |
+| [01](docs/pipeline-v1.2/phase-01.md) | Core schema/roles/RLS fixtures, test runner and CI | 2-3 | CI cache/convenience scripts |
+| [02](docs/pipeline-v1.2/phase-02.md) | Reuse booking, add v0 + retry safety | 0.5-1 | Catalogue editor/slot capacity extension |
+| [03](docs/pipeline-v1.2/phase-03.md) | Bag intake, versioned quotes, settlement and processing | 2-3 | Photo upload UI; retain text condition evidence |
+| [05](docs/pipeline-v1.2/phase-05.md) | Ledger and atomic handover; simple receipt | 1.5-2.5 | Charts/CSV |
+| [09](docs/pipeline-v1.2/phase-09.md) | Functional/security regression | 0.5-1 | Optional-UI polish |
+| [10](docs/pipeline-v1.2/phase-10.md) | Demo packaging and release evidence | 0.5 | Marketing video |
 
-Portfolio completion means a portfolio release. Real-shop R1/R2 milestones are staging/internal acceptance; taking real orders waits for phases 09–10. One shop, Vietnamese UI, VND and UTC storage/`Asia/Ho_Chi_Minh` display apply to both tracks. Multi-branch SaaS, native apps, payroll, inventory, loyalty and electronic tax invoices are outside both cuts.
+Sum **7.5-12**, rounded to **8-12 person-days (roughly 2-3 weeks)** for one developer familiar with the repo, including tests/review, excluding waiting for decisions/accounts. This is a narrower deliverable, not the former 20-34-day plan compressed by optimism. If mandatory work overruns, revise the estimate rather than dropping money/access tests.
 
-## Phase index and effort
+## Optional portfolio extensions: separately authorized
 
-Estimates are **person-days of focused engineering**, including tests/review, for one developer familiar with this repo; 5 days/week. Exclude provider approval, owner decisions and data cleanup waiting time. Allow another 20–30% calendar contingency. Each phase names its first overrun cut; correctness/security gates stay mandatory.
+| Phase | Extension | Person-days | First cut |
+|---|---|---:|---|
+| [04](docs/pipeline-v1.2/phase-04.md) | Staff task board + unclaimed-order simulation | 1-2 | Calendar view |
+| [06](docs/pipeline-v1.2/phase-06.md) | Seeded customer portal/link-proof simulation | 1-2 | Reorder/address book |
+| [07](docs/pipeline-v1.2/phase-07.md) | In-app notifications and simulated delivery | 0.5-1 | Simulated-channel cosmetics |
+| [08](docs/pipeline-v1.2/phase-08.md) | Signed SePay-like webhook/API fixture demonstration | 1-2 | External Test Mode connection |
 
-| Phase | Dependency | Portfolio days | Real-shop days | First overrun cut |
-|---|---|---:|---:|---|
-| [00 Baseline](docs/pipeline-v1.1/phase-00.md) | Decision #1 | 1–2 | 2–3 | Extra screenshots |
-| [01 Foundation](docs/pipeline-v1.1/phase-01.md) | 00 | 3–5 | 5–8 | CI caching/convenience scripts |
-| [02 Booking](docs/pipeline-v1.1/phase-02.md) | 01 | 2–4 | 4–6 | Address autocomplete |
-| [03 Intake and quotes](docs/pipeline-v1.1/phase-03.md) | 02 | 4–6 | 6–9 | Camera scanning; keep printable/manual tags |
-| [04 Staff and custody](docs/pipeline-v1.1/phase-04.md) | 03 | 2–3 | 4–6 | Route/calendar visualization |
-| [05 Ledger and R1](docs/pipeline-v1.1/phase-05.md) | 04 | 3–5 | 5–8 | Charts and CSV, keep reconciliation |
-| [06 Customer and R2](docs/pipeline-v1.1/phase-06.md) | 05 | 2–3 | 4–6 | Reorder and saved addresses |
-| [07 Notifications](docs/pipeline-v1.1/phase-07.md) | 06; SMTP is earlier in 01 | Skipped | 4–6 | Zalo adapter and optional email receipts |
-| [08 Payment integration](docs/pipeline-v1.1/phase-08.md) | 05; real launch also 07 | 1–2 | 5–8 | Card gateway |
-| [09 Assurance](docs/pipeline-v1.1/phase-09.md) | Applicable 01–08 | 1–2 | 5–8 | Larger-than-baseline load experiment |
-| [10 Release](docs/pipeline-v1.1/phase-10.md) | 09 | 1–2 | 2–4 | Marketing video |
-| **Total** | | **20–34 (4–7 weeks)** | **46–72 (9–15 weeks)** | Rebaseline if mandatory work exceeds budget |
+A catalogue/slot editor in 02 would add 1-2 days. Completing every extension would total approximately 12-21 days. Optional phases are **deferred**, not failed or passed; they are not dependencies of minimal-demo acceptance.
 
-An overrun records the removed convenience feature or revises the estimate; it never silently deletes a mandatory deliverable.
+## Plan limits - conclusions for the actual subscriptions
 
-## Shared artifacts
+- **Jobs:** Hobby allows **100 cron definitions/project**, each at most daily, with up to 59-minute timing variation. Cron invokes finite Functions; current Hobby Node/Python/Bun duration default/max is **300 seconds**. No core phase needs a scheduler. Optional 04/07/08 use explicit demo actions/injected clocks, not timed dispatch. [Cron limits](https://vercel.com/docs/cron-jobs/usage-and-pricing) - [Function limits](https://vercel.com/docs/functions/limitations)
+- **Supabase Free:** **500 MB database, 1 GB Storage, 5 GB uncached + 5 GB cached egress**, at most two active Free projects, and pausing after a week of inactivity. Seed data/reset instructions and a visible paused/unavailable state are necessary. Staging can be local or the second available project; no paid branch assumed. [Pricing](https://supabase.com/pricing)
+- **Backups:** no managed automatic backup entitlement on Free. A manual logical export/restore into a disposable local/Free target is possible, but Storage objects require a separate copy. Restore drills are excluded from this portfolio, not technically impossible. [Backup documentation](https://supabase.com/docs/guides/platform/backups)
+- **Commercial use:** Hobby is personal/non-commercial. If this becomes a real shop, reassess hosting and activate a separately reviewed plan; a demo release does not authorize commercial operation. [Hobby terms](https://vercel.com/docs/plans/hobby)
 
-Each agent receives one phase file plus only its linked contract sections, not the entire plan.
+Live SMS/SMTP invites, continuously reliable dispatch, unattended reconciliation, guaranteed uptime/recovery and live payments are outside the active plan. Some require providers/budget, rather than being prohibited by Free itself. Phase files label provider-dependent behaviors **MOCK ONLY**; no outbox, load tests, restore scripts or runbooks enter their checklists.
 
-- [Domain contracts](docs/pipeline-v1.1/contracts.md): quotes, tolerance, approval evidence, payments, atomic delivery, custody and transitions.
-- [R1 schema and permission matrix](docs/pipeline-v1.1/schema-and-access.md): columns, constraints and one authorization model.
-- [Infrastructure feasibility](docs/pipeline-v1.1/infrastructure.md): verified limits/costs, job mechanism, rate store, providers and release blockers.
-- [Acceptance and retention](docs/pipeline-v1.1/acceptance.md): runner contract, severity, quantified targets and retention proposal.
-- [Review disposition](docs/pipeline-v1.1/review-disposition.md): item-by-item response and qualified disagreements.
+## Read only the context needed
 
-## Remaining owner decisions, in execution order
+[Contracts/transitions](docs/pipeline-v1.2/contracts.md) - [core/extension schema + permissions](docs/pipeline-v1.2/schema-and-access.md) - [plan/provider findings](docs/pipeline-v1.2/infrastructure.md) - [acceptance](docs/pipeline-v1.2/acceptance.md) - [cross-file audit + rule/test mapping](docs/pipeline-v1.2/consistency-audit.md) - [review disposition](docs/pipeline-v1.2/review-disposition.md).
 
-1. Choose the track above. No phase starts on an inferred answer.
-2. For a shop, approve the hosting/backup budget, appoint an operator, and confirm separate staging, billing and provider access per the infrastructure dependency register.
-3. Approve tolerance disclosure, storage policy and evidence rules in the domain contract; obtain the specified local legal/accounting review before real use.
-4. Supply shop contacts, areas, hours, prices, SMS/SMTP sender access and a dedicated receiving bank account for the shop track.
-5. Classify existing data as synthetic or real before migration. Preserve order IDs/history through a tested additive baseline rather than rerunning `schema.sql`.
-
-Phase checkboxes become tickable only after the named gate passes and a report contains commit, track, environment, command, results and evidence. Skipped portfolio phases are **N/A**, not passed. Proposed runner/test paths do not exist yet; building them is phase work, not a claim of passing tests today.
-
-`PIPELINE.md` remains the historical demo spec. After implementation is authorized, v1.1 governs the selected track and corresponding `PRODUCT.md`/README updates. Application code and database remain unchanged during this revision.
+All future test paths are planned, not already implemented. Only checks with actual output may be ticked; [Phase 00 evidence](docs/verification/phase-00/report.md) distinguishes checks run from deferred UI/Auth checks. No later phase, migration, environment change, dependency, deployment or push is authorized by the Phase 00 approval.

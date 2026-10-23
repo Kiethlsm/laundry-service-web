@@ -1,0 +1,7 @@
+PASS invalid timestamp rejected
+PASS past timestamp rejected
+PASS equal timestamp rejected
+PASS future timestamp accepted
+PASS fresh submit-time clock rejects subsequently expired pickup
+PASS validation called only from onSubmit handler; clock outside component
+PASS independent server future-time check unchanged

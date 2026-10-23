@@ -1,0 +1,39 @@
+{
+  "before": {
+    "command": "npm run lint",
+    "output": "\n> laundry-service-web@0.1.0 lint\n> eslint\n\n\nC:\\Users\\Kieth\\Documents\\Juinior\\components\\booking-form.tsx\n  49:67  error  Error: Cannot call impure function during render\n\n`Date.now` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).\n\nC:\\Users\\Kieth\\Documents\\Juinior\\components\\booking-form.tsx:49:67\n  47 |     const form = new FormData(e.currentTarget);\n  48 |     const pickup = new Date(String(form.get(\"pickup\")));\n> 49 |     if (!Number.isFinite(pickup.getTime()) || pickup.getTime() <= Date.now()) {\n     |                                                                   ^^^^^^^^^^ Cannot call impure function\n  50 |       setError(\"Ch\u1ecdn th\u1eddi gian l\u1ea5y \u0111\u1ed3 trong t\u01b0\u01a1ng lai.\");\n  51 |       requestAnimationFrame(() => errorRef.current?.focus());\n  52 |       return;  react-hooks/purity\n\n\u2716 1 problem (1 error, 0 warnings)\n\n",
+    "exit_code": 1
+  },
+  "lint": {
+    "command": "npm run lint",
+    "chunk_id": "495351",
+    "wall_time_seconds": 3.1170933,
+    "exit_code": 0,
+    "original_token_count": 11,
+    "output": "\n> laundry-service-web@0.1.0 lint\n> eslint\n\n"
+  },
+  "types": {
+    "command": "npx tsc --noEmit",
+    "chunk_id": "4fd254",
+    "wall_time_seconds": 7.7e-06,
+    "exit_code": 0,
+    "original_token_count": 0,
+    "output": ""
+  },
+  "build": {
+    "command": "npm run build",
+    "chunk_id": "b3f665",
+    "wall_time_seconds": 7.4e-06,
+    "exit_code": 0,
+    "original_token_count": 156,
+    "output": "\n> laundry-service-web@0.1.0 build\n> next build\n\n\u25b2 Next.js 16.4.2 (Turbopack)\n- Environments: .env.local\n\u2713 Running next.config.ts took 1395ms\n\n  Creating an optimized production build ...\n\u2713 Compiled successfully in 4.0s\n  Running TypeScript ...\n  Finished TypeScript in 1391ms ...\n  Collecting page data using 11 workers ...\n  Generating static pages using 11 workers (0/5) ...\n  Generating static pages using 11 workers (1/5) \r\n  Generating static pages using 11 workers (2/5) \r\n  Generating static pages using 11 workers (3/5) \r\n\u2713 Generating static pages using 11 workers (5/5) in 197ms\n  Finalizing page optimization ...\n\nRoute (app)\n\u250c \u0192 /\n\u251c \u25cb /_not-found\n\u251c \u0192 /admin\n\u251c \u0192 /admin/login\n\u251c \u0192 /admin/orders/[id]\n\u251c \u0192 /api/orders\n\u251c \u0192 /api/track\n\u251c \u0192 /bang-gia\n\u251c \u0192 /dat-lich\n\u251c \u25cb /icon.svg\n\u2514 \u0192 /tra-cuu\n\n\n\u0192 Proxy (Middleware)\n\n\u25cb  (Static)   prerendered as static content\n\u0192  (Dynamic)  server-rendered on demand\n\n"
+  },
+  "validation": {
+    "command": "dependency-free controlled-clock check",
+    "chunk_id": "93866b",
+    "wall_time_seconds": 0.2426711,
+    "exit_code": 0,
+    "original_token_count": 79,
+    "output": "PASS invalid timestamp rejected\nPASS past timestamp rejected\nPASS equal timestamp rejected\nPASS future timestamp accepted\nPASS fresh submit-time clock rejects subsequently expired pickup\nPASS validation called only from onSubmit handler; clock outside component\nPASS independent server future-time check unchanged\n"
+  }
+}

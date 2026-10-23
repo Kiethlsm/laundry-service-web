@@ -5,6 +5,11 @@ import { formatVND, UNIT_LABEL } from "@/lib/format";
 import type { Category, Service } from "@/lib/types";
 import { Arrow, ServiceEmoji } from "./ui";
 
+function isFuturePickup(pickup: Date) {
+  const timestamp = pickup.getTime();
+  return Number.isFinite(timestamp) && timestamp > Date.now();
+}
+
 export function BookingForm({
   categories,
   services,
@@ -46,7 +51,7 @@ export function BookingForm({
     }
     const form = new FormData(e.currentTarget);
     const pickup = new Date(String(form.get("pickup")));
-    if (!Number.isFinite(pickup.getTime()) || pickup.getTime() <= Date.now()) {
+    if (!isFuturePickup(pickup)) {
       setError("Chọn thời gian lấy đồ trong tương lai.");
       requestAnimationFrame(() => errorRef.current?.focus());
       return;
