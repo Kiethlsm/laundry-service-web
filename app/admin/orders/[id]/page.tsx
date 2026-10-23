@@ -2,7 +2,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { requireAdmin } from "@/lib/admin";
 import { OrderDetail } from "@/components/order-detail";
-import { StatusForm } from "@/components/status-form";
+import { DemoWorkspace } from "@/components/demo-workspace";
+import { authClient } from "@/lib/supabase-server";
+import type { DemoWorkspaceData } from "@/lib/demo-types";
 import type { Order } from "@/lib/types";
 export const dynamic = "force-dynamic";
 export const metadata = {
@@ -30,6 +32,13 @@ export default async function AdminOrder({
   if (error) throw new Error("Không tải được đơn hàng.");
   if (!data) notFound();
   const order = data as unknown as Order;
+  let workspace: DemoWorkspaceData | null = null;
+  if (data.is_synthetic) {
+    const auth = await authClient();
+    const result = await auth.rpc("demo_order_detail", {p_order:id});
+    if (result.error || !result.data?.order) throw new Error("Chưa tải được quy trình demo. Hãy thử lại.");
+    workspace = result.data as DemoWorkspaceData;
+  }
   return (
     <div className="container page-space">
       <Link className="text-link back-link" href="/admin">
@@ -40,7 +49,7 @@ export default async function AdminOrder({
         Liên hệ khách:{" "}
         <a href={`tel:${order.customer_phone}`}>{order.customer_phone}</a>
       </p>
-      <StatusForm id={order.id} status={order.status} />
+      {workspace ? <DemoWorkspace data={workspace}/> : <p className="demo-notice">Đơn cũ chỉ đọc và cần xem xét lại; chưa có bằng chứng đồng ý hoặc thanh toán theo quy trình demo.</p>}
     </div>
   );
 }

@@ -1,0 +1,27 @@
+✖ P03_ADMIN_DETAIL_UI — version/consent/evidence UI and role-free action payload (0.7692ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 309.0009
+
+✖ failing tests:
+
+test at tests\domain\admin-ui.test.mjs:11:1
+✖ P03_ADMIN_DETAIL_UI — version/consent/evidence UI and role-free action payload (0.7692ms)
+  Error: ENOENT: no such file or directory, open 'C:\Users\Kieth\Documents\Juinior\components\demo-workspace.tsx'
+      at Object.readFileSync (node:fs:440:20)
+      at load (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/admin-ui.test.mjs:10:88)
+      at TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/admin-ui.test.mjs:12:24)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.start (node:internal/test_runner/test:944:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17) {
+    errno: -4058,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: 'C:\\Users\\Kieth\\Documents\\Juinior\\components\\demo-workspace.tsx'
+  }

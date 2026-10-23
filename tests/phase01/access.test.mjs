@@ -40,7 +40,9 @@ test('P01_RLS_MATRIX — ownership, assignment, projections and unknown actions 
 });
 
 test('P01_SERVICE_ROLE_GUARD — forged actors and anonymous privileged RPCs are denied',()=>{
- const {db}=setup();assigned(db);
+ // Historical compatibility test stays pinned to Phase 01. Phase 03 separately
+ // proves the old status RPC is retired, so it cannot bypass quote/intake gates.
+ const {db}=fixture({baseline:process.env.PHASE01_BASELINE==='1',through:'202610230101_portfolio_access_foundation.sql'});assigned(db);
  assert.equal(value(db,ids.a,`SELECT can_order_action('${ids.admin}','${orders.a}','refund')`),'f');
  assert.throws(()=>sql(db,as(ids.a,roleChange(ids.a,'admin',true))),/FORBIDDEN/);
  assert.throws(()=>sql(db,as(null,roleChange(ids.a,'admin',true),'anon')),/permission denied/);

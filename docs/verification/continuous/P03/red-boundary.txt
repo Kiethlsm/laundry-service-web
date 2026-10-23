@@ -1,0 +1,46 @@
+✖ P03_QUOTE_RACE — stale hash denied; reject/expiry never restores old approval (3051.3015ms)
+✖ P03_BAG_INTEGRITY — unique labels, same-order flagged items, retag evidence and full QC set (3204.1662ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 0
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6324.4186
+
+✖ failing tests:
+
+test at tests\domain\phase03.test.mjs:22:1
+✖ P03_QUOTE_RACE — stale hash denied; reject/expiry never restores old approval (3051.3015ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/phase03.test.mjs:29:9)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.start (node:internal/test_runner/test:944:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /IMMUTABLE/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests\domain\phase03.test.mjs:57:1
+✖ P03_BAG_INTEGRITY — unique labels, same-order flagged items, retag evidence and full QC set (3204.1662ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  '0' !== '1'
+  
+      at TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/phase03.test.mjs:64:9)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '0',
+    expected: '1',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

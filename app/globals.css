@@ -828,6 +828,32 @@ select {
 .consent-fields { display: grid; gap: 16px; margin: 24px 0; font-size: 14px; }
 .consent-fields label { display: grid; grid-template-columns: 18px minmax(0,1fr); align-items: start; gap: 10px; }
 .consent-fields input[type="checkbox"] { width: 18px; height: 18px; min-height: 18px; padding: 0; margin: 4px 0 0; accent-color: var(--blue); }
+.demo-workspace { margin-top: 40px; display: grid; gap: 40px; }
+.demo-workspace > section { border-top: 1px solid #c7d4df; padding-top: 28px; min-width: 0; }
+.demo-workspace h2 { margin-bottom: 20px; }
+.demo-workspace h3 { margin: 24px 0 16px; }
+.demo-notice { background: #eaf2f7; padding: 24px; border-radius: 14px; }
+.demo-columns { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 32px; }
+.demo-scroll { max-width: 100%; overflow-x: auto; }
+.demo-scroll table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.demo-scroll th,.demo-scroll td { padding: 14px 12px; border-bottom: 1px solid #c7d4df; text-align: left; vertical-align: top; }
+.demo-scroll th { font-weight: 600; }
+.demo-scroll caption { text-align: left; margin-bottom: 12px; }
+.demo-action { margin-top: 16px; }
+.demo-action fieldset { border: 0; padding: 0; min-width: 0; display: grid; gap: 18px; }
+.demo-action label { display: grid; gap: 8px; }
+.demo-action input:not([type="checkbox"]):not([type="hidden"]),.demo-action textarea,.demo-action select { width: 100%; min-width: 0; }
+.demo-action .button { justify-self: start; }
+.demo-workspace details { margin: 20px 0; }
+.demo-workspace summary { cursor: pointer; padding: 12px 0; font-weight: 600; }
+.demo-quantity-row { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 16px; align-items: end; }
+.demo-inventory { list-style: none; padding: 0; }
+.demo-inventory li,.demo-issue { padding: 16px 0; border-bottom: 1px solid #c7d4df; }
+.demo-checks { display: grid; gap: 14px; }
+.demo-checks label { display: flex; align-items: center; gap: 10px; }
+.demo-checks input[type="checkbox"] { width: 20px; height: 20px; accent-color: var(--blue); }
+.demo-warning { display: block; margin-top: 8px; color: #8b3c15; font-weight: 500; }
+@media(max-width:760px) { .demo-columns,.demo-quantity-row { grid-template-columns: minmax(0,1fr); } .demo-action input,.demo-action textarea,.demo-action select {font-size:16px;} }
 .summary-total strong {
   font-size: 23px;
   font-weight: 700;

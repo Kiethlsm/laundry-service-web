@@ -1,0 +1,152 @@
+Command: node scripts/test-gate.mjs P03
+Exit: 0
+TAP version 13
+# Subtest: P02_BOOKING_UI — responsive keyboard consent and lost-response retry keeps one order
+ok 1 - P02_BOOKING_UI — responsive keyboard consent and lost-response retry keeps one order
+  ---
+  duration_ms: 7008.8719
+  type: 'test'
+  ...
+# Subtest: P03_ADMIN_DETAIL_UI — version/consent/evidence UI and role-free action payload
+ok 2 - P03_ADMIN_DETAIL_UI — version/consent/evidence UI and role-free action payload
+  ---
+  duration_ms: 115.0269
+  type: 'test'
+  ...
+# {"event":"booking_rpc_failed","code":"DB_ERROR","operation_key":"b0db6e58-edb5-4e3e-a659-f1927b536515"}
+# Subtest: P02_HTTP_CONTRACT — status/retry/validation and safe unavailable errors
+ok 3 - P02_HTTP_CONTRACT — status/retry/validation and safe unavailable errors
+  ---
+  duration_ms: 69.7869
+  type: 'test'
+  ...
+# Subtest: P02_IDEMPOTENT_BOOK — one v0 on retry; changed body conflicts
+ok 4 - P02_IDEMPOTENT_BOOK — one v0 on retry; changed body conflicts
+  ---
+  duration_ms: 1737.6521
+  type: 'test'
+  ...
+# Subtest: P02_V0_SNAPSHOT — server snapshots, consent and maximum weight total
+ok 5 - P02_V0_SNAPSHOT — server snapshots, consent and maximum weight total
+  ---
+  duration_ms: 2249.5007
+  type: 'test'
+  ...
+# Subtest: P02_INPUT_RULES — invalid carts/time/consent roll back atomically
+ok 6 - P02_INPUT_RULES — invalid carts/time/consent roll back atomically
+  ---
+  duration_ms: 2608.4609
+  type: 'test'
+  ...
+# Subtest: P02_LOOKUP_PRIVACY — code/phone exposes only progress and amount
+ok 7 - P02_LOOKUP_PRIVACY — code/phone exposes only progress and amount
+  ---
+  duration_ms: 1680.4963
+  type: 'test'
+  ...
+# Subtest: P02_SHARED_RATE — shared phone cap, independent phone and global demo cap
+ok 8 - P02_SHARED_RATE — shared phone cap, independent phone and global demo cap
+  ---
+  duration_ms: 1959.756
+  type: 'test'
+  ...
+# Subtest: P03_TOLERANCE_BOUNDARY — inclusive original kg limits; no-consent changes need exact quote
+ok 9 - P03_TOLERANCE_BOUNDARY — inclusive original kg limits; no-consent changes need exact quote
+  ---
+  duration_ms: 6750.1612
+  type: 'test'
+  ...
+# Subtest: P03_TOLERANCE_SCOPE — no rolling/netting/count/fee/rate workaround
+ok 10 - P03_TOLERANCE_SCOPE — no rolling/netting/count/fee/rate workaround
+  ---
+  duration_ms: 3421.2811
+  type: 'test'
+  ...
+# Subtest: P03_QUOTE_RACE — stale hash denied; reject/expiry never restores old approval
+ok 11 - P03_QUOTE_RACE — stale hash denied; reject/expiry never restores old approval
+  ---
+  duration_ms: 4486.5683
+  type: 'test'
+  ...
+# Subtest: P03_APPROVAL_EVIDENCE — unverified phone note and forged simulation never unlock work
+ok 12 - P03_APPROVAL_EVIDENCE — unverified phone note and forged simulation never unlock work
+  ---
+  duration_ms: 4018.6419
+  type: 'test'
+  ...
+# Subtest: P03_SETTLEMENT_IMMUTABLE — weights/charges create new versions; no double charge
+ok 13 - P03_SETTLEMENT_IMMUTABLE — weights/charges create new versions; no double charge
+  ---
+  duration_ms: 2867.774
+  type: 'test'
+  ...
+# Subtest: P03_BAG_INTEGRITY — unique labels, same-order flagged items, retag evidence and full QC set
+ok 14 - P03_BAG_INTEGRITY — unique labels, same-order flagged items, retag evidence and full QC set
+  ---
+  duration_ms: 3691.549
+  type: 'test'
+  ...
+# Subtest: P03_WORK_TRANSITIONS — assigned roles, blocking issues and accepted admin amendments
+ok 15 - P03_WORK_TRANSITIONS — assigned roles, blocking issues and accepted admin amendments
+  ---
+  duration_ms: 5421.2784
+  type: 'test'
+  ...
+# Subtest: P01_MIGRATE_EXISTING — preserve legacy amounts/history; consent remains unknown
+ok 16 - P01_MIGRATE_EXISTING — preserve legacy amounts/history; consent remains unknown
+  ---
+  duration_ms: 1673.2678
+  type: 'test'
+  ...
+# Subtest: P01_RLS_MATRIX — ownership, assignment, projections and unknown actions fail closed
+ok 17 - P01_RLS_MATRIX — ownership, assignment, projections and unknown actions fail closed
+  ---
+  duration_ms: 3456.0456
+  type: 'test'
+  ...
+# Subtest: P01_SERVICE_ROLE_GUARD — forged actors and anonymous privileged RPCs are denied
+ok 18 - P01_SERVICE_ROLE_GUARD — forged actors and anonymous privileged RPCs are denied
+  ---
+  duration_ms: 2296.2875
+  type: 'test'
+  ...
+# Subtest: P01_REVOKE_AND_LAST_ADMIN — immediate revocation, revision/retry integrity and serialized admin race
+ok 19 - P01_REVOKE_AND_LAST_ADMIN — immediate revocation, revision/retry integrity and serialized admin race
+  ---
+  duration_ms: 3031.198
+  type: 'test'
+  ...
+# Subtest: P01_CI_REQUIRED — a failed, missing or skipped mandatory ID cannot pass
+ok 20 - P01_CI_REQUIRED — a failed, missing or skipped mandatory ID cannot pass
+  ---
+  duration_ms: 2.184
+  type: 'test'
+  ...
+# Subtest: P01_HOSTED_DEFAULTS — postgres owner, permissive direct defaults, explicit ACLs and fixed definer paths
+ok 21 - P01_HOSTED_DEFAULTS — postgres owner, permissive direct defaults, explicit ACLs and fixed definer paths
+  ---
+  duration_ms: 2372.0474
+  type: 'test'
+  ...
+# AUTHORIZATION_MATRIX {"covered":170,"total":170,"extra_unknown_null":20,"source":"v1.2 single access matrix; permission checks, not transition preconditions"}
+# Subtest: P01_AUTHORIZATION_MATRIX — 170 explicit role/action cells plus 20 null/unknown denials
+ok 22 - P01_AUTHORIZATION_MATRIX — 170 explicit role/action cells plus 20 null/unknown denials
+  ---
+  duration_ms: 5847.8967
+  type: 'test'
+  ...
+# Subtest: P01_SERVER_SESSION_GUARD — real admin guard checks live session capability on every invocation
+ok 23 - P01_SERVER_SESSION_GUARD — real admin guard checks live session capability on every invocation
+  ---
+  duration_ms: 66.0575
+  type: 'test'
+  ...
+1..23
+# tests 23
+# suites 0
+# pass 23
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 68249.6922

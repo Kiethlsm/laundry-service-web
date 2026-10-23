@@ -1,0 +1,162 @@
+✖ P03_TOLERANCE_BOUNDARY — inclusive original kg limits; no-consent changes need exact quote (8995.5487ms)
+✖ P03_TOLERANCE_SCOPE — no rolling/netting/count/fee/rate workaround (12858.9471ms)
+✖ P03_QUOTE_RACE — stale hash denied; reject/expiry never restores old approval (10395.6777ms)
+✖ P03_APPROVAL_EVIDENCE — unverified phone note and forged simulation never unlock work (25803.3893ms)
+✖ P03_SETTLEMENT_IMMUTABLE — weights/charges create new versions; no double charge (1932.6758ms)
+✖ P03_BAG_INTEGRITY — unique labels, same-order flagged items, retag evidence and full QC set (1880.9787ms)
+✖ P03_WORK_TRANSITIONS — assigned roles, blocking issues and accepted admin amendments (3904.3046ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 0
+ℹ fail 7
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 65846.1039
+
+✖ failing tests:
+
+test at tests\domain\phase03.test.mjs:6:1
+✖ P03_TOLERANCE_BOUNDARY — inclusive original kg limits; no-consent changes need exact quote (8995.5487ms)
+  Error: ERROR:  function order_command(unknown, integer, unknown, unknown, jsonb) does not exist
+  LINE 1: SELECT order_command('ec4529fb-14b7-467d-b946-98ab6bd33087',...
+                 ^
+  HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+  
+      at docker (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:12:29)
+      at sql (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:16:10)
+      at command (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/helpers.mjs:11:20)
+      at intake (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/helpers.mjs:16:50)
+      at TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/phase03.test.mjs:9:97)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.start (node:internal/test_runner/test:944:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+
+test at tests\domain\phase03.test.mjs:15:1
+✖ P03_TOLERANCE_SCOPE — no rolling/netting/count/fee/rate workaround (12858.9471ms)
+  Error: ERROR:  function order_command(unknown, integer, unknown, unknown, jsonb) does not exist
+  LINE 1: SELECT order_command('979a99ab-e773-4068-8e16-22d94d4a7826',...
+                 ^
+  HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+  
+      at docker (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:12:29)
+      at sql (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:16:10)
+      at command (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/helpers.mjs:11:20)
+      at intake (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/helpers.mjs:16:50)
+      at TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/phase03.test.mjs:16:137)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+
+test at tests\domain\phase03.test.mjs:22:1
+✖ P03_QUOTE_RACE — stale hash denied; reject/expiry never restores old approval (10395.6777ms)
+  Error: ERROR:  function order_command(unknown, integer, unknown, unknown, jsonb) does not exist
+  LINE 1: SELECT order_command('045325f3-0cd6-448d-baf8-a18d013c69a1',...
+                 ^
+  HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+  
+      at docker (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:12:29)
+      at sql (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:16:10)
+      at command (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/helpers.mjs:11:20)
+      at intake (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/helpers.mjs:16:50)
+      at TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/phase03.test.mjs:23:46)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+
+test at tests\domain\phase03.test.mjs:32:1
+✖ P03_APPROVAL_EVIDENCE — unverified phone note and forged simulation never unlock work (25803.3893ms)
+  Error: ERROR:  function order_command(unknown, integer, unknown, unknown, jsonb) does not exist
+  LINE 1: SELECT order_command('aec2a61a-99ee-409f-a838-ab61ea246219',...
+                 ^
+  HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+  
+      at docker (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:12:29)
+      at sql (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:16:10)
+      at command (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/helpers.mjs:11:20)
+      at intake (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/helpers.mjs:16:50)
+      at TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/phase03.test.mjs:33:87)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+
+test at tests\domain\phase03.test.mjs:44:1
+✖ P03_SETTLEMENT_IMMUTABLE — weights/charges create new versions; no double charge (1932.6758ms)
+  Error: ERROR:  function order_command(unknown, integer, unknown, unknown, jsonb) does not exist
+  LINE 1: SELECT order_command('16806ec2-8b30-4af4-b5cc-a404e95d22cf',...
+                 ^
+  HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+  
+      at docker (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:12:29)
+      at sql (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:16:10)
+      at command (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/helpers.mjs:11:20)
+      at intake (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/helpers.mjs:16:50)
+      at TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/phase03.test.mjs:45:46)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+
+test at tests\domain\phase03.test.mjs:54:1
+✖ P03_BAG_INTEGRITY — unique labels, same-order flagged items, retag evidence and full QC set (1880.9787ms)
+  Error: ERROR:  function order_command(unknown, integer, unknown, unknown, jsonb) does not exist
+  LINE 1: SELECT order_command('17048f40-a11f-49e2-ac2d-ad985eec23ce',...
+                 ^
+  HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+  
+      at docker (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:12:29)
+      at sql (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:16:10)
+      at command (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/helpers.mjs:11:20)
+      at intake (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/helpers.mjs:16:50)
+      at TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/phase03.test.mjs:55:63)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+
+test at tests\domain\phase03.test.mjs:64:1
+✖ P03_WORK_TRANSITIONS — assigned roles, blocking issues and accepted admin amendments (3904.3046ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /INVALID_TRANSITION/. Input:
+  
+  'Error: ERROR:  function order_command(unknown, integer, unknown, unknown, jsonb) does not exist\n' +
+    "LINE 1: SELECT order_command('7d6eb5bc-3cad-4861-b3c0-4a51e3ae8260',...\n" +
+    '               ^\n' +
+    'HINT:  No function matches the given name and argument types. You might need to add explicit type casts.\n'
+  
+      at TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/phase03.test.mjs:66:9)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:744:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: ERROR:  function order_command(unknown, integer, unknown, unknown, jsonb) does not exist
+    LINE 1: SELECT order_command('7d6eb5bc-3cad-4861-b3c0-4a51e3ae8260',...
+                   ^
+    HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+    
+        at docker (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:12:29)
+        at sql (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:16:10)
+        at command (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/helpers.mjs:11:20)
+        at file:///C:/Users/Kieth/Documents/Juinior/tests/domain/phase03.test.mjs:66:20
+        at getActual (node:assert:609:5)
+        at Function.throws (node:assert:757:24)
+        at TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/phase03.test.mjs:66:9)
+        at Test.runInAsyncScope (node:async_hooks:214:14)
+        at Test.run (node:internal/test_runner/test:1047:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:744:18),
+    expected: /INVALID_TRANSITION/,
+    operator: 'throws',
+    diff: 'simple'
+  }
