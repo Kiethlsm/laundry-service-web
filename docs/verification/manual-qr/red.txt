@@ -1,0 +1,42 @@
+TAP version 13
+# Subtest: QR_RECIPIENT_ASSET — verified local PNG is served unchanged without an image optimizer
+not ok 1 - QR_RECIPIENT_ASSET — verified local PNG is served unchanged without an image optimizer
+  ---
+  duration_ms: 0.6154
+  type: 'test'
+  location: 'C:\\Users\\Kieth\\Documents\\Juinior\\tests\\browser\\qr.test.mjs:4:1'
+  failureType: 'testCodeFailure'
+  error: "ENOENT: no such file or directory, open 'C:\\Users\\Kieth\\Documents\\Juinior\\docs\\verification\\manual-qr\\README.md'"
+  code: 'ENOENT'
+  stack: |-
+    Object.readFileSync (node:fs:440:20)
+    TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/browser/qr.test.mjs:5:17)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: QR_BANK_BOOKING — cash isolation, static QR/memo/copy errors and no automatic money posting
+not ok 2 - QR_BANK_BOOKING — cash isolation, static QR/memo/copy errors and no automatic money posting
+  ---
+  duration_ms: 9465.7433
+  type: 'test'
+  location: 'C:\\Users\\Kieth\\Documents\\Juinior\\tests\\browser\\qr.test.mjs:15:1'
+  failureType: 'testCodeFailure'
+  error: 'Local test deadline'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    until (file:///C:/Users/Kieth/Documents/Juinior/tests/browser/cdp.mjs:6:183)
+    async TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/browser/qr.test.mjs:24:3)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 0
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 9589.3786

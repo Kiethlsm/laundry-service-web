@@ -1,0 +1,12 @@
+{
+  "asset": "public/payments/techcombank-qr.png",
+  "source": "User-supplied 54c4714ee762673c3e73.jpg",
+  "tool": "Built-in imagegen, crop-only preservation prompt",
+  "sha256": "d9043bf0c2627d1f3183c41f9c4a4a06fe3d71254cc98044c2ec8402fbf6d8c5",
+  "width": 1228,
+  "height": 1281,
+  "modulesCompared": 1089,
+  "moduleDifferences": 0,
+  "verification": "Original 33x33 grid sampled at module centers against generated output, using original bounds (177,500,414,738) and output bounds (368,576,859,1069). This is pattern-equivalence evidence, not a bank transaction or bank-app scanning test.",
+  "prompt": "Crop empty upper background and lower city illustration. Preserve exact original recipient, account digits, QR modules and white quiet zone, VietQR/napas247/Techcombank logos; add no amount, decorations or substituted data."
+}

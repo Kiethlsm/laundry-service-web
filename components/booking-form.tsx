@@ -4,6 +4,7 @@ import Link from "next/link";
 import { formatVND, UNIT_LABEL } from "@/lib/format";
 import type { Category, Service } from "@/lib/types";
 import { Arrow, ServiceEmoji } from "./ui";
+import { BankTransfer } from "./bank-transfer";
 
 function isFuturePickup(pickup: Date) {
   const timestamp = pickup.getTime();
@@ -24,6 +25,7 @@ export function BookingForm({
   const [quantities, setQuantities] = useState<Record<number, number>>({});
   const [operationKey] = useState(() => crypto.randomUUID());
   const [toleranceConsent, setToleranceConsent] = useState(false);
+  const [paymentMethod, setPaymentMethod] = useState("cash");
   const [active, setActive] = useState(
     categories.find((c) => c.slug === initialCategory)?.id || categories[0]?.id,
   );
@@ -93,7 +95,7 @@ export function BookingForm({
       requestAnimationFrame(() => {
         successRef.current?.focus();
         successRef.current?.scrollIntoView({
-          block: "center",
+          block: paymentMethod === "bank_transfer" ? "start" : "center",
           behavior: "smooth",
         });
       });
@@ -117,6 +119,7 @@ export function BookingForm({
           Tạm tính: <strong>{formatVND(success.total)}</strong>
         </p>
         <p>Cửa hàng sẽ liên hệ để xác nhận lịch lấy và khối lượng thực tế.</p>
+        {paymentMethod === "bank_transfer" && <BankTransfer amount={success.total} orderCode={success.code} />}
         <Link className="button" href={`/tra-cuu?ma=${success.code}`}>
           Theo dõi đơn hàng <Arrow />
         </Link>
@@ -256,7 +259,8 @@ export function BookingForm({
                 type="radio"
                 name="payment"
                 value="cash"
-                defaultChecked
+                checked={paymentMethod === "cash"}
+                onChange={() => setPaymentMethod("cash")}
                 disabled={busy}
               />
               <span>Tiền mặt</span>
@@ -266,11 +270,14 @@ export function BookingForm({
                 type="radio"
                 name="payment"
                 value="bank_transfer"
+                checked={paymentMethod === "bank_transfer"}
+                onChange={() => setPaymentMethod("bank_transfer")}
                 disabled={busy}
               />
               <span>Chuyển khoản trực tiếp</span>
             </label>
           </fieldset>
+          {paymentMethod === "bank_transfer" && <BankTransfer amount={total} />}
           <label>
             Ghi chú <span className="optional">(không bắt buộc)</span>
             <textarea

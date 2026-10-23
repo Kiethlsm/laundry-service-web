@@ -24,6 +24,8 @@ Mở URL loopback được in ra. Lệnh tạo database fixture riêng, dùng Au
 
 Mọi khoản tiền và xác nhận khách/người nhận đều là **mô phỏng**. Không có thanh toán ngân hàng thật, SMS/Zalo/email thật, upload ảnh, cron, vận hành tiệm thật hay chứng nhận tuân thủ. Nhãn theo túi không chứng minh được từng món không gắn nhãn. Các phase tùy chọn 04/06/07/08 và editor/slot không được chọn.
 
+Nhánh `feat/manual-transfer-qr` bổ sung QR Techcombank do người dùng cung cấp: hiện khi chọn chuyển khoản, sau đặt lịch và trong chi tiết quản trị. Có sao chép tài khoản/nội dung theo mã đơn và tải PNG. QR không tự xác nhận tiền; sổ hiện tại vẫn mô phỏng. Chạy gate mới bằng `npm run check:phase -- QR`; [bằng chứng và giới hạn](docs/verification/manual-qr/README.md).
+
 ## Kiểm tra và bàn giao
 
 ```powershell

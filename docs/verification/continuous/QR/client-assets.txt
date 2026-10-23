@@ -1,0 +1,3 @@
+Command: node scripts/check-client-assets.mjs
+Exit: 0
+PASS production client boundary: 18 artifacts, four server/test markers absent. Synthetic build environment only; not a scan of hosted secrets.

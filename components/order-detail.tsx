@@ -1,6 +1,7 @@
 import { formatDate, formatVND, STATUS_LABEL, UNIT_LABEL } from "@/lib/format";
 import type { Order } from "@/lib/types";
 import { StatusBadge } from "./ui";
+import { BankTransfer } from "./bank-transfer";
 export function OrderDetail({ order }: { order: Order }) {
   const history = [...order.order_status_history].sort(
     (a, b) => a.changed_at.localeCompare(b.changed_at) || a.id - b.id,
@@ -99,6 +100,13 @@ export function OrderDetail({ order }: { order: Order }) {
           {history.length === 0 && <p>Chưa có lịch sử trạng thái.</p>}
         </section>
       </div>
+      {order.payment_method === "bank_transfer" && !["cancelled", "delivered"].includes(order.status) && (
+        <details className="bank-transfer-admin">
+          <summary>QR và thông tin nhận chuyển khoản</summary>
+          <BankTransfer amount={Number(order.total)} orderCode={order.code} />
+          <p className="field-help">Đối chiếu số dư còn phải thu trong sổ tiền trước khi ghi nhận. Thông tin QR này không xác minh giao dịch ngân hàng.</p>
+        </details>
+      )}
     </div>
   );
 }

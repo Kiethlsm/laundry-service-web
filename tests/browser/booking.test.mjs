@@ -35,5 +35,6 @@ test('P02_BOOKING_UI — responsive keyboard consent and lost-response retry kee
   await page.evaluate("document.querySelector('form.booking-layout').requestSubmit()");
   await until(()=>page.evaluate("Boolean(document.querySelector('.order-code'))"));
   assert.equal(sql(site.db,'SELECT count(*) FROM orders WHERE is_synthetic;'),'1');
+  assert.equal(await page.evaluate("Boolean(document.querySelector('.bank-transfer'))"),false);
  }catch(error){console.error(error.stack);throw error;}finally{page?.close();await site.close();}
 });
