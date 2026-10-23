@@ -1,0 +1,40 @@
+Command: node --input-type=module (spawn node_modules/next/dist/bin/next build)
+Child environment overrides: NEXT_PUBLIC_SUPABASE_URL='', NEXT_PUBLIC_SUPABASE_ANON_KEY='', SUPABASE_SERVICE_ROLE_KEY=''. No env files changed; prevents hosted catalog reads. Equivalent build target to npm run build.
+
+▲ Next.js 16.4.2 (Turbopack)
+- Environments: .env.local
+✓ Running next.config.ts took 624ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 4.4s
+  Running TypeScript ...
+  Finished TypeScript in 1567ms ...
+  Collecting page data using 11 workers ...
+  Generating static pages using 11 workers (0/5) ...
+  Generating static pages using 11 workers (1/5) 
+  Generating static pages using 11 workers (2/5) 
+  Generating static pages using 11 workers (3/5) 
+✓ Generating static pages using 11 workers (5/5) in 188ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ƒ /
+├ ○ /_not-found
+├ ƒ /admin
+├ ƒ /admin/login
+├ ƒ /admin/orders/[id]
+├ ƒ /api/orders
+├ ƒ /api/track
+├ ƒ /bang-gia
+├ ƒ /dat-lich
+├ ○ /icon.svg
+└ ƒ /tra-cuu
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+
+Exit code: 0

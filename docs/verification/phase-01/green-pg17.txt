@@ -1,0 +1,52 @@
+
+> laundry-service-web@0.1.0 test:gate
+> node scripts/test-gate.mjs P01
+
+TAP version 13
+# Subtest: P01_MIGRATE_EXISTING — preserve legacy amounts/history; consent remains unknown
+ok 1 - P01_MIGRATE_EXISTING — preserve legacy amounts/history; consent remains unknown
+  ---
+  duration_ms: 1501.5784
+  type: 'test'
+  ...
+# Subtest: P01_RLS_MATRIX — ownership, assignment, projections and unknown actions fail closed
+ok 2 - P01_RLS_MATRIX — ownership, assignment, projections and unknown actions fail closed
+  ---
+  duration_ms: 3589.5754
+  type: 'test'
+  ...
+# Subtest: P01_SERVICE_ROLE_GUARD — forged actors and anonymous privileged RPCs are denied
+ok 3 - P01_SERVICE_ROLE_GUARD — forged actors and anonymous privileged RPCs are denied
+  ---
+  duration_ms: 2364.5842
+  type: 'test'
+  ...
+# Subtest: P01_REVOKE_AND_LAST_ADMIN — immediate revocation, revision/retry integrity and serialized admin race
+ok 4 - P01_REVOKE_AND_LAST_ADMIN — immediate revocation, revision/retry integrity and serialized admin race
+  ---
+  duration_ms: 2634.377
+  type: 'test'
+  ...
+# Subtest: P01_CI_REQUIRED — a failed, missing or skipped mandatory ID cannot pass
+ok 5 - P01_CI_REQUIRED — a failed, missing or skipped mandatory ID cannot pass
+  ---
+  duration_ms: 1.496
+  type: 'test'
+  ...
+# Subtest: P01_SERVER_SESSION_GUARD — real admin guard checks live session capability on every invocation
+ok 6 - P01_SERVER_SESSION_GUARD — real admin guard checks live session capability on every invocation
+  ---
+  duration_ms: 62.838
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 10590.0717
+
+Exit code: 0
