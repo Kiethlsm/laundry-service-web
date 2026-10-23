@@ -853,6 +853,11 @@ select {
 .demo-checks label { display: flex; align-items: center; gap: 10px; }
 .demo-checks input[type="checkbox"] { width: 20px; height: 20px; accent-color: var(--blue); }
 .demo-warning { display: block; margin-top: 8px; color: #8b3c15; font-weight: 500; }
+.demo-balances { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 20px; margin: 24px 0; font-variant-numeric: tabular-nums; }
+.demo-balances dt { font-size: 14px; }
+.demo-balances dd { margin: 6px 0 0; font-size: 22px; font-weight: 600; }
+.demo-handover { background: #eaf2f7; padding: 24px; border-radius: 14px; margin-top: 28px; }
+@media(max-width:760px) { .demo-balances { grid-template-columns: minmax(0,1fr); gap: 16px; } }
 @media(max-width:760px) { .demo-columns,.demo-quantity-row { grid-template-columns: minmax(0,1fr); } .demo-action input,.demo-action textarea,.demo-action select {font-size:16px;} }
 .summary-total strong {
   font-size: 23px;

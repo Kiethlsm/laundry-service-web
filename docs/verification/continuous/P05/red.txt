@@ -1,0 +1,160 @@
+✖ P05_ATOMIC_DELIVER_COLLECT — zero balance and one committed receipt/custody/history (3279.8817ms)
+✖ P05_CASH_ROLLBACK — missing targets/wrong cash/refund due commit nothing; verified waiver is explicit (3331.0456ms)
+✖ P05_RETRY_RACE — same key concurrent/expired-cache replay; changed payload and stale revision denied (3291.7445ms)
+✖ P05_LEDGER_INVARIANTS — reversal signs, restored refund availability and immutable entries (2486.6241ms)
+✖ P05_REPORT — receive date differs from delivered value date; unverified notes visible (3136.9672ms)
+✖ P05_CANCEL_INCIDENT — cancel creates refund due/return plan, never fake refund or backward transition (2482.1718ms)
+✖ P05_END_TO_END — v1 approval to QC and courier cash; wrong customer denied (4706.1197ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 0
+ℹ fail 7
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 22786.1131
+
+✖ failing tests:
+
+test at tests\domain\phase05.test.mjs:5:1
+✖ P05_ATOMIC_DELIVER_COLLECT — zero balance and one committed receipt/custody/history (3279.8817ms)
+  Error: ERROR:  UNKNOWN_ACTION
+  CONTEXT:  PL/pgSQL function app_private.workflow(uuid,text,jsonb) line 118 at RAISE
+  SQL statement "SELECT app_private.workflow(p_order,p_action,p_data)"
+  PL/pgSQL function order_command(uuid,bigint,uuid,text,jsonb) line 20 at PERFORM
+  
+      at docker (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:12:29)
+      at sql (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:16:10)
+      at command (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/helpers.mjs:11:20)
+      at TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/phase05.test.mjs:6:54)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.start (node:internal/test_runner/test:944:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+
+test at tests\domain\phase05.test.mjs:13:1
+✖ P05_CASH_ROLLBACK — missing targets/wrong cash/refund due commit nothing; verified waiver is explicit (3331.0456ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /RECONCILIATION|CASH_MISMATCH|RECIPIENT_EVIDENCE/. Input:
+  
+  'Error: ERROR:  UNKNOWN_ACTION\n' +
+    'CONTEXT:  PL/pgSQL function app_private.workflow(uuid,text,jsonb) line 118 at RAISE\n' +
+    'SQL statement "SELECT app_private.workflow(p_order,p_action,p_data)"\n' +
+    'PL/pgSQL function order_command(uuid,bigint,uuid,text,jsonb) line 20 at PERFORM\n'
+  
+      at TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/phase05.test.mjs:15:107)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: ERROR:  UNKNOWN_ACTION
+    CONTEXT:  PL/pgSQL function app_private.workflow(uuid,text,jsonb) line 118 at RAISE
+    SQL statement "SELECT app_private.workflow(p_order,p_action,p_data)"
+    PL/pgSQL function order_command(uuid,bigint,uuid,text,jsonb) line 20 at PERFORM
+    
+        at docker (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:12:29)
+        at sql (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:16:10)
+        at command (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/helpers.mjs:11:20)
+        at file:///C:/Users/Kieth/Documents/Juinior/tests/domain/phase05.test.mjs:15:118
+        at getActual (node:assert:609:5)
+        at Function.throws (node:assert:757:24)
+        at TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/phase05.test.mjs:15:107)
+        at Test.runInAsyncScope (node:async_hooks:214:14)
+        at Test.run (node:internal/test_runner/test:1047:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:744:18),
+    expected: /RECONCILIATION|CASH_MISMATCH|RECIPIENT_EVIDENCE/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests\domain\phase05.test.mjs:30:1
+✖ P05_RETRY_RACE — same key concurrent/expired-cache replay; changed payload and stale revision denied (3291.7445ms)
+  AssertionError [ERR_ASSERTION]: ERROR:  UNKNOWN_ACTION
+  CONTEXT:  PL/pgSQL function app_private.workflow(uuid,text,jsonb) line 118 at RAISE
+  SQL statement "SELECT app_private.workflow(p_order,p_action,p_data)"
+  PL/pgSQL function order_command(uuid,bigint,uuid,text,jsonb) line 20 at PERFORM
+  
+  
+  3 !== 0
+  
+      at TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/phase05.test.mjs:34:32)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+      at async Test.run (node:internal/test_runner/test:1054:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:744:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 3,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\domain\phase05.test.mjs:41:1
+✖ P05_LEDGER_INVARIANTS — reversal signs, restored refund availability and immutable entries (2486.6241ms)
+  Error: ERROR:  FORBIDDEN
+  CONTEXT:  PL/pgSQL function order_command(uuid,bigint,uuid,text,jsonb) line 10 at RAISE
+  
+      at docker (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:12:29)
+      at sql (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:16:10)
+      at command (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/helpers.mjs:11:20)
+      at TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/phase05.test.mjs:43:10)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+
+test at tests\domain\phase05.test.mjs:58:1
+✖ P05_REPORT — receive date differs from delivered value date; unverified notes visible (3136.9672ms)
+  Error: ERROR:  relation "payment_transactions" does not exist
+  LINE 1: INSERT INTO payment_transactions(order_id,kind,amount,method...
+                      ^
+  
+      at docker (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:12:29)
+      at sql (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:16:10)
+      at TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/phase05.test.mjs:60:2)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+
+test at tests\domain\phase05.test.mjs:67:1
+✖ P05_CANCEL_INCIDENT — cancel creates refund due/return plan, never fake refund or backward transition (2482.1718ms)
+  Error: ERROR:  FORBIDDEN
+  CONTEXT:  PL/pgSQL function order_command(uuid,bigint,uuid,text,jsonb) line 10 at RAISE
+  
+      at docker (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:12:29)
+      at sql (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:16:10)
+      at command (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/helpers.mjs:11:20)
+      at TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/phase05.test.mjs:68:75)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+
+test at tests\domain\phase05.test.mjs:78:1
+✖ P05_END_TO_END — v1 approval to QC and courier cash; wrong customer denied (4706.1197ms)
+  Error: ERROR:  UNKNOWN_ACTION
+  CONTEXT:  PL/pgSQL function app_private.workflow(uuid,text,jsonb) line 118 at RAISE
+  SQL statement "SELECT app_private.workflow(p_order,p_action,p_data)"
+  PL/pgSQL function order_command(uuid,bigint,uuid,text,jsonb) line 20 at PERFORM
+  
+      at docker (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:12:29)
+      at sql (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:16:10)
+      at command (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/helpers.mjs:11:20)
+      at TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/phase05.test.mjs:83:2)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)

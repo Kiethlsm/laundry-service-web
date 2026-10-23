@@ -9,6 +9,8 @@ import {
 } from "@/lib/format";
 import { StatusBadge, Arrow } from "@/components/ui";
 import { logout } from "./actions";
+import {authClient} from '@/lib/supabase-server';
+import {DemoFinancialReport,type DemoReport} from '@/components/demo-financial-report';
 export const metadata: Metadata = {
   title: "Quản lý đơn hàng",
   robots: { index: false, follow: false },
@@ -38,8 +40,12 @@ export default async function Admin({
   const { data, error } = await query;
   if (error) throw new Error("Không tải được danh sách đơn.");
   const orders = q && !validSearch ? [] : data;
+  const auth=await authClient();
+  const report=await auth.rpc('demo_financial_report');
+  if(report.error||!report.data)throw new Error('Chưa tải được báo cáo mô phỏng.');
   return (
     <div className="container page-space">
+      <DemoFinancialReport report={report.data as DemoReport}/>
       <div className="admin-heading">
         <div>
           <h1>Đơn hàng</h1>

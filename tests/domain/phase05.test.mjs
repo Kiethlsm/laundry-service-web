@@ -1,0 +1,93 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {fixture,sql,book,payload,command,ready,collectData,money,reconcile,ids,randomUUID,concurrentSql,literal,assign,intake,lines,approve} from './helpers.mjs';
+
+test('P05_ATOMIC_DELIVER_COLLECT — zero balance and one committed receipt/custody/history',()=>{
+ const {db}=fixture();const r=ready(db);const result=command(db,r.order_id,'deliver_collect',collectData(db,r.order_id));
+ assert.equal(result.status,'delivered');assert.equal(money(db,r.order_id).balance,0);
+ assert.equal(sql(db,`SELECT count(*) FROM payment_transactions WHERE order_id='${r.order_id}' AND kind='receipt' AND amount=147500;`),'1');
+ assert.equal(sql(db,`SELECT bool_and(custody_state='returned') FROM laundry_bags WHERE order_id='${r.order_id}';`),'t');
+ assert.equal(sql(db,`SELECT count(*) FROM custody_events WHERE order_id='${r.order_id}' AND kind='returned';`),'2');
+ assert.equal(sql(db,`SELECT count(*) FROM order_status_history WHERE order_id='${r.order_id}' AND status='delivered';`),'1');
+});
+test('P05_CASH_ROLLBACK — missing targets/wrong cash/refund due commit nothing; verified waiver is explicit',()=>{
+ const {db}=fixture();const r=ready(db);const before=sql(db,`SELECT revision FROM orders WHERE id='${r.order_id}';`);
+ for(const extra of [{bags:[]},{items:[]},{amount:147499},{amount:147501},{recipient_evidence:''}])assert.throws(()=>command(db,r.order_id,'deliver_collect',collectData(db,r.order_id,extra)),/RECONCILIATION|CASH_MISMATCH|RECIPIENT_EVIDENCE/);
+ assert.equal(sql(db,`SELECT revision FROM orders WHERE id='${r.order_id}';`),before);
+ assert.equal(sql(db,'SELECT count(*) FROM payment_transactions;'),'0');
+ const receipt=command(db,r.order_id,'receipt',{amount:150000,method:'cash'});
+ assert.throws(()=>command(db,r.order_id,'deliver_collect',collectData(db,r.order_id,{amount:0})),/REFUND_DUE/);
+ command(db,r.order_id,'refund',{amount:2500,method:'cash',original_id:receipt.transaction_id,reason:'Refund simulated overpayment'});
+ command(db,r.order_id,'incident',{message:'Missing flagged jacket, synthetic',blocking:true});const issue=sql(db,`SELECT id FROM order_issues WHERE order_id='${r.order_id}';`);
+ const target=reconcile(db,r.order_id).items[0];
+ assert.throws(()=>command(db,r.order_id,'waive',{kind:'item',target_id:target,issue_id:issue}),/REMEDY_REQUIRED/);
+ command(db,r.order_id,'resolve_issue',{issue_id:issue,reason:'Synthetic compensation agreed',simulated_customer_message:'ZZ TEST customer accepts simulated compensation'});
+ command(db,r.order_id,'waive',{kind:'item',target_id:target,issue_id:issue});
+ command(db,r.order_id,'deliver_collect',collectData(db,r.order_id,{items:[],amount:0}));
+ assert.equal(sql(db,`SELECT custody_state FROM flagged_items WHERE id='${target}';`),'waived');
+ assert.equal(sql(db,`SELECT count(*) FROM custody_events WHERE flagged_item_id='${target}' AND kind='returned';`),'0');
+});
+test('P05_RETRY_RACE — same key concurrent/expired-cache replay; changed payload and stale revision denied',async()=>{
+ const {db}=fixture();const r=ready(db);const key=randomUUID(),data=collectData(db,r.order_id);const rev=Number(sql(db,`SELECT revision FROM orders WHERE id='${r.order_id}';`));
+ const query=`BEGIN;SET LOCAL ROLE authenticated;SET LOCAL "request.jwt.claim.sub"='${ids.admin}';SELECT order_command('${r.order_id}',${rev},'${key}','deliver_collect',${literal(JSON.stringify(data))}::jsonb);COMMIT;`;
+ const results=await Promise.all([concurrentSql(db,query),concurrentSql(db,query)]);
+ for(const r of results)assert.equal(r.status,0,r.err);assert.deepEqual(JSON.parse(results[0].out),JSON.parse(results[1].out));
+ assert.equal(sql(db,'SELECT count(*) FROM payment_transactions;'),'1');
+ assert.throws(()=>command(db,r.order_id,'deliver_collect',{...data,amount:1},ids.admin,{revision:rev,key}),/IDEMPOTENCY_CONFLICT/);
+ assert.throws(()=>command(db,r.order_id,'deliver_collect',data,ids.admin,{revision:rev}),/REVISION_CONFLICT/);
+ sql(db,"UPDATE idempotency_keys SET expires_at=now()-interval '1 day';");
+ assert.equal(command(db,r.order_id,'deliver_collect',data,ids.admin,{revision:rev,key}).status,'delivered');
+});
+test('P05_LEDGER_INVARIANTS — reversal signs, restored refund availability and immutable entries',()=>{
+ const {db}=fixture();const r=book(db);
+ const a=command(db,r.order_id,'receipt',{amount:100000,method:'cash'});command(db,r.order_id,'receipt',{amount:47500,method:'cash'});
+ const refund=command(db,r.order_id,'refund',{amount:10000,method:'cash',original_id:a.transaction_id,reason:'Synthetic partial refund'});
+ assert.equal(money(db,r.order_id).net_received,137500);
+ const reverseRefund=command(db,r.order_id,'reverse',{original_id:refund.transaction_id,reason:'Correct simulated refund entry'});
+ assert.equal(money(db,r.order_id).net_received,147500);
+ assert.throws(()=>command(db,r.order_id,'reverse',{original_id:refund.transaction_id,reason:'Second reversal'}),/ALREADY_REVERSED/);
+ assert.throws(()=>command(db,r.order_id,'reverse',{original_id:reverseRefund.transaction_id,reason:'Reverse a reversal'}),/INVALID_REVERSAL/);
+ command(db,r.order_id,'reverse',{original_id:a.transaction_id,reason:'Correct simulated receipt entry'});
+ assert.equal(money(db,r.order_id).net_received,47500);
+ const remaining=sql(db,`SELECT id FROM payment_transactions WHERE kind='receipt' AND id<>'${a.transaction_id}';`);
+ assert.throws(()=>sql(db,`INSERT INTO payment_transactions(order_id,kind,amount,method,currency,environment,original_id,actor_id,operation_key) VALUES('${r.order_id}','refund',1,'cash','VND','demo','${remaining}','${ids.admin}','${randomUUID()}');`),/check constraint|REASON_REQUIRED/);
+ assert.throws(()=>command(db,r.order_id,'refund',{amount:50000,method:'cash',original_id:remaining,reason:'Too large synthetic refund'}),/REFUND_EXCEEDS_AVAILABLE/);
+ for(const amount of [0,-1,1.5])assert.throws(()=>command(db,r.order_id,'receipt',{amount,method:'cash'}),/INVALID_AMOUNT/);
+ assert.throws(()=>sql(db,'UPDATE payment_transactions SET amount=1;'),/APPEND_ONLY/);
+ assert.throws(()=>sql(db,'DELETE FROM payment_transactions;'),/APPEND_ONLY/);
+});
+test('P05_REPORT — receive date differs from delivered value date; unverified notes visible',()=>{
+ const {db}=fixture();const r=ready(db);
+ sql(db,`INSERT INTO payment_transactions(order_id,kind,amount,method,currency,environment,actor_id,effective_at,operation_key) VALUES('${r.order_id}','receipt',147500,'cash','VND','demo','${ids.admin}',now()-interval '2 days','${randomUUID()}');`);
+ command(db,r.order_id,'phone_note',{message:'Unverified synthetic phone note'});
+ command(db,r.order_id,'deliver_collect',collectData(db,r.order_id,{amount:0}));
+ const report=JSON.parse(sql(db,`SET ROLE authenticated;SET "request.jwt.claim.sub"='${ids.admin}';SELECT demo_financial_report();`));
+ assert.notEqual(report.cash_flow[0].day,report.delivered_value[0].day);
+ assert.equal(report.cash_flow[0].amount,147500);assert.equal(report.delivered_value[0].amount,147500);assert.equal(report.unverified_approvals,1);
+});
+test('P05_CANCEL_INCIDENT — cancel creates refund due/return plan, never fake refund or backward transition',()=>{
+ const {db}=fixture();const pending=book(db,payload(),randomUUID(),ids.a);command(db,pending.order_id,'receipt',{amount:100000,method:'cash'});
+ assert.equal(command(db,pending.order_id,'cancel',{reason:'Synthetic customer cancellation'}).status,'cancelled');
+ assert.equal(money(db,pending.order_id).balance,-100000);assert.equal(sql(db,"SELECT count(*) FROM payment_transactions WHERE kind='refund';"),'0');
+ const picked=book(db);intake(db,picked.order_id);
+ assert.throws(()=>command(db,picked.order_id,'cancel',{reason:'Synthetic cancellation after intake'}),/RETURN_PLAN_REQUIRED/);
+ command(db,picked.order_id,'cancel',{reason:'Synthetic cancellation after intake',return_plan:'Hold bags pending explicit customer return arrangement'});
+ assert.equal(sql(db,`SELECT count(*) FROM order_issues WHERE order_id='${picked.order_id}' AND blocking AND state='open';`),'1');
+ assert.equal(sql(db,`SELECT custody_state FROM laundry_bags WHERE order_id='${picked.order_id}';`),'received');
+ const done=ready(db,ids.a);assert.throws(()=>command(db,done.order_id,'cancel',{reason:'No backwards cancellation'}),/INVALID_TRANSITION/);
+ command(db,done.order_id,'request',{type:'cancel',message:'Synthetic request after processing'},ids.a);
+ assert.equal(sql(db,`SELECT status FROM orders WHERE id='${done.order_id}';`),'ready');
+ command(db,done.order_id,'deliver_collect',collectData(db,done.order_id));
+ command(db,done.order_id,'request',{type:'complaint',message:'Synthetic request after delivery'},ids.a);
+ assert.equal(sql(db,`SELECT count(*) FROM order_requests WHERE order_id='${done.order_id}';`),'2');
+ assert.equal(sql(db,`SELECT status FROM orders WHERE id='${done.order_id}';`),'delivered');
+});
+test('P05_END_TO_END — v1 approval to QC and courier cash; wrong customer denied',()=>{
+ const {db}=fixture();const r=book(db,payload(),randomUUID(),ids.a);assign(db,r.order_id);intake(db,r.order_id);
+ const actual=lines(db,r.order_id).map((i,n)=>({...i,quantity:n===0?3:i.quantity}));
+ command(db,r.order_id,'issue_quote',{items:actual},ids.staff);approve(db,r.order_id,ids.a);command(db,r.order_id,'measure',{items:actual},ids.staff);command(db,r.order_id,'start_work',{},ids.staff);command(db,r.order_id,'qc',reconcile(db,r.order_id),ids.staff);
+ assert.throws(()=>command(db,r.order_id,'deliver_collect',collectData(db,r.order_id,{amount:155000}),ids.b),/FORBIDDEN/);
+ command(db,r.order_id,'deliver_collect',collectData(db,r.order_id,{amount:155000}),ids.staff);
+ assert.equal(money(db,r.order_id).status,'paid');
+ assert.equal(sql(db,`SELECT string_agg(status::text,',' ORDER BY id) FROM order_status_history WHERE order_id='${r.order_id}';`),'pending,picked_up,processing,ready,delivered');
+});

@@ -38,6 +38,9 @@ export default async function AdminOrder({
     const result = await auth.rpc("demo_order_detail", {p_order:id});
     if (result.error || !result.data?.order) throw new Error("Chưa tải được quy trình demo. Hãy thử lại.");
     workspace = result.data as DemoWorkspaceData;
+    const payment = await auth.rpc("demo_payment_summary",{p_order:id});
+    if(payment.error || !payment.data) throw new Error("Chưa tải được sổ tiền demo.");
+    workspace.money = payment.data;
   }
   return (
     <div className="container page-space">

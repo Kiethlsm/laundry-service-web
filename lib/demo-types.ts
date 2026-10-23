@@ -6,4 +6,5 @@ export type DemoWorkspaceData = {
  quotes:DemoQuote[];bags:DemoBag[];settlements:{id:string;version:number;total:number;reason:string;created_at:string}[];
  charges:{id:string;signed_amount:number;reason:string}[];issues:{id:string;type:string;state:string;blocking:boolean;remedy:string|null}[];
  custody:{id:string;kind:string;bag_id:string|null;flagged_item_id:string|null;replaced_tag_id:string|null;created_at:string}[];
+ money?:{settlement_total:number|null;net_received:number;balance:number|null;status:string;entries:{id:string;kind:string;amount:number;signed_effect:number;method:string;original_id:string|null;effective_at:string;correction_reason:string|null}[]};
 };

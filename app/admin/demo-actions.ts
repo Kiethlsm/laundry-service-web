@@ -4,7 +4,7 @@ import { requireAdmin } from "@/lib/admin";
 import { authClient } from "@/lib/supabase-server";
 export type DemoActionState = {error:string;success?:string};
 const uuid=/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
-const allowed=new Set(['intake','measure','issue_quote','accept_quote','phone_note','quote_state','start_work','qc','incident','resolve_issue','retag','waive','charge']);
+const allowed=new Set(['intake','measure','issue_quote','accept_quote','phone_note','quote_state','start_work','qc','incident','resolve_issue','retag','waive','charge','receipt','refund','reverse','deliver_collect','cancel']);
 const errorText:Record<string,string>={
  QUOTE_REQUIRED:"Cân nặng, số món hoặc phí đã ngoài phạm vi đồng ý. Hãy phát hành báo giá mới.",
  QUOTE_SUPERSEDED:"Báo giá đã được thay thế. Tải lại và xác nhận đúng phiên bản hiện tại.",
@@ -15,6 +15,9 @@ const errorText:Record<string,string>={
  EVIDENCE_REQUIRED:"Cần bằng chứng khách gửi được ghi rõ là mô phỏng.",
  RECONCILIATION_MISSING_BAG:"Chưa đối chiếu đủ túi đồ.",RECONCILIATION_MISSING_ITEM:"Chưa đối chiếu đủ món được gắn nhãn riêng.",
  SETTLEMENT_REQUIRED:"Hãy ghi cân thực tế cho báo giá đã được đồng ý.",FORBIDDEN:"Tài khoản không có quyền thực hiện thao tác này.",
+ CASH_MISMATCH:"Tiền mặt giữ lại phải đúng số còn phải thu; không giao khi thiếu hoặc thừa tiền.",REFUND_DUE:"Cần hoàn phần tiền thừa trước khi bàn giao.",
+ REFUND_EXCEEDS_AVAILABLE:"Khoản hoàn vượt số tiền thực nhận còn có thể hoàn.",ALREADY_REVERSED:"Bút toán này đã có một bút toán đảo.",
+ INVALID_REVERSAL:"Chỉ đảo một lần cho khoản thu/hoàn gốc, không đảo bút toán đảo.",RETURN_PLAN_REQUIRED:"Đơn đã nhận đồ cần phương án trả lại túi rõ ràng.",
 };
 export async function performDemoAction(_state:DemoActionState,form:FormData):Promise<DemoActionState>{
  await requireAdmin();
@@ -33,8 +36,15 @@ export async function performDemoAction(_state:DemoActionState,form:FormData):Pr
   case 'qc':data={bags:form.getAll('bag_id'),items:form.getAll('flagged_id')};break;
   case 'incident':data={message:text('message'),blocking:form.get('blocking')==='on'};break;
   case 'resolve_issue':data={issue_id:text('issue_id'),reason:text('reason'),simulated_customer_message:text('customer_message')};break;
-  case 'retag':case 'waive':data={kind:text('kind'),target_id:text('target_id'),tag:text('tag'),reason:text('reason'),issue_id:text('issue_id')};break;
+  case 'retag':case 'waive':{
+   const [kind,target]=text('target_id').split(':');
+   data={kind:target?kind:text('kind'),target_id:target??text('target_id'),tag:text('tag'),reason:text('reason'),issue_id:text('issue_id')};break;
+  }
   case 'charge':data={amount:Number(form.get('amount')),reason:text('reason'),simulated_customer_message:text('customer_message')};break;
+  case 'receipt':case 'refund':data={amount:Number(form.get('amount')),method:text('method'),...(action==='refund'?{original_id:text('original_id'),reason:text('reason')}:{})};break;
+  case 'reverse':data={original_id:text('original_id'),reason:text('reason')};break;
+  case 'deliver_collect':data={bags:form.getAll('bag_id'),items:form.getAll('flagged_id'),amount:Number(form.get('amount')),method:'cash',recipient_evidence:text('recipient_evidence')};break;
+  case 'cancel':data={reason:text('reason'),return_plan:text('return_plan')};break;
  }
  try{
   const auth=await authClient();const {error}=await auth.rpc('order_command',{p_order:order,p_revision:revision,p_key:key,p_action:action,p_data:data});

@@ -1,0 +1,27 @@
+✖ P05_LEDGER_INVARIANTS — reversal signs, restored refund availability and immutable entries (3817.5957ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3899.588
+
+✖ failing tests:
+
+test at tests\domain\phase05.test.mjs:41:1
+✖ P05_LEDGER_INVARIANTS — reversal signs, restored refund availability and immutable entries (3817.5957ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/phase05.test.mjs:53:9)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.start (node:internal/test_runner/test:944:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /check constraint|REASON_REQUIRED/,
+    operator: 'throws',
+    diff: 'simple'
+  }

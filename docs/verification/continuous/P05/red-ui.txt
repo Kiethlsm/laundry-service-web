@@ -1,0 +1,26 @@
+✖ P05_LEDGER_UI — immutable history/derived balance, receipt references and handover checklist (0.6059ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 308.971
+
+✖ failing tests:
+
+test at tests\domain\ledger-ui.test.mjs:3:1
+✖ P05_LEDGER_UI — immutable history/derived balance, receipt references and handover checklist (0.6059ms)
+  Error: ENOENT: no such file or directory, open 'C:\Users\Kieth\Documents\Juinior\components\demo-money.tsx'
+      at Object.readFileSync (node:fs:440:20)
+      at TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/domain/ledger-ui.test.mjs:4:60)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.start (node:internal/test_runner/test:944:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17) {
+    errno: -4058,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: 'C:\\Users\\Kieth\\Documents\\Juinior\\components\\demo-money.tsx'
+  }
