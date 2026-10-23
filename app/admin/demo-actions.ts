@@ -18,6 +18,7 @@ const errorText:Record<string,string>={
  CASH_MISMATCH:"Tiền mặt giữ lại phải đúng số còn phải thu; không giao khi thiếu hoặc thừa tiền.",REFUND_DUE:"Cần hoàn phần tiền thừa trước khi bàn giao.",
  REFUND_EXCEEDS_AVAILABLE:"Khoản hoàn vượt số tiền thực nhận còn có thể hoàn.",ALREADY_REVERSED:"Bút toán này đã có một bút toán đảo.",
  INVALID_REVERSAL:"Chỉ đảo một lần cho khoản thu/hoàn gốc, không đảo bút toán đảo.",RETURN_PLAN_REQUIRED:"Đơn đã nhận đồ cần phương án trả lại túi rõ ràng.",
+ WORK_SCOPE_REQUIRED:"Hãy bắt đầu phần việc bổ sung đã đồng ý rồi kiểm tra lại chất lượng.",QC_REQUIRED:"Cần kiểm tra chất lượng cho đúng phiên bản báo giá hiện tại.",
 };
 export async function performDemoAction(_state:DemoActionState,form:FormData):Promise<DemoActionState>{
  await requireAdmin();
@@ -48,8 +49,11 @@ export async function performDemoAction(_state:DemoActionState,form:FormData):Pr
  }
  try{
   const auth=await authClient();const {error}=await auth.rpc('order_command',{p_order:order,p_revision:revision,p_key:key,p_action:action,p_data:data});
-  if(error)return {error:errorText[error.message]??"Chưa hoàn tất thao tác. Kiểm tra dữ liệu và tải lại đơn trước khi thử lại."};
- }catch{return {error:"Mất kết nối. Giữ nguyên thao tác và thử lại; không đánh dấu hoàn tất khi chưa có xác nhận."};}
+  if(error){
+   if(!errorText[error.message])console.error(JSON.stringify({event:'demo_rpc_failed',rpc:'order_command',code:'DB_ERROR',operation_key:key,action}));
+   return {error:errorText[error.message]??"Chưa hoàn tất thao tác. Kiểm tra dữ liệu và tải lại đơn trước khi thử lại."};
+  }
+ }catch{console.error(JSON.stringify({event:'demo_rpc_failed',rpc:'order_command',code:'TRANSPORT',operation_key:key,action}));return {error:"Mất kết nối. Giữ nguyên thao tác và thử lại; không đánh dấu hoàn tất khi chưa có xác nhận."};}
  revalidatePath('/admin');revalidatePath('/admin/orders/'+order);
  return {error:'',success:'Đã lưu thao tác demo.'};
 }
