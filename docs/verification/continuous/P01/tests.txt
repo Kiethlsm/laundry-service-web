@@ -1,0 +1,61 @@
+Command: node scripts/test-gate.mjs P01
+Exit: 0
+TAP version 13
+# Subtest: P01_MIGRATE_EXISTING — preserve legacy amounts/history; consent remains unknown
+ok 1 - P01_MIGRATE_EXISTING — preserve legacy amounts/history; consent remains unknown
+  ---
+  duration_ms: 1382.4419
+  type: 'test'
+  ...
+# Subtest: P01_RLS_MATRIX — ownership, assignment, projections and unknown actions fail closed
+ok 2 - P01_RLS_MATRIX — ownership, assignment, projections and unknown actions fail closed
+  ---
+  duration_ms: 3072.0266
+  type: 'test'
+  ...
+# Subtest: P01_SERVICE_ROLE_GUARD — forged actors and anonymous privileged RPCs are denied
+ok 3 - P01_SERVICE_ROLE_GUARD — forged actors and anonymous privileged RPCs are denied
+  ---
+  duration_ms: 2228.1907
+  type: 'test'
+  ...
+# Subtest: P01_REVOKE_AND_LAST_ADMIN — immediate revocation, revision/retry integrity and serialized admin race
+ok 4 - P01_REVOKE_AND_LAST_ADMIN — immediate revocation, revision/retry integrity and serialized admin race
+  ---
+  duration_ms: 2745.0119
+  type: 'test'
+  ...
+# Subtest: P01_CI_REQUIRED — a failed, missing or skipped mandatory ID cannot pass
+ok 5 - P01_CI_REQUIRED — a failed, missing or skipped mandatory ID cannot pass
+  ---
+  duration_ms: 1.8418
+  type: 'test'
+  ...
+# Subtest: P01_HOSTED_DEFAULTS — postgres owner, permissive direct defaults, explicit ACLs and fixed definer paths
+ok 6 - P01_HOSTED_DEFAULTS — postgres owner, permissive direct defaults, explicit ACLs and fixed definer paths
+  ---
+  duration_ms: 1794.5967
+  type: 'test'
+  ...
+# AUTHORIZATION_MATRIX {"covered":170,"total":170,"extra_unknown_null":20,"source":"v1.2 single access matrix; permission checks, not transition preconditions"}
+# Subtest: P01_AUTHORIZATION_MATRIX — 170 explicit role/action cells plus 20 null/unknown denials
+ok 7 - P01_AUTHORIZATION_MATRIX — 170 explicit role/action cells plus 20 null/unknown denials
+  ---
+  duration_ms: 5649.0977
+  type: 'test'
+  ...
+# Subtest: P01_SERVER_SESSION_GUARD — real admin guard checks live session capability on every invocation
+ok 8 - P01_SERVER_SESSION_GUARD — real admin guard checks live session capability on every invocation
+  ---
+  duration_ms: 63.6864
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 17473.1945
