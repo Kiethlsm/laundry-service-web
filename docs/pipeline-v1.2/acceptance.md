@@ -1,10 +1,10 @@
 # v1.2 - portfolio acceptance only
 
-Only Phase 00 commands/regression proof are authorized now. Test harness, migrations and CI below are future Phase 01 work. [Inactive commercial requirements](appendix-real-shop.md) do not contribute phase checkboxes.
+Phase 01 access foundation is now authorized locally, after Phase 00. Later domain slices and every hosted change require their own scope. [Inactive commercial requirements](appendix-real-shop.md) do not contribute phase checkboxes.
 
 ## Planned runner and manifest
 
-Phase 00 uses existing npm run lint, npx tsc --noEmit, npm run build and a dependency-free focused validation check. Phase 01 adds npm run test:gate -- PNN with an explicit manifest mapping required test IDs to Vitest/Playwright files. Run only files listed for that phase; P01 may be integration-only, P10 may use both. Missing/empty/skipped required IDs fail. No requirement that every phase creates both file types.
+Phase 00 uses existing npm run lint, npx tsc --noEmit, npm run build and a dependency-free focused validation check. Phase 01 implements npm run test:gate -- P01 with an explicit required-ID manifest and Node's built-in test runner; it needs no new dependencies. Run only listed files; P01 is integration-only with no empty E2E file. Missing/empty/skipped required IDs fail. Future browser tests need a separately reviewed runner choice; no package is assumed installed.
 
 Minimal manifest includes phases 01/02(core)/03/05/09/10. Phases 04/06/07/08 and 02's editor/slot extension are deferred until separately chosen. Every test row has a Rules column referring to a real contract ID; every contract ID has a forward test link in consistency-audit.md. A planned mapping is not a passing test result.
 

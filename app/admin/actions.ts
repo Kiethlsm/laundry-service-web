@@ -1,7 +1,7 @@
 "use server";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
-import { authClient, isConfigured, serviceClient } from "@/lib/supabase-server";
+import { authClient, isConfigured } from "@/lib/supabase-server";
 import { requireAdmin } from "@/lib/admin";
 import { STATUS_LABEL, nextStatuses, type OrderStatus } from "@/lib/format";
 export type ActionState = { error: string; success?: string };
@@ -26,12 +26,8 @@ export async function login(
     });
     if (error || !data.user)
       return { error: "Email hoặc mật khẩu chưa đúng. Vui lòng kiểm tra lại." };
-    const { data: profile, error: profileError } = await serviceClient()
-      .from("profiles")
-      .select("role")
-      .eq("id", data.user.id)
-      .single();
-    if (profileError || profile?.role !== "admin") {
+    const { data: role, error: profileError } = await auth.rpc("current_profile_role");
+    if (profileError || role !== "admin") {
       await auth.auth.signOut();
       return { error: "Tài khoản này chưa được cấp quyền quản trị." };
     }

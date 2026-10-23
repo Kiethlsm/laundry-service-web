@@ -2,7 +2,7 @@
 
 **Decision recorded: portfolio only - Vercel Hobby + Supabase Free - 23 October 2026.**
 
-Only Phase 00 is authorized for implementation in this turn. Everything after 00 remains a proposal. This index supersedes v1.1's parallel tracks; the [real-shop appendix](docs/pipeline-v1.2/appendix-real-shop.md) is inactive reference, outside every phase checklist.
+Phase 00 is accepted; Phase 01 is authorized locally on a fresh branch from master. Later domain slices remain planned and hosted changes need separate approval. The parked booking-validation branch is excluded. See the [execution route](docs/pipeline-v1.2/minimal-demo-route.md). This index supersedes v1.1's parallel tracks; the [real-shop appendix](docs/pipeline-v1.2/appendix-real-shop.md) is inactive reference, outside every phase checklist.
 
 ## Minimal demo: 8-12 focused person-days
 
@@ -46,4 +46,4 @@ Live SMS/SMTP invites, continuously reliable dispatch, unattended reconciliation
 
 [Contracts/transitions](docs/pipeline-v1.2/contracts.md) - [core/extension schema + permissions](docs/pipeline-v1.2/schema-and-access.md) - [plan/provider findings](docs/pipeline-v1.2/infrastructure.md) - [acceptance](docs/pipeline-v1.2/acceptance.md) - [cross-file audit + rule/test mapping](docs/pipeline-v1.2/consistency-audit.md) - [review disposition](docs/pipeline-v1.2/review-disposition.md).
 
-All future test paths are planned, not already implemented. Only checks with actual output may be ticked; [Phase 00 evidence](docs/verification/phase-00/report.md) distinguishes checks run from deferred UI/Auth checks. No later phase, migration, environment change, dependency, deployment or push is authorized by the Phase 00 approval.
+Phase 01's local test paths are implemented; later phase paths remain planned. Only checks with actual output may be ticked; [Phase 00 evidence](docs/verification/phase-00/report.md) and [Phase 01 evidence](docs/verification/phase-01/REPORT.md) distinguish local results from unrun GitHub CI/browser checks. No hosted change, deployment or push is authorized by this local slice.

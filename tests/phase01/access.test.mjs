@@ -27,6 +27,7 @@ test('P01_RLS_MATRIX — ownership, assignment, projections and unknown actions 
  assert.equal(value(db,ids.staff,`SELECT can_order_action('${ids.staff}','${orders.a}','refund')`),'f');
  assert.equal(value(db,ids.staff,`SELECT can_order_action('${ids.staff}','${orders.a}','issue_quote')`),'t');
  assert.equal(value(db,ids.admin,`SELECT can_order_action('${ids.admin}','${orders.a}','made_up_action')`),'f');
+ assert.equal(value(db,ids.admin,`SELECT can_order_action('${ids.admin}','${orders.a}',NULL)`),'f');
  assert.throws(()=>sql(db,as(ids.staff,'SELECT customer_phone,note FROM orders')),/permission denied/);
  assert.equal(JSON.parse(value(db,ids.a,`SELECT order_contact('${orders.a}')`)).pickup_address,'Synthetic address');
  assert.throws(()=>sql(db,as(ids.b,`SELECT order_contact('${orders.a}')`)),/FORBIDDEN/);
@@ -34,6 +35,8 @@ test('P01_RLS_MATRIX — ownership, assignment, projections and unknown actions 
  assert.throws(()=>sql(db,as(ids.a,`UPDATE profiles SET role='admin' WHERE id='${ids.a}'`)),/permission denied/);
  assert.equal(value(db,ids.a,'SELECT count(*) FROM audit_events'),'0');
  assert.throws(()=>sql(db,as(ids.a,'SELECT * FROM idempotency_keys')),/permission denied/);
+ assert.equal(sql(db,`SELECT bool_and(NOT has_function_privilege('anon',p.oid,'EXECUTE') AND NOT EXISTS(SELECT FROM aclexplode(p.proacl) a WHERE a.grantee=0)) FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace WHERE n.nspname IN ('public','app_private') AND p.proname IN ('manage_profile','current_profile_role','can_order_action','order_contact','actor_can','append_only','protect_last_admin','log_order_status','create_guest_order','update_admin_order');`),'t');
+ assert.throws(()=>sql(db,as(ids.a,`SELECT app_private.actor_can('${ids.admin}','${orders.a}','refund')`)),/permission denied/);
 });
 
 test('P01_SERVICE_ROLE_GUARD — forged actors and anonymous privileged RPCs are denied',()=>{
@@ -45,6 +48,10 @@ test('P01_SERVICE_ROLE_GUARD — forged actors and anonymous privileged RPCs are
  assert.throws(()=>sql(db,as(null,`SELECT create_guest_order('ZZ TEST','0000000000','Synthetic address',now()+interval '1 day','cash',NULL,'[{"service_id":1,"quantity":1}]')`,'anon')),/permission denied/);
  assert.equal(value(db,ids.admin,'SELECT current_profile_role()'),'admin');
  assert.equal(value(db,ids.a,'SELECT current_profile_role()'),'customer');
+ sql(db,`BEGIN;SET LOCAL ROLE service_role;SELECT update_admin_order('${orders.a}','pending','picked_up','${ids.admin}');COMMIT;`);
+ assert.equal(sql(db,`SELECT changed_by FROM order_status_history WHERE order_id='${orders.a}' AND status='picked_up';`),ids.admin);
+ sql(db,`UPDATE profiles SET is_active=false WHERE id='${ids.admin2}';`);
+ assert.throws(()=>sql(db,as(null,`SELECT update_admin_order('${orders.b}','pending','picked_up','${ids.admin2}')`,'service_role')),/FORBIDDEN/);
 });
 
 test('P01_REVOKE_AND_LAST_ADMIN — immediate revocation, revision/retry integrity and serialized admin race',async()=>{

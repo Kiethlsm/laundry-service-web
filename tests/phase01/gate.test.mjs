@@ -5,6 +5,7 @@ test('P01_CI_REQUIRED — a failed, missing or skipped mandatory ID cannot pass'
  const {validateGate,required}=await import('../../scripts/gate-manifest.mjs');
  const ok=required.map((id,i)=>`ok ${i+1} - ${id} — proof\n`).join('');
  assert.equal(validateGate(ok,0),true);
+ assert.equal(validateGate(ok+'# skipped 0\n# todo 0\n',0),true);
  assert.equal(validateGate(ok,1),false);
  assert.equal(validateGate('',0),false);
  for(const id of required) {

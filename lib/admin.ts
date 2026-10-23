@@ -10,12 +10,8 @@ export async function requireAdmin() {
   } = await auth.auth.getUser();
   if (error || !user) redirect("/admin/login");
   const db = serviceClient();
-  const { data: profile, error: profileError } = await db
-    .from("profiles")
-    .select("role")
-    .eq("id", user.id)
-    .single();
-  if (profileError || profile?.role !== "admin")
+  const { data: role, error: profileError } = await auth.rpc("current_profile_role");
+  if (profileError || role !== "admin")
     redirect("/admin/login?reason=role");
   return { db, user };
 }
