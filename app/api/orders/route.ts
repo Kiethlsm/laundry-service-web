@@ -1,4 +1,4 @@
-import { isConfigured, serviceClient } from "@/lib/supabase-server";
+import { authClient, isConfigured, serviceClient } from "@/lib/supabase-server";
 const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 const messages: Record<string, [number, string]> = {
   IDEMPOTENCY_CONFLICT: [409, "Lần gửi này khác nội dung đã lưu. Hãy tải lại để đặt lịch mới."],
@@ -27,7 +27,21 @@ export async function POST(request: Request) {
   // Contact does not establish ownership; client rates/actor/owner are ignored.
   const payload = { name: body.name, phone: body.phone, address: body.address, pickup: new Date(timestamp).toISOString(), payment: body.payment, note: body.note ?? "", consent: body.consent, tolerance_consent: body.tolerance_consent, items: body.items };
   try {
-    const { data, error } = await serviceClient().rpc("book_demo_order", { p_payload: payload, p_key: key, p_customer_id: null });
+    let customerId: string | null = null;
+    if (request.headers.has("cookie")) {
+      const hasAuthCookie = /(?:^|;\s*)sb-[a-z0-9_-]+-auth-token(?:\.\d+)?=/i.test(request.headers.get("cookie") || "");
+      const auth = await authClient();
+      const session = await auth.auth.getUser();
+      if ((!session.data.user && hasAuthCookie) || (session.error && session.error.name !== "AuthSessionMissingError"))
+        return Response.json({ error: "Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại trước khi đặt lịch." }, { status: 401 });
+      if (session.data.user) {
+        const profile = await auth.rpc("current_profile_role");
+        if (profile.error || !["customer", "admin"].includes(profile.data))
+          return Response.json({ error: "Chưa xác nhận được tài khoản. Vui lòng đăng nhập lại." }, { status: 403 });
+        if (profile.data === "customer") customerId = session.data.user.id;
+      }
+    }
+    const { data, error } = await serviceClient().rpc("book_demo_order", { p_payload: payload, p_key: key, p_customer_id: customerId });
     if (error) {
       const known = messages[error.message];
       if (known) return Response.json({ code: error.message, error: known[1] }, { status: known[0] });

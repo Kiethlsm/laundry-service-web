@@ -12,19 +12,19 @@ Next.js App Router, TypeScript, Tailwind CSS, Supabase Postgres/Auth, Vercel. Fi
 
 ## Users
 
-Vietnamese-speaking laundry customers booking pickup without an account; an authenticated shop administrator managing orders. Recruiters reviewing a CV demo.
+Vietnamese-speaking laundry customers, and the owner and their mother running one shop without employees. Customers can book as guests; Google sign-in and an account area are the first local slice toward real usage. Two separate admin accounts share shop-management capabilities.
 
 ## Product Purpose
 
-A small, complete laundry-service demo: select services, book pickup, receive an order code, track with code and phone, and manage progress as admin.
+A small family-shop service: book laundry, agree the measured price, follow progress, and pay cash or manually reconciled bank transfer. The deployed baseline remains a portfolio demo; real-operation features are released only after their own tests and approval. Current scope is docs/SMALL_SHOP_SCOPE.md; the v1.2 portfolio plan is historical evidence.
 
 ## Operating Context
 
-Mobile-first public site. Admin uses a searchable order list and sequential status changes. Six service categories and seed prices are defined in PIPELINE.md.
+Mobile-first public site. Admin's target is four groups of orders: new, in progress, ready to return, completed. No staffing, shifts, payroll or assignments UI. Preserve the existing server transitions and immutable money/quote contracts behind simple screens. Six service categories and seed prices originated in PIPELINE.md.
 
 ## Capabilities and Constraints
 
-Follow PIPELINE.md. No online payments, realtime, multilingual support, automated tests, Docker, state library, or heavy ORM. Server owns prices. Service-role secrets stay server-only. External Supabase setup, admin provisioning and Vercel deployment require account access that is not currently provided.
+Reuse Next.js, Supabase and the existing packages. Native Node tests, local Docker PostgreSQL 17.11, the authorization matrix and hosted-defaults checks are required gates. Server owns prices and order identity. Service-role secrets stay server-only. Keep production unchanged during local slices; hosted/Auth configuration, migrations, deploys and paid services require scoped approval. Google is the selected customer sign-in; phone is a contact field, SMS OTP is deferred. Existing payment/evidence flows remain demo/mock until explicitly converted and verified.
 
 ## Brand Commitments
 
@@ -32,7 +32,7 @@ User confirmed the fictional name Sạch Sạch and delegated design choices. Vi
 
 ## Evidence on Hand
 
-PIPELINE.md is the specification and source for all prices, services and status rules. No real shop, testimonials, operational guarantees or photographs supplied.
+The owner confirmed a real shop operated by two family members and supplied a Techcombank QR. Public shop address, opening hours and contact copy remain illustrative until confirmed; do not invent facts, testimonials or operational guarantees. Historical deployment evidence is in docs/verification/rollout. The local Google slice and its real-provider setup requirements are documented separately.
 
 ## Product Principles
 

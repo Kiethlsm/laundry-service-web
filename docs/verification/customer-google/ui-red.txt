@@ -1,0 +1,43 @@
+TAP version 13
+# Subtest: S01_CUSTOMER_BROWSER — mobile/desktop Google entry, guest link and protected account use local transport only
+not ok 1 - S01_CUSTOMER_BROWSER — mobile/desktop Google entry, guest link and protected account use local transport only
+  ---
+  duration_ms: 85065.0515
+  type: 'test'
+  location: 'C:\\Users\\Kieth\\Documents\\Juinior\\tests\\customer\\browser.test.mjs:2:1'
+  failureType: 'testCodeFailure'
+  error: 'Local test deadline'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    until (file:///C:/Users/Kieth/Documents/Juinior/tests/browser/cdp.mjs:6:183)
+    async TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/customer/browser.test.mjs:3:173)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: S01_CUSTOMER_UI — Google is primary, guest stays available, provider errors hidden and own order/empty states explicit
+not ok 2 - S01_CUSTOMER_UI — Google is primary, guest stays available, provider errors hidden and own order/empty states explicit
+  ---
+  duration_ms: 1.0061
+  type: 'test'
+  location: 'C:\\Users\\Kieth\\Documents\\Juinior\\tests\\customer\\ui.test.mjs:3:1'
+  failureType: 'testCodeFailure'
+  error: "ENOENT: no such file or directory, open 'C:\\Users\\Kieth\\Documents\\Juinior\\app\\dang-nhap\\page.tsx'"
+  code: 'ENOENT'
+  stack: |-
+    Object.readFileSync (node:fs:440:20)
+    load (file:///C:/Users/Kieth/Documents/Juinior/tests/customer/ui.test.mjs:2:88)
+    TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/customer/ui.test.mjs:5:24)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 0
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 85615.217

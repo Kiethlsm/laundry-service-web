@@ -1,0 +1,62 @@
+TAP version 13
+# Subtest: S01_GOOGLE_START — PKCE authorization uses Google, fixed callback, basic scopes and trusted origin
+ok 1 - S01_GOOGLE_START — PKCE authorization uses Google, fixed callback, basic scopes and trusted origin
+  ---
+  duration_ms: 81.355
+  type: 'test'
+  ...
+# Subtest: S01_GOOGLE_CALLBACK — exchange then verified user then bound profile; redirects cannot be supplied by caller
+ok 2 - S01_GOOGLE_CALLBACK — exchange then verified user then bound profile; redirects cannot be supplied by caller
+  ---
+  duration_ms: 16.5265
+  type: 'test'
+  ...
+# Subtest: S01_GOOGLE_DENIAL — canceled/expired/unverified/disabled never provision or expose provider details
+ok 3 - S01_GOOGLE_DENIAL — canceled/expired/unverified/disabled never provision or expose provider details
+  ---
+  duration_ms: 13.1104
+  type: 'test'
+  ...
+# Subtest: S01_BOOKING_OWNER — only server-verified customer id is bound; guest preserved; broken session creates no guest order
+ok 4 - S01_BOOKING_OWNER — only server-verified customer id is bound; guest preserved; broken session creates no guest order
+  ---
+  duration_ms: 27.075
+  type: 'test'
+  ...
+# Subtest: S01_ORIGIN_POLICY — production and this project previews only; forwarded host and foreign origins have no authority
+ok 5 - S01_ORIGIN_POLICY — production and this project previews only; forwarded host and foreign origins have no authority
+  ---
+  duration_ms: 4.9248
+  type: 'test'
+  ...
+# Subtest: S01_SESSION_BOUNDARY — a broken Supabase cookie cannot silently create a guest order; unrelated cookies permit guests
+not ok 6 - S01_SESSION_BOUNDARY — a broken Supabase cookie cannot silently create a guest order; unrelated cookies permit guests
+  ---
+  duration_ms: 17.2378
+  type: 'test'
+  location: 'C:\\Users\\Kieth\\Documents\\Juinior\\tests\\customer\\google.test.mjs:34:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    201 !== 401
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 401
+  actual: 201
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/customer/google.test.mjs:38:132)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 5
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 551.1025

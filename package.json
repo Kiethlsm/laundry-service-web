@@ -12,6 +12,7 @@
     "test": "node scripts/test-gate.mjs",
     "test:gate": "node scripts/test-gate.mjs",
     "test:qr": "node --test tests/browser/qr.test.mjs",
+    "test:customer": "node --test --test-reporter=tap --test-concurrency=1 tests/customer/google.test.mjs tests/customer/database.test.mjs tests/customer/ui.test.mjs tests/customer/browser.test.mjs",
     "check:phase": "node scripts/full-gate.mjs"
   },
   "dependencies": {

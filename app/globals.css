@@ -1840,6 +1840,14 @@ td:nth-child(3) {
     font-size: 11px;
   }
 }
+.customer-login .full-button { justify-content: center; gap: 18px; margin-block: 28px 16px; }
+.customer-login-links { display: grid; gap: 14px; padding-block: 22px; border-block: 1px solid var(--line); }
+.customer-admin-link { display: inline-block; margin-top: 24px; }
+.customer-account { max-width: 1000px; }
+.customer-account-email { overflow-wrap: anywhere; }
+.customer-account-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; margin-block: 28px 48px; }
+.customer-account h2 { margin-bottom: 16px; }
+.customer-account h1 { overflow-wrap: anywhere; }
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

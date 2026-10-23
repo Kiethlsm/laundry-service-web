@@ -1,0 +1,68 @@
+
+> laundry-service-web@0.1.0 test:customer
+> node --test --test-reporter=tap --test-concurrency=1 tests/customer/google.test.mjs tests/customer/database.test.mjs tests/customer/ui.test.mjs tests/customer/browser.test.mjs
+
+TAP version 13
+# Subtest: S01_CUSTOMER_BROWSER — mobile/desktop Google entry, guest link and protected account use local transport only
+ok 1 - S01_CUSTOMER_BROWSER — mobile/desktop Google entry, guest link and protected account use local transport only
+  ---
+  duration_ms: 6667.9832
+  type: 'test'
+  ...
+# Subtest: S01_PROFILE_PROVISION — verified identity creates customer only; existing admin preserved; disabled/anon denied
+ok 2 - S01_PROFILE_PROVISION — verified identity creates customer only; existing admin preserved; disabled/anon denied
+  ---
+  duration_ms: 3263.6065
+  type: 'test'
+  ...
+# Subtest: S01_CUSTOMER_ISOLATION — dashboard has own orders only, never attaches same-phone guest; disabled cannot read
+ok 3 - S01_CUSTOMER_ISOLATION — dashboard has own orders only, never attaches same-phone guest; disabled cannot read
+  ---
+  duration_ms: 2990.564
+  type: 'test'
+  ...
+# Subtest: S01_GOOGLE_START — PKCE authorization uses Google, fixed callback, basic scopes and trusted origin
+ok 4 - S01_GOOGLE_START — PKCE authorization uses Google, fixed callback, basic scopes and trusted origin
+  ---
+  duration_ms: 83.6452
+  type: 'test'
+  ...
+# Subtest: S01_GOOGLE_CALLBACK — exchange then verified user then bound profile; redirects cannot be supplied by caller
+ok 5 - S01_GOOGLE_CALLBACK — exchange then verified user then bound profile; redirects cannot be supplied by caller
+  ---
+  duration_ms: 16.0832
+  type: 'test'
+  ...
+# Subtest: S01_GOOGLE_DENIAL — canceled/expired/unverified/disabled never provision or expose provider details
+ok 6 - S01_GOOGLE_DENIAL — canceled/expired/unverified/disabled never provision or expose provider details
+  ---
+  duration_ms: 13.6035
+  type: 'test'
+  ...
+# Subtest: S01_BOOKING_OWNER — only server-verified customer id is bound; guest preserved; broken session creates no guest order
+ok 7 - S01_BOOKING_OWNER — only server-verified customer id is bound; guest preserved; broken session creates no guest order
+  ---
+  duration_ms: 27.4916
+  type: 'test'
+  ...
+# Subtest: S01_ORIGIN_POLICY — production and this project previews only; forwarded host and foreign origins have no authority
+ok 8 - S01_ORIGIN_POLICY — production and this project previews only; forwarded host and foreign origins have no authority
+  ---
+  duration_ms: 5.0653
+  type: 'test'
+  ...
+# Subtest: S01_CUSTOMER_UI — Google is primary, guest stays available, provider errors hidden and own order/empty states explicit
+ok 9 - S01_CUSTOMER_UI — Google is primary, guest stays available, provider errors hidden and own order/empty states explicit
+  ---
+  duration_ms: 89.439
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 14137.6054

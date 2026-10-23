@@ -50,6 +50,7 @@ export function Header() {
             ["/bang-gia", "Bảng giá"],
             ["/dat-lich", "Đặt lịch"],
             ["/tra-cuu", "Tra cứu đơn"],
+            ["/tai-khoan", "Tài khoản"],
           ].map(([href, label]) => (
             <Link
               key={href}

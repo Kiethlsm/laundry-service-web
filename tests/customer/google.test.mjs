@@ -1,0 +1,40 @@
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import vm from 'node:vm';import ts from 'typescript';
+const verified={id:'10000000-0000-4000-8000-000000000005',email:'test@example.invalid',email_confirmed_at:'2026-01-01T00:00:00Z'};
+function load(file,mocks={},env={}){const exports={};vm.runInNewContext(ts.transpileModule(fs.readFileSync(file,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS}}).outputText,{exports,URL,Request,Response,console,process:{env:{NODE_ENV:'test',NEXT_PUBLIC_SUPABASE_URL:'https://test-project.supabase.co',...env}},require:n=>{if(n in mocks)return mocks[n];throw Error('Unexpected dependency '+n);}});return exports;}
+const origin=raw=>{const u=new URL(raw);return u.origin==='http://localhost:3000'?u.origin:null;};
+test('S01_GOOGLE_START — PKCE authorization uses Google, fixed callback, basic scopes and trusted origin',async()=>{
+ let params,calls=0;const route=load('app/auth/google/route.ts',{'@/lib/customer-auth':{customerOrigin:origin},'@/lib/supabase-server':{isConfigured:()=>true,authClient:async()=>({auth:{signInWithOAuth:async p=>{params=p;calls++;return {data:{url:'https://test-project.supabase.co/auth/v1/authorize?provider=google'},error:null};}}})}});
+ const r=await route.GET(new Request('http://localhost:3000/auth/google?next=https://evil.invalid'));assert.equal(r.status,303);assert.equal(r.headers.get('location'),'https://test-project.supabase.co/auth/v1/authorize?provider=google');assert.equal(r.headers.get('cache-control'),'no-store');assert.equal(params.provider,'google');assert.equal(params.options.redirectTo,'http://localhost:3000/auth/callback');assert.equal(params.options.scopes,'openid email profile');assert.equal(params.options.skipBrowserRedirect,true);assert.equal((await route.GET(new Request('https://evil.invalid/auth/google'))).status,400);assert.equal(calls,1);
+});
+test('S01_GOOGLE_CALLBACK — exchange then verified user then bound profile; redirects cannot be supplied by caller',async()=>{
+ const events=[];let role='customer';const auth={auth:{exchangeCodeForSession:async code=>{assert.equal(code,'synthetic-code');events.push('exchange');return {error:null};},getUser:async()=>{events.push('getUser');return {data:{user:verified},error:null};},signOut:async()=>({error:null})},rpc:async(name,args)=>{events.push('profile');assert.equal(name,'ensure_customer_profile');assert.equal(args,undefined);return {data:{role},error:null};}};
+ const route=load('app/auth/callback/route.ts',{'@/lib/customer-auth':{customerOrigin:origin},'@/lib/supabase-server':{isConfigured:()=>true,authClient:async()=>auth}});
+ const r=await route.GET(new Request('http://localhost:3000/auth/callback?code=synthetic-code&next=//evil.invalid&role=admin'));assert.equal(r.headers.get('location'),'http://localhost:3000/tai-khoan');assert.deepEqual(events,['exchange','getUser','profile']);role='admin';assert.equal((await route.GET(new Request('http://localhost:3000/auth/callback?code=synthetic-code'))).headers.get('location'),'http://localhost:3000/admin');
+});
+test('S01_GOOGLE_DENIAL — canceled/expired/unverified/disabled never provision or expose provider details',async()=>{
+ let exchanges=0,provisions=0;let user=verified,exchangeError=null,profileError=null;
+ const route=load('app/auth/callback/route.ts',{'@/lib/customer-auth':{customerOrigin:origin},'@/lib/supabase-server':{isConfigured:()=>true,authClient:async()=>({auth:{exchangeCodeForSession:async()=>{exchanges++;return {error:exchangeError};},getUser:async()=>({data:{user},error:null}),signOut:async()=>({error:null})},rpc:async()=>{provisions++;return {data:{role:'customer'},error:profileError};}})}});
+ const request=q=>new Request('http://localhost:3000/auth/callback?'+q);
+ assert.match((await route.GET(request('error=access_denied&error_description=PRIVATE_SECRET'))).headers.get('location'),/reason=failed/);assert.equal(exchanges,0);
+ exchangeError={message:'PRIVATE_SECRET token customer contact'};const fail=await route.GET(request('code=expired'));assert.doesNotMatch(fail.headers.get('location'),/PRIVATE_SECRET|token|customer/);assert.equal(provisions,0);
+ exchangeError=null;user={...verified,email_confirmed_at:null};await route.GET(request('code=unverified'));assert.equal(provisions,0);
+ user=verified;profileError={message:'FORBIDDEN'};assert.match((await route.GET(request('code=disabled'))).headers.get('location'),/reason=failed/);
+});
+test('S01_BOOKING_OWNER — only server-verified customer id is bound; guest preserved; broken session creates no guest order',async()=>{
+ let captured,calls=0,sessionError=null,role='customer';const auth={auth:{getUser:async()=>({data:{user:sessionError?null:verified},error:sessionError})},rpc:async()=>({data:role,error:null})};
+ const route=load('app/api/orders/route.ts',{'@/lib/supabase-server':{isConfigured:()=>true,authClient:async()=>auth,serviceClient:()=>({rpc:async(name,args)=>{captured=args;calls++;return {data:{code:'LD1001',total:50000,max_weight_total:57500,replayed:false},error:null};}})}});
+ const p={name:'ZZ TEST',phone:'0000000000',address:'Synthetic address',pickup:new Date(Date.now()+86400000).toISOString(),payment:'cash',consent:true,tolerance_consent:true,items:[{service_id:1,quantity:2}],customer_id:'forged'};
+ const req=(cookie=true)=>new Request('http://localhost:3000/api/orders',{method:'POST',headers:{'Content-Type':'application/json','Idempotency-Key':'90000000-0000-4000-8000-000000000001',...(cookie?{cookie:'synthetic-session=present'}:{})},body:JSON.stringify(p)});
+ assert.equal((await route.POST(req())).status,201);assert.equal(captured.p_customer_id,verified.id);assert.equal((await route.POST(req(false))).status,201);assert.equal(captured.p_customer_id,null);
+ sessionError={name:'AuthApiError',message:'PRIVATE_TOKEN'};const before=calls;assert.equal((await route.POST(req())).status,401);assert.equal(calls,before);sessionError=null;role='admin';assert.equal((await route.POST(req())).status,201);assert.equal(captured.p_customer_id,null);
+});
+test('S01_ORIGIN_POLICY — production and this project previews only; forwarded host and foreign origins have no authority',()=>{
+ const {customerOrigin}=load('lib/customer-auth.ts',{}, {NODE_ENV:'production'});assert.equal(customerOrigin('https://laundry-service-web.vercel.app/auth/callback'),'https://laundry-service-web.vercel.app');assert.equal(customerOrigin('https://laundry-service-web-git-feature-lance-423a.vercel.app/auth/google'),'https://laundry-service-web-git-feature-lance-423a.vercel.app');for(const u of ['https://evil.invalid/auth/callback','https://laundry-service-web.vercel.app.evil.invalid','http://localhost:3000/auth/google','https://evil-lance-423a.vercel.app'])assert.equal(customerOrigin(u),null);
+});
+test('S01_SESSION_BOUNDARY — a broken Supabase cookie cannot silently create a guest order; unrelated cookies permit guests',async()=>{
+ let writes=0;const route=load('app/api/orders/route.ts',{'@/lib/supabase-server':{isConfigured:()=>true,authClient:async()=>({auth:{getUser:async()=>({data:{user:null},error:{name:'AuthSessionMissingError'}})}}),serviceClient:()=>({rpc:async()=>{writes++;return {data:{code:'LD1001',total:50000,max_weight_total:57500,replayed:false},error:null};}})}});
+ const body={name:'ZZ TEST',phone:'0000000000',address:'Synthetic address',pickup:new Date(Date.now()+86400000).toISOString(),payment:'cash',consent:true,tolerance_consent:true,items:[{service_id:1,quantity:2}]};
+ const request=cookie=>new Request('http://localhost:3000/api/orders',{method:'POST',headers:{'Content-Type':'application/json','Idempotency-Key':'90000000-0000-4000-8000-000000000002',cookie},body:JSON.stringify(body)});
+ for(const cookie of ['sb-test-auth-token=corrupt','sb-test-auth-token.0=corrupt','other=1; sb-test-auth-token.12=corrupt'])assert.equal((await route.POST(request(cookie))).status,401);
+ assert.equal(writes,0);assert.equal((await route.POST(request('_vercel_jwt=synthetic'))).status,201);assert.equal(writes,1);
+});

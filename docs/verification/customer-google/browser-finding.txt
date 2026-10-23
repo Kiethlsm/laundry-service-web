@@ -1,0 +1,84 @@
+
+> laundry-service-web@0.1.0 test:customer
+> node --test --test-reporter=tap --test-concurrency=1 tests/customer/google.test.mjs tests/customer/database.test.mjs tests/customer/ui.test.mjs tests/customer/browser.test.mjs
+
+TAP version 13
+# Subtest: S01_CUSTOMER_BROWSER — mobile/desktop Google entry, guest link and protected account use local transport only
+not ok 1 - S01_CUSTOMER_BROWSER — mobile/desktop Google entry, guest link and protected account use local transport only
+  ---
+  duration_ms: 6585.744
+  type: 'test'
+  location: 'C:\\Users\\Kieth\\Documents\\Juinior\\tests\\customer\\browser.test.mjs:2:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/customer/browser.test.mjs:3:382)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: S01_PROFILE_PROVISION — verified identity creates customer only; existing admin preserved; disabled/anon denied
+ok 2 - S01_PROFILE_PROVISION — verified identity creates customer only; existing admin preserved; disabled/anon denied
+  ---
+  duration_ms: 3173.8198
+  type: 'test'
+  ...
+# Subtest: S01_CUSTOMER_ISOLATION — dashboard has own orders only, never attaches same-phone guest; disabled cannot read
+ok 3 - S01_CUSTOMER_ISOLATION — dashboard has own orders only, never attaches same-phone guest; disabled cannot read
+  ---
+  duration_ms: 2788.9183
+  type: 'test'
+  ...
+# Subtest: S01_GOOGLE_START — PKCE authorization uses Google, fixed callback, basic scopes and trusted origin
+ok 4 - S01_GOOGLE_START — PKCE authorization uses Google, fixed callback, basic scopes and trusted origin
+  ---
+  duration_ms: 82.3532
+  type: 'test'
+  ...
+# Subtest: S01_GOOGLE_CALLBACK — exchange then verified user then bound profile; redirects cannot be supplied by caller
+ok 5 - S01_GOOGLE_CALLBACK — exchange then verified user then bound profile; redirects cannot be supplied by caller
+  ---
+  duration_ms: 15.5065
+  type: 'test'
+  ...
+# Subtest: S01_GOOGLE_DENIAL — canceled/expired/unverified/disabled never provision or expose provider details
+ok 6 - S01_GOOGLE_DENIAL — canceled/expired/unverified/disabled never provision or expose provider details
+  ---
+  duration_ms: 12.2913
+  type: 'test'
+  ...
+# Subtest: S01_BOOKING_OWNER — only server-verified customer id is bound; guest preserved; broken session creates no guest order
+ok 7 - S01_BOOKING_OWNER — only server-verified customer id is bound; guest preserved; broken session creates no guest order
+  ---
+  duration_ms: 22.8383
+  type: 'test'
+  ...
+# Subtest: S01_ORIGIN_POLICY — production and this project previews only; forwarded host and foreign origins have no authority
+ok 8 - S01_ORIGIN_POLICY — production and this project previews only; forwarded host and foreign origins have no authority
+  ---
+  duration_ms: 5.7093
+  type: 'test'
+  ...
+# Subtest: S01_CUSTOMER_UI — Google is primary, guest stays available, provider errors hidden and own order/empty states explicit
+ok 9 - S01_CUSTOMER_UI — Google is primary, guest stays available, provider errors hidden and own order/empty states explicit
+  ---
+  duration_ms: 87.5156
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 8
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 13812.7415

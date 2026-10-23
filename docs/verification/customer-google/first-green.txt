@@ -1,0 +1,84 @@
+TAP version 13
+# Subtest: S01_PROFILE_PROVISION — verified identity creates customer only; existing admin preserved; disabled/anon denied
+not ok 1 - S01_PROFILE_PROVISION — verified identity creates customer only; existing admin preserved; disabled/anon denied
+  ---
+  duration_ms: 4206.9501
+  type: 'test'
+  location: 'C:\\Users\\Kieth\\Documents\\Juinior\\tests\\customer\\database.test.mjs:2:1'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected exception.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  operator: 'throws'
+  stack: |-
+    TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/customer/database.test.mjs:8:76)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: S01_CUSTOMER_ISOLATION — dashboard has own orders only, never attaches same-phone guest; disabled cannot read
+ok 2 - S01_CUSTOMER_ISOLATION — dashboard has own orders only, never attaches same-phone guest; disabled cannot read
+  ---
+  duration_ms: 3600.5869
+  type: 'test'
+  ...
+# Subtest: S01_GOOGLE_START — PKCE authorization uses Google, fixed callback, basic scopes and trusted origin
+ok 3 - S01_GOOGLE_START — PKCE authorization uses Google, fixed callback, basic scopes and trusted origin
+  ---
+  duration_ms: 83.5834
+  type: 'test'
+  ...
+# Subtest: S01_GOOGLE_CALLBACK — exchange then verified user then bound profile; redirects cannot be supplied by caller
+not ok 4 - S01_GOOGLE_CALLBACK — exchange then verified user then bound profile; redirects cannot be supplied by caller
+  ---
+  duration_ms: 16.033
+  type: 'test'
+  location: 'C:\\Users\\Kieth\\Documents\\Juinior\\tests\\customer\\google.test.mjs:9:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'http://localhost:3000/dang-nhap?reason=failed'
+    - 'http://localhost:3000/tai-khoan'
+                             ^
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'http://localhost:3000/tai-khoan'
+  actual: 'http://localhost:3000/dang-nhap?reason=failed'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/customer/google.test.mjs:12:136)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: S01_GOOGLE_DENIAL — canceled/expired/unverified/disabled never provision or expose provider details
+ok 5 - S01_GOOGLE_DENIAL — canceled/expired/unverified/disabled never provision or expose provider details
+  ---
+  duration_ms: 12.7149
+  type: 'test'
+  ...
+# Subtest: S01_BOOKING_OWNER — only server-verified customer id is bound; guest preserved; broken session creates no guest order
+ok 6 - S01_BOOKING_OWNER — only server-verified customer id is bound; guest preserved; broken session creates no guest order
+  ---
+  duration_ms: 25.7548
+  type: 'test'
+  ...
+# Subtest: S01_ORIGIN_POLICY — production and this project previews only; forwarded host and foreign origins have no authority
+ok 7 - S01_ORIGIN_POLICY — production and this project previews only; forwarded host and foreign origins have no authority
+  ---
+  duration_ms: 6.2064
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 5
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 8474.5987
