@@ -1,0 +1,30 @@
+{
+  "result": "PASS",
+  "checks": [
+    {
+      "name": "unauthenticated_admin_browser",
+      "result": "PASS",
+      "finalPath": "/admin/login",
+      "orderListExposed": false
+    },
+    {
+      "name": "preview_bank_qr_browser",
+      "result": "PASS",
+      "widths": [
+        390,
+        1440
+      ],
+      "writes": 0
+    }
+  ],
+  "httpAdmin": {
+    "status": 200,
+    "metaRedirectTo": "/admin/login",
+    "nextRedirect": true,
+    "orderListExposed": false
+  },
+  "harnessNotes": [
+    "Initial status-only 3xx assertion was wrong for streaming Next redirects, per bundled redirect.md; original red result is retained.",
+    "Read-only browser repeat clicked before hydration and timed out; final run waits for hydrated controls and passes without changing product code or assertion targets."
+  ]
+}

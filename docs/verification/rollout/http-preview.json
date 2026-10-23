@@ -1,0 +1,200 @@
+{
+  "sourceCommit": "54b3f47",
+  "requests": [
+    {
+      "name": "qr_asset",
+      "method": "GET",
+      "timeoutMs": 20000,
+      "status": 200,
+      "elapsedMs": 1415,
+      "code": null,
+      "bodyBytes": 1311381,
+      "sha256": "d9043bf0c2627d1f3183c41f9c4a4a06fe3d71254cc98044c2ec8402fbf6d8c5"
+    },
+    {
+      "name": "valid_booking",
+      "method": "POST",
+      "timeoutMs": 20000,
+      "status": 201,
+      "elapsedMs": 2490,
+      "code": "LD1015",
+      "replayed": false,
+      "bodyBytes": 173
+    },
+    {
+      "name": "same_key_replay",
+      "method": "POST",
+      "timeoutMs": 20000,
+      "status": 200,
+      "elapsedMs": 551,
+      "code": "LD1015",
+      "replayed": true,
+      "bodyBytes": 172
+    },
+    {
+      "name": "changed_payload",
+      "method": "POST",
+      "timeoutMs": 20000,
+      "status": 409,
+      "elapsedMs": 974,
+      "code": "IDEMPOTENCY_CONFLICT",
+      "bodyBytes": 130
+    },
+    {
+      "name": "bad_timezone",
+      "method": "POST",
+      "timeoutMs": 20000,
+      "status": 400,
+      "elapsedMs": 791,
+      "code": null,
+      "bodyBytes": 85
+    },
+    {
+      "name": "past_pickup",
+      "method": "POST",
+      "timeoutMs": 20000,
+      "status": 400,
+      "elapsedMs": 564,
+      "code": null,
+      "bodyBytes": 85
+    },
+    {
+      "name": "too_far",
+      "method": "POST",
+      "timeoutMs": 20000,
+      "status": 400,
+      "elapsedMs": 286,
+      "code": null,
+      "bodyBytes": 85
+    },
+    {
+      "name": "invalid_cart_0",
+      "method": "POST",
+      "timeoutMs": 20000,
+      "status": 400,
+      "elapsedMs": 1178,
+      "code": "INVALID_QUANTITY",
+      "bodyBytes": 89
+    },
+    {
+      "name": "invalid_cart_1",
+      "method": "POST",
+      "timeoutMs": 20000,
+      "status": 400,
+      "elapsedMs": 621,
+      "code": "INVALID_QUANTITY",
+      "bodyBytes": 89
+    },
+    {
+      "name": "invalid_cart_2",
+      "method": "POST",
+      "timeoutMs": 20000,
+      "status": 400,
+      "elapsedMs": 925,
+      "code": "INVALID_QUANTITY",
+      "bodyBytes": 89
+    },
+    {
+      "name": "invalid_cart_3",
+      "method": "POST",
+      "timeoutMs": 20000,
+      "status": 400,
+      "elapsedMs": 907,
+      "code": "INVALID_QUANTITY",
+      "bodyBytes": 89
+    },
+    {
+      "name": "invalid_cart_4",
+      "method": "POST",
+      "timeoutMs": 20000,
+      "status": 400,
+      "elapsedMs": 534,
+      "code": "SERVICE_UNAVAILABLE",
+      "bodyBytes": 100
+    },
+    {
+      "name": "invalid_cart_5",
+      "method": "POST",
+      "timeoutMs": 20000,
+      "status": 400,
+      "elapsedMs": 766,
+      "code": "INVALID_QUANTITY",
+      "bodyBytes": 89
+    },
+    {
+      "name": "same_phone_2",
+      "method": "POST",
+      "timeoutMs": 20000,
+      "status": 201,
+      "elapsedMs": 915,
+      "code": "LD1022",
+      "replayed": false,
+      "bodyBytes": 173
+    },
+    {
+      "name": "same_phone_3",
+      "method": "POST",
+      "timeoutMs": 20000,
+      "status": 201,
+      "elapsedMs": 976,
+      "code": "LD1023",
+      "replayed": false,
+      "bodyBytes": 173
+    },
+    {
+      "name": "fourth_phone_cap",
+      "method": "POST",
+      "timeoutMs": 20000,
+      "status": 429,
+      "elapsedMs": 1212,
+      "code": "ORDER_RATE_LIMIT",
+      "bodyBytes": 130
+    },
+    {
+      "name": "independent_phone",
+      "method": "POST",
+      "timeoutMs": 20000,
+      "status": 201,
+      "elapsedMs": 1019,
+      "code": "LD1024",
+      "replayed": false,
+      "bodyBytes": 173
+    },
+    {
+      "name": "lookup",
+      "method": "POST",
+      "timeoutMs": 20000,
+      "status": 200,
+      "elapsedMs": 1194,
+      "code": "LD1015",
+      "bodyBytes": 50
+    },
+    {
+      "name": "wrong_phone",
+      "method": "POST",
+      "timeoutMs": 20000,
+      "status": 404,
+      "elapsedMs": 963,
+      "code": null,
+      "bodyBytes": 73
+    },
+    {
+      "name": "admin_requires_login",
+      "method": "GET",
+      "timeoutMs": 20000,
+      "status": 200,
+      "elapsedMs": 1678,
+      "code": null,
+      "bodyBytes": 12396
+    }
+  ],
+  "createdCodes": [
+    "LD1015",
+    "LD1022",
+    "LD1023",
+    "LD1024"
+  ],
+  "originalHarnessResult": false,
+  "originalHarnessFailure": "Expected only 3xx for /admin. The actual response is the documented streaming HTML 200 + NEXT_REDIRECT/meta redirect, verified separately in a real browser. No business write was repeated.",
+  "finalGate": "PASS: 19 HTTP cases passed; the twentieth, admin access control, passed with streaming redirect verification and real browser navigation in browser-preview.json. No booking writes were repeated."
+}

@@ -1,0 +1,2156 @@
+{
+  "projectRef": "fjdwzetytseoltrwdsyu",
+  "sourceCommit": "54b3f47",
+  "ci": {
+    "run": 39962186384,
+    "url": "https://github.com/Kiethlsm/laundry-service-web/actions/runs/39962186384",
+    "result": "success",
+    "p10Tests": 39,
+    "qrTests": 2,
+    "lint": "pass",
+    "typecheck": "pass",
+    "build": "pass",
+    "clientBoundary": "pass"
+  },
+  "migrations": [
+    {
+      "name": "202610230101_portfolio_access_foundation",
+      "sha256": "9E0005F8116C22CC4D8711C53BFC21B34F2F41BB4F973C76756129900B99FB08",
+      "applyResult": "success",
+      "aclMatchesRehearsal": true,
+      "functions": [
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "app_private.actor_can(uuid, uuid, text)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": false,
+          "signature": "app_private.append_only()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "app_private.protect_last_admin()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "authenticated",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.can_order_action(uuid, uuid, text)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "service_role",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.create_guest_order(text, text, text, timestamp with time zone, payment_method, text, jsonb)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "authenticated",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.current_profile_role()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.log_order_status()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "authenticated",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.manage_profile(uuid, text, boolean, bigint, uuid)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "authenticated",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.order_contact(uuid)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "service_role",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.update_admin_order(uuid, order_status, order_status, uuid)"
+        }
+      ],
+      "baselineRows": 27,
+      "baselineHashesUnchanged": true
+    },
+    {
+      "name": "202610230201_demo_booking_quotes",
+      "sha256": "CA16511BFD93C2CB033D61303A39F65E793242C860A75A0946F6404C9609C3F2",
+      "applyResult": "success",
+      "aclMatchesRehearsal": true,
+      "functions": [
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "app_private.actor_can(uuid, uuid, text)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": false,
+          "signature": "app_private.append_only()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "app_private.protect_last_admin()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "app_private.quote_hash(uuid)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": false,
+          "signature": "app_private.quote_immutable()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": false,
+          "signature": "app_private.quote_item_integrity()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public",
+            "TimeZone=UTC"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "service_role",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.book_demo_order(jsonb, uuid, uuid)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "authenticated",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.can_order_action(uuid, uuid, text)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "service_role",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.create_guest_order(text, text, text, timestamp with time zone, payment_method, text, jsonb)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "authenticated",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.current_profile_role()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.log_order_status()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "service_role",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.lookup_demo_order(text, text)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "authenticated",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.manage_profile(uuid, text, boolean, bigint, uuid)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "authenticated",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.order_contact(uuid)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "service_role",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.update_admin_order(uuid, order_status, order_status, uuid)"
+        }
+      ],
+      "baselineRows": 27,
+      "baselineHashesUnchanged": true
+    },
+    {
+      "name": "202610230301_quote_workflow",
+      "sha256": "1BDD83D26A1B8C0B6CFBEC79B3739EB77C470E1458A2731D343B97685A979329",
+      "applyResult": "success",
+      "aclMatchesRehearsal": true,
+      "functions": [
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "app_private.actor_can(uuid, uuid, text)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": false,
+          "signature": "app_private.append_only()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "app_private.book_settlement()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "app_private.new_settlement(uuid, jsonb, text)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": false,
+          "signature": "app_private.permanent_order()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "app_private.protect_last_admin()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "app_private.quote_eligible(uuid)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "app_private.quote_hash(uuid)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": false,
+          "signature": "app_private.quote_immutable()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": false,
+          "signature": "app_private.quote_item_integrity()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "app_private.reconcile(uuid, jsonb)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": false,
+          "signature": "app_private.register_tag()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "app_private.update_admin_order(uuid, order_status, order_status, uuid)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "app_private.workflow(uuid, text, jsonb)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public",
+            "TimeZone=UTC"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "service_role",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.book_demo_order(jsonb, uuid, uuid)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "authenticated",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.can_order_action(uuid, uuid, text)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "service_role",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.create_guest_order(text, text, text, timestamp with time zone, payment_method, text, jsonb)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "authenticated",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.current_profile_role()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "authenticated",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.demo_order_detail(uuid)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.log_order_status()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "service_role",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.lookup_demo_order(text, text)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "authenticated",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.manage_profile(uuid, text, boolean, bigint, uuid)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "authenticated",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.order_command(uuid, bigint, uuid, text, jsonb)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "authenticated",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.order_contact(uuid)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "service_role",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.update_admin_order(uuid, order_status, order_status, uuid)"
+        }
+      ],
+      "baselineRows": 27,
+      "baselineHashesUnchanged": true
+    },
+    {
+      "name": "202610230501_simulated_ledger_handover",
+      "sha256": "A64C378831F21486667403840AE6643FBC058718ABD3BE12E715343C8052C8D5",
+      "applyResult": "success",
+      "aclMatchesRehearsal": true,
+      "functions": [
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "app_private.actor_can(uuid, uuid, text)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": false,
+          "signature": "app_private.append_only()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "app_private.book_settlement()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "app_private.financial(uuid, text, jsonb, uuid)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "app_private.new_settlement(uuid, jsonb, text)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": false,
+          "signature": "app_private.permanent_order()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "app_private.protect_last_admin()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "app_private.quote_eligible(uuid)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "app_private.quote_hash(uuid)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": false,
+          "signature": "app_private.quote_immutable()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": false,
+          "signature": "app_private.quote_item_integrity()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "app_private.reconcile(uuid, jsonb)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": false,
+          "signature": "app_private.register_tag()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "app_private.update_admin_order(uuid, order_status, order_status, uuid)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "app_private.validate_payment()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "app_private.workflow(uuid, text, jsonb)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public",
+            "TimeZone=UTC"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "service_role",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.book_demo_order(jsonb, uuid, uuid)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "authenticated",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.can_order_action(uuid, uuid, text)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "service_role",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.create_guest_order(text, text, text, timestamp with time zone, payment_method, text, jsonb)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "authenticated",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.current_profile_role()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "authenticated",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.demo_financial_report()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "authenticated",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.demo_order_detail(uuid)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "authenticated",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.demo_payment_summary(uuid)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.log_order_status()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "service_role",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.lookup_demo_order(text, text)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "authenticated",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.manage_profile(uuid, text, boolean, bigint, uuid)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "authenticated",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.order_command(uuid, bigint, uuid, text, jsonb)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "authenticated",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.order_contact(uuid)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "service_role",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.update_admin_order(uuid, order_status, order_status, uuid)"
+        }
+      ],
+      "baselineRows": 27,
+      "baselineHashesUnchanged": true
+    },
+    {
+      "name": "202610230901_work_scope_guards",
+      "sha256": "EE81BFEE4B65D682BE7CEFAD207735336EDFDDBD61053F05779EC0903689CC51",
+      "applyResult": "success",
+      "aclMatchesRehearsal": true,
+      "functions": [
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "app_private.actor_can(uuid, uuid, text)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": false,
+          "signature": "app_private.append_only()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "app_private.book_settlement()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "app_private.delivery_scope()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "app_private.detail_v03(uuid)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "app_private.financial(uuid, text, jsonb, uuid)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "app_private.new_settlement(uuid, jsonb, text)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": false,
+          "signature": "app_private.permanent_order()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "app_private.protect_last_admin()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "app_private.quote_eligible(uuid)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "app_private.quote_hash(uuid)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": false,
+          "signature": "app_private.quote_immutable()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": false,
+          "signature": "app_private.quote_item_integrity()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "app_private.reconcile(uuid, jsonb)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": false,
+          "signature": "app_private.register_tag()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "app_private.update_admin_order(uuid, order_status, order_status, uuid)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "app_private.validate_payment()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "app_private.workflow(uuid, text, jsonb)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "app_private.workflow_v03(uuid, text, jsonb)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public",
+            "TimeZone=UTC"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "service_role",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.book_demo_order(jsonb, uuid, uuid)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "authenticated",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.can_order_action(uuid, uuid, text)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "service_role",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.create_guest_order(text, text, text, timestamp with time zone, payment_method, text, jsonb)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "authenticated",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.current_profile_role()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "authenticated",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.demo_financial_report()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "authenticated",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.demo_order_detail(uuid)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "authenticated",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.demo_payment_summary(uuid)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.log_order_status()"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "service_role",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.lookup_demo_order(text, text)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "authenticated",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.manage_profile(uuid, text, boolean, bigint, uuid)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "authenticated",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.order_command(uuid, bigint, uuid, text, jsonb)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "authenticated",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.order_contact(uuid)"
+        },
+        {
+          "owner": "postgres",
+          "config": [
+            "search_path=pg_catalog, public"
+          ],
+          "grants": [
+            {
+              "role": "postgres",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            },
+            {
+              "role": "service_role",
+              "grantable": false,
+              "privilege": "EXECUTE"
+            }
+          ],
+          "definer": true,
+          "signature": "public.update_admin_order(uuid, order_status, order_status, uuid)"
+        }
+      ],
+      "baselineRows": 27,
+      "baselineHashesUnchanged": true
+    }
+  ],
+  "workflow": {
+    "result": "PASS",
+    "checks": [
+      "legacy",
+      "keyed",
+      "replay",
+      "payload_conflict",
+      "rate_cap",
+      "independent_phone",
+      "past_pickup",
+      "bound_admin",
+      "tolerance_inclusive",
+      "tolerance_outside",
+      "quote_v1",
+      "approval",
+      "work",
+      "qc",
+      "partial_payment",
+      "atomic_handover",
+      "derived_paid",
+      "ledger_immutable",
+      "detail",
+      "report"
+    ],
+    "transaction": "ROLLBACK",
+    "fixturesPersisted": 0
+  },
+  "originalRows": [
+    {
+      "name": "order_items",
+      "count": 2,
+      "hashMatchesExport": true
+    },
+    {
+      "name": "order_status_history",
+      "count": 2,
+      "hashMatchesExport": true
+    },
+    {
+      "name": "orders",
+      "count": 1,
+      "hashMatchesExport": true
+    },
+    {
+      "name": "profiles",
+      "count": 1,
+      "hashMatchesExport": true
+    },
+    {
+      "name": "service_categories",
+      "count": 6,
+      "hashMatchesExport": true
+    },
+    {
+      "name": "services",
+      "count": 15,
+      "hashMatchesExport": true
+    }
+  ],
+  "publicCountsAfterHttp": [
+    {
+      "table_name": "audit_events",
+      "count": 0
+    },
+    {
+      "table_name": "custody_events",
+      "count": 0
+    },
+    {
+      "table_name": "custody_waivers",
+      "count": 0
+    },
+    {
+      "table_name": "evidence",
+      "count": 0
+    },
+    {
+      "table_name": "flagged_items",
+      "count": 0
+    },
+    {
+      "table_name": "idempotency_keys",
+      "count": 4
+    },
+    {
+      "table_name": "laundry_bags",
+      "count": 0
+    },
+    {
+      "table_name": "order_assignments",
+      "count": 0
+    },
+    {
+      "table_name": "order_charges",
+      "count": 0
+    },
+    {
+      "table_name": "order_issues",
+      "count": 0
+    },
+    {
+      "table_name": "order_items",
+      "count": 6
+    },
+    {
+      "table_name": "order_quote_items",
+      "count": 4
+    },
+    {
+      "table_name": "order_quotes",
+      "count": 4
+    },
+    {
+      "table_name": "order_requests",
+      "count": 0
+    },
+    {
+      "table_name": "order_settlements",
+      "count": 4
+    },
+    {
+      "table_name": "order_status_history",
+      "count": 6
+    },
+    {
+      "table_name": "orders",
+      "count": 5
+    },
+    {
+      "table_name": "payment_transactions",
+      "count": 0
+    },
+    {
+      "table_name": "profiles",
+      "count": 1
+    },
+    {
+      "table_name": "quote_approvals",
+      "count": 4
+    },
+    {
+      "table_name": "registered_tags",
+      "count": 0
+    },
+    {
+      "table_name": "service_categories",
+      "count": 6
+    },
+    {
+      "table_name": "services",
+      "count": 15
+    },
+    {
+      "table_name": "settlement_charges",
+      "count": 0
+    },
+    {
+      "table_name": "settlement_items",
+      "count": 4
+    }
+  ],
+  "retainedFixtures": {
+    "ownerApproved": true,
+    "maximum": 4,
+    "codes": [
+      "LD1015",
+      "LD1022",
+      "LD1023",
+      "LD1024"
+    ],
+    "name": "ZZ TEST",
+    "synthetic": true,
+    "deleted": false
+  },
+  "production": "pending merge; unchanged",
+  "limitations": [
+    "Authenticated hosted browser login was not exercised; authenticated RPC paths were exercised with a bound admin identity in the rolled-back SQL transaction.",
+    "The static Techcombank QR has no webhook; payment ledger remains demo/mock.",
+    "Automatic schema rollback now correctly refuses retained new business data; no evidence deletion or trigger bypass is permitted."
+  ]
+}

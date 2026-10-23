@@ -1,0 +1,251 @@
+[
+  {
+    "prefix": 1,
+    "probes": [
+      {
+        "name": "legacy",
+        "status": 401,
+        "code": "42501",
+        "denied": true,
+        "elapsedMs": 4348,
+        "timeoutMs": 12000
+      },
+      {
+        "name": "role",
+        "status": 401,
+        "code": "42501",
+        "denied": true,
+        "elapsedMs": 181,
+        "timeoutMs": 12000
+      },
+      {
+        "name": "dedupe",
+        "status": 401,
+        "code": "42501",
+        "denied": true,
+        "elapsedMs": 172,
+        "timeoutMs": 12000
+      }
+    ]
+  },
+  {
+    "prefix": 2,
+    "probes": [
+      {
+        "name": "legacy",
+        "status": 401,
+        "code": "42501",
+        "denied": true,
+        "elapsedMs": 5100,
+        "timeoutMs": 12000
+      },
+      {
+        "name": "role",
+        "status": 401,
+        "code": "42501",
+        "denied": true,
+        "elapsedMs": 1009,
+        "timeoutMs": 12000
+      },
+      {
+        "name": "dedupe",
+        "status": 401,
+        "code": "42501",
+        "denied": true,
+        "elapsedMs": 1190,
+        "timeoutMs": 12000
+      },
+      {
+        "name": "booking",
+        "status": 401,
+        "code": "42501",
+        "denied": true,
+        "elapsedMs": 189,
+        "timeoutMs": 12000
+      },
+      {
+        "name": "lookup",
+        "status": 401,
+        "code": "42501",
+        "denied": true,
+        "elapsedMs": 541,
+        "timeoutMs": 12000
+      }
+    ]
+  },
+  {
+    "prefix": 3,
+    "probes": [
+      {
+        "name": "legacy",
+        "status": 401,
+        "code": "42501",
+        "denied": true,
+        "elapsedMs": 6887,
+        "timeoutMs": 12000
+      },
+      {
+        "name": "role",
+        "status": 401,
+        "code": "42501",
+        "denied": true,
+        "elapsedMs": 452,
+        "timeoutMs": 12000
+      },
+      {
+        "name": "dedupe",
+        "status": 401,
+        "code": "42501",
+        "denied": true,
+        "elapsedMs": 440,
+        "timeoutMs": 12000
+      },
+      {
+        "name": "booking",
+        "status": 401,
+        "code": "42501",
+        "denied": true,
+        "elapsedMs": 179,
+        "timeoutMs": 12000
+      },
+      {
+        "name": "lookup",
+        "status": 401,
+        "code": "42501",
+        "denied": true,
+        "elapsedMs": 178,
+        "timeoutMs": 12000
+      },
+      {
+        "name": "command",
+        "status": 401,
+        "code": "42501",
+        "denied": true,
+        "elapsedMs": 1365,
+        "timeoutMs": 12000
+      }
+    ]
+  },
+  {
+    "prefix": 4,
+    "probes": [
+      {
+        "name": "legacy",
+        "status": 401,
+        "code": "42501",
+        "denied": true,
+        "elapsedMs": 4538,
+        "timeoutMs": 12000
+      },
+      {
+        "name": "role",
+        "status": 401,
+        "code": "42501",
+        "denied": true,
+        "elapsedMs": 176,
+        "timeoutMs": 12000
+      },
+      {
+        "name": "dedupe",
+        "status": 401,
+        "code": "42501",
+        "denied": true,
+        "elapsedMs": 338,
+        "timeoutMs": 12000
+      },
+      {
+        "name": "booking",
+        "status": 401,
+        "code": "42501",
+        "denied": true,
+        "elapsedMs": 172,
+        "timeoutMs": 12000
+      },
+      {
+        "name": "lookup",
+        "status": 401,
+        "code": "42501",
+        "denied": true,
+        "elapsedMs": 506,
+        "timeoutMs": 12000
+      },
+      {
+        "name": "command",
+        "status": 401,
+        "code": "42501",
+        "denied": true,
+        "elapsedMs": 213,
+        "timeoutMs": 12000
+      },
+      {
+        "name": "payments",
+        "status": 401,
+        "code": "42501",
+        "denied": true,
+        "elapsedMs": 424,
+        "timeoutMs": 12000
+      }
+    ]
+  },
+  {
+    "prefix": 5,
+    "probes": [
+      {
+        "name": "legacy",
+        "status": 401,
+        "code": "42501",
+        "denied": true,
+        "elapsedMs": 4005,
+        "timeoutMs": 12000
+      },
+      {
+        "name": "role",
+        "status": 401,
+        "code": "42501",
+        "denied": true,
+        "elapsedMs": 178,
+        "timeoutMs": 12000
+      },
+      {
+        "name": "dedupe",
+        "status": 401,
+        "code": "42501",
+        "denied": true,
+        "elapsedMs": 377,
+        "timeoutMs": 12000
+      },
+      {
+        "name": "booking",
+        "status": 401,
+        "code": "42501",
+        "denied": true,
+        "elapsedMs": 450,
+        "timeoutMs": 12000
+      },
+      {
+        "name": "lookup",
+        "status": 401,
+        "code": "42501",
+        "denied": true,
+        "elapsedMs": 369,
+        "timeoutMs": 12000
+      },
+      {
+        "name": "command",
+        "status": 401,
+        "code": "42501",
+        "denied": true,
+        "elapsedMs": 447,
+        "timeoutMs": 12000
+      },
+      {
+        "name": "payments",
+        "status": 401,
+        "code": "42501",
+        "denied": true,
+        "elapsedMs": 741,
+        "timeoutMs": 12000
+      }
+    ]
+  }
+]

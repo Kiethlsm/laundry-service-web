@@ -1,5 +1,7 @@
 # Portfolio minimal demo — local review guide
 
+Historical local P10 snapshot. The later owner-authorized hosted rollout and Preview results are recorded in [rollout evidence](../verification/rollout/README.md); the local-only statements below describe the original phase completion.
+
 No hosted changes, push, merge or deployment were performed. This branch requires its new migrations; current production and hosted must continue using their old code/schema. Last reported hosted baseline was 27 rows; that is historical evidence, not a fresh count from this run.
 
 ## Run safely

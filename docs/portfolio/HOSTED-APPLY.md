@@ -1,5 +1,7 @@
 # Future hosted apply plan — blocked pending owner approval
 
+Historical pre-approval plan. The owner later authorized the five migrations and Preview rollout; results are in [rollout evidence](../verification/rollout/README.md). Do not rerun these migrations: consult hosted migration history and current data first. The release.json flags are the immutable P10 local gate snapshot, not current deployment status.
+
 No hosted changes were authorized or attempted in this run. No push, Preview, merge or production switch occurred. The parked booking-fixes branch remains excluded. Current production must keep its old schema-compatible code. This document is a future plan, not a passing deployment report.
 
 ## Preparation before any apply
