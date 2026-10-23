@@ -1,0 +1,11 @@
+# Rollout preparation and first remote CI
+
+Owner authorized hosted migration + Preview + master/production rollout. This record is preparation only: hosted changes are still blocked until authenticated Preview access and a green remote gate. Master/production have not been advanced.
+
+The fresh private export and rehearsals live outside Git under Documents/SachSach-Backups. Public table counts are order_items 2, order_status_history 2, orders 1, profiles 1, service_categories 6, services 15: total 27. Fresh hashes/counts still match that export. PostgreSQL 17.11 postgres ownership and direct default ACLs were captured. Five migration-prefix rollbacks passed against a new local copy of the actual public schema/data, including target-cluster mismatch denial and original catalog/ACL/hash preservation. Auth/storage are not included; sequence state is included. The copy uses hosted ICU en-US collation, rather than the Docker image's default libc collation, to compare ordered canonical row hashes consistently. Private data and generated hosted rollback SQL are not committed.
+
+Source 7aee4f7 was pushed only to feat/manual-transfer-qr. Vercel reports a successful Preview build, but unauthenticated HTTP is redirected 302 to Vercel login. No application HTTP pass is inferred from that response. A project automation-bypass credential must be provided locally, never in chat or Git.
+
+Remote CI run 39957700975 failed 1 of 39 P10 tests: the booking browser timed out waiting for 50,000 after typing quantity 2. All SQL/auth/grants tests and the admin browser passed; QR follow-up step did not run after the failed gate. Full red output is ci-red.txt.
+
+input-repro.txt reproduces a stale native/controlled number-input state: same-value selection/retyping leaves displayed 2 with a 25,000 summary; explicit keyboard clear/retype yields 50,000. This establishes a credible harness mechanism, not proof of the exact timing on the failed Linux run or a product bug. The helper now uses Ctrl+A, Backspace, then native text insertion. The booking test seeds a preserved value and retains all total/consent/keyboard/HTTP retry/one-order assertions. No timeout increase, skip or weakened money assertion is used. No product/SQL/dependency change is made for this correction.

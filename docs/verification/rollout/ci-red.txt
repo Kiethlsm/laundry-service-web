@@ -1,0 +1,275 @@
+﻿portfolio-minimal	Run npm run check:phase -- P10	﻿2026-10-23T13:01:20.2423725Z ##[group]Run npm run check:phase -- P10
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:01:20.2423950Z ^[[36;1mnpm run check:phase -- P10^[[0m
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:01:20.2478825Z shell: /usr/bin/bash -e {0}
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:01:20.2478992Z ##[endgroup]
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:01:20.3252924Z 
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:01:20.3253852Z > laundry-service-web@0.1.0 check:phase
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:01:20.3254399Z > node scripts/full-gate.mjs P10
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:01:20.3254710Z 
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:01:24.1193757Z {"phase":"P10","gate":"lint","exit":0}
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:01:27.2012503Z {"phase":"P10","gate":"typecheck","exit":0}
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9576227Z {"phase":"P10","gate":"tests","exit":1}
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9576964Z Command: node scripts/test-gate.mjs P10
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9603168Z Exit: 1
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9603615Z TAP version 13
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9603967Z # Error: Local test deadline
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9606078Z #     at until (file:///home/runner/work/laundry-service-web/laundry-service-web/tests/browser/cdp.mjs:6:183)
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9607067Z #     at async TestContext.<anonymous> (file:///home/runner/work/laundry-service-web/laundry-service-web/tests/browser/booking.test.mjs:14:3)
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9607869Z #     at async Test.run (node:internal/test_runner/test:1409:7)
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9608478Z #     at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9609514Z # Subtest: P02_BOOKING_UI — responsive keyboard consent and lost-response retry keeps one order
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9613607Z not ok 1 - P02_BOOKING_UI — responsive keyboard consent and lost-response retry keeps one order
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9619677Z   ---
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9622107Z   duration_ms: 67169.065467
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9622485Z   type: 'test'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9623062Z   location: '/home/runner/work/laundry-service-web/laundry-service-web/tests/browser/booking.test.mjs:6:1'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9623705Z   failureType: 'testCodeFailure'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9624073Z   error: 'Local test deadline'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9624402Z   code: 'ERR_TEST_FAILURE'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9624734Z   stack: |-
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9625277Z     until (file:///home/runner/work/laundry-service-web/laundry-service-web/tests/browser/cdp.mjs:6:183)
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9626150Z     async TestContext.<anonymous> (file:///home/runner/work/laundry-service-web/laundry-service-web/tests/browser/booking.test.mjs:14:3)
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9626865Z     async Test.run (node:internal/test_runner/test:1409:7)
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9627425Z     async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9627934Z   ...
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9628687Z # Subtest: P09_BROWSER_WORKFLOW — local cookie/session adapter and real admin actions reach delivered
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9629498Z ok 2 - P09_BROWSER_WORKFLOW — local cookie/session adapter and real admin actions reach delivered
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9629988Z   ---
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9630285Z   duration_ms: 14190.723409
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9630614Z   type: 'test'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9630906Z   ...
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9631487Z # Subtest: P03_ADMIN_DETAIL_UI — version/consent/evidence UI and role-free action payload
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9632713Z ok 3 - P03_ADMIN_DETAIL_UI — version/consent/evidence UI and role-free action payload
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9633175Z   ---
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9633461Z   duration_ms: 157.608586
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9633776Z   type: 'test'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9634068Z   ...
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9634609Z # {"event":"booking_rpc_failed","code":"DB_ERROR","operation_key":"6dbbd698-46e6-4a88-a2ed-c13f3d9986eb"}
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9635352Z # Subtest: P02_HTTP_CONTRACT — status/retry/validation and safe unavailable errors
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9635998Z ok 4 - P02_HTTP_CONTRACT — status/retry/validation and safe unavailable errors
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9636422Z   ---
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9636909Z   duration_ms: 101.15984
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9637203Z   type: 'test'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9637471Z   ...
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9638051Z # Subtest: P05_LEDGER_UI — immutable history/derived balance, receipt references and handover checklist
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9639088Z ok 5 - P05_LEDGER_UI — immutable history/derived balance, receipt references and handover checklist
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9639585Z   ---
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9639856Z   duration_ms: 79.480815
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9640160Z   type: 'test'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9640432Z   ...
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9640904Z # Subtest: P02_IDEMPOTENT_BOOK — one v0 on retry; changed body conflicts
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9641500Z ok 6 - P02_IDEMPOTENT_BOOK — one v0 on retry; changed body conflicts
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9642118Z   ---
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9642393Z   duration_ms: 1144.166371
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9642721Z   type: 'test'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9643079Z   ...
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9643673Z # Subtest: P02_V0_SNAPSHOT — server snapshots, consent and maximum weight total
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9644456Z ok 7 - P02_V0_SNAPSHOT — server snapshots, consent and maximum weight total
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9644859Z   ---
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9645132Z   duration_ms: 1571.921286
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9645544Z   type: 'test'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9653029Z   ...
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9653630Z # Subtest: P02_INPUT_RULES — invalid carts/time/consent roll back atomically
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9654271Z ok 8 - P02_INPUT_RULES — invalid carts/time/consent roll back atomically
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9654681Z   ---
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9654958Z   duration_ms: 1895.630197
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9655306Z   type: 'test'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9655655Z   ...
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9656147Z # Subtest: P02_LOOKUP_PRIVACY — code/phone exposes only progress and amount
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9656763Z ok 9 - P02_LOOKUP_PRIVACY — code/phone exposes only progress and amount
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9657161Z   ---
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9657433Z   duration_ms: 1089.085523
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9657732Z   type: 'test'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9658005Z   ...
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9658533Z # Subtest: P02_SHARED_RATE — shared phone cap, independent phone and global demo cap
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9659208Z ok 10 - P02_SHARED_RATE — shared phone cap, independent phone and global demo cap
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9659642Z   ---
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9659909Z   duration_ms: 1244.130994
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9660209Z   type: 'test'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9660477Z   ...
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9661065Z # Subtest: P03_TOLERANCE_BOUNDARY — inclusive original kg limits; no-consent changes need exact quote
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9662135Z ok 11 - P03_TOLERANCE_BOUNDARY — inclusive original kg limits; no-consent changes need exact quote
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9664453Z   ---
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9664749Z   duration_ms: 4190.833099
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9665058Z   type: 'test'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9665326Z   ...
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9665838Z # Subtest: P03_TOLERANCE_SCOPE — no rolling/netting/count/fee/rate workaround
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9666474Z ok 12 - P03_TOLERANCE_SCOPE — no rolling/netting/count/fee/rate workaround
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9666944Z   ---
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9667212Z   duration_ms: 2012.450875
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9667507Z   type: 'test'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9667773Z   ...
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9668311Z # Subtest: P03_QUOTE_RACE — stale hash denied; reject/expiry never restores old approval
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9669129Z ok 13 - P03_QUOTE_RACE — stale hash denied; reject/expiry never restores old approval
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9669559Z   ---
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9669888Z   duration_ms: 2735.536159
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9670182Z   type: 'test'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9670459Z   ...
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9671009Z # Subtest: P03_APPROVAL_EVIDENCE — unverified phone note and forged simulation never unlock work
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9671740Z ok 14 - P03_APPROVAL_EVIDENCE — unverified phone note and forged simulation never unlock work
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9672490Z   ---
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9672742Z   duration_ms: 2699.349012
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9672939Z   type: 'test'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9673109Z   ...
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9674064Z # Subtest: P03_SETTLEMENT_IMMUTABLE — weights/charges create new versions; no double charge
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9674691Z ok 15 - P03_SETTLEMENT_IMMUTABLE — weights/charges create new versions; no double charge
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9675032Z   ---
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9675400Z   duration_ms: 1895.827438
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9675590Z   type: 'test'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9675751Z   ...
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9676240Z # Subtest: P03_BAG_INTEGRITY — unique labels, same-order flagged items, retag evidence and full QC set
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9676929Z ok 16 - P03_BAG_INTEGRITY — unique labels, same-order flagged items, retag evidence and full QC set
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9677294Z   ---
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9677459Z   duration_ms: 2415.966399
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9677648Z   type: 'test'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9677804Z   ...
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9678141Z # Subtest: P03_WORK_TRANSITIONS — assigned roles, blocking issues and accepted admin amendments
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9678558Z ok 17 - P03_WORK_TRANSITIONS — assigned roles, blocking issues and accepted admin amendments
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9678789Z   ---
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9678894Z   duration_ms: 3576.509662
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9679018Z   type: 'test'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9679124Z   ...
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9679402Z # Subtest: P05_ATOMIC_DELIVER_COLLECT — zero balance and one committed receipt/custody/history
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9679808Z ok 18 - P05_ATOMIC_DELIVER_COLLECT — zero balance and one committed receipt/custody/history
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9680031Z   ---
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9680136Z   duration_ms: 2331.820668
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9680259Z   type: 'test'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9680363Z   ...
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9680693Z # Subtest: P05_CASH_ROLLBACK — missing targets/wrong cash/refund due commit nothing; verified waiver is explicit
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9681178Z ok 19 - P05_CASH_ROLLBACK — missing targets/wrong cash/refund due commit nothing; verified waiver is explicit
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9681434Z   ---
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9681538Z   duration_ms: 4874.633572
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9681668Z   type: 'test'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9681772Z   ...
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9683136Z # Subtest: P05_RETRY_RACE — same key concurrent/expired-cache replay; changed payload and stale revision denied
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9683871Z ok 20 - P05_RETRY_RACE — same key concurrent/expired-cache replay; changed payload and stale revision denied
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9684253Z   ---
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9684408Z   duration_ms: 2461.262502
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9684591Z   type: 'test'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9684746Z   ...
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9685200Z # Subtest: P05_LEDGER_INVARIANTS — reversal signs, restored refund availability and immutable entries
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9685860Z ok 21 - P05_LEDGER_INVARIANTS — reversal signs, restored refund availability and immutable entries
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9686205Z   ---
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9686361Z   duration_ms: 2789.043812
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9686546Z   type: 'test'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9686702Z   ...
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9687133Z # Subtest: P05_REPORT — receive date differs from delivered value date; unverified notes visible
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9687759Z ok 22 - P05_REPORT — receive date differs from delivered value date; unverified notes visible
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9688092Z   ---
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9688250Z   duration_ms: 2190.127031
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9688437Z   type: 'test'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9688597Z   ...
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9689103Z # Subtest: P05_CANCEL_INCIDENT — cancel creates refund due/return plan, never fake refund or backward transition
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9689862Z ok 23 - P05_CANCEL_INCIDENT — cancel creates refund due/return plan, never fake refund or backward transition
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9690255Z   ---
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9690417Z   duration_ms: 3757.336539
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9690600Z   type: 'test'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9690757Z   ...
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9691147Z # Subtest: P05_END_TO_END — v1 approval to QC and courier cash; wrong customer denied
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9691731Z ok 24 - P05_END_TO_END — v1 approval to QC and courier cash; wrong customer denied
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9692329Z   ---
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9692489Z   duration_ms: 2776.038293
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9692674Z   type: 'test'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9692833Z   ...
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9693515Z # Subtest: P09_REGRESSION — cumulative manifests reject omissions and synthetic legacy status bypass remains closed
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9694428Z ok 25 - P09_REGRESSION — cumulative manifests reject omissions and synthetic legacy status bypass remains closed
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9694826Z   ---
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9695001Z   duration_ms: 1002.085502
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9695221Z   type: 'test'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9695398Z   ...
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9695996Z # Subtest: P09_PROJECTIONS_LOGS — unrelated/private evidence denied and financial failures emit safe metadata
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9696923Z ok 26 - P09_PROJECTIONS_LOGS — unrelated/private evidence denied and financial failures emit safe metadata
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9697303Z   ---
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9697460Z   duration_ms: 1293.092725
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9697649Z   type: 'test'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9697815Z   ...
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9698374Z # Subtest: P09_STATE_COVERAGE — a new ready-stage amendment invalidates old work/QC scope without moving status backward
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9699185Z ok 27 - P09_STATE_COVERAGE — a new ready-stage amendment invalidates old work/QC scope without moving status backward
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9699605Z   ---
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9699764Z   duration_ms: 3218.873543
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9699952Z   type: 'test'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9700144Z   ...
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9719777Z # Subtest: P10_MANIFEST — prior committed gates, exact optional selection and mandatory release IDs
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9720614Z ok 28 - P10_MANIFEST — prior committed gates, exact optional selection and mandatory release IDs
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9720973Z   ---
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9721140Z   duration_ms: 18.422366
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9721327Z   type: 'test'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9721488Z   ...
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9722144Z # Subtest: P10_DEMO_SMOKE — local HTTP booking/replay/conflict, denied admin and safe fake transport
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9722813Z ok 29 - P10_DEMO_SMOKE — local HTTP booking/replay/conflict, denied admin and safe fake transport
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9723163Z   ---
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9723328Z   duration_ms: 3786.870797
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9723531Z   type: 'test'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9723687Z   ...
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9724210Z # Subtest: P10_SAFE_LABELS — mock-only boundaries, evidence limits and manual walkthrough remain explicit
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9724928Z ok 30 - P10_SAFE_LABELS — mock-only boundaries, evidence limits and manual walkthrough remain explicit
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9725304Z   ---
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9725469Z   duration_ms: 80.231089
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9725660Z   type: 'test'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9725830Z   ...
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9726324Z # Subtest: P10_ROLLBACK — local catalog snapshot restores every prefix and refuses post-migration writes
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9726911Z ok 31 - P10_ROLLBACK — local catalog snapshot restores every prefix and refuses post-migration writes
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9727166Z   ---
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9727281Z   duration_ms: 38224.362412
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9727413Z   type: 'test'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9727524Z   ...
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9727810Z # Subtest: P01_MIGRATE_EXISTING — preserve legacy amounts/history; consent remains unknown
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9728214Z ok 32 - P01_MIGRATE_EXISTING — preserve legacy amounts/history; consent remains unknown
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9728436Z   ---
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9728546Z   duration_ms: 1045.579067
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9728675Z   type: 'test'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9728788Z   ...
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9729074Z # Subtest: P01_RLS_MATRIX — ownership, assignment, projections and unknown actions fail closed
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9729480Z ok 33 - P01_RLS_MATRIX — ownership, assignment, projections and unknown actions fail closed
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9729703Z   ---
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9729812Z   duration_ms: 2420.12437
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9729940Z   type: 'test'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9730051Z   ...
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9730481Z # Subtest: P01_SERVICE_ROLE_GUARD — forged actors and anonymous privileged RPCs are denied
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9730870Z ok 34 - P01_SERVICE_ROLE_GUARD — forged actors and anonymous privileged RPCs are denied
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9731089Z   ---
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9731295Z   duration_ms: 1275.107102
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9731422Z   type: 'test'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9731534Z   ...
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9731865Z # Subtest: P01_REVOKE_AND_LAST_ADMIN — immediate revocation, revision/retry integrity and serialized admin race
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9732554Z ok 35 - P01_REVOKE_AND_LAST_ADMIN — immediate revocation, revision/retry integrity and serialized admin race
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9732809Z   ---
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9732917Z   duration_ms: 1925.333525
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9733049Z   type: 'test'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9733155Z   ...
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9733409Z # Subtest: P01_CI_REQUIRED — a failed, missing or skipped mandatory ID cannot pass
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9733761Z ok 36 - P01_CI_REQUIRED — a failed, missing or skipped mandatory ID cannot pass
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9733968Z   ---
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9734076Z   duration_ms: 1.511001
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9734203Z   type: 'test'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9734314Z   ...
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9734648Z # Subtest: P01_HOSTED_DEFAULTS — postgres owner, permissive direct defaults, explicit ACLs and fixed definer paths
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9735147Z ok 37 - P01_HOSTED_DEFAULTS — postgres owner, permissive direct defaults, explicit ACLs and fixed definer paths
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9735408Z   ---
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9735516Z   duration_ms: 1498.021816
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9735645Z   type: 'test'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9735751Z   ...
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9736153Z # AUTHORIZATION_MATRIX {"covered":170,"total":170,"extra_unknown_null":20,"source":"v1.2 single access matrix; permission checks, not transition preconditions"}
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9736697Z # Subtest: P01_AUTHORIZATION_MATRIX — 170 explicit role/action cells plus 20 null/unknown denials
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9737116Z ok 38 - P01_AUTHORIZATION_MATRIX — 170 explicit role/action cells plus 20 null/unknown denials
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9737347Z   ---
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9737453Z   duration_ms: 3634.448589
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9737577Z   type: 'test'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9737682Z   ...
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9738002Z # Subtest: P01_SERVER_SESSION_GUARD — real admin guard checks live session capability on every invocation
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9738445Z ok 39 - P01_SERVER_SESSION_GUARD — real admin guard checks live session capability on every invocation
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9738685Z   ---
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9738790Z   duration_ms: 72.991377
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9738913Z   type: 'test'
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9739018Z   ...
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9739118Z 1..39
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9739219Z # tests 39
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9739322Z # suites 0
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9739425Z # pass 38
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9739529Z # fail 1
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9739633Z # cancelled 0
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9739742Z # skipped 0
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9739848Z # todo 0
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9739965Z # duration_ms 190701.20765
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9740165Z P10 gate failed: failing, missing or skipped required test
+portfolio-minimal	Run npm run check:phase -- P10	2026-10-23T13:04:37.9748813Z ##[error]Process completed with exit code 1.

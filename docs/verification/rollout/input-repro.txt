@@ -1,0 +1,10 @@
+{
+  "staleSameValueReplacement": {
+    "value": "2",
+    "summary": "Tạm tính25.000đ"
+  },
+  "explicitKeyboardClearThenType": {
+    "value": "2",
+    "summary": "Tạm tính50.000đ"
+  }
+}

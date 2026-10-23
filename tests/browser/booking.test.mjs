@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {browser,until} from './cdp.mjs';
+import {browser,until,replaceInput} from './cdp.mjs';
 import {localSite} from './local-site.mjs';
 import {sql} from '../domain/helpers.mjs';
 test('P02_BOOKING_UI — responsive keyboard consent and lost-response retry keeps one order',async()=>{
@@ -11,9 +11,11 @@ test('P02_BOOKING_UI — responsive keyboard consent and lost-response retry kee
   await until(()=>page.evaluate("Boolean(document.querySelector('input[name=consent]'))"));
   await page.send('Page.bringToFront');
   await page.send('Emulation.setFocusEmulationEnabled',{enabled:true});
+  // A restored/native value can precede controlled state during hydration.
+  // Replacing the same text must still generate a real empty -> filled edit.
+  await page.evaluate("document.querySelector('#qty-1').value='2'");
   await until(async()=>{
-   await page.evaluate("document.querySelector('#qty-1').focus();document.querySelector('#qty-1').select()");
-   await page.send('Input.insertText',{text:'2'});
+   await replaceInput(page,'#qty-1','2');
    return page.evaluate("document.querySelector('.summary-total').textContent.includes('50.000')");
   });
   for(const width of [360,390,768,1440]){

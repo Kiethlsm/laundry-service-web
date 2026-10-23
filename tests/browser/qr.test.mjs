@@ -1,5 +1,5 @@
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import {createHash} from 'node:crypto';
-import {browser,until} from './cdp.mjs';import {localSite} from './local-site.mjs';import {sql} from '../domain/helpers.mjs';
+import {browser,until,replaceInput} from './cdp.mjs';import {localSite} from './local-site.mjs';import {sql} from '../domain/helpers.mjs';
 
 test('QR_RECIPIENT_ASSET — verified local PNG is served unchanged without an image optimizer',()=>{
  const guide=fs.readFileSync('docs/verification/manual-qr/README.md','utf8');
@@ -18,7 +18,7 @@ test('QR_BANK_BOOKING — cash isolation, static QR/memo/copy errors and no auto
   page=await browser();await page.send('Page.navigate',{url:site.base+'/dat-lich'});
   await until(()=>page.evaluate("Boolean(document.querySelector('#qty-1'))"));
   await page.send('Page.bringToFront');await page.send('Emulation.setFocusEmulationEnabled',{enabled:true});
-  await until(async()=>{await page.evaluate("document.querySelector('#qty-1').focus();document.querySelector('#qty-1').select()");await page.send('Input.insertText',{text:'2'});return page.evaluate("document.querySelector('.summary-total').textContent.includes('50.000')");});
+  await until(async()=>{await replaceInput(page,'#qty-1','2');return page.evaluate("document.querySelector('.summary-total').textContent.includes('50.000')");});
   assert.equal(await page.evaluate("Boolean(document.querySelector('.bank-transfer'))"),false);
   await page.evaluate("document.querySelector('[name=payment][value=bank_transfer]').click()");
   await until(()=>page.evaluate("Boolean(document.querySelector('.bank-transfer'))"),3000);

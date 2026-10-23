@@ -4,6 +4,14 @@ import os from 'node:os';
 import path from 'node:path';
 export const delay=ms=>new Promise(r=>setTimeout(r,ms));
 export async function until(read,timeout=60000){const end=Date.now()+timeout;while(Date.now()<end){try{const value=await read();if(value)return value;}catch{}await delay(100);}throw new Error('Local test deadline');}
+export async function replaceInput(page,selector,text){
+ await page.evaluate(`document.querySelector(${JSON.stringify(selector)}).focus()`);
+ await page.send('Input.dispatchKeyEvent',{type:'keyDown',key:'a',code:'KeyA',windowsVirtualKeyCode:65,modifiers:2});
+ await page.send('Input.dispatchKeyEvent',{type:'keyUp',key:'a',code:'KeyA',windowsVirtualKeyCode:65,modifiers:0});
+ await page.send('Input.dispatchKeyEvent',{type:'keyDown',key:'Backspace',code:'Backspace',windowsVirtualKeyCode:8});
+ await page.send('Input.dispatchKeyEvent',{type:'keyUp',key:'Backspace',code:'Backspace',windowsVirtualKeyCode:8});
+ await page.send('Input.insertText',{text});
+}
 export function kill(child){if(process.platform==='win32')spawnSync(path.join(process.env.SystemRoot??'C:/Windows','System32/taskkill.exe'),['/PID',String(child.pid),'/T','/F'],{stdio:'ignore',windowsHide:true});else child.kill('SIGTERM');}
 export async function browser(){
  const executable=[path.join(process.env.LOCALAPPDATA??'','BraveSoftware/Brave-Browser/Application/brave.exe'),'/usr/bin/google-chrome','/usr/bin/chromium'].find(existsSync);

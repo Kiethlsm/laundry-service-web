@@ -4,249 +4,249 @@ TAP version 13
 # Subtest: P02_BOOKING_UI — responsive keyboard consent and lost-response retry keeps one order
 ok 1 - P02_BOOKING_UI — responsive keyboard consent and lost-response retry keeps one order
   ---
-  duration_ms: 5286.7366
+  duration_ms: 20182.5304
   type: 'test'
   ...
 # Subtest: QR_RECIPIENT_ASSET — verified local PNG is served unchanged without an image optimizer
 ok 2 - QR_RECIPIENT_ASSET — verified local PNG is served unchanged without an image optimizer
   ---
-  duration_ms: 2.1374
+  duration_ms: 20.5512
   type: 'test'
   ...
 # Subtest: QR_BANK_BOOKING — cash isolation, static QR/memo/copy errors and no automatic money posting
 ok 3 - QR_BANK_BOOKING — cash isolation, static QR/memo/copy errors and no automatic money posting
   ---
-  duration_ms: 8193.2121
+  duration_ms: 27517.2758
   type: 'test'
   ...
 # Subtest: P09_BROWSER_WORKFLOW — local cookie/session adapter and real admin actions reach delivered
 ok 4 - P09_BROWSER_WORKFLOW — local cookie/session adapter and real admin actions reach delivered
   ---
-  duration_ms: 16123.7368
+  duration_ms: 52289.4285
   type: 'test'
   ...
 # Subtest: P03_ADMIN_DETAIL_UI — version/consent/evidence UI and role-free action payload
 ok 5 - P03_ADMIN_DETAIL_UI — version/consent/evidence UI and role-free action payload
   ---
-  duration_ms: 132.5262
+  duration_ms: 168.036
   type: 'test'
   ...
-# {"event":"booking_rpc_failed","code":"DB_ERROR","operation_key":"766912fc-4960-4dd2-8de6-47a024200ac2"}
+# {"event":"booking_rpc_failed","code":"DB_ERROR","operation_key":"5060135b-65df-4af6-b7cd-8f9b0e555d27"}
 # Subtest: P02_HTTP_CONTRACT — status/retry/validation and safe unavailable errors
 ok 6 - P02_HTTP_CONTRACT — status/retry/validation and safe unavailable errors
   ---
-  duration_ms: 78.2762
+  duration_ms: 89.5083
   type: 'test'
   ...
 # Subtest: P05_LEDGER_UI — immutable history/derived balance, receipt references and handover checklist
 ok 7 - P05_LEDGER_UI — immutable history/derived balance, receipt references and handover checklist
   ---
-  duration_ms: 72.4301
+  duration_ms: 100.2502
   type: 'test'
   ...
 # Subtest: P02_IDEMPOTENT_BOOK — one v0 on retry; changed body conflicts
 ok 8 - P02_IDEMPOTENT_BOOK — one v0 on retry; changed body conflicts
   ---
-  duration_ms: 1899.7091
+  duration_ms: 2673.4744
   type: 'test'
   ...
 # Subtest: P02_V0_SNAPSHOT — server snapshots, consent and maximum weight total
 ok 9 - P02_V0_SNAPSHOT — server snapshots, consent and maximum weight total
   ---
-  duration_ms: 2287.0994
+  duration_ms: 3259.7991
   type: 'test'
   ...
 # Subtest: P02_INPUT_RULES — invalid carts/time/consent roll back atomically
 ok 10 - P02_INPUT_RULES — invalid carts/time/consent roll back atomically
   ---
-  duration_ms: 2642.4458
+  duration_ms: 3688.3922
   type: 'test'
   ...
 # Subtest: P02_LOOKUP_PRIVACY — code/phone exposes only progress and amount
 ok 11 - P02_LOOKUP_PRIVACY — code/phone exposes only progress and amount
   ---
-  duration_ms: 1654.326
+  duration_ms: 2436.0398
   type: 'test'
   ...
 # Subtest: P02_SHARED_RATE — shared phone cap, independent phone and global demo cap
 ok 12 - P02_SHARED_RATE — shared phone cap, independent phone and global demo cap
   ---
-  duration_ms: 1933.7186
+  duration_ms: 2809.7954
   type: 'test'
   ...
 # Subtest: P03_TOLERANCE_BOUNDARY — inclusive original kg limits; no-consent changes need exact quote
 ok 13 - P03_TOLERANCE_BOUNDARY — inclusive original kg limits; no-consent changes need exact quote
   ---
-  duration_ms: 6088.0177
+  duration_ms: 8048.6466
   type: 'test'
   ...
 # Subtest: P03_TOLERANCE_SCOPE — no rolling/netting/count/fee/rate workaround
 ok 14 - P03_TOLERANCE_SCOPE — no rolling/netting/count/fee/rate workaround
   ---
-  duration_ms: 2972.1699
+  duration_ms: 3906.1476
   type: 'test'
   ...
 # Subtest: P03_QUOTE_RACE — stale hash denied; reject/expiry never restores old approval
 ok 15 - P03_QUOTE_RACE — stale hash denied; reject/expiry never restores old approval
   ---
-  duration_ms: 4146.4508
+  duration_ms: 5442.2177
   type: 'test'
   ...
 # Subtest: P03_APPROVAL_EVIDENCE — unverified phone note and forged simulation never unlock work
 ok 16 - P03_APPROVAL_EVIDENCE — unverified phone note and forged simulation never unlock work
   ---
-  duration_ms: 4058.3259
+  duration_ms: 4970.3105
   type: 'test'
   ...
 # Subtest: P03_SETTLEMENT_IMMUTABLE — weights/charges create new versions; no double charge
 ok 17 - P03_SETTLEMENT_IMMUTABLE — weights/charges create new versions; no double charge
   ---
-  duration_ms: 3118.9077
+  duration_ms: 3824.9202
   type: 'test'
   ...
 # Subtest: P03_BAG_INTEGRITY — unique labels, same-order flagged items, retag evidence and full QC set
 ok 18 - P03_BAG_INTEGRITY — unique labels, same-order flagged items, retag evidence and full QC set
   ---
-  duration_ms: 3906.3902
+  duration_ms: 4707.3793
   type: 'test'
   ...
 # Subtest: P03_WORK_TRANSITIONS — assigned roles, blocking issues and accepted admin amendments
 ok 19 - P03_WORK_TRANSITIONS — assigned roles, blocking issues and accepted admin amendments
   ---
-  duration_ms: 7146.0178
+  duration_ms: 7080.5523
   type: 'test'
   ...
 # Subtest: P05_ATOMIC_DELIVER_COLLECT — zero balance and one committed receipt/custody/history
 ok 20 - P05_ATOMIC_DELIVER_COLLECT — zero balance and one committed receipt/custody/history
   ---
-  duration_ms: 4266.0777
+  duration_ms: 4513.0325
   type: 'test'
   ...
 # Subtest: P05_CASH_ROLLBACK — missing targets/wrong cash/refund due commit nothing; verified waiver is explicit
 ok 21 - P05_CASH_ROLLBACK — missing targets/wrong cash/refund due commit nothing; verified waiver is explicit
   ---
-  duration_ms: 7428.1547
+  duration_ms: 10072.204
   type: 'test'
   ...
 # Subtest: P05_RETRY_RACE — same key concurrent/expired-cache replay; changed payload and stale revision denied
 ok 22 - P05_RETRY_RACE — same key concurrent/expired-cache replay; changed payload and stale revision denied
   ---
-  duration_ms: 3413.9784
+  duration_ms: 4486.2432
   type: 'test'
   ...
 # Subtest: P05_LEDGER_INVARIANTS — reversal signs, restored refund availability and immutable entries
 ok 23 - P05_LEDGER_INVARIANTS — reversal signs, restored refund availability and immutable entries
   ---
-  duration_ms: 4398.2942
+  duration_ms: 5630.5884
   type: 'test'
   ...
 # Subtest: P05_REPORT — receive date differs from delivered value date; unverified notes visible
 ok 24 - P05_REPORT — receive date differs from delivered value date; unverified notes visible
   ---
-  duration_ms: 3374.3683
+  duration_ms: 4259.2412
   type: 'test'
   ...
 # Subtest: P05_CANCEL_INCIDENT — cancel creates refund due/return plan, never fake refund or backward transition
 ok 25 - P05_CANCEL_INCIDENT — cancel creates refund due/return plan, never fake refund or backward transition
   ---
-  duration_ms: 5480.4354
+  duration_ms: 7226.4381
   type: 'test'
   ...
 # Subtest: P05_END_TO_END — v1 approval to QC and courier cash; wrong customer denied
 ok 26 - P05_END_TO_END — v1 approval to QC and courier cash; wrong customer denied
   ---
-  duration_ms: 4080.811
+  duration_ms: 5379.3878
   type: 'test'
   ...
 # Subtest: P09_REGRESSION — cumulative manifests reject omissions and synthetic legacy status bypass remains closed
 ok 27 - P09_REGRESSION — cumulative manifests reject omissions and synthetic legacy status bypass remains closed
   ---
-  duration_ms: 1567.0808
+  duration_ms: 2771.6252
   type: 'test'
   ...
 # Subtest: P09_PROJECTIONS_LOGS — unrelated/private evidence denied and financial failures emit safe metadata
 ok 28 - P09_PROJECTIONS_LOGS — unrelated/private evidence denied and financial failures emit safe metadata
   ---
-  duration_ms: 1718.1636
+  duration_ms: 3101.4806
   type: 'test'
   ...
 # Subtest: P09_STATE_COVERAGE — a new ready-stage amendment invalidates old work/QC scope without moving status backward
 ok 29 - P09_STATE_COVERAGE — a new ready-stage amendment invalidates old work/QC scope without moving status backward
   ---
-  duration_ms: 4755.4656
+  duration_ms: 7274.9852
   type: 'test'
   ...
 # Subtest: P10_MANIFEST — prior committed gates, exact optional selection and mandatory release IDs
 ok 30 - P10_MANIFEST — prior committed gates, exact optional selection and mandatory release IDs
   ---
-  duration_ms: 136.622
+  duration_ms: 569.8026
   type: 'test'
   ...
 # Subtest: P10_DEMO_SMOKE — local HTTP booking/replay/conflict, denied admin and safe fake transport
 ok 31 - P10_DEMO_SMOKE — local HTTP booking/replay/conflict, denied admin and safe fake transport
   ---
-  duration_ms: 4549.7542
+  duration_ms: 12068.9528
   type: 'test'
   ...
 # Subtest: P10_SAFE_LABELS — mock-only boundaries, evidence limits and manual walkthrough remain explicit
 ok 32 - P10_SAFE_LABELS — mock-only boundaries, evidence limits and manual walkthrough remain explicit
   ---
-  duration_ms: 111.7291
+  duration_ms: 123.7765
   type: 'test'
   ...
 # Subtest: P10_ROLLBACK — local catalog snapshot restores every prefix and refuses post-migration writes
 ok 33 - P10_ROLLBACK — local catalog snapshot restores every prefix and refuses post-migration writes
   ---
-  duration_ms: 57604.7618
+  duration_ms: 73070.8872
   type: 'test'
   ...
 # Subtest: P01_MIGRATE_EXISTING — preserve legacy amounts/history; consent remains unknown
 ok 34 - P01_MIGRATE_EXISTING — preserve legacy amounts/history; consent remains unknown
   ---
-  duration_ms: 1650.7716
+  duration_ms: 2022.2196
   type: 'test'
   ...
 # Subtest: P01_RLS_MATRIX — ownership, assignment, projections and unknown actions fail closed
 ok 35 - P01_RLS_MATRIX — ownership, assignment, projections and unknown actions fail closed
   ---
-  duration_ms: 3461.902
+  duration_ms: 4409.7397
   type: 'test'
   ...
 # Subtest: P01_SERVICE_ROLE_GUARD — forged actors and anonymous privileged RPCs are denied
 ok 36 - P01_SERVICE_ROLE_GUARD — forged actors and anonymous privileged RPCs are denied
   ---
-  duration_ms: 2097.6564
+  duration_ms: 2550.3656
   type: 'test'
   ...
 # Subtest: P01_REVOKE_AND_LAST_ADMIN — immediate revocation, revision/retry integrity and serialized admin race
 ok 37 - P01_REVOKE_AND_LAST_ADMIN — immediate revocation, revision/retry integrity and serialized admin race
   ---
-  duration_ms: 2911.967
+  duration_ms: 3636.2845
   type: 'test'
   ...
 # Subtest: P01_CI_REQUIRED — a failed, missing or skipped mandatory ID cannot pass
 ok 38 - P01_CI_REQUIRED — a failed, missing or skipped mandatory ID cannot pass
   ---
-  duration_ms: 1.9555
+  duration_ms: 2.2639
   type: 'test'
   ...
 # Subtest: P01_HOSTED_DEFAULTS — postgres owner, permissive direct defaults, explicit ACLs and fixed definer paths
 ok 39 - P01_HOSTED_DEFAULTS — postgres owner, permissive direct defaults, explicit ACLs and fixed definer paths
   ---
-  duration_ms: 1976.324
+  duration_ms: 2477.4889
   type: 'test'
   ...
 # AUTHORIZATION_MATRIX {"covered":170,"total":170,"extra_unknown_null":20,"source":"v1.2 single access matrix; permission checks, not transition preconditions"}
 # Subtest: P01_AUTHORIZATION_MATRIX — 170 explicit role/action cells plus 20 null/unknown denials
 ok 40 - P01_AUTHORIZATION_MATRIX — 170 explicit role/action cells plus 20 null/unknown denials
   ---
-  duration_ms: 5419.3054
+  duration_ms: 7001.1266
   type: 'test'
   ...
 # Subtest: P01_SERVER_SESSION_GUARD — real admin guard checks live session capability on every invocation
 ok 41 - P01_SERVER_SESSION_GUARD — real admin guard checks live session capability on every invocation
   ---
-  duration_ms: 62.4982
+  duration_ms: 87.839
   type: 'test'
   ...
 1..41
@@ -257,4 +257,4 @@ ok 41 - P01_SERVER_SESSION_GUARD — real admin guard checks live session capabi
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 194570.9284
+# duration_ms 320355.4641
