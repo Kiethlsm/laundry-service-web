@@ -1,0 +1,113 @@
+
+> laundry-service-web@0.1.0 test
+> node --test --test-reporter=spec --test-concurrency=1 tests/phase01/*.test.mjs
+
+✖ P01_MIGRATE_EXISTING — preserve legacy amounts/history; consent remains unknown (1431.9375ms)
+✖ P01_RLS_MATRIX — ownership, assignment, projections and unknown actions fail closed (1287.4608ms)
+✖ P01_SERVICE_ROLE_GUARD — forged actors and anonymous privileged RPCs are denied (1277.362ms)
+✖ P01_REVOKE_AND_LAST_ADMIN — immediate revocation, revision/retry integrity and serialized admin race (1276.5414ms)
+✖ P01_CI_REQUIRED — a failed, missing or skipped mandatory ID cannot pass (1.5542ms)
+✖ P01_SERVER_SESSION_GUARD — real admin guard checks live session capability on every invocation (53.8002ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 0
+ℹ fail 6
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5763.2372
+
+✖ failing tests:
+
+test at tests\phase01\access.test.mjs:10:1
+✖ P01_MIGRATE_EXISTING — preserve legacy amounts/history; consent remains unknown (1431.9375ms)
+  Error: ERROR:  column "legacy_review_required" does not exist
+  LINE 1: SELECT bool_and(legacy_review_required AND NOT is_synthetic ...
+                          ^
+  
+      at docker (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:9:29)
+      at sql (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:13:10)
+      at TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/access.test.mjs:14:15)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.start (node:internal/test_runner/test:944:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+
+test at tests\phase01\access.test.mjs:18:1
+✖ P01_RLS_MATRIX — ownership, assignment, projections and unknown actions fail closed (1287.4608ms)
+  Error: ERROR:  new row for relation "profiles" violates check constraint "profiles_role_check"
+  DETAIL:  Failing row contains (10000000-0000-4000-8000-000000000003, null, null, null, staff, 2026-10-23 07:36:23.01847+00).
+  
+      at docker (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:9:29)
+      at sql (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:13:10)
+      at assigned (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/access.test.mjs:8:23)
+      at TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/access.test.mjs:19:21)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+
+test at tests\phase01\access.test.mjs:39:1
+✖ P01_SERVICE_ROLE_GUARD — forged actors and anonymous privileged RPCs are denied (1277.362ms)
+  Error: ERROR:  new row for relation "profiles" violates check constraint "profiles_role_check"
+  DETAIL:  Failing row contains (10000000-0000-4000-8000-000000000003, null, null, null, staff, 2026-10-23 07:36:24.297445+00).
+  
+      at docker (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:9:29)
+      at sql (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:13:10)
+      at assigned (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/access.test.mjs:8:23)
+      at TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/access.test.mjs:40:21)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+
+test at tests\phase01\access.test.mjs:50:1
+✖ P01_REVOKE_AND_LAST_ADMIN — immediate revocation, revision/retry integrity and serialized admin race (1276.5414ms)
+  Error: ERROR:  new row for relation "profiles" violates check constraint "profiles_role_check"
+  DETAIL:  Failing row contains (10000000-0000-4000-8000-000000000003, null, null, null, staff, 2026-10-23 07:36:25.577624+00).
+  
+      at docker (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:9:29)
+      at sql (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/local-db.mjs:13:10)
+      at assigned (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/access.test.mjs:8:23)
+      at TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/access.test.mjs:51:21)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+
+test at tests\phase01\gate.test.mjs:4:1
+✖ P01_CI_REQUIRED — a failed, missing or skipped mandatory ID cannot pass (1.5542ms)
+  Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'C:\Users\Kieth\Documents\Juinior\scripts\gate-manifest.mjs' imported from C:\Users\Kieth\Documents\Juinior\tests\phase01\gate.test.mjs
+      at finalizeResolution (node:internal/modules/esm/resolve:275:11)
+      at moduleResolve (node:internal/modules/esm/resolve:861:10)
+      at defaultResolve (node:internal/modules/esm/resolve:985:11)
+      at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+      at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+      at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+      at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:680:36)
+      at TracingChannel.tracePromise (node:diagnostics_channel:350:14)
+      at ModuleLoader.import (node:internal/modules/esm/loader:679:21)
+      at defaultImportModuleDynamicallyForModule (node:internal/modules/esm/utils:222:31) {
+    code: 'ERR_MODULE_NOT_FOUND',
+    url: 'file:///C:/Users/Kieth/Documents/Juinior/scripts/gate-manifest.mjs'
+  }
+
+test at tests\phase01\server.test.mjs:7:1
+✖ P01_SERVER_SESSION_GUARD — real admin guard checks live session capability on every invocation (53.8002ms)
+  AssertionError [ERR_ASSERTION]: Missing expected rejection.
+      at async TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/phase01/server.test.mjs:15:15)
+      at async Test.run (node:internal/test_runner/test:1054:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /REDIRECT/,
+    operator: 'rejects',
+    diff: 'simple'
+  }
