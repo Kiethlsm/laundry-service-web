@@ -28,3 +28,4 @@ jobs:
       - run: npm run check:phase -- P10
       - run: npm run test:qr
       - run: npm run test:customer
+      - run: npm run test:admin

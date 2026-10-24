@@ -12,8 +12,10 @@ import "@fontsource/be-vietnam-pro/latin-700.css";
 import "@fontsource/be-vietnam-pro/latin-800.css";
 import "./globals.css";
 import "./home.css";
+import "./admin-ui.css";
 import { Header } from "@/components/header";
 import { Arrow, Brand } from "@/components/ui";
+import { ShopContact } from "@/components/shop-contact";
 
 export const metadata: Metadata = {
   title: {
@@ -44,12 +46,7 @@ export default function RootLayout({
               </Link>
               <p>Nhẹ việc giặt, thêm thời gian.</p>
             </div>
-            <div>
-              <h3>Lịch hẹn của bạn</h3>
-              <p>
-                Cửa hàng sẽ liên hệ xác nhận thời gian lấy và giao đồ theo lịch hẹn của bạn.
-              </p>
-            </div>
+            <ShopContact />
             <div>
               <h3>Bạn cần gì?</h3>
               <Link href="/bang-gia">Xem bảng giá</Link>

@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Arrow, Brand } from "./ui";
 export function Header() {
   const path = usePathname();
+  const admin = path.startsWith("/admin") && path !== "/admin/login";
   const [open, setOpen] = useState(false);
   return (
     <header
@@ -15,8 +16,8 @@ export function Header() {
     >
       <div className="container header-inner">
         <Link
-          href="/"
-          aria-label="Sạch Sạch, trang chủ"
+          href={admin ? "/admin" : "/"}
+          aria-label={admin ? "Sạch Sạch, quản lý tiệm" : "Sạch Sạch, trang chủ"}
           onClick={() => setOpen(false)}
         >
           <Brand />
@@ -45,13 +46,13 @@ export function Header() {
           className={open ? "navigation is-open" : "navigation"}
           aria-label="Điều hướng chính"
         >
-          {[
+          {(admin ? [["/admin", "Đơn hàng"], ["/", "Xem cửa hàng"]] : [
             ["/", "Trang chủ"],
             ["/bang-gia", "Bảng giá"],
             ["/dat-lich", "Đặt lịch"],
             ["/tra-cuu", "Tra cứu đơn"],
             ["/tai-khoan", "Tài khoản"],
-          ].map(([href, label]) => (
+          ]).map(([href, label]) => (
             <Link
               key={href}
               href={href}
@@ -62,9 +63,9 @@ export function Header() {
             </Link>
           ))}
         </nav>
-        <Link className="button header-cta" href="/dat-lich">
+        {!admin && <Link className="button header-cta" href="/dat-lich">
           Đặt lịch lấy đồ <Arrow />
-        </Link>
+        </Link>}
       </div>
     </header>
   );

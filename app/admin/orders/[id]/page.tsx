@@ -6,6 +6,7 @@ import { DemoWorkspace } from "@/components/demo-workspace";
 import { authClient } from "@/lib/supabase-server";
 import type { DemoWorkspaceData } from "@/lib/demo-types";
 import type { Order } from "@/lib/types";
+import { StatusBadge } from "@/components/ui";
 export const dynamic = "force-dynamic";
 export const metadata = {
   title: "Chi tiết đơn hàng",
@@ -43,16 +44,16 @@ export default async function AdminOrder({
     workspace.money = payment.data;
   }
   return (
-    <div className="container page-space">
+    <div className="container page-space admin-page admin-order-page">
       <Link className="text-link back-link" href="/admin">
         ← Về danh sách đơn
       </Link>
-      <OrderDetail order={order} />
-      <p className="admin-phone">
-        Liên hệ khách:{" "}
-        <a href={`tel:${order.customer_phone}`}>{order.customer_phone}</a>
-      </p>
+      <div className="admin-order-overview">
+        <div><h1>{order.code}</h1><p>{order.customer_name}</p><StatusBadge status={order.status} /></div>
+        <div><a className="button" href={`tel:${order.customer_phone}`}>Gọi khách · {order.customer_phone}</a><p>{order.pickup_address}</p></div>
+      </div>
       {workspace ? <DemoWorkspace data={workspace}/> : <p className="demo-notice">Đơn cũ chỉ đọc và cần xem xét lại; chưa có bằng chứng đồng ý hoặc thanh toán theo quy trình xử lý.</p>}
+      <details className="admin-reference"><summary>Thông tin khách, dịch vụ, QR chuyển khoản & lịch sử</summary><OrderDetail order={order} /></details>
     </div>
   );
 }

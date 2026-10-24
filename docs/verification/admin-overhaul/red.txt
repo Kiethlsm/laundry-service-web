@@ -1,0 +1,68 @@
+TAP version 13
+# Subtest: SHOP_CONTACT — confirmed phone, encoded address and external Google Maps pin
+not ok 1 - SHOP_CONTACT — confirmed phone, encoded address and external Google Maps pin
+  ---
+  duration_ms: 2.6773
+  type: 'test'
+  location: 'C:\\Users\\Kieth\\Documents\\Juinior\\tests\\admin\\usability.test.mjs:4:1'
+  failureType: 'testCodeFailure'
+  error: "ENOENT: no such file or directory, open 'C:\\Users\\Kieth\\Documents\\Juinior\\lib\\shop.ts'"
+  code: 'ENOENT'
+  stack: |-
+    Object.readFileSync (node:fs:440:20)
+    load (file:///C:/Users/Kieth/Documents/Juinior/tests/admin/usability.test.mjs:3:88)
+    TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/admin/usability.test.mjs:5:15)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: ADMIN_NEXT_ACTION — next step follows existing approval, weight, QC, refund and custody preconditions
+not ok 2 - ADMIN_NEXT_ACTION — next step follows existing approval, weight, QC, refund and custody preconditions
+  ---
+  duration_ms: 0.3285
+  type: 'test'
+  location: 'C:\\Users\\Kieth\\Documents\\Juinior\\tests\\admin\\usability.test.mjs:9:1'
+  failureType: 'testCodeFailure'
+  error: "ENOENT: no such file or directory, open 'C:\\Users\\Kieth\\Documents\\Juinior\\lib\\admin-operations.ts'"
+  code: 'ENOENT'
+  stack: |-
+    Object.readFileSync (node:fs:440:20)
+    load (file:///C:/Users/Kieth/Documents/Juinior/tests/admin/usability.test.mjs:3:88)
+    TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/admin/usability.test.mjs:10:26)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: ADMIN_GROUPS — all six states have exactly one work group; filters never invent totals
+not ok 3 - ADMIN_GROUPS — all six states have exactly one work group; filters never invent totals
+  ---
+  duration_ms: 0.1937
+  type: 'test'
+  location: 'C:\\Users\\Kieth\\Documents\\Juinior\\tests\\admin\\usability.test.mjs:24:1'
+  failureType: 'testCodeFailure'
+  error: "ENOENT: no such file or directory, open 'C:\\Users\\Kieth\\Documents\\Juinior\\lib\\admin-operations.ts'"
+  code: 'ENOENT'
+  stack: |-
+    Object.readFileSync (node:fs:440:20)
+    load (file:///C:/Users/Kieth/Documents/Juinior/tests/admin/usability.test.mjs:3:88)
+    TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/admin/usability.test.mjs:25:38)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..3
+# tests 3
+# suites 0
+# pass 0
+# fail 3
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 970.4237

@@ -164,3 +164,8 @@ The CSS washer contains a console drawer, knob, circular service readout, six ca
 ## Readability refinement · 2026-10-24
 
 Retain Be Vietnam Pro and the existing cobalt/enamel identity. Shared reading text is 16px with 1.7–1.75 line height; supporting text and labels are 14px; actions are 15px. Headings use -0.02em tracking (-0.025em for the hero) and the hero emphasis inherits its weight. Financial values use tabular numerals. Decorative washer controls retain their separate compact scale. Public pages omit project/version branding and invented contact details. Recipient display is Nguyễn Thị Mai, account 38606688, explicitly reconfirmed by the owner; QR bytes are unchanged and bank-app verification remains required.
+
+## Owner operations
+The admin landing prioritizes a search and four work-group selectors over reports. Order rows use code/status, contact, pickup appointment/address, current cost and a named open action. The result limit and the scope of group counts are explicit. On mobile each row becomes a two-column record; no sideways page navigation is needed.
+Order detail starts with contact and a next-step explanation, followed by four mounted, selectively visible task panels. Report, quote history and original order details remain native disclosures. Selected views preserve input values; visibility controls never write orders. Existing authorization, revisions, quote acceptance, QC and ledger safeguards remain server-owned.
+The public footer uses an outlined location pin with the supplied address as a real Google Maps link, plus a separate call action. No decorative fake map or invented opening hours.

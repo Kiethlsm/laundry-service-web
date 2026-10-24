@@ -1,151 +1,35 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { requireAdmin } from "@/lib/admin";
-import {
-  STATUS_LABEL,
-  formatVND,
-  formatDate,
-  type OrderStatus,
-} from "@/lib/format";
-import { StatusBadge, Arrow } from "@/components/ui";
+import { STATUS_LABEL, type OrderStatus } from "@/lib/format";
+import { AdminOrders, type OrderSummary } from "@/components/admin-orders";
 import { logout } from "./actions";
-import {authClient} from '@/lib/supabase-server';
-import {DemoFinancialReport,type DemoReport} from '@/components/demo-financial-report';
-export const metadata: Metadata = {
-  title: "Quản lý đơn hàng",
-  robots: { index: false, follow: false },
-};
+import { authClient } from "@/lib/supabase-server";
+import { DemoFinancialReport, type DemoReport } from "@/components/demo-financial-report";
+export const metadata: Metadata = { title: "Quản lý tiệm", robots: { index: false, follow: false } };
 export const dynamic = "force-dynamic";
-export default async function Admin({
-  searchParams,
-}: {
-  searchParams: Promise<{ q?: string; status?: string }>;
-}) {
+export default async function Admin({ searchParams }: { searchParams: Promise<{ q?: string; status?: string }> }) {
   const { db } = await requireAdmin();
   const params = await searchParams;
   const q = typeof params.q === "string" ? params.q.trim().slice(0, 24) : "";
-  const status =
-    params.status && Object.hasOwn(STATUS_LABEL, params.status)
-      ? (params.status as OrderStatus)
-      : "";
-  let query = db
-    .from("orders")
-    .select("id,code,customer_name,customer_phone,total,status,created_at")
-    .order("created_at", { ascending: false })
-    .limit(100);
+  const status = params.status && Object.hasOwn(STATUS_LABEL, params.status) ? params.status as OrderStatus : "";
+  let query = db.from("orders").select("id,code,customer_name,customer_phone,total,status,created_at,pickup_time,pickup_address").order("created_at", { ascending: false }).limit(100);
   if (status) query = query.eq("status", status);
   const validSearch = /^[a-zA-Z0-9]+$/.test(q);
-  if (q && validSearch)
-    query = query.or(`code.ilike.%${q}%,customer_phone.ilike.%${q}%`);
+  if (q && validSearch) query = query.or("code.ilike.%" + q + "%,customer_phone.ilike.%" + q + "%");
   const { data, error } = await query;
-  if (error) throw new Error("Không tải được danh sách đơn.");
-  const orders = q && !validSearch ? [] : data;
-  const auth=await authClient();
-  const report=await auth.rpc('demo_financial_report');
-  if(report.error||!report.data)throw new Error('Chưa tải được báo cáo mô phỏng.');
-  return (
-    <div className="container page-space">
-      <DemoFinancialReport report={report.data as DemoReport}/>
-      <div className="admin-heading">
-        <div>
-          <h1>Đơn hàng</h1>
-          <p>Những lịch hẹn cần bạn chăm chút hôm nay.</p>
-        </div>
-        <form action={logout}>
-          <button className="text-button">Đăng xuất ↗</button>
-        </form>
-      </div>
-      <form className="filter-form" method="get">
-        <label>
-          Tìm mã đơn / SĐT
-          <input
-            name="q"
-            defaultValue={q}
-            maxLength={24}
-            placeholder="LD1001 hoặc 090…"
-          />
-        </label>
-        <label>
-          Trạng thái
-          <select name="status" defaultValue={status}>
-            <option value="">Tất cả trạng thái</option>
-            {Object.entries(STATUS_LABEL).map(([key, label]) => (
-              <option key={key} value={key}>
-                {label}
-              </option>
-            ))}
-          </select>
-        </label>
-        <button className="button">Lọc đơn hàng</button>
-        <Link className="text-link" href="/admin">
-          Đặt lại
-        </Link>
-      </form>
-      <p className="field-help">
-        Hiển thị tối đa 100 đơn mới nhất khớp bộ lọc · {orders.length} kết quả.
-      </p>
-      {orders.length ? (
-        <div
-          className="table-scroll"
-          role="region"
-          aria-label="Danh sách đơn hàng"
-          tabIndex={0}
-        >
-          <table>
-            <thead>
-              <tr>
-                <th>Mã đơn</th>
-                <th>Khách hàng</th>
-                <th>Số điện thoại</th>
-                <th>Tổng tiền</th>
-                <th>Trạng thái</th>
-                <th>Ngày tạo</th>
-                <th>
-                  <span className="sr-only">Chi tiết</span>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {orders.map((o) => (
-                <tr key={o.id}>
-                  <td>
-                    <Link className="order-link" href={`/admin/orders/${o.id}`}>
-                      {o.code}
-                    </Link>
-                  </td>
-                  <td>{o.customer_name}</td>
-                  <td>{o.customer_phone}</td>
-                  <td className="money">{formatVND(Number(o.total))}</td>
-                  <td>
-                    <StatusBadge status={o.status} />
-                  </td>
-                  <td>{formatDate(o.created_at)}</td>
-                  <td>
-                    <Link
-                      className="icon-link"
-                      href={`/admin/orders/${o.id}`}
-                      aria-label={`Xem đơn ${o.code}`}
-                    >
-                      <Arrow />
-                    </Link>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      ) : (
-        <div className="empty-state">
-          <h2>Chưa có đơn phù hợp.</h2>
-          <p>
-            Thử đổi bộ lọc hoặc tìm bằng mã đơn / SĐT. Đơn mới sẽ xuất hiện khi
-            khách đặt lịch.
-          </p>
-          <Link className="text-link" href="/admin">
-            Xóa bộ lọc <Arrow />
-          </Link>
-        </div>
-      )}
-    </div>
-  );
+  if (error) throw new Error("Không tải được danh sách đơn. Hãy tải lại trang.");
+  const orders = (q && !validSearch ? [] : data ?? []) as OrderSummary[];
+  const auth = await authClient();
+  const report = await auth.rpc("demo_financial_report");
+  return <div className="container page-space admin-page">
+    <div className="admin-heading"><div><h1>Quản lý tiệm</h1><p>Xem đơn, làm từng việc, giao đồ đúng hẹn.</p></div><form action={logout}><button className="text-button">Đăng xuất ↗</button></form></div>
+    <form className="admin-search" method="get" aria-label="Tìm đơn hàng">
+      <label htmlFor="admin-search">Tìm mã đơn hoặc số điện thoại</label>
+      <div><input id="admin-search" name="q" defaultValue={q} maxLength={24} placeholder="VD: LD1001 hoặc 090…" /><button className="button">Tìm đơn</button>{(q || status) && <Link className="text-link" href="/admin">Xóa bộ lọc</Link>}</div>
+    </form>
+    {status && <p className="admin-filter-note">Đang lọc: {STATUS_LABEL[status]}. <Link href="/admin">Bỏ lọc trạng thái</Link></p>}
+    <AdminOrders key={q + ":" + status} orders={orders} q={q} />
+    <details className="admin-report"><summary>Thu chi & giá trị đơn <span>Xem khi cần đối chiếu</span></summary>{report.error || !report.data ? <p role="status">Chưa tải được báo cáo. Bạn vẫn có thể xem và xử lý các đơn phía trên.</p> : <DemoFinancialReport report={report.data as DemoReport} />}</details>
+  </div>;
 }

@@ -28,11 +28,11 @@ Reuse Next.js, Supabase and the existing packages. Native Node tests, local Dock
 
 ## Brand Commitments
 
-User confirmed the fictional name Sạch Sạch and delegated design choices. Vietnamese copy. Contact details are illustrative and explicitly labeled demo.
+User confirmed the name Sạch Sạch and delegated design choices. Vietnamese copy. Public contact: 0903992813; 104/4G Nhất Chi Mai, phường Tân Bình, Thành phố Hồ Chí Minh. Opening hours are not yet supplied.
 
 ## Evidence on Hand
 
-The owner confirmed a real shop operated by two family members and supplied a Techcombank QR. Public shop address, opening hours and contact copy remain illustrative until confirmed; do not invent facts, testimonials or operational guarantees. Historical deployment evidence is in docs/verification/rollout. The local Google slice and its real-provider setup requirements are documented separately.
+The owner confirmed a real shop operated by two family members and supplied a Techcombank QR. The owner supplied the public phone/address on 2026-10-24. Do not invent opening hours, testimonials, coordinates or operational guarantees. Google sign-in was confirmed working on Preview before the accepted production rollout. Historical deployment evidence is in docs/verification/rollout. The local Google slice and its real-provider setup requirements are documented separately.
 
 ## Product Principles
 
