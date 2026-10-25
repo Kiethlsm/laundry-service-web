@@ -1,0 +1,50 @@
+
+> laundry-service-web@0.1.0 test:shop
+> node --test --test-concurrency=1 tests/customer/order-detail.test.mjs tests/browser/shop-usability.test.mjs
+
+TAP version 13
+# Subtest: SHOP_CURRENT_MEASUREMENT — saved 2.7kg remains visible and resaving cannot silently restore original 2.5kg
+ok 1 - SHOP_CURRENT_MEASUREMENT — saved 2.7kg remains visible and resaving cannot silently restore original 2.5kg
+  ---
+  duration_ms: 9217.9653
+  type: 'test'
+  ...
+# Subtest: SHOP_BAGS_HANDOVER — receive two bags atomically and put handover before accounting history with human labels
+ok 2 - SHOP_BAGS_HANDOVER — receive two bags atomically and put handover before accounting history with human labels
+  ---
+  duration_ms: 11135.9399
+  type: 'test'
+  ...
+# Subtest: SHOP_CUSTOMER_DETAIL — own order has readable action and actual quantities; foreign and guest access are denied
+ok 3 - SHOP_CUSTOMER_DETAIL — own order has readable action and actual quantities; foreign and guest access are denied
+  ---
+  duration_ms: 9278.5591
+  type: 'test'
+  ...
+# Subtest: SHOP_CLIENT_CONTROLS — visible mobile cart, readable rates, disclosure QR, specific lookup recovery and Escape focus
+ok 4 - SHOP_CLIENT_CONTROLS — visible mobile cart, readable rates, disclosure QR, specific lookup recovery and Escape focus
+  ---
+  duration_ms: 6813.6058
+  type: 'test'
+  ...
+# Subtest: SHOP_SETTLEMENT_PROJECTION — current settlement is scoped by order and incomplete data cannot silently fall back to an estimate
+ok 5 - SHOP_SETTLEMENT_PROJECTION — current settlement is scoped by order and incomplete data cannot silently fall back to an estimate
+  ---
+  duration_ms: 44.619
+  type: 'test'
+  ...
+# Subtest: SHOP_CUSTOMER_BOUNDARY — ownership checked before detail RPC, explicit projection drops private fields
+ok 6 - SHOP_CUSTOMER_BOUNDARY — ownership checked before detail RPC, explicit projection drops private fields
+  ---
+  duration_ms: 13.2871
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 36870.975

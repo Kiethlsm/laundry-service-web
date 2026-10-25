@@ -38,6 +38,10 @@ The cumulative S01 manifest and GitHub CI now include all6 new named tests in ad
 
 Final local command: `npm run check:phase -- S01` passed lint, typecheck,69/69 tests (0 skipped), production build and client-asset scan, all exit0. Authorization coverage remains170/170 matrix cells plus20 null/unknown-role denials. No migrations were added or applied; the existing hosted-defaults and six-prefix rollback checks pass unchanged.
 
+First CI run (`ci-scroll-red.txt`) passed every earlier gate and5/6 shop tests; the footer sample was taken during global smooth scrolling (link bottom3307.8px, bar top922.8px). Two animation frames are not a scroll-completion condition. The corrected harness explicitly scrolls instantly and waits for the scrolling element to reach its actual end, then retains the exact link-above-bar assertion. No product code changes or relaxed geometry threshold. The focused suite and complete CI are required again before merge.
+
+The focused correction also exposed a second harness ordering issue: resizing from the desktop capture to mobile can report the new viewport before the media-query footer padding has recomputed (0px transiently). An independent local CSSOM probe after the viewport settled confirmed that the selector matches and computed padding is128px. The test now observes the mobile padding contract before scrolling to the actual document end. This is a semantic readiness condition, not a sleep or removal of the overlap assertion.
+
 ## Bounded review
 
 One initial desktop/mobile batch covered measured amount, bag receipt, customer records/detail, booking and handover. The correction batch fixed nested amount hierarchy and confirmed the independently identified footer-bar obstruction with a failing test, then fixed its clearance. Final visual confirmation checked desktop amount/detail and mobile bags/booking. A read-only independent final review accepted the ownership/projection and workflow changes. No further decorative iteration is planned.

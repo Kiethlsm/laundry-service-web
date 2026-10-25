@@ -1,0 +1,39 @@
+portfolio-minimal	Run npm run test:shop	﻿2026-10-25T11:01:57.9810808Z ##[group]Run npm run test:shop
+portfolio-minimal	Run npm run test:shop	2026-10-25T11:01:57.9811100Z ^[[36;1mnpm run test:shop^[[0m
+portfolio-minimal	Run npm run test:shop	2026-10-25T11:01:57.9892059Z shell: /usr/bin/bash -e {0}
+portfolio-minimal	Run npm run test:shop	2026-10-25T11:01:57.9892340Z ##[endgroup]
+portfolio-minimal	Run npm run test:shop	2026-10-25T11:01:58.1147005Z
+portfolio-minimal	Run npm run test:shop	2026-10-25T11:01:58.1162296Z > laundry-service-web@0.1.0 test:shop
+portfolio-minimal	Run npm run test:shop	2026-10-25T11:01:58.1182769Z > node --test --test-concurrency=1 tests/customer/order-detail.test.mjs tests/browser/shop-usability.test.mjs
+portfolio-minimal	Run npm run test:shop	2026-10-25T11:01:58.1197105Z
+portfolio-minimal	Run npm run test:shop	2026-10-25T11:02:06.6013110Z ✔ SHOP_CURRENT_MEASUREMENT — saved 2.7kg remains visible and resaving cannot silently restore original 2.5kg (7357.942777ms)
+portfolio-minimal	Run npm run test:shop	2026-10-25T11:02:14.7757457Z ✔ SHOP_BAGS_HANDOVER — receive two bags atomically and put handover before accounting history with human labels (8037.015317ms)
+portfolio-minimal	Run npm run test:shop	2026-10-25T11:02:21.5566947Z ✔ SHOP_CUSTOMER_DETAIL — own order has readable action and actual quantities; foreign and guest access are denied (6955.373801ms)
+portfolio-minimal	Run npm run test:shop	2026-10-25T11:02:24.6815004Z ✖ SHOP_CLIENT_CONTROLS — visible mobile cart, readable rates, disclosure QR, specific lookup recovery and Escape focus (4045.07703ms)
+portfolio-minimal	Run npm run test:shop	2026-10-25T11:02:25.0431479Z ✔ SHOP_SETTLEMENT_PROJECTION — current settlement is scoped by order and incomplete data cannot silently fall back to an estimate (40.667629ms)
+portfolio-minimal	Run npm run test:shop	2026-10-25T11:02:25.0439385Z ✔ SHOP_CUSTOMER_BOUNDARY — ownership checked before detail RPC, explicit projection drops private fields (16.850119ms)
+portfolio-minimal	Run npm run test:shop	2026-10-25T11:02:25.0561102Z ℹ tests 6
+portfolio-minimal	Run npm run test:shop	2026-10-25T11:02:25.0561657Z ℹ suites 0
+portfolio-minimal	Run npm run test:shop	2026-10-25T11:02:25.0562199Z ℹ pass 5
+portfolio-minimal	Run npm run test:shop	2026-10-25T11:02:25.0562592Z ℹ fail 1
+portfolio-minimal	Run npm run test:shop	2026-10-25T11:02:25.0563180Z ℹ cancelled 0
+portfolio-minimal	Run npm run test:shop	2026-10-25T11:02:25.0563593Z ℹ skipped 0
+portfolio-minimal	Run npm run test:shop	2026-10-25T11:02:25.0564130Z ℹ todo 0
+portfolio-minimal	Run npm run test:shop	2026-10-25T11:02:25.0564550Z ℹ duration_ms 26902.323189
+portfolio-minimal	Run npm run test:shop	2026-10-25T11:02:25.0569751Z
+portfolio-minimal	Run npm run test:shop	2026-10-25T11:02:25.0570172Z ✖ failing tests:
+portfolio-minimal	Run npm run test:shop	2026-10-25T11:02:25.0570710Z
+portfolio-minimal	Run npm run test:shop	2026-10-25T11:02:25.0571136Z test at tests/browser/shop-usability.test.mjs:40:1
+portfolio-minimal	Run npm run test:shop	2026-10-25T11:02:25.0572512Z ✖ SHOP_CLIENT_CONTROLS — visible mobile cart, readable rates, disclosure QR, specific lookup recovery and Escape focus (4045.07703ms)
+portfolio-minimal	Run npm run test:shop	2026-10-25T11:02:25.0573500Z   AssertionError [ERR_ASSERTION]: Footer link must stay above cart bar: {"link":3307.796875,"bar":922.796875}
+portfolio-minimal	Run npm run test:shop	2026-10-25T11:02:25.0577336Z       at TestContext.<anonymous> (file:///home/runner/work/laundry-service-web/laundry-service-web/tests/browser/shop-usability.test.mjs:45:447)
+portfolio-minimal	Run npm run test:shop	2026-10-25T11:02:25.0578865Z       at async Test.run (node:internal/test_runner/test:1409:7)
+portfolio-minimal	Run npm run test:shop	2026-10-25T11:02:25.0579794Z       at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+portfolio-minimal	Run npm run test:shop	2026-10-25T11:02:25.0580740Z     generatedMessage: false,
+portfolio-minimal	Run npm run test:shop	2026-10-25T11:02:25.0581572Z     code: 'ERR_ASSERTION',
+portfolio-minimal	Run npm run test:shop	2026-10-25T11:02:25.0582039Z     actual: false,
+portfolio-minimal	Run npm run test:shop	2026-10-25T11:02:25.0582706Z     expected: true,
+portfolio-minimal	Run npm run test:shop	2026-10-25T11:02:25.0583082Z     operator: '==',
+portfolio-minimal	Run npm run test:shop	2026-10-25T11:02:25.0583683Z     diff: 'simple'
+portfolio-minimal	Run npm run test:shop	2026-10-25T11:02:25.0584048Z   }
+portfolio-minimal	Run npm run test:shop	2026-10-25T11:02:25.0680592Z ##[error]Process completed with exit code 1.
