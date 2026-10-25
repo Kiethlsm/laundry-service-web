@@ -2,7 +2,7 @@
 import { revalidatePath } from "next/cache";
 import { requireAdmin } from "@/lib/admin";
 import { authClient } from "@/lib/supabase-server";
-export type DemoActionState = {error:string;success?:string};
+export type DemoActionState = {error:string;success?:string;revision?:number};
 const uuid=/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 const allowed=new Set(['intake','measure','issue_quote','accept_quote','phone_note','quote_state','start_work','qc','incident','resolve_issue','retag','waive','charge','receipt','refund','reverse','deliver_collect','cancel']);
 const errorText:Record<string,string>={
@@ -47,13 +47,16 @@ export async function performDemoAction(_state:DemoActionState,form:FormData):Pr
   case 'deliver_collect':data={bags:form.getAll('bag_id'),items:form.getAll('flagged_id'),amount:Number(form.get('amount')),method:'cash',recipient_evidence:text('recipient_evidence')};break;
   case 'cancel':data={reason:text('reason'),return_plan:text('return_plan')};break;
  }
+ let savedRevision:number;
  try{
-  const auth=await authClient();const {error}=await auth.rpc('order_command',{p_order:order,p_revision:revision,p_key:key,p_action:action,p_data:data});
+  const auth=await authClient();const {data:result,error}=await auth.rpc('order_command',{p_order:order,p_revision:revision,p_key:key,p_action:action,p_data:data});
   if(error){
    if(!errorText[error.message])console.error(JSON.stringify({event:'demo_rpc_failed',rpc:'order_command',code:'DB_ERROR',operation_key:key,action}));
    return {error:errorText[error.message]??"Chưa hoàn tất thao tác. Kiểm tra dữ liệu và tải lại đơn trước khi thử lại."};
   }
+  if(!Number.isSafeInteger(result?.revision)||result.revision<0)return {error:'Chưa xác nhận được phiên bản đã lưu. Hãy tải lại đơn để kiểm tra trước khi thao tác tiếp.'};
+  savedRevision=result.revision;
  }catch{console.error(JSON.stringify({event:'demo_rpc_failed',rpc:'order_command',code:'TRANSPORT',operation_key:key,action}));return {error:"Mất kết nối. Giữ nguyên thao tác và thử lại; không đánh dấu hoàn tất khi chưa có xác nhận."};}
  revalidatePath('/admin');revalidatePath('/admin/orders/'+order);
- return {error:'',success:'Đã lưu thao tác.'};
+ return {error:'',success:'Đã lưu thao tác.',revision:savedRevision};
 }

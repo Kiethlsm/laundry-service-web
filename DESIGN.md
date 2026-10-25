@@ -169,3 +169,9 @@ Retain Be Vietnam Pro and the existing cobalt/enamel identity. Shared reading te
 The admin landing prioritizes a search and four work-group selectors over reports. Order rows use code/status, contact, pickup appointment/address, current cost and a named open action. The result limit and the scope of group counts are explicit. On mobile each row becomes a two-column record; no sideways page navigation is needed.
 Order detail starts with contact and a next-step explanation, followed by four mounted, selectively visible task panels. Report, quote history and original order details remain native disclosures. Selected views preserve input values; visibility controls never write orders. Existing authorization, revisions, quote acceptance, QC and ledger safeguards remain server-owned.
 The public footer uses an outlined location pin with the supplied address as a real Google Maps link, plus a separate call action. No decorative fake map or invented opening hours.
+
+## Clear actions and compact home · 2026-10-25
+
+The homepage inherits cobalt/enamel and Be Vietnam Pro, replacing the sticky runway and staggered service cards with a compact hero, six-service ruled price index, two-column process narrative, and direct booking/contact actions. The accepted CSS washer and reduced-motion pose remain; progress follows normal scrolling.
+
+Admin shows the five-stage journey and save consequences. Acknowledgement uses the RPC-returned revision; success waits for rendered data at least that fresh. Cross-action writes stay disabled until synchronized. Custody badges use server-provided received/returned/QC state separately from whole-order progress. Feedback persists across disappearing forms; errors never become success. No live financial activation or SQL change.

@@ -1,0 +1,33 @@
+{
+  "trace": [
+    {
+      "action": "intake",
+      "revision": 0
+    },
+    {
+      "action": "measure",
+      "revision": 1
+    },
+    {
+      "action": "measure",
+      "revision": 1
+    },
+    {
+      "action": "start_work",
+      "revision": 1
+    }
+  ],
+  "db": "{\"status\": \"picked_up\", \"revision\": 2}",
+  "ui": {
+    "stage": "Đã lấy đồ",
+    "alerts": [],
+    "buttons": [
+      {
+        "text": "Xác nhận bắt đầu giặt / xử lý",
+        "disabled": false
+      }
+    ],
+    "hasWorkForm": true,
+    "workRevision": "2"
+  }
+}

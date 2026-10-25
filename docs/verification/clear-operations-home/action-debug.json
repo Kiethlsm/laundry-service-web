@@ -1,0 +1,28 @@
+{
+  "trace": [
+    {
+      "action": "intake",
+      "revision": 0
+    },
+    {
+      "action": "measure",
+      "revision": 1
+    },
+    {
+      "action": "measure",
+      "revision": 1
+    },
+    {
+      "action": "start_work",
+      "revision": 2
+    }
+  ],
+  "db": "{\"status\": \"processing\", \"revision\": 3}",
+  "ui": {
+    "stage": "Đang xử lý",
+    "feedback": "Đã ghi nhận bắt đầu xử lý.Trạng thái đơn: Đang xử lý.Xem hướng dẫn bên dưới để làm tiếp; không cần bấm lưu lại.",
+    "alerts": [],
+    "buttons": [],
+    "hasWorkForm": false
+  }
+}

@@ -71,7 +71,7 @@ export function ServiceDial({
               )}
             </div>
           </div>
-          <div className="dial-choices" aria-label="Chọn dịch vụ xem nhanh">
+          <div className="dial-choices" role="group" aria-label="Chọn dịch vụ xem nhanh">
             {categories.map((c) => (
               <button
                 key={c.id}

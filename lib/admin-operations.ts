@@ -23,7 +23,7 @@ export function nextAdminAction(data: DemoWorkspaceData): NextAction {
   if (!data.eligible) return action("quotes", "Xác nhận báo giá với khách", "Cần khách đồng ý đúng báo giá hiện tại trước khi xử lý đồ.");
   if (order.status === "picked_up") return money?.settlement_total == null
     ? action("quotes", "Cân đồ và chốt chi phí", "Nhập khối lượng thực tế. Nếu vượt phạm vi đã đồng ý, phát hành báo giá mới.")
-    : action("bags", "Bắt đầu xử lý đồ", "Đã có báo giá và số lượng thực tế. Đối chiếu túi rồi bắt đầu công việc.");
+    : action("bags", "Bắt đầu xử lý đồ", "Nếu chưa cân, mở Cân & báo giá để nhập số lượng thực tế. Chỉ bắt đầu khi khối lượng và báo giá đã được xác nhận.");
   if (data.quotes.find(q => q.id === order.active_quote_id)?.is_amendment && order.work_quote_id !== order.active_quote_id)
     return action("bags", "Bắt đầu phần việc bổ sung", "Khách đã đồng ý phần việc mới. Ghi nhận bắt đầu phần bổ sung rồi kiểm tra lại chất lượng.");
   if (order.status === "processing" || order.work_quote_id !== order.active_quote_id || order.qc_quote_id !== order.active_quote_id)

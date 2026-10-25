@@ -3,6 +3,7 @@ import {spawn} from 'node:child_process';
 import {fixture,sql,literal,ids} from '../domain/helpers.mjs';
 import {until,kill} from './cdp.mjs';
 export async function localSite(){
+ const commandTrace=[];
  const {db}=fixture();
  const encode=v=>Buffer.from(JSON.stringify(v)).toString('base64url');
  const token=encode({alg:'HS256',typ:'JWT'})+'.'+encode({sub:ids.admin,role:'authenticated',aud:'authenticated',exp:Math.floor(Date.now()/1000)+3600})+'.fixture-only';
@@ -28,6 +29,7 @@ export async function localSite(){
     const p=JSON.parse(input);result=JSON.parse(sql(db,`SET ROLE service_role;SELECT book_demo_order(${literal(JSON.stringify(p.p_payload))}::jsonb,${literal(p.p_key)}::uuid,NULL);`));
    }else if(url.pathname.includes('/rpc/')&&['current_profile_role','demo_order_detail','demo_payment_summary','demo_financial_report','order_command'].includes(name)){
     if(!authenticated)throw new Error('Forbidden fixture');const p=JSON.parse(input||'{}');
+    if(name==='order_command')commandTrace.push({action:p.p_action,revision:p.p_revision});
     const args=name==='order_command'?`${literal(p.p_order)}::uuid,${Number(p.p_revision)},${literal(p.p_key)}::uuid,${literal(p.p_action)},${literal(JSON.stringify(p.p_data))}::jsonb`:['demo_order_detail','demo_payment_summary'].includes(name)?`${literal(p.p_order)}::uuid`:'';
     result=query(`public.${name}(${args})`);
    }else if(req.method==='GET'&&name==='orders'&&service){
@@ -45,5 +47,5 @@ export async function localSite(){
  const base=`http://127.0.0.1:${port}`;
  try{await until(async()=>{const r=await fetch(base+'/dat-lich',{signal:AbortSignal.timeout(2000)});return r.status===200;});}
  catch(e){kill(next);adapter.closeAllConnections();await new Promise(r=>adapter.close(r));throw e;}
- return {base,db,close:async()=>{kill(next);adapter.closeAllConnections();await new Promise(r=>adapter.close(r));}};
+ return {base,db,commandTrace,close:async()=>{kill(next);adapter.closeAllConnections();await new Promise(r=>adapter.close(r));}};
 }

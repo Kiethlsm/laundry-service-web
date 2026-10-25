@@ -52,7 +52,7 @@ export default async function AdminOrder({
         <div><h1>{order.code}</h1><p>{order.customer_name}</p><StatusBadge status={order.status} /></div>
         <div><a className="button" href={`tel:${order.customer_phone}`}>Gọi khách · {order.customer_phone}</a><p>{order.pickup_address}</p></div>
       </div>
-      {workspace ? <DemoWorkspace data={workspace}/> : <p className="demo-notice">Đơn cũ chỉ đọc và cần xem xét lại; chưa có bằng chứng đồng ý hoặc thanh toán theo quy trình xử lý.</p>}
+      {workspace ? <DemoWorkspace data={workspace} orderCode={order.code}/> : <p className="demo-notice">Đơn cũ chỉ đọc và cần xem xét lại; chưa có bằng chứng đồng ý hoặc thanh toán theo quy trình xử lý.</p>}
       <details className="admin-reference"><summary>Thông tin khách, dịch vụ, QR chuyển khoản & lịch sử</summary><OrderDetail order={order} /></details>
     </div>
   );

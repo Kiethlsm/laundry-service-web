@@ -14,10 +14,7 @@ export function ScrollScene({ children }: { children: ReactNode }) {
       frame = 0;
       if (preference.matches || document.hidden || !visible) return;
       const rect = scene.getBoundingClientRect();
-      const mobile = window.innerWidth <= 760;
-      const distance = mobile
-        ? rect.height
-        : Math.max(rect.height - window.innerHeight, 1);
+      const distance = Math.max(rect.height, window.innerHeight, 1);
       const progress = Math.min(1, Math.max(0, -rect.top / distance));
       scene.style.setProperty("--scene-progress", progress.toFixed(4));
     };

@@ -16,3 +16,6 @@ Each order starts with customer contact and a next-step explanation derived from
 Public footer uses only owner-confirmed phone 0903992813 and address 104/4G Nhất Chi Mai, phường Tân Bình, Thành phố Hồ Chí Minh. A genuine Google Maps address URL opens on click; no invented coordinates, fake cartography, API key or paid map provider.
 
 Verification: local PG17 fixture, full cumulative gate, authorization matrix and hosted-defaults test; real browser work groups, search, guided panels, unchanged revision, call/maps links and 390/1440 layouts. Inspect one batched capture, correct defects together, confirm once, then stop.
+
+## Action clarity · 2026-10-25
+Show the current order and five-stage journey, then each save consequence. Keep custody and shared processing distinct. Success survives a disappearing form and is shown only after rendered data reaches the RPC-acknowledged revision. Disable submissions during synchronization; retain SQL revision/idempotency checks. Use the shop term bọc with physical intake examples. The next-step control reveals, scrolls to and focuses its region.

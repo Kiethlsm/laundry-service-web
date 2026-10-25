@@ -16,6 +16,7 @@ test('P09_BROWSER_WORKFLOW — local cookie/session adapter and real admin actio
    await page.evaluate(`(()=>{const f=document.querySelector('form[aria-label='+JSON.stringify(${JSON.stringify(label)})+']');if(!f)throw new Error('Missing action form');if(f.closest('details'))f.closest('details').open=true;for(const [name,value]of Object.entries(${JSON.stringify(values)})){const e=f.elements.namedItem(name);e.value=value;e.dispatchEvent(new Event('input',{bubbles:true}));}for(const c of f.querySelectorAll('input[type=checkbox]'))c.checked=true;f.requestSubmit();})()`);
    await until(()=>sql(site.db,`SELECT revision FROM orders WHERE id='${r.order_id}';`)!==before);
    await until(()=>page.evaluate(`document.querySelector('input[name=revision]')?.value===${JSON.stringify(String(Number(before)+1))}`));
+   await until(()=>page.evaluate("!document.querySelector('.operation-saving')"));
   }
   await submit('Nhận túi đồ',{'bag_tag:0':'BAG-BROWSER','bag_count:0':'3','bag_condition:0':'Synthetic intake condition','flag_tag:0':'ITEM-BROWSER','flag_description:0':'Flagged jacket','flag_condition:0':'Synthetic pre-existing mark'});
   await submit('Phát hành phiên bản mới',{['quantity:'+sql(site.db,`SELECT min(id) FROM order_items WHERE order_id='${r.order_id}';`)]:'3'});

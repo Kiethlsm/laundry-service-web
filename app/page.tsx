@@ -2,143 +2,40 @@ import Link from "next/link";
 import { getCatalog } from "@/lib/catalog";
 import { formatVND, UNIT_LABEL } from "@/lib/format";
 import { ServiceDial } from "@/components/service-dial";
-import { Arrow, Check, ServiceEmoji } from "@/components/ui";
+import { Arrow, ServiceEmoji } from "@/components/ui";
 import { ScrollScene } from "@/components/scroll-scene";
-
+import { SHOP } from "@/lib/shop";
 export const dynamic = "force-dynamic";
 export default async function Home() {
-  const { categories, services } = await getCatalog();
-  return (
-    <div className="home-page">
-      <ScrollScene>
-        <section className="hero container">
-          <div className="hero-copy">
-            <h1>
-              Việc giặt giũ,
-              <br />
-              để <span>Sạch Sạch</span> lo.
-            </h1>
-            <p>
-              Quần áo, đôi giày hay chiếc chăn yêu thích.
-              <br className="desktop-break" /> Bạn đặt lịch, chúng mình đến lấy
-              và giao lại gọn gàng.
-            </p>
-            <div className="actions">
-              <Link className="button" href="/dat-lich">
-                Đặt lịch ngay <Arrow />
-              </Link>
-              <Link className="text-link" href="/bang-gia">
-                Xem bảng giá <Arrow />
-              </Link>
-            </div>
-            <div className="hero-note">
-              <span className="tiny-check">
-                <Check />
-              </span>{" "}
-              Không cần tài khoản <span className="dot" /> Biết giá trước khi
-              đặt
-            </div>
-            <a className="scroll-invitation" href="#dich-vu">
-              <span className="scroll-icon" aria-hidden="true">
-                <Arrow />
-              </span>
-              Cuộn xuống, nhẹ việc nhà
-            </a>
-          </div>
-          <ServiceDial categories={categories} services={services} />
-        </section>
-      </ScrollScene>
-      <section className="service-section container" id="dich-vu">
-        <div className="section-heading">
-          <div>
-            <h2>
-              Từ đồ hằng ngày
-              <br />
-              đến món đồ bạn thương.
-            </h2>
-            <p>Sáu dịch vụ, một chỗ gửi gắm.</p>
-          </div>
-          <Link href="/bang-gia" className="text-link">
-            Bảng giá chi tiết <Arrow />
-          </Link>
-        </div>
-        <div className="service-grid">
-          {categories.map((c) => {
-            const group = services.filter((s) => s.category_id === c.id);
-            const min = group.reduce(
-              (a, s) => (!a || s.price < a.price ? s : a),
-              undefined as (typeof group)[number] | undefined,
-            );
-            return (
-              <Link
-                className="service-card"
-                href={`/bang-gia#${c.slug}`}
-                key={c.id}
-              >
-                <div className="service-top">
-                  <ServiceEmoji id={c.id} />
-                  <Arrow />
-                </div>
-                <h3>{c.name}</h3>
-                <p>{c.description}</p>
-                <div className="service-price">
-                  {min ? (
-                    <>
-                      Từ <strong>{formatVND(min.price)}</strong> /{" "}
-                      {UNIT_LABEL[min.unit]}
-                    </>
-                  ) : (
-                    "Liên hệ cửa hàng"
-                  )}
-                </div>
-              </Link>
-            );
-          })}
-        </div>
-      </section>
-      <section className="process-section">
-        <div className="container">
-          <div className="section-heading">
-            <h2>
-              Một lịch hẹn.
-              <br />
-              Nhẹ cả việc nhà.
-            </h2>
-            <p>
-              Bạn dành thời gian cho điều mình thích.
-              <br />
-              Phần giặt giũ cứ để chúng mình.
-            </p>
-          </div>
-          <ol className="process-grid">
-            {[
-              ["Đặt lịch", "Chọn dịch vụ và hẹn giờ lấy đồ phù hợp với bạn."],
-              ["Lấy đồ", "Cửa hàng liên hệ xác nhận và đến địa chỉ đã hẹn."],
-              ["Xử lý", "Giặt, sấy, ủi hoặc sửa theo dịch vụ bạn chọn."],
-              ["Giao tận nơi", "Nhận lại đồ sạch và thanh toán khi nhận đồ."],
-            ].map(([title, description], i) => (
-              <li key={title}>
-                <span className="step-number">0{i + 1}</span>
-                <h3>{title}</h3>
-                <p>{description}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-      <section className="closing container">
-        <div>
-          <h2>
-            Giỏ đồ đầy rồi?
-            <br />
-            Mình hẹn nhau nhé.
-          </h2>
-          <p>Chọn dịch vụ, xem tạm tính và đặt lịch trong cùng một trang.</p>
-        </div>
-        <Link className="button" href="/dat-lich">
-          Đặt lịch lấy đồ <Arrow />
-        </Link>
-      </section>
-    </div>
-  );
+ const { categories, services } = await getCatalog();
+ return <div className="home-page home-refresh">
+  <ScrollScene><section className="hero container">
+   <div className="hero-copy">
+    <h1>Việc giặt giũ,<br/><span>để tiệm lo.</span></h1>
+    <p>Quần áo hằng ngày, đôi giày yêu thích hay chiếc chăn ở nhà. Chọn dịch vụ, hẹn giờ lấy đồ; Sạch Sạch xác nhận chi phí trước khi xử lý.</p>
+    <div className="actions"><Link className="button" href="/dat-lich">Đặt lịch lấy đồ <Arrow/></Link><Link className="text-link" href="/tra-cuu">Tra cứu đơn đã đặt <Arrow/></Link></div>
+    <p className="landing-guest-note">Bạn có thể đặt lịch mà không cần tạo tài khoản.</p>
+    <a className="landing-service-jump text-link" href="#dich-vu">Xem dịch vụ & giá tham khảo <Arrow/></a>
+   </div>
+   <div className="landing-machine"><ServiceDial categories={categories} services={services}/><p>Chọn dịch vụ trên máy để xem giá khởi điểm.</p></div>
+  </section></ScrollScene>
+  <div className="landing-contact container"><a href={"tel:"+SHOP.phone}><span>Cần hỏi tiệm trước khi đặt?</span><strong>{SHOP.phone} <Arrow/></strong></a><a href={SHOP.mapsUrl} target="_blank" rel="noopener noreferrer"><span>Ghé Sạch Sạch</span><strong>{SHOP.address} <Arrow/></strong></a></div>
+  <section className="service-section container" id="dich-vu">
+   <div className="landing-section-heading"><div><h2>Đồ gì cần chăm,<br/>Sạch Sạch có dịch vụ đó.</h2><p>Sáu nhóm dịch vụ. Giá dưới đây là mức khởi điểm; chi phí được chốt theo đồ thực tế và sự đồng ý của bạn.</p></div><Link className="text-link" href="/bang-gia">Xem toàn bộ bảng giá <Arrow/></Link></div>
+   <div className="landing-services">{categories.map(c=>{
+    const lowest=services.filter(s=>s.category_id===c.id).reduce((best,s)=>!best||s.price<best.price?s:best,undefined as (typeof services)[number]|undefined);
+    return <Link key={c.id} className="service-line" href={"/bang-gia#"+c.slug}><ServiceEmoji id={c.id}/><div className="service-line-description"><h3>{c.name}</h3><p>{c.description}</p></div><div className="service-line-price">{lowest?<><span>Từ</span><strong>{formatVND(lowest.price)}</strong><span>/ {UNIT_LABEL[lowest.unit]}</span></>:<span>Liên hệ tiệm</span>}</div><Arrow/></Link>;
+   })}</div>
+  </section>
+  <section className="landing-process"><div className="container landing-process-inner">
+   <div><h2>Một lịch hẹn.<br/>Rõ từng bước.</h2><p>Bạn biết đồ đang ở bước nào và chi phí được xác nhận trước khi tiệm bắt đầu xử lý.</p><Link className="text-link" href="/tra-cuu">Theo dõi đơn của bạn <Arrow/></Link></div>
+   <ol>{[
+    ["Chọn dịch vụ & hẹn giờ","Nhập số lượng dự kiến và địa chỉ lấy đồ. Lưu lại mã đơn để tra cứu."],
+    ["Nhận đồ & chốt báo giá","Tiệm nhận bọc đồ, kiểm số lượng và xác nhận chi phí với bạn."],
+    ["Giặt, sấy & chăm đồ","Xử lý theo dịch vụ và báo giá đã được bạn đồng ý."],
+    ["Trả đồ & đối chiếu tiền","Nhận lại đồ, kiểm đủ bọc và thanh toán tiền mặt hoặc chuyển khoản theo hướng dẫn của tiệm."],
+   ].map(([title,help],i)=><li key={title}><span aria-hidden="true">{i+1}</span><div><h3>{title}</h3><p>{help}</p></div></li>)}</ol>
+  </div></section>
+  <section className="container landing-closing"><div><h2>Giỏ đồ đầy rồi?<br/>Mình hẹn nhau nhé.</h2><p>Chọn dịch vụ và gửi lịch lấy đồ trong cùng một trang.</p></div><div><Link className="button" href="/dat-lich">Đặt lịch ngay <Arrow/></Link><a className="text-link" href={"tel:"+SHOP.phone}>Gọi tiệm: {SHOP.phone}</a></div></section>
+ </div>;
 }
