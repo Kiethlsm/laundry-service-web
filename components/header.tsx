@@ -58,6 +58,7 @@ export function Header() {
             <Link
               key={href}
               href={href}
+              prefetch={!admin && ["/", "/bang-gia", "/dat-lich", "/tra-cuu"].includes(href) ? true : undefined}
               aria-current={path === href ? "page" : undefined}
               onClick={() => setOpen(false)}
             >
@@ -65,7 +66,7 @@ export function Header() {
             </Link>
           ))}
         </nav>
-        {!admin && <Link className="button header-cta" href="/dat-lich">
+        {!admin && <Link className="button header-cta" href="/dat-lich" prefetch={true}>
           Đặt lịch lấy đồ <Arrow />
         </Link>}
       </div>

@@ -5,7 +5,7 @@ import { ServiceDial } from "@/components/service-dial";
 import { Arrow, ServiceEmoji } from "@/components/ui";
 import { ScrollScene } from "@/components/scroll-scene";
 import { SHOP } from "@/lib/shop";
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 export default async function Home() {
  const { categories, services } = await getCatalog();
  return <div className="home-page home-refresh">

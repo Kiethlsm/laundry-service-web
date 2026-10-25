@@ -59,7 +59,12 @@ export const getCatalog = cache(async () => {
       services: sampleServices,
       demo: true,
     };
-  const db = serviceClient();
+  // Only the public service catalog is shared between requests. Order, auth
+  // and payment clients retain their default uncached behavior.
+  const db = serviceClient((input, init) => fetch(input, {
+    ...init,
+    next: { revalidate: 60 },
+  }));
   const [categories, services] = await Promise.all([
     db.from("service_categories").select("*").order("sort_order"),
     db.from("services").select("*").eq("is_active", true).order("id"),

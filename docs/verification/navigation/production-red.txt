@@ -1,0 +1,66 @@
+TAP version 13
+# Subtest: NAVIGATION_PRODUCTION — public cache and real production prefetch under slow catalog
+    # Subtest: PUBLIC_CATALOG_REUSE — repeat home and pricing reads reuse public catalog
+    not ok 1 - PUBLIC_CATALOG_REUSE — repeat home and pricing reads reuse public catalog
+      ---
+      duration_ms: 3704.9258
+      type: 'test'
+      location: 'C:\\Users\\Kieth\\Documents\\Juinior\\tests\\browser\\navigation.test.mjs:11:11'
+      failureType: 'testCodeFailure'
+      error: |-
+        unchanged public prices must not re-query Supabase on every page visit
+        
+        4 !== 0
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 0
+      actual: 4
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/browser/navigation.test.mjs:16:11)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/browser/navigation.test.mjs:11:3)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: PUBLIC_PREFETCH — warmed booking navigation does not wait for the 1500ms catalog
+    not ok 2 - PUBLIC_PREFETCH — warmed booking navigation does not wait for the 1500ms catalog
+      ---
+      duration_ms: 3823.8555
+      type: 'test'
+      location: 'C:\\Users\\Kieth\\Documents\\Juinior\\tests\\browser\\navigation.test.mjs:18:11'
+      failureType: 'testCodeFailure'
+      error: 'fully prefetched booking should open below750ms despite1500ms upstream latency: 1868'
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: true
+      actual: false
+      operator: '=='
+      stack: |-
+        TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/browser/navigation.test.mjs:28:11)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/browser/navigation.test.mjs:18:3)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    1..2
+not ok 1 - NAVIGATION_PRODUCTION — public cache and real production prefetch under slow catalog
+  ---
+  duration_ms: 40413.8027
+  type: 'test'
+  location: 'C:\\Users\\Kieth\\Documents\\Juinior\\tests\\browser\\navigation.test.mjs:7:1'
+  failureType: 'subtestsFailed'
+  error: '2 subtests failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+1..1
+# tests 3
+# suites 0
+# pass 0
+# fail 3
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 40540.7025

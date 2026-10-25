@@ -7,7 +7,7 @@ import { Arrow, ServiceEmoji, PreviewNotice } from "@/components/ui";
 import "./pricing.css";
 
 export const metadata: Metadata = { title: "Bảng giá dịch vụ" };
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 export default async function Pricing() {
   const { categories, services, demo } = await getCatalog();

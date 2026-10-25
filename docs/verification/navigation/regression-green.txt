@@ -1,0 +1,95 @@
+TAP version 13
+# Subtest: P02_BOOKING_UI — responsive keyboard consent and lost-response retry keeps one order
+ok 1 - P02_BOOKING_UI — responsive keyboard consent and lost-response retry keeps one order
+  ---
+  duration_ms: 7710.1546
+  type: 'test'
+  ...
+# Subtest: ACTION_RESULT_BROWSER — saved intake survives disappearing form, rejected weight gives no false success, processing follows saved work
+ok 2 - ACTION_RESULT_BROWSER — saved intake survives disappearing form, rejected weight gives no false success, processing follows saved work
+  ---
+  duration_ms: 14440.3207
+  type: 'test'
+  ...
+# Subtest: HOME_LAYOUT_BROWSER — compact hero, six real service links, category booking and reduced motion at supported widths
+ok 3 - HOME_LAYOUT_BROWSER — compact hero, six real service links, category booking and reduced motion at supported widths
+  ---
+  duration_ms: 10219.1075
+  type: 'test'
+  ...
+# Subtest: HOME_READABILITY — readable controls, early contact, discoverable prices and six working selections
+ok 4 - HOME_READABILITY — readable controls, early contact, discoverable prices and six working selections
+  ---
+  duration_ms: 7940.1789
+  type: 'test'
+  ...
+# Subtest: PRICING_DATA — exact catalog rates, units and estimates have associated table headers
+ok 5 - PRICING_DATA — exact catalog rates, units and estimates have associated table headers
+  ---
+  duration_ms: 7620.2506
+  type: 'test'
+  ...
+# Subtest: PRICING_READABILITY — aligned large prices, working shortcuts and booking, narrow and enlarged text without overflow
+ok 6 - PRICING_READABILITY — aligned large prices, working shortcuts and booking, narrow and enlarged text without overflow
+  ---
+  duration_ms: 8985.4596
+  type: 'test'
+  ...
+# Subtest: S01_CUSTOMER_BROWSER — mobile/desktop Google entry, guest link and protected account use local transport only
+ok 7 - S01_CUSTOMER_BROWSER — mobile/desktop Google entry, guest link and protected account use local transport only
+  ---
+  duration_ms: 8589.2661
+  type: 'test'
+  ...
+# Subtest: S01_GOOGLE_START — PKCE authorization uses Google, fixed callback, basic scopes and trusted origin
+ok 8 - S01_GOOGLE_START — PKCE authorization uses Google, fixed callback, basic scopes and trusted origin
+  ---
+  duration_ms: 80.339
+  type: 'test'
+  ...
+# Subtest: S01_GOOGLE_CALLBACK — exchange then verified user then bound profile; redirects cannot be supplied by caller
+ok 9 - S01_GOOGLE_CALLBACK — exchange then verified user then bound profile; redirects cannot be supplied by caller
+  ---
+  duration_ms: 15.8897
+  type: 'test'
+  ...
+# Subtest: S01_GOOGLE_DENIAL — canceled/expired/unverified/disabled never provision or expose provider details
+ok 10 - S01_GOOGLE_DENIAL — canceled/expired/unverified/disabled never provision or expose provider details
+  ---
+  duration_ms: 10.0973
+  type: 'test'
+  ...
+# Subtest: S01_BOOKING_OWNER — only server-verified customer id is bound; guest preserved; broken session creates no guest order
+ok 11 - S01_BOOKING_OWNER — only server-verified customer id is bound; guest preserved; broken session creates no guest order
+  ---
+  duration_ms: 21.981
+  type: 'test'
+  ...
+# Subtest: S01_ORIGIN_POLICY — production and this project previews only; forwarded host and foreign origins have no authority
+ok 12 - S01_ORIGIN_POLICY — production and this project previews only; forwarded host and foreign origins have no authority
+  ---
+  duration_ms: 4.2051
+  type: 'test'
+  ...
+# Subtest: S01_SESSION_BOUNDARY — a broken Supabase cookie cannot silently create a guest order; unrelated cookies permit guests
+ok 13 - S01_SESSION_BOUNDARY — a broken Supabase cookie cannot silently create a guest order; unrelated cookies permit guests
+  ---
+  duration_ms: 18.1377
+  type: 'test'
+  ...
+# {"event":"booking_rpc_failed","code":"DB_ERROR","operation_key":"cc5082eb-c4a2-4160-98b5-d1300003e218"}
+# Subtest: P02_HTTP_CONTRACT — status/retry/validation and safe unavailable errors
+ok 14 - P02_HTTP_CONTRACT — status/retry/validation and safe unavailable errors
+  ---
+  duration_ms: 86.916
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 14
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 67057.0768

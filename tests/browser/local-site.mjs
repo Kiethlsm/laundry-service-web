@@ -2,8 +2,9 @@ import http from 'node:http';
 import {spawn} from 'node:child_process';
 import {fixture,sql,literal,ids} from '../domain/helpers.mjs';
 import {until,kill} from './cdp.mjs';
-export async function localSite({userId=ids.admin}={}){
+export async function localSite({userId=ids.admin,production=false,catalogDelayMs=0}={}){
  const commandTrace=[];
+ const catalogRequests=[];
  const {db}=fixture();
  const encode=v=>Buffer.from(JSON.stringify(v)).toString('base64url');
  const token=encode({alg:'HS256',typ:'JWT'})+'.'+encode({sub:userId,role:'authenticated',aud:'authenticated',exp:Math.floor(Date.now()/1000)+3600})+'.fixture-only';
@@ -23,7 +24,11 @@ export async function localSite({userId=ids.admin}={}){
    }else if(url.pathname==='/auth/v1/user'){
     if(!authenticated){res.writeHead(401,{'Content-Type':'application/json'});res.end('{"message":"Unauthorized fixture"}');return;}result=user;
    }else if(url.pathname==='/auth/v1/logout')result={};
-   else if(req.method==='GET'&&['services','service_categories'].includes(name))result=JSON.parse(sql(db,`SELECT coalesce(jsonb_agg(t),'[]') FROM public.${name} t;`));
+   else if(req.method==='GET'&&['services','service_categories'].includes(name)){
+    catalogRequests.push(name);
+    if(catalogDelayMs)await new Promise(resolve=>setTimeout(resolve,catalogDelayMs));
+    result=JSON.parse(sql(db,`SELECT coalesce(jsonb_agg(t),'[]') FROM public.${name} t;`));
+   }
    else if(url.pathname.includes('/rpc/')&&name==='lookup_demo_order') {
     if(!service)throw new Error('Forbidden fixture');const p=JSON.parse(input);result=query(`public.lookup_demo_order(${literal(p.p_code)},${literal(p.p_phone)})`);
    }else if(url.pathname.includes('/rpc/')&&name==='book_demo_order') {
@@ -51,9 +56,17 @@ export async function localSite({userId=ids.admin}={}){
  await new Promise(r=>adapter.listen(0,'127.0.0.1',r));
  const reserve=http.createServer();await new Promise(r=>reserve.listen(0,'127.0.0.1',r));const port=reserve.address().port;await new Promise(r=>reserve.close(r));
  const env={...process.env,NEXT_PUBLIC_SUPABASE_URL:`http://127.0.0.1:${adapter.address().port}`,NEXT_PUBLIC_SUPABASE_ANON_KEY:'LOCAL_TEST_ANON',SUPABASE_SERVICE_ROLE_KEY:'LOCAL_TEST_SERVICE'};
- const next=spawn(process.execPath,['node_modules/next/dist/bin/next','dev','-H','127.0.0.1','-p',String(port)],{env,stdio:'ignore',windowsHide:true});
+ if(production){
+  try{await new Promise((resolve,reject)=>{
+   const build=spawn(process.execPath,['node_modules/next/dist/bin/next','build'],{env,stdio:'ignore',windowsHide:true});
+   const deadline=setTimeout(()=>{kill(build);reject(new Error('Local production build deadline'));},180000);
+   build.once('error',error=>{clearTimeout(deadline);reject(error);});
+   build.once('exit',code=>{clearTimeout(deadline);if(code===0)resolve();else reject(new Error('Local production build failed: '+code));});
+  });}catch(error){adapter.closeAllConnections();await new Promise(r=>adapter.close(r));throw error;}
+ }
+ const next=spawn(process.execPath,['node_modules/next/dist/bin/next',production?'start':'dev','-H','127.0.0.1','-p',String(port)],{env,stdio:'ignore',windowsHide:true});
  const base=`http://127.0.0.1:${port}`;
  try{await until(async()=>{const r=await fetch(base+'/dat-lich',{signal:AbortSignal.timeout(2000)});return r.status===200;});}
  catch(e){kill(next);adapter.closeAllConnections();await new Promise(r=>adapter.close(r));throw e;}
- return {base,db,commandTrace,cookie:{name:'sb-127-auth-token',value:'base64-'+Buffer.from(JSON.stringify(session)).toString('base64url')},close:async()=>{kill(next);adapter.closeAllConnections();await new Promise(r=>adapter.close(r));}};
+ return {base,db,commandTrace,catalogRequests,cookie:{name:'sb-127-auth-token',value:'base64-'+Buffer.from(JSON.stringify(session)).toString('base64url')},close:async()=>{kill(next);adapter.closeAllConnections();await new Promise(r=>adapter.close(r));}};
 }

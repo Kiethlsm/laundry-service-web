@@ -16,6 +16,8 @@ manifests.S01.required.push('SHOP_CURRENT_MEASUREMENT','SHOP_BAGS_HANDOVER','SHO
 manifests.S01.files.push('tests/customer/order-detail.test.mjs','tests/browser/shop-usability.test.mjs');
 manifests.S01.required.push('HOME_READABILITY');
 manifests.S01.files.push('tests/browser/home-readability.test.mjs');
+manifests.S01.required.push('NAVIGATION_PRODUCTION');
+manifests.S01.files.push('tests/browser/navigation.test.mjs');
 export function validateGate(output,status,phase='P01') {
  return status===0 && Boolean(manifests[phase]) && manifests[phase].required.every(id=>new RegExp('^ok \\d+ - '+id+'(?:[ \\n]|$)[^\\n]*(?:\\n|$)','m').test(output)) && !/^(?:not )?ok [^\n]* # (?:SKIP|TODO)\b/im.test(output);
 }

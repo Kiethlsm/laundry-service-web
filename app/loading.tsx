@@ -5,9 +5,10 @@ export default function Loading() {
       role="status"
       aria-label="Đang tải nội dung"
     >
-      <div />
-      <div />
-      <div />
+      <p>Đang mở trang…</p>
+      <div aria-hidden="true" />
+      <div aria-hidden="true" />
+      <div aria-hidden="true" />
     </div>
   );
 }

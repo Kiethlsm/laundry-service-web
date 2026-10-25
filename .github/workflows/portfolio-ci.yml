@@ -34,3 +34,5 @@ jobs:
       - run: npm run test:shop
       - name: Homepage readability and keyboard navigation
         run: node --test tests/browser/home-readability.test.mjs
+      - name: Production navigation and public catalog caching
+        run: node --test tests/browser/navigation.test.mjs

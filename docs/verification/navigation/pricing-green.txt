@@ -1,0 +1,26 @@
+
+> laundry-service-web@0.1.0 test:pricing
+> node --test --test-concurrency=1 tests/browser/pricing.test.mjs
+
+TAP version 13
+# Subtest: PRICING_DATA — exact catalog rates, units and estimates have associated table headers
+ok 1 - PRICING_DATA — exact catalog rates, units and estimates have associated table headers
+  ---
+  duration_ms: 5757.5458
+  type: 'test'
+  ...
+# Subtest: PRICING_READABILITY — aligned large prices, working shortcuts and booking, narrow and enlarged text without overflow
+ok 2 - PRICING_READABILITY — aligned large prices, working shortcuts and booking, narrow and enlarged text without overflow
+  ---
+  duration_ms: 7406.6216
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 13283.6972

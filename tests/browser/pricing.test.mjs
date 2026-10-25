@@ -50,6 +50,11 @@ test('PRICING_READABILITY — aligned large prices, working shortcuts and bookin
   assert.equal(await page.evaluate('document.documentElement.scrollWidth<=innerWidth'),true,'200% text fits a narrow viewport');
   // Mutate this disposable catalog only: exercise long names, large prices and a new empty category.
   sql(site.db,"UPDATE services SET name='Dịch vụ chăm sóc quần áo với tên dài để kiểm tra khả năng xuống dòng rõ ràng',price=12345678 WHERE id=1;INSERT INTO service_categories(id,name,slug,description,sort_order) VALUES(99,'Nhóm đang chuẩn bị','dang-chuan-bi','',99);");
+  // Inspect the newly mutated layout fixture with Next dev's documented hard-
+  // refresh cache bypass. Production cache reuse is tested in navigation.test.
+  // All long-name, amount, empty-category and overflow assertions stay intact.
+  await page.send('Network.enable');
+  await page.send('Network.setExtraHTTPHeaders',{headers:{'Cache-Control':'no-cache'}});
   await page.send('Page.navigate',{url:site.base+'/bang-gia'});await until(()=>page.evaluate("Boolean(document.querySelector('#dang-chuan-bi'))"));
   for(const width of [320,768]){await page.send('Emulation.setDeviceMetricsOverride',{width,height:1000,deviceScaleFactor:1,mobile:width<768});assert.equal(await page.evaluate('document.documentElement.scrollWidth<=innerWidth'),true,'Long catalog content fits at '+width);assert.equal(await page.evaluate("(()=>{const name=document.querySelector('[data-service-id=\"1\"] [data-service-name]');const box=name.closest('th').getBoundingClientRect();const range=document.createRange();range.selectNodeContents(name);return [...range.getClientRects()].every(r=>r.left>=box.left-1&&r.right<=box.right+1)})()"),true,'Long names wrap within their own cell');}
   assert.equal(await page.evaluate("document.querySelector('[data-service-id=\"1\"] [data-price]').textContent"),money(12345678));
