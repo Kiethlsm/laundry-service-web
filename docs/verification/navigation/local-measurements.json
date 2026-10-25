@@ -1,5 +1,7 @@
 {
   "repeatCatalogReads": 0,
-  "prefetchedBookingMs": 25,
-  "freshOrderTotal": 145000
+  "prefetchedBookingMs": 26,
+  "freshOrderTotal": 145000,
+  "coldFeedbackMs390": 16,
+  "coldFeedbackMs1440": 17
 }

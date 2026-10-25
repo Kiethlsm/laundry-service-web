@@ -1337,6 +1337,24 @@ td:nth-child(3) {
   display: grid;
   gap: 24px;
 }
+.navigation-pending {
+  position: fixed;
+  top: 94px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 90;
+  max-width: calc(100% - 32px);
+  padding: 4px 12px;
+  border-radius: 12px;
+  background: var(--blue);
+  color: white;
+  font-size: .875rem;
+  line-height: 1.5;
+  pointer-events: none;
+}
+@media (max-width: 760px) {
+  .navigation-pending { top: 76px; }
+}
 .skeleton-page div {
   background: var(--pale);
   border-radius: 8px;

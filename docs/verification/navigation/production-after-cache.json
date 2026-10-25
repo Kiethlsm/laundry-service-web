@@ -1,0 +1,166 @@
+{
+  "base": "https://laundry-service-web.vercel.app",
+  "results": [
+    {
+      "round": 1,
+      "route": "/bang-gia",
+      "firstFeedbackMs": 2644,
+      "contentMs": 2965,
+      "resources": [
+        {
+          "path": "/",
+          "ms": 2210,
+          "ttfb": 2209
+        },
+        {
+          "path": "/bang-gia",
+          "ms": 2677,
+          "ttfb": 2676
+        },
+        {
+          "path": "/tra-cuu",
+          "ms": 2471,
+          "ttfb": 2470
+        },
+        {
+          "path": "/dat-lich",
+          "ms": 2699,
+          "ttfb": 2695
+        },
+        {
+          "path": "/bang-gia",
+          "ms": 2630,
+          "ttfb": 2629
+        },
+        {
+          "path": "/tra-cuu",
+          "ms": 480,
+          "ttfb": 480
+        }
+      ]
+    },
+    {
+      "round": 1,
+      "route": "/dat-lich",
+      "firstFeedbackMs": null,
+      "contentMs": 859,
+      "resources": [
+        {
+          "path": "/tai-khoan",
+          "ms": 801,
+          "ttfb": 801
+        },
+        {
+          "path": "/dat-lich",
+          "ms": 583,
+          "ttfb": 583
+        },
+        {
+          "path": "/tai-khoan",
+          "ms": 544,
+          "ttfb": 544
+        },
+        {
+          "path": "/",
+          "ms": 125,
+          "ttfb": 123
+        },
+        {
+          "path": "/dat-lich",
+          "ms": 838,
+          "ttfb": 833
+        },
+        {
+          "path": "/dat-lich",
+          "ms": 362,
+          "ttfb": 362
+        },
+        {
+          "path": "/tra-cuu",
+          "ms": 477,
+          "ttfb": 477
+        },
+        {
+          "path": "/tai-khoan",
+          "ms": 373,
+          "ttfb": 371
+        },
+        {
+          "path": "/dat-lich",
+          "ms": 372,
+          "ttfb": 365
+        }
+      ]
+    },
+    {
+      "round": 1,
+      "route": "/tra-cuu",
+      "firstFeedbackMs": null,
+      "contentMs": 16,
+      "resources": []
+    },
+    {
+      "round": 1,
+      "route": "/",
+      "firstFeedbackMs": null,
+      "contentMs": 12,
+      "resources": []
+    },
+    {
+      "round": 2,
+      "route": "/bang-gia",
+      "firstFeedbackMs": null,
+      "contentMs": 12,
+      "resources": []
+    },
+    {
+      "round": 2,
+      "route": "/dat-lich",
+      "firstFeedbackMs": null,
+      "contentMs": 13,
+      "resources": []
+    },
+    {
+      "round": 2,
+      "route": "/tra-cuu",
+      "firstFeedbackMs": null,
+      "contentMs": 14,
+      "resources": []
+    },
+    {
+      "round": 2,
+      "route": "/",
+      "firstFeedbackMs": null,
+      "contentMs": 14,
+      "resources": []
+    },
+    {
+      "round": 3,
+      "route": "/bang-gia",
+      "firstFeedbackMs": null,
+      "contentMs": 12,
+      "resources": []
+    },
+    {
+      "round": 3,
+      "route": "/dat-lich",
+      "firstFeedbackMs": null,
+      "contentMs": 16,
+      "resources": []
+    },
+    {
+      "round": 3,
+      "route": "/tra-cuu",
+      "firstFeedbackMs": null,
+      "contentMs": 16,
+      "resources": []
+    },
+    {
+      "round": 3,
+      "route": "/",
+      "firstFeedbackMs": null,
+      "contentMs": 12,
+      "resources": []
+    }
+  ]
+}

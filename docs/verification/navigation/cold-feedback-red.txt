@@ -1,0 +1,59 @@
+TAP version 13
+# Subtest: NAVIGATION_PRODUCTION — public cache and real production prefetch under slow catalog
+    # Subtest: PUBLIC_CATALOG_REUSE — repeat home and pricing reads reuse public catalog
+    ok 1 - PUBLIC_CATALOG_REUSE — repeat home and pricing reads reuse public catalog
+      ---
+      duration_ms: 131.7152
+      type: 'test'
+      ...
+    # Subtest: PUBLIC_PREFETCH — warmed booking navigation does not wait for the 1500ms catalog
+    ok 2 - PUBLIC_PREFETCH — warmed booking navigation does not wait for the 1500ms catalog
+      ---
+      duration_ms: 1578.5798
+      type: 'test'
+      ...
+    # Subtest: LIVE_ORDER_PRICING — cached display never sets the authoritative order price
+    ok 3 - LIVE_ORDER_PRICING — cached display never sets the authoritative order price
+      ---
+      duration_ms: 685.622
+      type: 'test'
+      ...
+    # Subtest: COLD_LINK_FEEDBACK — immediate status even before a static route is prefetched
+    not ok 4 - COLD_LINK_FEEDBACK — immediate status even before a static route is prefetched
+      ---
+      duration_ms: 5903.0581
+      type: 'test'
+      location: 'C:\\Users\\Kieth\\Documents\\Juinior\\tests\\browser\\navigation.test.mjs:44:11'
+      failureType: 'testCodeFailure'
+      error: 'visible pending feedback within250ms at390px, without waiting1500ms for the network'
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: true
+      actual: false
+      operator: '=='
+      stack: |-
+        TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/browser/navigation.test.mjs:59:12)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/browser/navigation.test.mjs:44:3)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    1..4
+not ok 1 - NAVIGATION_PRODUCTION — public cache and real production prefetch under slow catalog
+  ---
+  duration_ms: 19681.2045
+  type: 'test'
+  location: 'C:\\Users\\Kieth\\Documents\\Juinior\\tests\\browser\\navigation.test.mjs:8:1'
+  failureType: 'subtestsFailed'
+  error: '1 subtest failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+1..1
+# tests 5
+# suites 0
+# pass 3
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 19790.3603

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRef, useState } from "react";
 import { Arrow, Brand } from "./ui";
+import { NavigationHint } from "./navigation-hint";
 export function Header() {
   const path = usePathname();
   const admin = path.startsWith("/admin") && path !== "/admin/login";
@@ -22,6 +23,7 @@ export function Header() {
           onClick={() => setOpen(false)}
         >
           <Brand />
+          <NavigationHint />
         </Link>
         <button
           ref={menuRef}
@@ -63,11 +65,12 @@ export function Header() {
               onClick={() => setOpen(false)}
             >
               {label}
+              <NavigationHint />
             </Link>
           ))}
         </nav>
         {!admin && <Link className="button header-cta" href="/dat-lich" prefetch={true}>
-          Đặt lịch lấy đồ <Arrow />
+          Đặt lịch lấy đồ <Arrow /><NavigationHint />
         </Link>}
       </div>
     </header>

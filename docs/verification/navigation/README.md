@@ -31,3 +31,11 @@ Commands and outputs:
 - `npm run build`: [output](build.txt).
 
 Framework references read from the installed Next16.4.2 package: `01-app/01-getting-started/04-linking-and-navigating.md` and `01-app/03-api-reference/04-functions/fetch.md`. The latter documents explicit revalidation, request memoization versus persistent cache, and the dev-only hard-refresh cache bypass. No experimental caching flags, dependencies, SQL migrations or hosted changes are introduced.
+
+## Cold-link confirmation and feedback
+
+The first deployed cache fix passed CI and58 production checks. Its next12 production transitions had a14ms median, with warmed samples12–16ms. However, the first pricing click took2,965ms and its loading shell did not appear until2,644ms: a static route's full prefetch can still be unfinished on the very first click. See [first production follow-up](production-after-cache.json). The median improvement does not remove cold-network latency.
+
+A new cold-link test failed before the feedback fix. `NavigationHint` now uses Next's `useLinkStatus` inside header links and renders a passive, accessible “Đang mở trang…” status through a body portal. It stays visible when selecting a mobile-menu link closes that menu, avoids layout changes and clears with the actual pending state. There are no timeout-based completion guesses or fake percentages.
+
+Final local production fixture: **5/5** Node results (four functional subtests and their parent). With1,500ms browser-network latency, visible cold feedback appeared in16ms at390px and17ms at1440px; warmed booking took26ms. These are controlled local observations. [Red](cold-feedback-red.txt), [green](cold-feedback-green.txt), [mobile pending](pending-390.png), [desktop pending](pending-1440.png). The nearest homepage/customer regression rerun passed2/2 after this addition; the earlier cache regression set passed14/14. Final lint, typecheck and build outputs are [here](feedback-lint.txt), [here](feedback-typecheck.txt) and [here](feedback-build.txt).

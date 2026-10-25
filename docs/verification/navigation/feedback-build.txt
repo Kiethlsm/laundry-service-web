@@ -1,0 +1,44 @@
+
+> laundry-service-web@0.1.0 build
+> next build
+
+▲ Next.js 16.4.2 (Turbopack)
+- Environments: .env.local
+✓ Running next.config.ts took 28ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 1006ms
+  Running TypeScript ...
+  Finished TypeScript in 1344ms ...
+  Collecting page data using 11 workers ...
+  Generating static pages using 11 workers (0/10) ...
+  Generating static pages using 11 workers (2/10) 
+  Generating static pages using 11 workers (4/10) 
+  Generating static pages using 11 workers (7/10) 
+✓ Generating static pages using 11 workers (10/10) in 2.9s
+  Finalizing page optimization ...
+
+Route (app)              Revalidate  Expire
+┌ ○ /                            1m      1y
+├ ○ /_not-found
+├ ƒ /admin
+├ ƒ /admin/login
+├ ƒ /admin/orders/[id]
+├ ƒ /api/orders
+├ ƒ /api/track
+├ ƒ /auth/callback
+├ ƒ /auth/google
+├ ○ /bang-gia                    1m      1y
+├ ƒ /dang-nhap
+├ ƒ /dat-lich
+├ ○ /icon.svg
+├ ƒ /tai-khoan
+├ ƒ /tai-khoan/don/[id]
+└ ƒ /tra-cuu
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

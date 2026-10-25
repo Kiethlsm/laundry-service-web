@@ -195,3 +195,7 @@ Admin quantities come from the current immutable settlement, with complete-row v
 Functional washer controls use the shared 14px label scale, including estimated duration and booking. Six choices form two columns with at least 44px CSS heights; long names wrap instead of shrinking. The decorative console keeps its compact scale. The CSS perspective and native-scroll behavior remain unchanged.
 
 The hero includes the supplied street/locality map link and phone before the machine in mobile reading order. Full contact details remain in the footer; the adjacent repeated contact strip is removed. Machine instructions and an explicit price-estimate qualification precede its controls. Service rows retain visible arrows at every breakpoint; below 359px only their decorative emoji is omitted to preserve the service name and amount. Homepage footer links use 14px text and 44px CSS heights. These are readability targets, not a claim of certified projected hit areas or WCAG conformance.
+
+## Navigation feedback · 2026-10-25
+
+Public navigation prepares full routes where safe, while private account/order data stays fresh. A cold header-link transition shows a passive cobalt “Đang mở trang…” status with white14px text below the header, using the existing12px radius. Its body portal remains visible after the mobile menu closes. It does not move content, intercept clicks, animate indefinitely or estimate progress. Prefetched instant transitions skip it; longer route loading retains the visible loading paragraph and decorative skeletons.

@@ -41,6 +41,29 @@ test('NAVIGATION_PRODUCTION — public cache and real production prefetch under 
     assert.equal(result.total,(oldPrice+1000)*2.5+shoePrice);
    }finally{sql(site.db,`UPDATE services SET price=${oldPrice} WHERE id=1;`);}
   });
+  await t.test('COLD_LINK_FEEDBACK — immediate status even before a static route is prefetched',async()=>{
+   p?.close();p=null;
+   for(const width of[390,1440]){
+    p=await browser();
+    await p.send('Emulation.setDeviceMetricsOverride',{width,height:900,deviceScaleFactor:1,mobile:width<768});
+    await p.send('Network.enable');
+    await p.send('Network.emulateNetworkConditions',{offline:false,latency:1500,downloadThroughput:-1,uploadThroughput:-1});
+    await p.send('Page.navigate',{url:site.base+'/'});
+    await until(()=>p.evaluate("Object.keys(document.querySelector('.menu-toggle')??{}).some(k=>k.startsWith('__reactProps'))"));
+    if(width<768)await p.evaluate("document.querySelector('.menu-toggle').click()");
+    const feedback=await p.evaluate(`new Promise(resolve=>{
+     const start=performance.now();document.querySelector('.navigation a[href="/bang-gia"]').click();
+     const timer=setInterval(()=>{const status=document.querySelector('.navigation-pending');if(status?.checkVisibility()){clearInterval(timer);resolve(Math.round(performance.now()-start));}else if(performance.now()-start>500){clearInterval(timer);resolve(null);}},10);
+    })`);
+    evidence['coldFeedbackMs'+width]=feedback;
+    assert.ok(feedback!==null&&feedback<250,'visible pending feedback within250ms at'+width+'px, without waiting1500ms for the network');
+    const shot=await p.send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});
+    fs.writeFileSync('docs/verification/navigation/pending-'+width+'.png',Buffer.from(shot.data,'base64'));
+    await until(()=>p.evaluate("location.pathname==='/bang-gia' && document.querySelector('.pricing-sheet')?.checkVisibility()"));
+    assert.equal(await p.evaluate("Boolean(document.querySelector('.navigation-pending'))"),false,'pending status clears after navigation');
+    p.close();p=null;
+   }
+  });
  }finally{
   fs.mkdirSync('docs/verification/navigation',{recursive:true});fs.writeFileSync('docs/verification/navigation/local-measurements.json',JSON.stringify(evidence,null,2));
   p?.close();await site.close();
