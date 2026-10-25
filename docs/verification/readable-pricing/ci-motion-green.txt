@@ -1,0 +1,44 @@
+
+> laundry-service-web@0.1.0 test:clarity
+> node --test --test-concurrency=1 tests/admin/action-guidance.test.mjs tests/browser/clarity-home.test.mjs
+
+TAP version 13
+# Subtest: ACTION_RESPONSE_GUARD — success carries the RPC revision, malformed/error results never acknowledge a saved version
+ok 1 - ACTION_RESPONSE_GUARD — success carries the RPC revision, malformed/error results never acknowledge a saved version
+  ---
+  duration_ms: 97.1611
+  type: 'test'
+  ...
+# Subtest: ACTION_CONSEQUENCES — only valid order transitions change stages; other actions explain their own effect
+ok 2 - ACTION_CONSEQUENCES — only valid order transitions change stages; other actions explain their own effect
+  ---
+  duration_ms: 8.8526
+  type: 'test'
+  ...
+# Subtest: BAG_PRESENTATION — custody is separate from shared order progress and unknown custody is not marked returned
+ok 3 - BAG_PRESENTATION — custody is separate from shared order progress and unknown custody is not marked returned
+  ---
+  duration_ms: 7.964
+  type: 'test'
+  ...
+# Subtest: ACTION_RESULT_BROWSER — saved intake survives disappearing form, rejected weight gives no false success, processing follows saved work
+ok 4 - ACTION_RESULT_BROWSER — saved intake survives disappearing form, rejected weight gives no false success, processing follows saved work
+  ---
+  duration_ms: 16750.1421
+  type: 'test'
+  ...
+# Subtest: HOME_LAYOUT_BROWSER — compact hero, six real service links, category booking and reduced motion at supported widths
+ok 5 - HOME_LAYOUT_BROWSER — compact hero, six real service links, category booking and reduced motion at supported widths
+  ---
+  duration_ms: 10049.536
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 27656.82
