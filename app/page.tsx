@@ -15,11 +15,11 @@ export default async function Home() {
     <p>Quần áo hằng ngày, đôi giày yêu thích hay chiếc chăn ở nhà. Chọn dịch vụ, hẹn giờ lấy đồ; Sạch Sạch xác nhận chi phí trước khi xử lý.</p>
     <div className="actions"><Link className="button" href="/dat-lich">Đặt lịch lấy đồ <Arrow/></Link><Link className="text-link" href="/tra-cuu">Tra cứu đơn đã đặt <Arrow/></Link></div>
     <p className="landing-guest-note">Bạn có thể đặt lịch mà không cần tạo tài khoản.</p>
+    <div className="landing-locality" role="group" aria-label="Vị trí và liên hệ tiệm"><a href={SHOP.mapsUrl} target="_blank" rel="noopener noreferrer">104/4G Nhất Chi Mai, phường Tân Bình <Arrow/></a><a href={"tel:"+SHOP.phone}>Gọi tiệm: {SHOP.phone}</a></div>
     <a className="landing-service-jump text-link" href="#dich-vu">Xem dịch vụ & giá tham khảo <Arrow/></a>
    </div>
-   <div className="landing-machine"><ServiceDial categories={categories} services={services}/><p>Chọn dịch vụ trên máy để xem giá khởi điểm.</p></div>
+   <div className="landing-machine"><p>Chọn dịch vụ trên máy để xem giá tham khảo.<br/>Tiệm xác nhận chi phí sau khi nhận đồ.</p><ServiceDial categories={categories} services={services}/></div>
   </section></ScrollScene>
-  <div className="landing-contact container"><a href={"tel:"+SHOP.phone}><span>Cần hỏi tiệm trước khi đặt?</span><strong>{SHOP.phone} <Arrow/></strong></a><a href={SHOP.mapsUrl} target="_blank" rel="noopener noreferrer"><span>Ghé Sạch Sạch</span><strong>{SHOP.address} <Arrow/></strong></a></div>
   <section className="service-section container" id="dich-vu">
    <div className="landing-section-heading"><div><h2>Đồ gì cần chăm,<br/>Sạch Sạch có dịch vụ đó.</h2><p>Sáu nhóm dịch vụ. Giá dưới đây là mức khởi điểm; chi phí được chốt theo đồ thực tế và sự đồng ý của bạn.</p></div><Link className="text-link" href="/bang-gia">Xem toàn bộ bảng giá <Arrow/></Link></div>
    <div className="landing-services">{categories.map(c=>{

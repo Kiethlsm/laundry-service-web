@@ -189,3 +189,9 @@ Keep the cobalt/enamel world and Be Vietnam Pro. Customer history is a ruled rec
 Booking service rates and category controls use 14px, with 44px category targets. On mobile a fixed review shortcut keeps the current estimate findable; QR instructions are a disclosure before submission, and remain available after success. Consent meaning is unchanged. Route-scoped footer clearance and scroll margins keep focus targets above the fixed bar.
 
 Admin quantities come from the current immutable settlement, with complete-row validation; the original quote is preserved and separately labelled. Current amount is 30px and the quote estimate is 18px. Intake supports multiple distinctly tagged bags in one receive operation; handover is the primary payment-panel task, with historical accounting collapsed. Consequential table text uses14px. Existing SQL authorization, revision/idempotency guards, price contracts and mock financial boundaries remain intact.
+
+## Homepage readability · 2026-10-25
+
+Functional washer controls use the shared 14px label scale, including estimated duration and booking. Six choices form two columns with at least 44px CSS heights; long names wrap instead of shrinking. The decorative console keeps its compact scale. The CSS perspective and native-scroll behavior remain unchanged.
+
+The hero includes the supplied street/locality map link and phone before the machine in mobile reading order. Full contact details remain in the footer; the adjacent repeated contact strip is removed. Machine instructions and an explicit price-estimate qualification precede its controls. Service rows retain visible arrows at every breakpoint; below 359px only their decorative emoji is omitted to preserve the service name and amount. Homepage footer links use 14px text and 44px CSS heights. These are readability targets, not a claim of certified projected hit areas or WCAG conformance.

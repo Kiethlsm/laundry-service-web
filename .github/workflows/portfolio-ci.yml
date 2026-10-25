@@ -32,3 +32,5 @@ jobs:
       - run: npm run test:clarity
       - run: npm run test:pricing
       - run: npm run test:shop
+      - name: Homepage readability and keyboard navigation
+        run: node --test tests/browser/home-readability.test.mjs

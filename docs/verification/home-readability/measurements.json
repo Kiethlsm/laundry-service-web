@@ -1,0 +1,322 @@
+[
+  {
+    "width": 320,
+    "overflow": false,
+    "controls": [
+      {
+        "font": 14,
+        "fits": true,
+        "height": 44
+      },
+      {
+        "font": 14,
+        "fits": true,
+        "height": 44
+      },
+      {
+        "font": 14,
+        "fits": true,
+        "height": 44
+      },
+      {
+        "font": 14,
+        "fits": true,
+        "height": 44
+      },
+      {
+        "font": 14,
+        "fits": true,
+        "height": 44
+      },
+      {
+        "font": 14,
+        "fits": true,
+        "height": 44
+      }
+    ],
+    "detailFonts": [
+      14,
+      14
+    ],
+    "localityBottom": 647.875,
+    "call": "tel:0903992813",
+    "map": "https://www.google.com/maps/search/?api=1&query=104%2F4G%20Nh%E1%BA%A5t%20Chi%20Mai%2C%20ph%C6%B0%E1%BB%9Dng%20T%C3%A2n%20B%C3%ACnh%2C%20Th%C3%A0nh%20ph%E1%BB%91%20H%E1%BB%93%20Ch%C3%AD%20Minh",
+    "prices": [
+      {
+        "href": "/bang-gia#giat-say",
+        "arrow": true
+      },
+      {
+        "href": "/bang-gia#giat-giay",
+        "arrow": true
+      },
+      {
+        "href": "/bang-gia#giat-men",
+        "arrow": true
+      },
+      {
+        "href": "/bang-gia#ui-do",
+        "arrow": true
+      },
+      {
+        "href": "/bang-gia#sua-do",
+        "arrow": true
+      },
+      {
+        "href": "/bang-gia#giat-gau-bong",
+        "arrow": true
+      }
+    ],
+    "footerFonts": [
+      14,
+      14,
+      14,
+      14,
+      14,
+      14
+    ],
+    "instructionsBeforeControls": true,
+    "priceQualification": "Chọn dịch vụ trên máy để xem giá tham khảo.Tiệm xác nhận chi phí sau khi nhận đồ.",
+    "duplicateContactStrip": false
+  },
+  {
+    "width": 390,
+    "overflow": false,
+    "controls": [
+      {
+        "font": 14,
+        "fits": true,
+        "height": 44
+      },
+      {
+        "font": 14,
+        "fits": true,
+        "height": 44
+      },
+      {
+        "font": 14,
+        "fits": true,
+        "height": 44
+      },
+      {
+        "font": 14,
+        "fits": true,
+        "height": 44
+      },
+      {
+        "font": 14,
+        "fits": true,
+        "height": 44
+      },
+      {
+        "font": 14,
+        "fits": true,
+        "height": 44
+      }
+    ],
+    "detailFonts": [
+      14,
+      14
+    ],
+    "localityBottom": 621.1875,
+    "call": "tel:0903992813",
+    "map": "https://www.google.com/maps/search/?api=1&query=104%2F4G%20Nh%E1%BA%A5t%20Chi%20Mai%2C%20ph%C6%B0%E1%BB%9Dng%20T%C3%A2n%20B%C3%ACnh%2C%20Th%C3%A0nh%20ph%E1%BB%91%20H%E1%BB%93%20Ch%C3%AD%20Minh",
+    "prices": [
+      {
+        "href": "/bang-gia#giat-say",
+        "arrow": true
+      },
+      {
+        "href": "/bang-gia#giat-giay",
+        "arrow": true
+      },
+      {
+        "href": "/bang-gia#giat-men",
+        "arrow": true
+      },
+      {
+        "href": "/bang-gia#ui-do",
+        "arrow": true
+      },
+      {
+        "href": "/bang-gia#sua-do",
+        "arrow": true
+      },
+      {
+        "href": "/bang-gia#giat-gau-bong",
+        "arrow": true
+      }
+    ],
+    "footerFonts": [
+      14,
+      14,
+      14,
+      14,
+      14,
+      14
+    ],
+    "instructionsBeforeControls": true,
+    "priceQualification": "Chọn dịch vụ trên máy để xem giá tham khảo.Tiệm xác nhận chi phí sau khi nhận đồ.",
+    "duplicateContactStrip": false
+  },
+  {
+    "width": 768,
+    "overflow": false,
+    "controls": [
+      {
+        "font": 14,
+        "fits": true,
+        "height": 44
+      },
+      {
+        "font": 14,
+        "fits": true,
+        "height": 44
+      },
+      {
+        "font": 14,
+        "fits": true,
+        "height": 44
+      },
+      {
+        "font": 14,
+        "fits": true,
+        "height": 44
+      },
+      {
+        "font": 14,
+        "fits": true,
+        "height": 44
+      },
+      {
+        "font": 14,
+        "fits": true,
+        "height": 44
+      }
+    ],
+    "detailFonts": [
+      14,
+      14
+    ],
+    "localityBottom": 721.109375,
+    "call": "tel:0903992813",
+    "map": "https://www.google.com/maps/search/?api=1&query=104%2F4G%20Nh%E1%BA%A5t%20Chi%20Mai%2C%20ph%C6%B0%E1%BB%9Dng%20T%C3%A2n%20B%C3%ACnh%2C%20Th%C3%A0nh%20ph%E1%BB%91%20H%E1%BB%93%20Ch%C3%AD%20Minh",
+    "prices": [
+      {
+        "href": "/bang-gia#giat-say",
+        "arrow": true
+      },
+      {
+        "href": "/bang-gia#giat-giay",
+        "arrow": true
+      },
+      {
+        "href": "/bang-gia#giat-men",
+        "arrow": true
+      },
+      {
+        "href": "/bang-gia#ui-do",
+        "arrow": true
+      },
+      {
+        "href": "/bang-gia#sua-do",
+        "arrow": true
+      },
+      {
+        "href": "/bang-gia#giat-gau-bong",
+        "arrow": true
+      }
+    ],
+    "footerFonts": [
+      14,
+      14,
+      14,
+      14,
+      14,
+      14
+    ],
+    "instructionsBeforeControls": true,
+    "priceQualification": "Chọn dịch vụ trên máy để xem giá tham khảo.Tiệm xác nhận chi phí sau khi nhận đồ.",
+    "duplicateContactStrip": false
+  },
+  {
+    "width": 1440,
+    "overflow": false,
+    "controls": [
+      {
+        "font": 14,
+        "fits": true,
+        "height": 44
+      },
+      {
+        "font": 14,
+        "fits": true,
+        "height": 44
+      },
+      {
+        "font": 14,
+        "fits": true,
+        "height": 44
+      },
+      {
+        "font": 14,
+        "fits": true,
+        "height": 44
+      },
+      {
+        "font": 14,
+        "fits": true,
+        "height": 44
+      },
+      {
+        "font": 14,
+        "fits": true,
+        "height": 44
+      }
+    ],
+    "detailFonts": [
+      14,
+      14
+    ],
+    "localityBottom": 676.71875,
+    "call": "tel:0903992813",
+    "map": "https://www.google.com/maps/search/?api=1&query=104%2F4G%20Nh%E1%BA%A5t%20Chi%20Mai%2C%20ph%C6%B0%E1%BB%9Dng%20T%C3%A2n%20B%C3%ACnh%2C%20Th%C3%A0nh%20ph%E1%BB%91%20H%E1%BB%93%20Ch%C3%AD%20Minh",
+    "prices": [
+      {
+        "href": "/bang-gia#giat-say",
+        "arrow": true
+      },
+      {
+        "href": "/bang-gia#giat-giay",
+        "arrow": true
+      },
+      {
+        "href": "/bang-gia#giat-men",
+        "arrow": true
+      },
+      {
+        "href": "/bang-gia#ui-do",
+        "arrow": true
+      },
+      {
+        "href": "/bang-gia#sua-do",
+        "arrow": true
+      },
+      {
+        "href": "/bang-gia#giat-gau-bong",
+        "arrow": true
+      }
+    ],
+    "footerFonts": [
+      14,
+      14,
+      14,
+      14,
+      14,
+      14
+    ],
+    "instructionsBeforeControls": true,
+    "priceQualification": "Chọn dịch vụ trên máy để xem giá tham khảo.Tiệm xác nhận chi phí sau khi nhận đồ.",
+    "duplicateContactStrip": false
+  }
+]

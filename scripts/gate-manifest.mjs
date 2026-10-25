@@ -14,6 +14,8 @@ manifests.S01.required.push('PRICING_DATA','PRICING_READABILITY');
 manifests.S01.files.push('tests/browser/pricing.test.mjs');
 manifests.S01.required.push('SHOP_CURRENT_MEASUREMENT','SHOP_BAGS_HANDOVER','SHOP_CUSTOMER_DETAIL','SHOP_CLIENT_CONTROLS','SHOP_SETTLEMENT_PROJECTION','SHOP_CUSTOMER_BOUNDARY');
 manifests.S01.files.push('tests/customer/order-detail.test.mjs','tests/browser/shop-usability.test.mjs');
+manifests.S01.required.push('HOME_READABILITY');
+manifests.S01.files.push('tests/browser/home-readability.test.mjs');
 export function validateGate(output,status,phase='P01') {
  return status===0 && Boolean(manifests[phase]) && manifests[phase].required.every(id=>new RegExp('^ok \\d+ - '+id+'(?:[ \\n]|$)[^\\n]*(?:\\n|$)','m').test(output)) && !/^(?:not )?ok [^\n]* # (?:SKIP|TODO)\b/im.test(output);
 }
