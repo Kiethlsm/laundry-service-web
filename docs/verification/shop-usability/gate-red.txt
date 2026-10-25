@@ -1,0 +1,445 @@
+Command: node scripts/test-gate.mjs S01
+Exit: 1
+TAP version 13
+# Subtest: ACTION_RESPONSE_GUARD — success carries the RPC revision, malformed/error results never acknowledge a saved version
+ok 1 - ACTION_RESPONSE_GUARD — success carries the RPC revision, malformed/error results never acknowledge a saved version
+  ---
+  duration_ms: 75.1725
+  type: 'test'
+  ...
+# Subtest: ACTION_CONSEQUENCES — only valid order transitions change stages; other actions explain their own effect
+ok 2 - ACTION_CONSEQUENCES — only valid order transitions change stages; other actions explain their own effect
+  ---
+  duration_ms: 5.9602
+  type: 'test'
+  ...
+# Subtest: BAG_PRESENTATION — custody is separate from shared order progress and unknown custody is not marked returned
+ok 3 - BAG_PRESENTATION — custody is separate from shared order progress and unknown custody is not marked returned
+  ---
+  duration_ms: 5.0542
+  type: 'test'
+  ...
+# Subtest: ADMIN_USABILITY_BROWSER — work groups, search, guided panels, contact links and mobile layout preserve order state
+ok 4 - ADMIN_USABILITY_BROWSER — work groups, search, guided panels, contact links and mobile layout preserve order state
+  ---
+  duration_ms: 10856.4907
+  type: 'test'
+  ...
+# Subtest: SHOP_CONTACT — confirmed phone, encoded address and external Google Maps pin
+ok 5 - SHOP_CONTACT — confirmed phone, encoded address and external Google Maps pin
+  ---
+  duration_ms: 50.5261
+  type: 'test'
+  ...
+# Subtest: ADMIN_NEXT_ACTION — next step follows existing approval, weight, QC, refund and custody preconditions
+ok 6 - ADMIN_NEXT_ACTION — next step follows existing approval, weight, QC, refund and custody preconditions
+  ---
+  duration_ms: 12.6377
+  type: 'test'
+  ...
+# Subtest: ADMIN_GROUPS — all six states have exactly one work group; filters never invent totals
+ok 7 - ADMIN_GROUPS — all six states have exactly one work group; filters never invent totals
+  ---
+  duration_ms: 7.5405
+  type: 'test'
+  ...
+# Subtest: P02_BOOKING_UI — responsive keyboard consent and lost-response retry keeps one order
+ok 8 - P02_BOOKING_UI — responsive keyboard consent and lost-response retry keeps one order
+  ---
+  duration_ms: 7461.2731
+  type: 'test'
+  ...
+# Subtest: ACTION_RESULT_BROWSER — saved intake survives disappearing form, rejected weight gives no false success, processing follows saved work
+not ok 9 - ACTION_RESULT_BROWSER — saved intake survives disappearing form, rejected weight gives no false success, processing follows saved work
+  ---
+  duration_ms: 8198.8968
+  type: 'test'
+  location: 'C:\\Users\\Kieth\\Documents\\Juinior\\tests\\browser\\clarity-home.test.mjs:5:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The expression evaluated to a falsy value:
+
+      assert.ok(await p.evaluate("document.querySelector('form[aria-label=\"Nhận túi đồ\"] button').innerText.includes('Xác nhận đã nhận bọc')"))
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/browser/clarity-home.test.mjs:11:9)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: HOME_LAYOUT_BROWSER — compact hero, six real service links, category booking and reduced motion at supported widths
+ok 10 - HOME_LAYOUT_BROWSER — compact hero, six real service links, category booking and reduced motion at supported widths
+  ---
+  duration_ms: 5886.9724
+  type: 'test'
+  ...
+# Subtest: PRICING_DATA — exact catalog rates, units and estimates have associated table headers
+ok 11 - PRICING_DATA — exact catalog rates, units and estimates have associated table headers
+  ---
+  duration_ms: 6230.1722
+  type: 'test'
+  ...
+# Subtest: PRICING_READABILITY — aligned large prices, working shortcuts and booking, narrow and enlarged text without overflow
+ok 12 - PRICING_READABILITY — aligned large prices, working shortcuts and booking, narrow and enlarged text without overflow
+  ---
+  duration_ms: 8034.5213
+  type: 'test'
+  ...
+# Subtest: QR_RECIPIENT_ASSET — verified local PNG is served unchanged without an image optimizer
+ok 13 - QR_RECIPIENT_ASSET — verified local PNG is served unchanged without an image optimizer
+  ---
+  duration_ms: 87.5386
+  type: 'test'
+  ...
+# Subtest: QR_BANK_BOOKING — cash isolation, static QR/memo/copy errors and no automatic money posting
+ok 14 - QR_BANK_BOOKING — cash isolation, static QR/memo/copy errors and no automatic money posting
+  ---
+  duration_ms: 9260.6223
+  type: 'test'
+  ...
+# Subtest: SHOP_CURRENT_MEASUREMENT — saved 2.7kg remains visible and resaving cannot silently restore original 2.5kg
+ok 15 - SHOP_CURRENT_MEASUREMENT — saved 2.7kg remains visible and resaving cannot silently restore original 2.5kg
+  ---
+  duration_ms: 9834.5607
+  type: 'test'
+  ...
+# Subtest: SHOP_BAGS_HANDOVER — receive two bags atomically and put handover before accounting history with human labels
+ok 16 - SHOP_BAGS_HANDOVER — receive two bags atomically and put handover before accounting history with human labels
+  ---
+  duration_ms: 11567.2105
+  type: 'test'
+  ...
+# Subtest: SHOP_CUSTOMER_DETAIL — own order has readable action and actual quantities; foreign and guest access are denied
+ok 17 - SHOP_CUSTOMER_DETAIL — own order has readable action and actual quantities; foreign and guest access are denied
+  ---
+  duration_ms: 9594.7382
+  type: 'test'
+  ...
+# Subtest: SHOP_CLIENT_CONTROLS — visible mobile cart, readable rates, disclosure QR, specific lookup recovery and Escape focus
+ok 18 - SHOP_CLIENT_CONTROLS — visible mobile cart, readable rates, disclosure QR, specific lookup recovery and Escape focus
+  ---
+  duration_ms: 7168.8365
+  type: 'test'
+  ...
+# Subtest: P09_BROWSER_WORKFLOW — local cookie/session adapter and real admin actions reach delivered
+ok 19 - P09_BROWSER_WORKFLOW — local cookie/session adapter and real admin actions reach delivered
+  ---
+  duration_ms: 19447.6024
+  type: 'test'
+  ...
+# Subtest: S01_CUSTOMER_BROWSER — mobile/desktop Google entry, guest link and protected account use local transport only
+ok 20 - S01_CUSTOMER_BROWSER — mobile/desktop Google entry, guest link and protected account use local transport only
+  ---
+  duration_ms: 9181.7303
+  type: 'test'
+  ...
+# Subtest: S01_PROFILE_PROVISION — verified identity creates customer only; existing admin preserved; disabled/anon denied
+ok 21 - S01_PROFILE_PROVISION — verified identity creates customer only; existing admin preserved; disabled/anon denied
+  ---
+  duration_ms: 3770.1599
+  type: 'test'
+  ...
+# Subtest: S01_CUSTOMER_ISOLATION — dashboard has own orders only, never attaches same-phone guest; disabled cannot read
+ok 22 - S01_CUSTOMER_ISOLATION — dashboard has own orders only, never attaches same-phone guest; disabled cannot read
+  ---
+  duration_ms: 3565.0896
+  type: 'test'
+  ...
+# Subtest: S01_GOOGLE_START — PKCE authorization uses Google, fixed callback, basic scopes and trusted origin
+ok 23 - S01_GOOGLE_START — PKCE authorization uses Google, fixed callback, basic scopes and trusted origin
+  ---
+  duration_ms: 61.4776
+  type: 'test'
+  ...
+# Subtest: S01_GOOGLE_CALLBACK — exchange then verified user then bound profile; redirects cannot be supplied by caller
+ok 24 - S01_GOOGLE_CALLBACK — exchange then verified user then bound profile; redirects cannot be supplied by caller
+  ---
+  duration_ms: 10.8564
+  type: 'test'
+  ...
+# Subtest: S01_GOOGLE_DENIAL — canceled/expired/unverified/disabled never provision or expose provider details
+ok 25 - S01_GOOGLE_DENIAL — canceled/expired/unverified/disabled never provision or expose provider details
+  ---
+  duration_ms: 8.8055
+  type: 'test'
+  ...
+# Subtest: S01_BOOKING_OWNER — only server-verified customer id is bound; guest preserved; broken session creates no guest order
+ok 26 - S01_BOOKING_OWNER — only server-verified customer id is bound; guest preserved; broken session creates no guest order
+  ---
+  duration_ms: 17.3937
+  type: 'test'
+  ...
+# Subtest: S01_ORIGIN_POLICY — production and this project previews only; forwarded host and foreign origins have no authority
+ok 27 - S01_ORIGIN_POLICY — production and this project previews only; forwarded host and foreign origins have no authority
+  ---
+  duration_ms: 3.1638
+  type: 'test'
+  ...
+# Subtest: S01_SESSION_BOUNDARY — a broken Supabase cookie cannot silently create a guest order; unrelated cookies permit guests
+ok 28 - S01_SESSION_BOUNDARY — a broken Supabase cookie cannot silently create a guest order; unrelated cookies permit guests
+  ---
+  duration_ms: 12.2442
+  type: 'test'
+  ...
+# Subtest: SHOP_SETTLEMENT_PROJECTION — current settlement is scoped by order and incomplete data cannot silently fall back to an estimate
+ok 29 - SHOP_SETTLEMENT_PROJECTION — current settlement is scoped by order and incomplete data cannot silently fall back to an estimate
+  ---
+  duration_ms: 44.8515
+  type: 'test'
+  ...
+# Subtest: SHOP_CUSTOMER_BOUNDARY — ownership checked before detail RPC, explicit projection drops private fields
+ok 30 - SHOP_CUSTOMER_BOUNDARY — ownership checked before detail RPC, explicit projection drops private fields
+  ---
+  duration_ms: 14.3038
+  type: 'test'
+  ...
+# Subtest: SHOP_COPY — public pages omit project branding while transfer remains explicitly manual
+ok 31 - SHOP_COPY — public pages omit project branding while transfer remains explicitly manual
+  ---
+  duration_ms: 0.9372
+  type: 'test'
+  ...
+# Subtest: S01_CUSTOMER_UI — Google is primary, guest stays available, provider errors hidden and own order/empty states explicit
+ok 32 - S01_CUSTOMER_UI — Google is primary, guest stays available, provider errors hidden and own order/empty states explicit
+  ---
+  duration_ms: 66.3207
+  type: 'test'
+  ...
+# Subtest: P03_ADMIN_DETAIL_UI — version/consent/evidence UI and role-free action payload
+ok 33 - P03_ADMIN_DETAIL_UI — version/consent/evidence UI and role-free action payload
+  ---
+  duration_ms: 183.7446
+  type: 'test'
+  ...
+# {"event":"booking_rpc_failed","code":"DB_ERROR","operation_key":"9f416639-e12f-4df6-ae3f-671cefc60717"}
+# Subtest: P02_HTTP_CONTRACT — status/retry/validation and safe unavailable errors
+ok 34 - P02_HTTP_CONTRACT — status/retry/validation and safe unavailable errors
+  ---
+  duration_ms: 79.2035
+  type: 'test'
+  ...
+# Subtest: P05_LEDGER_UI — immutable history/derived balance, receipt references and handover checklist
+ok 35 - P05_LEDGER_UI — immutable history/derived balance, receipt references and handover checklist
+  ---
+  duration_ms: 73.9007
+  type: 'test'
+  ...
+# Subtest: P02_IDEMPOTENT_BOOK — one v0 on retry; changed body conflicts
+ok 36 - P02_IDEMPOTENT_BOOK — one v0 on retry; changed body conflicts
+  ---
+  duration_ms: 3169.9105
+  type: 'test'
+  ...
+# Subtest: P02_V0_SNAPSHOT — server snapshots, consent and maximum weight total
+ok 37 - P02_V0_SNAPSHOT — server snapshots, consent and maximum weight total
+  ---
+  duration_ms: 4056.229
+  type: 'test'
+  ...
+# Subtest: P02_INPUT_RULES — invalid carts/time/consent roll back atomically
+ok 38 - P02_INPUT_RULES — invalid carts/time/consent roll back atomically
+  ---
+  duration_ms: 4978.575
+  type: 'test'
+  ...
+# Subtest: P02_LOOKUP_PRIVACY — code/phone exposes only progress and amount
+ok 39 - P02_LOOKUP_PRIVACY — code/phone exposes only progress and amount
+  ---
+  duration_ms: 2815.718
+  type: 'test'
+  ...
+# Subtest: P02_SHARED_RATE — shared phone cap, independent phone and global demo cap
+ok 40 - P02_SHARED_RATE — shared phone cap, independent phone and global demo cap
+  ---
+  duration_ms: 3109.258
+  type: 'test'
+  ...
+# Subtest: P03_TOLERANCE_BOUNDARY — inclusive original kg limits; no-consent changes need exact quote
+ok 41 - P03_TOLERANCE_BOUNDARY — inclusive original kg limits; no-consent changes need exact quote
+  ---
+  duration_ms: 7600.2298
+  type: 'test'
+  ...
+# Subtest: P03_TOLERANCE_SCOPE — no rolling/netting/count/fee/rate workaround
+ok 42 - P03_TOLERANCE_SCOPE — no rolling/netting/count/fee/rate workaround
+  ---
+  duration_ms: 4128.7802
+  type: 'test'
+  ...
+# Subtest: P03_QUOTE_RACE — stale hash denied; reject/expiry never restores old approval
+ok 43 - P03_QUOTE_RACE — stale hash denied; reject/expiry never restores old approval
+  ---
+  duration_ms: 6045.4353
+  type: 'test'
+  ...
+# Subtest: P03_APPROVAL_EVIDENCE — unverified phone note and forged simulation never unlock work
+ok 44 - P03_APPROVAL_EVIDENCE — unverified phone note and forged simulation never unlock work
+  ---
+  duration_ms: 5540.79
+  type: 'test'
+  ...
+# Subtest: P03_SETTLEMENT_IMMUTABLE — weights/charges create new versions; no double charge
+ok 45 - P03_SETTLEMENT_IMMUTABLE — weights/charges create new versions; no double charge
+  ---
+  duration_ms: 3632.2433
+  type: 'test'
+  ...
+# Subtest: P03_BAG_INTEGRITY — unique labels, same-order flagged items, retag evidence and full QC set
+ok 46 - P03_BAG_INTEGRITY — unique labels, same-order flagged items, retag evidence and full QC set
+  ---
+  duration_ms: 4540.2227
+  type: 'test'
+  ...
+# Subtest: P03_WORK_TRANSITIONS — assigned roles, blocking issues and accepted admin amendments
+ok 47 - P03_WORK_TRANSITIONS — assigned roles, blocking issues and accepted admin amendments
+  ---
+  duration_ms: 6938.4264
+  type: 'test'
+  ...
+# Subtest: P05_ATOMIC_DELIVER_COLLECT — zero balance and one committed receipt/custody/history
+ok 48 - P05_ATOMIC_DELIVER_COLLECT — zero balance and one committed receipt/custody/history
+  ---
+  duration_ms: 4856.2662
+  type: 'test'
+  ...
+# Subtest: P05_CASH_ROLLBACK — missing targets/wrong cash/refund due commit nothing; verified waiver is explicit
+ok 49 - P05_CASH_ROLLBACK — missing targets/wrong cash/refund due commit nothing; verified waiver is explicit
+  ---
+  duration_ms: 8420.3903
+  type: 'test'
+  ...
+# Subtest: P05_RETRY_RACE — same key concurrent/expired-cache replay; changed payload and stale revision denied
+ok 50 - P05_RETRY_RACE — same key concurrent/expired-cache replay; changed payload and stale revision denied
+  ---
+  duration_ms: 4094.056
+  type: 'test'
+  ...
+# Subtest: P05_LEDGER_INVARIANTS — reversal signs, restored refund availability and immutable entries
+ok 51 - P05_LEDGER_INVARIANTS — reversal signs, restored refund availability and immutable entries
+  ---
+  duration_ms: 5021.9063
+  type: 'test'
+  ...
+# Subtest: P05_REPORT — receive date differs from delivered value date; unverified notes visible
+ok 52 - P05_REPORT — receive date differs from delivered value date; unverified notes visible
+  ---
+  duration_ms: 4263.2552
+  type: 'test'
+  ...
+# Subtest: P05_CANCEL_INCIDENT — cancel creates refund due/return plan, never fake refund or backward transition
+ok 53 - P05_CANCEL_INCIDENT — cancel creates refund due/return plan, never fake refund or backward transition
+  ---
+  duration_ms: 7252.807
+  type: 'test'
+  ...
+# Subtest: P05_END_TO_END — v1 approval to QC and courier cash; wrong customer denied
+ok 54 - P05_END_TO_END — v1 approval to QC and courier cash; wrong customer denied
+  ---
+  duration_ms: 4789.5148
+  type: 'test'
+  ...
+# Subtest: P09_REGRESSION — cumulative manifests reject omissions and synthetic legacy status bypass remains closed
+ok 55 - P09_REGRESSION — cumulative manifests reject omissions and synthetic legacy status bypass remains closed
+  ---
+  duration_ms: 2037.4133
+  type: 'test'
+  ...
+# Subtest: P09_PROJECTIONS_LOGS — unrelated/private evidence denied and financial failures emit safe metadata
+ok 56 - P09_PROJECTIONS_LOGS — unrelated/private evidence denied and financial failures emit safe metadata
+  ---
+  duration_ms: 2456.5796
+  type: 'test'
+  ...
+# Subtest: P09_STATE_COVERAGE — a new ready-stage amendment invalidates old work/QC scope without moving status backward
+ok 57 - P09_STATE_COVERAGE — a new ready-stage amendment invalidates old work/QC scope without moving status backward
+  ---
+  duration_ms: 6308.0373
+  type: 'test'
+  ...
+# Subtest: P10_MANIFEST — prior committed gates, exact optional selection and mandatory release IDs
+ok 58 - P10_MANIFEST — prior committed gates, exact optional selection and mandatory release IDs
+  ---
+  duration_ms: 140.3969
+  type: 'test'
+  ...
+# Subtest: P10_DEMO_SMOKE — local HTTP booking/replay/conflict, denied admin and safe fake transport
+ok 59 - P10_DEMO_SMOKE — local HTTP booking/replay/conflict, denied admin and safe fake transport
+  ---
+  duration_ms: 5495.5566
+  type: 'test'
+  ...
+# Subtest: P10_SAFE_LABELS — mock-only boundaries, evidence limits and manual walkthrough remain explicit
+ok 60 - P10_SAFE_LABELS — mock-only boundaries, evidence limits and manual walkthrough remain explicit
+  ---
+  duration_ms: 109.7118
+  type: 'test'
+  ...
+# Subtest: P10_ROLLBACK — local catalog snapshot restores every prefix and refuses post-migration writes
+ok 61 - P10_ROLLBACK — local catalog snapshot restores every prefix and refuses post-migration writes
+  ---
+  duration_ms: 71284.6803
+  type: 'test'
+  ...
+# Subtest: P01_MIGRATE_EXISTING — preserve legacy amounts/history; consent remains unknown
+ok 62 - P01_MIGRATE_EXISTING — preserve legacy amounts/history; consent remains unknown
+  ---
+  duration_ms: 2502.6928
+  type: 'test'
+  ...
+# Subtest: P01_RLS_MATRIX — ownership, assignment, projections and unknown actions fail closed
+ok 63 - P01_RLS_MATRIX — ownership, assignment, projections and unknown actions fail closed
+  ---
+  duration_ms: 4120.2159
+  type: 'test'
+  ...
+# Subtest: P01_SERVICE_ROLE_GUARD — forged actors and anonymous privileged RPCs are denied
+ok 64 - P01_SERVICE_ROLE_GUARD — forged actors and anonymous privileged RPCs are denied
+  ---
+  duration_ms: 2779.4768
+  type: 'test'
+  ...
+# Subtest: P01_REVOKE_AND_LAST_ADMIN — immediate revocation, revision/retry integrity and serialized admin race
+ok 65 - P01_REVOKE_AND_LAST_ADMIN — immediate revocation, revision/retry integrity and serialized admin race
+  ---
+  duration_ms: 3941.906
+  type: 'test'
+  ...
+# Subtest: P01_CI_REQUIRED — a failed, missing or skipped mandatory ID cannot pass
+ok 66 - P01_CI_REQUIRED — a failed, missing or skipped mandatory ID cannot pass
+  ---
+  duration_ms: 1.729
+  type: 'test'
+  ...
+# Subtest: P01_HOSTED_DEFAULTS — postgres owner, permissive direct defaults, explicit ACLs and fixed definer paths
+ok 67 - P01_HOSTED_DEFAULTS — postgres owner, permissive direct defaults, explicit ACLs and fixed definer paths
+  ---
+  duration_ms: 2873.1929
+  type: 'test'
+  ...
+# AUTHORIZATION_MATRIX {"covered":170,"total":170,"extra_unknown_null":20,"source":"v1.2 single access matrix; permission checks, not transition preconditions"}
+# Subtest: P01_AUTHORIZATION_MATRIX — 170 explicit role/action cells plus 20 null/unknown denials
+ok 68 - P01_AUTHORIZATION_MATRIX — 170 explicit role/action cells plus 20 null/unknown denials
+  ---
+  duration_ms: 6333.1156
+  type: 'test'
+  ...
+# Subtest: P01_SERVER_SESSION_GUARD — real admin guard checks live session capability on every invocation
+ok 69 - P01_SERVER_SESSION_GUARD — real admin guard checks live session capability on every invocation
+  ---
+  duration_ms: 61.3525
+  type: 'test'
+  ...
+1..69
+# tests 69
+# suites 0
+# pass 68
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 340963.0433
+S01 gate failed: failing, missing or skipped required test

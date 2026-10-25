@@ -1,0 +1,86 @@
+/* Shared reading scale for the customer and two-person counter workflows. */
+.booking-layout .booking-service p, .booking-layout .booking-service p > span { font-size: .875rem; line-height: 1.7; }
+.booking-layout .booking-tabs button { font-size: .875rem; min-height: 44px; padding: 10px 14px; }
+.booking-layout .booking-service label { font-size: 1rem; }
+.booking-layout .booking-service p { margin-top: 5px; }
+.booking-layout .booking-tabs { gap: 8px; }
+.booking-layout .consent-fields, .booking-layout .consent-fields label, .booking-layout .summary-note { font-size: .875rem; line-height: 1.8; }
+.booking-layout .summary-items button { min-height: 44px; min-width: 44px; }
+.booking-bank-preview { margin-block: 18px 24px; border-block: 1px solid var(--line); padding-block: 16px; }
+.booking-bank-preview > summary, .weight-policy > summary { cursor: pointer; font-size: .875rem; font-weight: 500; color: var(--blue); padding-block: 8px; }
+.booking-bank-preview .bank-transfer { margin-top: 18px; }
+.weight-policy { margin-top: 12px; }
+.weight-policy p { font-size: .875rem; line-height: 1.8; margin-top: 8px; }
+.booking-review-bar { display: none; }
+#booking-review { scroll-margin-block: 24px 100px; }
+.intake-bag { border: 0; border-bottom: 1px solid var(--line); margin: 0 0 20px; padding: 0 0 20px; min-width: 0; }
+.intake-bag legend { font-size: 1rem; font-weight: 600; padding-bottom: 16px; }
+.intake-remove, .intake-add { min-height: 44px; padding-block: 10px; text-align: left; }
+.intake-remove { color: var(--danger); margin-top: 12px; }
+.admin-current-quote > div { margin-bottom: 16px; }
+.admin-current-quote > div > span { display: block; font-size: .875rem; color: var(--muted); }
+.admin-current-quote > div > strong { display: block; font-size: 1.875rem; line-height: 1.5; color: var(--blue); margin-top: 6px; font-variant-numeric: tabular-nums; }
+.admin-current-quote .admin-original-quote strong { font-size: 1.125rem; font-weight: 500; }
+.admin-original-quote { border-top: 1px solid var(--line); padding-top: 16px; }
+.admin-page .demo-scroll, .admin-page .demo-scroll table, .admin-page .demo-scroll th, .admin-page .demo-scroll td { font-size: .875rem; line-height: 1.7; }
+.admin-page .demo-quantity-row, .admin-page .demo-inventory p { font-size: .875rem; }
+.money-history { padding-block: 20px; border-block: 1px solid var(--line); margin-top: 24px; }
+.money-history > summary { font-weight: 600; cursor: pointer; min-height: 44px; padding-block: 10px; }
+.demo-handover { scroll-margin-block: 24px 40px; }
+.customer-orders-list { list-style: none; margin: 24px 0; padding: 0; }
+.customer-orders-list > li { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 1.5fr) auto; gap: 24px; align-items: center; padding-block: 24px; border-top: 1px solid var(--line); }
+.customer-orders-list > li:last-child { border-bottom: 1px solid var(--line); }
+.customer-order-code { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.customer-order-code > a { font-size: 1.125rem; font-weight: 600; color: var(--blue); min-height: 44px; display: inline-flex; align-items: center; }
+.customer-order-code > a:hover { text-decoration: underline; }
+.customer-orders-list dl { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 0; }
+.customer-orders-list dt { font-size: .875rem; color: var(--muted); }
+.customer-orders-list dd { margin: 4px 0 0; font-size: .9375rem; font-variant-numeric: tabular-nums; }
+.customer-orders-list .customer-order-amount { font-size: 1.125rem; font-weight: 600; color: var(--blue); }
+.customer-view-order { min-height: 44px; }
+.customer-order-page { max-width: 1000px; }
+.customer-order-heading { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-block: 28px; }
+.customer-order-heading h1 { font-size: 2.25rem; margin-bottom: 8px; }
+.customer-order-heading p { color: var(--muted); font-size: .875rem; }
+.customer-progress { margin-block: 28px; }
+.customer-progress ol { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 12px; }
+.customer-progress li { border-top: 3px solid var(--line); padding-top: 12px; color: var(--muted); font-size: .875rem; line-height: 1.7; }
+.customer-progress li span { display: block; font-weight: 600; margin-bottom: 4px; }
+.customer-progress li[aria-current], .customer-progress li[data-complete=true] { border-color: var(--blue); color: var(--blue); }
+.customer-progress p { margin-top: 20px; font-size: .9375rem; }
+.customer-current-price { padding: 24px; background: var(--enamel); border-radius: 14px; margin-block: 32px; }
+.customer-current-price > span { font-size: .875rem; }
+.customer-current-price > strong { display: block; font-size: 2rem; font-weight: 600; margin-block: 8px 12px; font-variant-numeric: tabular-nums; }
+.customer-current-price p { font-size: .875rem; max-width: 65ch; }
+.customer-service-list h2 { font-size: 1.375rem; margin-bottom: 8px; }
+.customer-service-list > p { font-size: .875rem; color: var(--muted); }
+.customer-service-list ul { list-style: none; padding: 0; margin-block: 20px; }
+.customer-service-list li { display: flex; gap: 20px; justify-content: space-between; padding-block: 20px; border-top: 1px solid var(--line); }
+.customer-service-list li strong { display: block; font-size: 1rem; }
+.customer-service-list li span { font-size: .875rem; }
+.customer-service-list [data-actual-quantity] { display: block; margin-top: 4px; color: var(--muted); }
+.customer-order-contact { display: flex; align-items: center; flex-wrap: wrap; gap: 16px 24px; border-top: 1px solid var(--line); padding-top: 24px; margin-top: 32px; }
+.customer-order-contact > p { flex-basis: 100%; }
+.customer-track-result { margin-top: 32px; padding: 24px 0; border-block: 1px solid var(--line); }
+.customer-track-result h2 { font-size: 1.75rem; margin-bottom: 12px; }
+.customer-track-result > p { font-size: 1rem; }
+.customer-track-result .field-help { font-size: .875rem; margin-top: 16px; }
+@media(max-width:760px){
+ html:has(.booking-review-bar) { scroll-padding-bottom: 9rem; }
+ body:has(.booking-review-bar) footer { padding-bottom: calc(8rem + env(safe-area-inset-bottom)); }
+ .booking-layout { padding-bottom: 8rem; }
+ .booking-layout :is(input,textarea,select,button,a) { scroll-margin-bottom: 9rem; }
+ .booking-review-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; position: fixed; bottom: 0; left: 0; right: 0; padding: 12px 22px calc(12px + env(safe-area-inset-bottom)); border-top: 1px solid var(--line); background: var(--paper); z-index: 15; }
+ .booking-review-bar > div { min-width: 0; }
+ .booking-review-bar span { display: block; font-size: .75rem; color: var(--muted); }
+ .booking-review-bar strong { display: block; font-size: clamp(1rem,4.8vw,1.25rem); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+ .booking-review-bar .button { padding: 12px 16px; font-size: .875rem; }
+ .booking-review-bar svg { display: none; }
+ .customer-orders-list > li { grid-template-columns: minmax(0,1fr); gap: 12px; }
+ .customer-orders-list dl { grid-template-columns: 1fr 1fr; }
+ .customer-progress ol { gap: 8px; }
+ .customer-progress li { font-size: .75rem; overflow-wrap: anywhere; }
+ .customer-service-list li { flex-direction: column; gap: 8px; }
+ .admin-page .demo-handover { padding: 16px; }
+ .admin-page .demo-balances dd { font-size: 1.125rem; }
+}

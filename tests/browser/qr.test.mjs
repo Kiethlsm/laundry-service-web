@@ -22,6 +22,7 @@ test('QR_BANK_BOOKING — cash isolation, static QR/memo/copy errors and no auto
   assert.equal(await page.evaluate("Boolean(document.querySelector('.bank-transfer'))"),false);
   await page.evaluate("document.querySelector('[name=payment][value=bank_transfer]').click()");
   await until(()=>page.evaluate("Boolean(document.querySelector('.bank-transfer'))"),3000);
+  await page.evaluate("document.querySelector('.booking-bank-preview').open=true");await until(()=>page.evaluate("document.querySelector('.bank-transfer').checkVisibility()"));
   assert.match(await page.evaluate("document.querySelector('.bank-transfer').textContent"),/TECHCOMBANK|Techcombank/);
   assert.equal(await page.evaluate("document.querySelector('.bank-transfer img').getAttribute('src')"),'/payments/techcombank-qr.png');
   assert.equal(await page.evaluate("document.querySelector('.bank-transfer img').getAttribute('srcset')"),null);

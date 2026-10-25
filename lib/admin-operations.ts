@@ -16,10 +16,10 @@ export function nextAdminAction(data: DemoWorkspaceData): NextAction {
   const { order, money } = data;
   if (order.status === "delivered") return action("payments", "Đơn đã hoàn tất", "Bạn có thể xem lại sổ tiền và lịch sử xử lý của đơn.");
   if (order.status === "cancelled") return data.bags.some(b => b.custody_state === "received")
-    ? action("bags", "Đối chiếu túi cần trả", "Dịch vụ đã hủy nhưng cửa hàng còn giữ đồ. Kiểm tra phương án trả trước khi đóng hồ sơ.")
+    ? action("bags", "Đối chiếu bọc cần trả", "Dịch vụ đã hủy nhưng cửa hàng còn giữ đồ. Kiểm tra phương án trả trước khi đóng hồ sơ.")
     : action("issues", "Đơn đã hủy", "Xem lại ghi chú và phương án xử lý; việc hủy không tự tạo khoản hoàn tiền.");
   if (data.issues.some(i => i.state === "open" && i.blocking)) return action("issues", "Giải quyết sự cố đang chặn", "Đọc nội dung sự cố và ghi nhận phương án giải quyết trước khi tiếp tục.");
-  if (order.status === "pending") return action("bags", "Nhận và kiểm đếm túi đồ", "Liên hệ khách, nhận đồ rồi ghi nhãn túi, số món và tình trạng ban đầu.");
+  if (order.status === "pending") return action("bags", "Nhận và kiểm đếm bọc đồ", "Liên hệ khách, nhận đồ rồi ghi nhãn bọc, số món và tình trạng ban đầu.");
   if (!data.eligible) return action("quotes", "Xác nhận báo giá với khách", "Cần khách đồng ý đúng báo giá hiện tại trước khi xử lý đồ.");
   if (order.status === "picked_up") return money?.settlement_total == null
     ? action("quotes", "Cân đồ và chốt chi phí", "Nhập khối lượng thực tế. Nếu vượt phạm vi đã đồng ý, phát hành báo giá mới.")
@@ -27,7 +27,7 @@ export function nextAdminAction(data: DemoWorkspaceData): NextAction {
   if (data.quotes.find(q => q.id === order.active_quote_id)?.is_amendment && order.work_quote_id !== order.active_quote_id)
     return action("bags", "Bắt đầu phần việc bổ sung", "Khách đã đồng ý phần việc mới. Ghi nhận bắt đầu phần bổ sung rồi kiểm tra lại chất lượng.");
   if (order.status === "processing" || order.work_quote_id !== order.active_quote_id || order.qc_quote_id !== order.active_quote_id)
-    return action("bags", "Kiểm tra đồ trước khi trả", "Đối chiếu từng nhãn túi và món riêng; hoàn tất phần việc bổ sung nếu có.");
+    return action("bags", "Kiểm tra đồ trước khi trả", "Đối chiếu từng nhãn bọc và món riêng; hoàn tất phần việc bổ sung nếu có.");
   if (money?.status === "refund_due") return action("payments", "Hoàn phần tiền thừa", "Đối chiếu khoản đã thu và ghi khoản hoàn trước khi bàn giao đồ.");
-  return action("payments", "Bàn giao đồ và đối chiếu tiền", "Kiểm đủ túi, xác nhận người nhận và ghi số tiền còn phải thu trong cùng thao tác.");
+  return action("payments", "Bàn giao đồ và đối chiếu tiền", "Kiểm đủ bọc, xác nhận người nhận và ghi số tiền còn phải thu trong cùng thao tác.");
 }

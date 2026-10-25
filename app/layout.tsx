@@ -14,6 +14,7 @@ import "./globals.css";
 import "./home.css";
 import "./admin-ui.css";
 import "./home-refresh.css";
+import "./shop-operations.css";
 import { Header } from "@/components/header";
 import { Arrow, Brand } from "@/components/ui";
 import { ShopContact } from "@/components/shop-contact";

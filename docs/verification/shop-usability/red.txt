@@ -1,0 +1,91 @@
+TAP version 13
+# Subtest: SHOP_CURRENT_MEASUREMENT — saved 2.7kg remains visible and resaving cannot silently restore original 2.5kg
+not ok 1 - SHOP_CURRENT_MEASUREMENT — saved 2.7kg remains visible and resaving cannot silently restore original 2.5kg
+  ---
+  duration_ms: 15745.2259
+  type: 'test'
+  location: 'C:\\Users\\Kieth\\Documents\\Juinior\\tests\\browser\\shop-usability.test.mjs:10:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    '2.5' !== '2.7'
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '2.7'
+  actual: '2.5'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/browser/shop-usability.test.mjs:12:9)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: SHOP_BAGS_HANDOVER — receive two bags atomically and put handover before accounting history with human labels
+not ok 2 - SHOP_BAGS_HANDOVER — receive two bags atomically and put handover before accounting history with human labels
+  ---
+  duration_ms: 12016.722
+  type: 'test'
+  location: 'C:\\Users\\Kieth\\Documents\\Juinior\\tests\\browser\\shop-usability.test.mjs:19:1'
+  failureType: 'testCodeFailure'
+  error: 'Local test deadline'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    until (file:///C:/Users/Kieth/Documents/Juinior/tests/browser/cdp.mjs:6:183)
+    async TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/browser/shop-usability.test.mjs:21:2)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: SHOP_CUSTOMER_DETAIL — own order has readable action and actual quantities; foreign and guest access are denied
+not ok 3 - SHOP_CUSTOMER_DETAIL — own order has readable action and actual quantities; foreign and guest access are denied
+  ---
+  duration_ms: 6827.1425
+  type: 'test'
+  location: 'C:\\Users\\Kieth\\Documents\\Juinior\\tests\\browser\\shop-usability.test.mjs:28:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The expression evaluated to a falsy value:
+
+      assert.ok(await p.evaluate("Boolean(document.querySelector('a[href=\"/tai-khoan/don/"+own.order_id+"\"]'))"))
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/browser/shop-usability.test.mjs:30:9)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: SHOP_CLIENT_CONTROLS — visible mobile cart, readable rates, disclosure QR, specific lookup recovery and Escape focus
+not ok 4 - SHOP_CLIENT_CONTROLS — visible mobile cart, readable rates, disclosure QR, specific lookup recovery and Escape focus
+  ---
+  duration_ms: 5622.266
+  type: 'test'
+  location: 'C:\\Users\\Kieth\\Documents\\Juinior\\tests\\browser\\shop-usability.test.mjs:39:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/browser/shop-usability.test.mjs:41:9)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 0
+# fail 4
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 40301.0292

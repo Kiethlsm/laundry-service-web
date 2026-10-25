@@ -1,17 +1,18 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Arrow, Brand } from "./ui";
 export function Header() {
   const path = usePathname();
   const admin = path.startsWith("/admin") && path !== "/admin/login";
   const [open, setOpen] = useState(false);
+  const menuRef = useRef<HTMLButtonElement>(null);
   return (
     <header
       className="site-header"
       onKeyDown={(e) => {
-        if (e.key === "Escape") setOpen(false);
+        if (e.key === "Escape" && open) { setOpen(false); menuRef.current?.focus(); }
       }}
     >
       <div className="container header-inner">
@@ -23,6 +24,7 @@ export function Header() {
           <Brand />
         </Link>
         <button
+          ref={menuRef}
           className="menu-toggle"
           aria-expanded={open}
           aria-controls="main-nav"

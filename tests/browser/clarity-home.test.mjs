@@ -8,7 +8,7 @@ test('ACTION_RESULT_BROWSER — saved intake survives disappearing form, rejecte
  await until(()=>p.evaluate("location.pathname==='/admin'"));await p.send('Page.navigate',{url:site.base+'/admin/orders/'+order.order_id});
  await until(()=>p.evaluate("document.querySelector('form[aria-label=\"Nhận túi đồ\"]')?.checkVisibility()"));
  assert.ok(await p.evaluate("document.querySelector('form[aria-label=\"Nhận túi đồ\"] .action-impact').innerText.includes('Sau khi lưu')"));
- assert.ok(await p.evaluate("document.querySelector('form[aria-label=\"Nhận túi đồ\"] button').innerText.includes('Xác nhận đã nhận bọc')"));
+ assert.ok(await p.evaluate("document.querySelector('form[aria-label=\"Nhận túi đồ\"] button[type=submit]').innerText.includes('Xác nhận đã nhận bọc')"));
  await captures(p,'intake');
  async function submit(label,fields={}){await p.evaluate("(()=>{const f=document.querySelector('form[aria-label='+JSON.stringify("+JSON.stringify(label)+")+']');const panel=f.closest('.workspace-panel');if(panel?.hidden)document.querySelector('[aria-controls=\"'+panel.id+'\"]').click();let d=f.parentElement;while(d){if(d.tagName==='DETAILS')d.open=true;d=d.parentElement;}})()");await until(()=>p.evaluate("document.querySelector('form[aria-label='+JSON.stringify("+JSON.stringify(label)+")+']')?.checkVisibility()"));await p.evaluate("(()=>{const f=document.querySelector('form[aria-label='+JSON.stringify("+JSON.stringify(label)+")+']');for(const [name,value]of Object.entries("+JSON.stringify(fields)+"))f.elements.namedItem(name).value=value;f.requestSubmit();})()");}
  await submit('Nhận túi đồ',{'bag_tag:0':'BOC-CLARITY-01','bag_count:0':'3','bag_condition:0':'ZZ TEST intake condition'});

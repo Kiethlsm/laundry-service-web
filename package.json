@@ -16,7 +16,8 @@
     "check:phase": "node scripts/full-gate.mjs",
     "test:admin": "node --test --test-concurrency=1 tests/admin/usability.test.mjs tests/admin/browser.test.mjs",
     "test:clarity": "node --test --test-concurrency=1 tests/admin/action-guidance.test.mjs tests/browser/clarity-home.test.mjs",
-    "test:pricing": "node --test --test-concurrency=1 tests/browser/pricing.test.mjs"
+    "test:pricing": "node --test --test-concurrency=1 tests/browser/pricing.test.mjs",
+    "test:shop": "node --test --test-concurrency=1 tests/customer/order-detail.test.mjs tests/browser/shop-usability.test.mjs"
   },
   "dependencies": {
     "@fontsource/be-vietnam-pro": "^5.3.0",

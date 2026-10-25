@@ -277,7 +277,7 @@ export function BookingForm({
               <span>Chuyển khoản trực tiếp</span>
             </label>
           </fieldset>
-          {paymentMethod === "bank_transfer" && <BankTransfer amount={total} />}
+          {paymentMethod === "bank_transfer" && <details className="booking-bank-preview"><summary>Xem thông tin chuyển khoản</summary><p className="field-help">Chỉ chuyển sau khi tiệm xác nhận chi phí. Bạn chưa cần thanh toán để gửi lịch hẹn.</p><BankTransfer amount={total} /></details>}
           <label>
             Ghi chú <span className="optional">(không bắt buộc)</span>
             <textarea
@@ -290,7 +290,7 @@ export function BookingForm({
           </label>
         </section>
       </div>
-      <aside className="order-summary">
+      <aside className="order-summary" id="booking-review" tabIndex={-1} aria-label="Kiểm tra giỏ và xác nhận lịch">
         <div className="summary-header">
           <ServiceEmoji id={1} />
           <h2>Giỏ đồ của bạn</h2>
@@ -340,8 +340,9 @@ export function BookingForm({
         <div className="consent-fields">
           <p>Đây là chi phí dự kiến. Cửa hàng xác nhận khối lượng và báo giá trước khi xử lý.</p>
           <label><input type="checkbox" name="consent" required disabled={busy} /> Tôi đồng ý với báo giá dự kiến và việc cửa hàng liên hệ để xác nhận lịch hẹn.</label>
-          <label><input type="checkbox" name="tolerance_consent" checked={toleranceConsent} onChange={e => setToleranceConsent(e.target.checked)} disabled={busy} /> Cho phép cân thực tế trong ±10% hoặc ±0,30 kg, lấy mức lớn hơn cho từng dòng kg gốc.</label>
-          <p aria-live="polite">Mức tối đa được đồng ý: <strong>{formatVND(maximum)}</strong>. Không chọn dung sai: mọi thay đổi cân nặng cần báo giá mới.</p>
+          <label><input type="checkbox" name="tolerance_consent" checked={toleranceConsent} onChange={e => setToleranceConsent(e.target.checked)} disabled={busy} /> Cho phép cân chênh lệch trong giới hạn bên dưới.</label>
+          <p aria-live="polite">Tối đa bạn đồng ý: <strong>{formatVND(maximum)}</strong>. Nếu không chọn, tiệm cần báo giá mới khi số cân thay đổi.</p>
+          <details className="weight-policy"><summary>Giới hạn cân được tính thế nào?</summary><p>Với mỗi dịch vụ tính theo kg trong báo giá ban đầu, cân thực tế được chênh lệch ±10% hoặc ±0,30 kg, lấy mức lớn hơn. Món tính theo cái, đôi hoặc bộ giữ nguyên số lượng. Vượt giới hạn này, tiệm cần bạn đồng ý báo giá mới.</p></details>
         </div>
         {error && (
           <div className="form-error" role="alert" ref={errorRef} tabIndex={-1}>
@@ -366,6 +367,7 @@ export function BookingForm({
           Lưu mã đơn sau khi đặt để tra cứu.
         </p>
       </aside>
+      <div className="booking-review-bar" data-booking-bar><div><span>{chosen.length?`${chosen.length} dịch vụ đã chọn`:"Chọn đồ cần giặt"}</span><strong aria-live="polite">{formatVND(total)}</strong></div><button type="button" className="button" onClick={()=>{const review=document.getElementById('booking-review');review?.scrollIntoView({block:'start'});review?.focus({preventScroll:true});}}>Xem giỏ & đặt lịch <Arrow/></button></div>
     </form>
   );
 }

@@ -1,0 +1,38 @@
+TAP version 13
+# Subtest: SHOP_SETTLEMENT_PROJECTION — current settlement is scoped by order and incomplete data cannot silently fall back to an estimate
+ok 1 - SHOP_SETTLEMENT_PROJECTION — current settlement is scoped by order and incomplete data cannot silently fall back to an estimate
+  ---
+  duration_ms: 44.4115
+  type: 'test'
+  ...
+# Subtest: SHOP_CUSTOMER_BOUNDARY — ownership checked before detail RPC, explicit projection drops private fields
+not ok 2 - SHOP_CUSTOMER_BOUNDARY — ownership checked before detail RPC, explicit projection drops private fields
+  ---
+  duration_ms: 13.7719
+  type: 'test'
+  location: 'C:\\Users\\Kieth\\Documents\\Juinior\\tests\\customer\\order-detail.test.mjs:8:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    50000 !== 147500
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 147500
+  actual: 50000
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/customer/order-detail.test.mjs:12:206)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 1
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 342.0628

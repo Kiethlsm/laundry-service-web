@@ -2,6 +2,8 @@
 import { useRef, useState } from "react";
 import { formatVND, STATUS_LABEL, type OrderStatus } from "@/lib/format";
 import { Arrow } from "./ui";
+import { OrderProgress } from "./order-progress";
+import { SHOP } from "@/lib/shop";
 export function TrackForm({
   initialCode,
   demo,
@@ -29,14 +31,16 @@ export function TrackForm({
           phone: form.get("phone"),
         }),
       });
+      if (!response.ok) {
+        setError(response.status === 404 ? "Không tìm thấy đơn khớp mã và số điện thoại. Bạn hãy kiểm tra lại cả hai thông tin." : response.status === 400 ? "Kiểm tra mã đơn và số điện thoại 10 chữ số đã đặt lịch." : response.status === 429 ? "Bạn đã tra cứu nhiều lần. Hãy chờ một chút rồi thử lại." : "Kết nối đến tiệm đang gián đoạn. Bạn hãy thử lại sau ít phút.");
+        return;
+      }
       const result = await response.json();
-      if (!response.ok)
-        throw new Error(result.error || "Chưa thể tra cứu. Vui lòng thử lại.");
       if (!result || !/^LD\d+$/.test(result.code) || !Object.hasOwn(STATUS_LABEL,result.status) || !Number.isSafeInteger(result.total) || result.total<0) throw new Error("INVALID_RESULT");
       setOrder(result);
       requestAnimationFrame(() => resultRef.current?.focus());
     } catch {
-      setError("Chưa thể tra cứu. Kiểm tra thông tin rồi thử lại.");
+      setError("Kết nối tra cứu đang gián đoạn. Bạn hãy thử lại; nếu cần gấp, gọi tiệm để hỏi đơn.");
     } finally {
       setBusy(false);
     }
@@ -83,9 +87,11 @@ export function TrackForm({
         )}
       </form>
       {order ? (
-        <div ref={resultRef} tabIndex={-1}>
+        <div ref={resultRef} tabIndex={-1} className="customer-track-result">
           <h2>{order.code}</h2>
           <p>{STATUS_LABEL[order.status]} · {formatVND(order.total)}</p>
+          <OrderProgress status={order.status}/>
+          <a className="text-link" href={`tel:${SHOP.phone}`}>Hỏi về đơn · {SHOP.phone}</a>
           <p className="field-help">Tra cứu công khai chỉ hiển thị tiến độ và số tiền; không hiển thị địa chỉ, liên hệ hay bằng chứng nội bộ.</p>
           <p className="field-help track-help">
             Muốn cập nhật tiến độ? Nhấn “Tra cứu đơn” lần nữa.

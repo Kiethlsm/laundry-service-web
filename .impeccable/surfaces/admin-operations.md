@@ -2,12 +2,14 @@
 version: 1
 slug: "admin-operations"
 primary_target: "app/admin/page.tsx"
-related_targets: ["app/admin/orders/[id]/page.tsx", "components/admin-orders.tsx", "components/demo-workspace.tsx", "components/workflow-panels.tsx", "app/admin-ui.css"]
+related_targets: ["app/admin/orders/[id]/page.tsx", "components/admin-orders.tsx", "components/demo-workspace.tsx", "components/workflow-panels.tsx", "components/intake-fields.tsx", "app/admin-ui.css", "app/shop-operations.css"]
 ---
 
 # Two-owner shop operations
 
 Mode: Operate. The owner and mother run the shop; no workforce management.
+
+2026-10-25 follow-through: current settlement amounts and quantities are read via the authenticated client, scoped by order and immutable settlement ID. Quote estimates remain separately labelled. The intake form supports 1–20 bags in one atomic receive operation. Handover precedes collapsed accounting history, and the next-step action scrolls/focuses the handover form itself. Internal state/reason codes use Vietnamese presentation labels. Real payment activation remains a separate backend slice; the existing SQL supports simulated ledger entries only, so its honest labels stay visible.
 
 Preserve the established cobalt/enamel identity and Be Vietnam Pro. Replace the report-first landing and simultaneous long forms with a task-first order list and one visible workspace panel. Four work groups: new, working, ready to return, completed; cancelled and all remain available. Counts describe the loaded search results, never global totals. Keep code/phone search and the 100-result boundary explicit.
 

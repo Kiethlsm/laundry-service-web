@@ -2,18 +2,18 @@ Command: node node_modules/next/dist/bin/next build
 Exit: 0
 ▲ Next.js 16.4.2 (Turbopack)
 - Environments: .env.local
-✓ Running next.config.ts took 38ms
+✓ Running next.config.ts took 33ms
 
   Creating an optimized production build ...
-✓ Compiled successfully in 26.5s
+✓ Compiled successfully in 4.0s
   Running TypeScript ...
-  Finished TypeScript in 11.0s ...
+  Finished TypeScript in 2.7s ...
   Collecting page data using 11 workers ...
   Generating static pages using 11 workers (0/7) ...
   Generating static pages using 11 workers (1/7) 
   Generating static pages using 11 workers (3/7) 
   Generating static pages using 11 workers (5/7) 
-✓ Generating static pages using 11 workers (7/7) in 254ms
+✓ Generating static pages using 11 workers (7/7) in 305ms
   Finalizing page optimization ...
 
 Route (app)
@@ -31,6 +31,7 @@ Route (app)
 ├ ƒ /dat-lich
 ├ ○ /icon.svg
 ├ ƒ /tai-khoan
+├ ƒ /tai-khoan/don/[id]
 └ ƒ /tra-cuu
 
 

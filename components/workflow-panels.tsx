@@ -21,7 +21,7 @@ export function WorkflowPanels({ next, panels, orderStatus, orderRevision, order
   const feedbackRef=useRef<HTMLDivElement>(null);
   useEffect(()=>{if(synchronized)feedbackRef.current?.focus();},[feedback,synchronized]);
   const notify=(action:string,tag:string,revision:number)=>{setFeedback({text:actionGuidance(action,orderStatus).success,tag,revision});setInFlight(false);};
-  const openNext=()=>{setActive(next.panel);requestAnimationFrame(()=>{const node=document.getElementById(`${id}-${next.panel}`);node?.scrollIntoView({block:"start"});node?.focus({preventScroll:true});});};
+  const openNext=()=>{setActive(next.panel);requestAnimationFrame(()=>{const panel=document.getElementById(`${id}-${next.panel}`);const node=panel?.querySelector<HTMLElement>('[data-primary-operation]')??panel;node?.scrollIntoView({block:"start"});node?.focus({preventScroll:true});});};
   const current=STATUS_FLOW.indexOf(orderStatus as OrderStatus);
   return <FeedbackContext.Provider value={{status:orderStatus,busy,begin:()=>{setFeedback(null);setInFlight(true);},fail:()=>setInFlight(false),notify}}><div className="operation-workspace">
     {busy&&<div role="status" className="operation-saving"><p>Đang cập nhật đơn và tiến độ trên màn hình. Vui lòng chờ trước khi làm bước tiếp theo…</p>{!inFlight&&<button type="button" className="text-link" onClick={()=>window.location.reload()}>Tải lại trạng thái đơn</button>}</div>}

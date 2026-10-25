@@ -1,0 +1,13 @@
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import vm from 'node:vm';import ts from 'typescript';import {createRequire} from 'node:module';const native=createRequire(import.meta.url);
+function load(file,mocks={}){const exports={};vm.runInNewContext(ts.transpileModule(fs.readFileSync(file,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS}}).outputText,{exports,require:n=>n==='server-only'?{}:mocks[n]??native(n)});return exports;}
+test('SHOP_SETTLEMENT_PROJECTION — current settlement is scoped by order and incomplete data cannot silently fall back to an estimate',async()=>{
+ const {readSettlementItems}=load('lib/settlement-view.ts');const filters=[];let rows=[{order_item_id:1,actual_qty:2.7,rate:25000,line_total:67500}];
+ const query={eq:(k,v)=>{filters.push([k,v]);return query},then:resolve=>resolve({data:rows,error:null})};const db={from:t=>{assert.equal(t,'settlement_items');return{select:()=>query}}};
+ const result=await readSettlementItems(db,'order','settlement');assert.equal(result[0].actual_qty,2.7);assert.deepEqual(filters,[['settlement_id','settlement'],['order_id','order']]);await assert.rejects(()=>readSettlementItems(db,'order','settlement',[1,2]),/cân thực tế/);rows=[];await assert.rejects(()=>readSettlementItems(db,'order','settlement'),/cân thực tế/);assert.deepEqual(JSON.parse(JSON.stringify(await readSettlementItems(db,'order',null))),[]);
+});
+test('SHOP_CUSTOMER_BOUNDARY — ownership checked before detail RPC, explicit projection drops private fields',async()=>{
+ let owner='someone-else',rpcCalls=0;const row={id:'order',customer_id:owner,code:'LD1234',status:'picked_up',total:50000,created_at:'2026-01-01'};
+ const {loadCustomerOrder}=load('lib/customer-order.ts',{'@/lib/settlement-view':{readSettlementItems:async()=>[{order_item_id:1,actual_qty:2.7,rate:25000,line_total:67500}]}});
+ const auth={from:()=>({select:()=>({eq:()=>({maybeSingle:async()=>({data:{...row,customer_id:owner},error:null})})})}),rpc:async()=>{rpcCalls++;return{data:{order:{total:147500,status:'ready',active_quote_id:'q',active_settlement_id:'s'},quotes:[{id:'q',base_total:142500,max_weight_total:150000,items:[{order_item_id:1,snapshot_name:'Giặt',snapshot_unit:'kg',snapshot_rate:25000,quantity:2.5}]}],bags:[{intake_condition:'PRIVATE_DAMAGE'}],charges:[{reason:'PRIVATE_REASON'}],custody:[{actor_id:'PRIVATE_ACTOR'}]},error:null}}};
+ assert.equal(await loadCustomerOrder(auth,'me','order'),null);assert.equal(rpcCalls,0);owner='me';const result=await loadCustomerOrder(auth,'me','order');assert.equal(result.items[0].quantity,2.7);assert.equal(result.total,147500);assert.doesNotMatch(JSON.stringify(result),/PRIVATE_|bags|custody|charges|actor_id/);
+});

@@ -7,6 +7,7 @@ import { authClient } from "@/lib/supabase-server";
 import type { DemoWorkspaceData } from "@/lib/demo-types";
 import type { Order } from "@/lib/types";
 import { StatusBadge } from "@/components/ui";
+import { readSettlementItems } from "@/lib/settlement-view";
 export const dynamic = "force-dynamic";
 export const metadata = {
   title: "Chi tiết đơn hàng",
@@ -42,6 +43,7 @@ export default async function AdminOrder({
     const payment = await auth.rpc("demo_payment_summary",{p_order:id});
     if(payment.error || !payment.data) throw new Error("Chưa tải được sổ tiền.");
     workspace.money = payment.data;
+    workspace.currentItems = await readSettlementItems(auth,id,workspace.order.active_settlement_id,workspace.quotes.find(q=>q.id===workspace?.order.active_quote_id)?.items.map(i=>i.order_item_id));
   }
   return (
     <div className="container page-space admin-page admin-order-page">

@@ -13,11 +13,11 @@ const errorText:Record<string,string>={
  IDEMPOTENCY_CONFLICT:"Nội dung khác với lần gửi trước. Tải lại trang trước khi thao tác mới.",
  BLOCKING_ISSUE:"Cần giải quyết sự cố đang chặn trước khi tiếp tục.",
  EVIDENCE_REQUIRED:"Cần bằng chứng khách gửi được ghi rõ là mô phỏng.",
- RECONCILIATION_MISSING_BAG:"Chưa đối chiếu đủ túi đồ.",RECONCILIATION_MISSING_ITEM:"Chưa đối chiếu đủ món được gắn nhãn riêng.",
+ RECONCILIATION_MISSING_BAG:"Chưa đối chiếu đủ bọc đồ.",RECONCILIATION_MISSING_ITEM:"Chưa đối chiếu đủ món được gắn nhãn riêng.",
  SETTLEMENT_REQUIRED:"Hãy ghi cân thực tế cho báo giá đã được đồng ý.",FORBIDDEN:"Tài khoản không có quyền thực hiện thao tác này.",
  CASH_MISMATCH:"Tiền mặt giữ lại phải đúng số còn phải thu; không giao khi thiếu hoặc thừa tiền.",REFUND_DUE:"Cần hoàn phần tiền thừa trước khi bàn giao.",
  REFUND_EXCEEDS_AVAILABLE:"Khoản hoàn vượt số tiền thực nhận còn có thể hoàn.",ALREADY_REVERSED:"Bút toán này đã có một bút toán đảo.",
- INVALID_REVERSAL:"Chỉ đảo một lần cho khoản thu/hoàn gốc, không đảo bút toán đảo.",RETURN_PLAN_REQUIRED:"Đơn đã nhận đồ cần phương án trả lại túi rõ ràng.",
+ INVALID_REVERSAL:"Chỉ đảo một lần cho khoản thu/hoàn gốc, không đảo bút toán đảo.",RETURN_PLAN_REQUIRED:"Đơn đã nhận đồ cần phương án trả lại bọc rõ ràng.",
  WORK_SCOPE_REQUIRED:"Hãy bắt đầu phần việc bổ sung đã đồng ý rồi kiểm tra lại chất lượng.",QC_REQUIRED:"Cần kiểm tra chất lượng cho đúng phiên bản báo giá hiện tại.",
 };
 export async function performDemoAction(_state:DemoActionState,form:FormData):Promise<DemoActionState>{
