@@ -30,3 +30,4 @@ jobs:
       - run: npm run test:customer
       - run: npm run test:admin
       - run: npm run test:clarity
+      - run: npm run test:pricing

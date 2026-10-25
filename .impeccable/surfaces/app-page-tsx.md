@@ -2,7 +2,7 @@
 version: 1
 slug: "app-page-tsx"
 primary_target: "app/page.tsx"
-related_targets: ["app/bang-gia/page.tsx","app/dat-lich/page.tsx","app/tra-cuu/page.tsx","app/admin/page.tsx"]
+related_targets: ["app/dat-lich/page.tsx","app/tra-cuu/page.tsx","app/admin/page.tsx"]
 ---
 
 # Public laundry website

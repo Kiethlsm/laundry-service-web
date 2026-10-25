@@ -15,7 +15,8 @@
     "test:customer": "node --test --test-reporter=tap --test-concurrency=1 tests/customer/google.test.mjs tests/customer/database.test.mjs tests/customer/ui.test.mjs tests/customer/browser.test.mjs tests/customer/shop-copy.test.mjs",
     "check:phase": "node scripts/full-gate.mjs",
     "test:admin": "node --test --test-concurrency=1 tests/admin/usability.test.mjs tests/admin/browser.test.mjs",
-    "test:clarity": "node --test --test-concurrency=1 tests/admin/action-guidance.test.mjs tests/browser/clarity-home.test.mjs"
+    "test:clarity": "node --test --test-concurrency=1 tests/admin/action-guidance.test.mjs tests/browser/clarity-home.test.mjs",
+    "test:pricing": "node --test --test-concurrency=1 tests/browser/pricing.test.mjs"
   },
   "dependencies": {
     "@fontsource/be-vietnam-pro": "^5.3.0",

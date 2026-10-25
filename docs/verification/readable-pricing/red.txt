@@ -1,0 +1,54 @@
+TAP version 13
+# Subtest: PRICING_DATA — exact catalog rates, units and estimates have associated table headers
+not ok 1 - PRICING_DATA — exact catalog rates, units and estimates have associated table headers
+  ---
+  duration_ms: 6542.9794
+  type: 'test'
+  location: 'C:\\Users\\Kieth\\Documents\\Juinior\\tests\\browser\\pricing.test.mjs:12:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Every service group needs a labelled data table
+
+    0 !== 6
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 6
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/browser/pricing.test.mjs:18:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: PRICING_READABILITY — aligned large prices, working shortcuts and booking, narrow and enlarged text without overflow
+not ok 2 - PRICING_READABILITY — aligned large prices, working shortcuts and booking, narrow and enlarged text without overflow
+  ---
+  duration_ms: 7415.409
+  type: 'test'
+  location: 'C:\\Users\\Kieth\\Documents\\Juinior\\tests\\browser\\pricing.test.mjs:26:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Six visible category shortcuts are required
+
+    0 !== 6
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 6
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///C:/Users/Kieth/Documents/Juinior/tests/browser/pricing.test.mjs:31:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 0
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 14050.512

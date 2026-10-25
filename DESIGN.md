@@ -175,3 +175,9 @@ The public footer uses an outlined location pin with the supplied address as a r
 The homepage inherits cobalt/enamel and Be Vietnam Pro, replacing the sticky runway and staggered service cards with a compact hero, six-service ruled price index, two-column process narrative, and direct booking/contact actions. The accepted CSS washer and reduced-motion pose remain; progress follows normal scrolling.
 
 Admin shows the five-stage journey and save consequences. Acknowledgement uses the RPC-returned revision; success waits for rendered data at least that fresh. Cross-action writes stay disabled until synchronized. Custody badges use server-provided received/returned/QC state separately from whole-order progress. Feedback persists across disappearing forms; errors never become success. No live financial activation or SQL change.
+
+## Readable pricing · 2026-10-25
+
+The pricing page is a single service-rate sheet with desktop category navigation. Cobalt tabular amounts use 26px/24px/22px at weight 700, aligned right on a pale blue price column; 14px units sit immediately underneath. Services use 16px medium-weight ink and wrap independently. Estimates use 14px muted text. Column headings use 13px. The heading scales 32–48px. The enamel explanation uses the established 14px panel radius. These deliberate pricing sizes extend the shared type ramp.
+
+At narrow containers the estimate moves beneath the service. Very narrow containers and enlarged text stack the row to preserve legibility. Standard mobile still pairs service and price. Semantic captions/headers and native anchor navigation remain. The page explains actual-quantity pricing and estimated turnaround without changing real prices, adding fees, calculators or guarantees. Route-prefixed CSS resets legacy global table whitespace/backgrounds locally, with no configuration change.
