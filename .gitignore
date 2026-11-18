@@ -33,10 +33,10 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 !.env.local.example
-.impeccable/review/
-.impeccable/config.local.json
-.impeccable/build/
-.impeccable/mocks/
+
+# local development tools
+/.impeccable/
+/AGENTS.md
 
 # vercel
 .vercel

@@ -22,6 +22,6 @@ A reduced-motion assertion initially assumed an inline custom property existed o
 
 One initial batch covered home, intake and received states at 390 and 1440 px. One final confirmation reviewed the updated mobile receipt and desktop homepage after the action synchronization fix and copy changes. No horizontal overflow at 390, 768 or 1440 px. No WebGL canvas was introduced. Screenshots are synthetic and included here.
 
-The Impeccable detector ran once. Its radius/token suggestions are advisory: the hero uses the existing rounded enamel visual language, while administrative callouts use restrained smaller corners. No further visual iteration is planned for this slice.
+An automated stylesheet check ran once. Its radius/token suggestions are advisory: the hero uses the existing rounded enamel visual language, while administrative callouts use restrained smaller corners. No further visual iteration is planned for this slice.
 
 Live deployment checks are read-only and kept outside the repository. They cannot prove authenticated hosted admin writes or a fresh Google sign-in; those workflows are covered locally and remain manual production checks.

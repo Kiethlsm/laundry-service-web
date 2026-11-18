@@ -1,7 +1,0 @@
-{
-  "findings": 11,
-  "counts": {
-    "design-system-font-size / advisory": 11
-  },
-  "note": "Pre-finish mechanical scan. Existing design sidecar is stale; no sidecar regeneration was included. Actual typography/layout checked in resolved desktop/mobile captures."
-}

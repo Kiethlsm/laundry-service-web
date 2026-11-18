@@ -1,6 +1,6 @@
 # PIPELINE: Website Giặt Sấy (Demo CV)
 
-> Tài liệu này dành cho Codex/AI agent thực hiện. Đọc toàn bộ trước khi code. Làm tuần tự theo từng Phase, xong phase nào tick `[x]` phase đó.
+> Đọc toàn bộ quy trình trước khi sửa mã. Thực hiện lần lượt từng giai đoạn và đánh dấu `[x]` khi hoàn tất.
 
 ## 0. Mục tiêu & nguyên tắc
 

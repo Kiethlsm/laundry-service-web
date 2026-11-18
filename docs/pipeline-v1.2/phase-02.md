@@ -4,7 +4,7 @@ Planned minimal core: 0.5-1 day. Entry P01. Drop first: new catalogue/slot edito
 
 Reuse current guest booking/lookup. Add v0/max-consent snapshot, strict DB total, atomic retry and synthetic-order flag. Keep existing times/services validation and public safe projection. A service-only DB counter may provide shared rate windows on existing Free DB; no Redis account prerequisite. Request/admin-driven bounded pruning, no jobs.
 
-Slot capacity/editor is an optional 1-2-day extension; it is not a dependency of the minimal booking scenario. UI follows impeccable when later authorized, preserving current design.
+Slot capacity/editor is an optional 1-2-day extension; it is not a dependency of the minimal booking scenario. Any later UI work preserves the current design.
 
 Command planned: npm run test:gate -- P02; manifest: tests/acceptance/phase-02.test.ts and tests/e2e/phase-02.spec.ts.
 

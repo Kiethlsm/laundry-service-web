@@ -36,6 +36,6 @@ The first keyboard assertion failed because it expected `:focus-visible` immedia
 
 ## Review and limitations
 
-Two isolated Impeccable reviewers assessed design and technical evidence. Final design confirmation reviewed refreshed screenshots/source/measurements; keyboard behavior is supported by the parent's browser test. The technical reviewer found no blocking regression. One detector pass over the changed homepage sources produced 21 advisory token findings and no primary finding; [raw output](detector.json). Advisory counts are not a count of usability defects.
+The design and technical evidence were reviewed separately. Final design confirmation reviewed refreshed screenshots/source/measurements; keyboard behavior is supported by the parent's browser test. The technical reviewer found no blocking regression. One detector pass over the changed homepage sources produced 21 advisory token findings and no primary finding. Advisory counts are not a count of usability defects.
 
 No screen-reader session, zoom audit, all-browser matrix or Core Web Vitals benchmark was performed. Link destinations are checked as URLs, not external map/call application completion. Existing homepage tests cover reduced-motion behavior. The score applies to the homepage only.

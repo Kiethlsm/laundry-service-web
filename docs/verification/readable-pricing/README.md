@@ -6,7 +6,7 @@ Branch: `feat/readable-pricing`. Product changes are confined to `/bang-gia`.
 
 - [EU Data Visualisation Guide: scannable tables](https://data.europa.eu/apps/data-visualisation-guide/table-design-scannability): consistent numeric formatting, right-aligned comparable values and tabular numerals. Apply one price axis across all six categories instead of two independent desktop columns.
 - [W3C WAI tables tutorial](https://www.w3.org/WAI/tutorials/tables/): meaningful captions and explicit column/row headers. Rates remain associated with their service and unit. Estimates move underneath service names at narrow container widths.
-- An independent Impeccable layout assessment found category headings stronger than prices, uneven row counts leaving dead space, small units and conflicting legacy pricing overrides. No calculator, arbitrary recommendation badges, invented fee or new operational promise was warranted.
+- A layout review found category headings stronger than prices, uneven row counts leaving dead space, small units and conflicting legacy pricing overrides. No calculator, arbitrary recommendation badges, invented fee or new operational promise was warranted.
 
 ## Result
 
@@ -37,7 +37,7 @@ Narrow-screen verification also exposed a native table colgroup mismatch when hi
 
 Desktop/mobile screenshots show real seeded service data, with no customer rows. Full-page captures document all categories; first-viewport captures preserve readable detail. A targeted correction confirmation checked the resolved mobile column defect; no further visual embellishment followed.
 
-The manual Impeccable detector ran once: 11 advisory findings (10 type-ramp, 1 color), no blocking findings. The pricing type sizes are intentional and recorded in DESIGN.md; the pale price-column color is the existing surface-blue value. No detector-driven configuration or dependency changes were made.
+A static design check ran once: 11 advisory findings (10 type-ramp, 1 color), no blocking findings. The pricing type sizes are intentional and recorded in DESIGN.md; the pale price-column color is the existing surface-blue value. No detector-driven configuration or dependency changes were made.
 
 ## Live check boundary
 
