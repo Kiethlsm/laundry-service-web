@@ -10,11 +10,11 @@ Next.js App Router, TypeScript, Tailwind CSS, Supabase Postgres/Auth, Vercel. Fi
 
 ## Users
 
-Vietnamese-speaking laundry customers, and the owner and their mother running one shop without employees. Customers can book as guests; Google sign-in and an account area are the first local slice toward real usage. Two separate admin accounts share shop-management capabilities.
+Vietnamese-speaking laundry customers, and the owner and their mother running one shop without employees. Customers can book as guests, Google sign-in and an account area are the first local slice toward real usage. Two separate admin accounts share shop-management capabilities.
 
 ## Product Purpose
 
-A small family-shop service: book laundry, agree the measured price, follow progress, and pay cash or manually reconciled bank transfer. The deployed baseline remains a portfolio demo; real-operation features are released only after their own tests and approval. Current scope is docs/SMALL_SHOP_SCOPE.md; the v1.2 portfolio plan is historical evidence.
+A small family-shop service: book laundry, agree the measured price, follow progress, and pay cash or manually reconciled bank transfer. The deployed baseline remains a portfolio demo, real-operation features are released only after their own tests and approval. Current scope is docs/SMALL_SHOP_SCOPE.md, the v1.2 portfolio plan is historical evidence.
 
 ## Operating Context
 
@@ -22,11 +22,11 @@ Mobile-first public site. Admin's target is four groups of orders: new, in progr
 
 ## Capabilities and Constraints
 
-Reuse Next.js, Supabase and the existing packages. Native Node tests, local Docker PostgreSQL 17.11, the authorization matrix and hosted-defaults checks are required gates. Server owns prices and order identity. Service-role secrets stay server-only. Keep production unchanged during local slices; hosted/Auth configuration, migrations, deploys and paid services require scoped approval. Google is the selected customer sign-in; phone is a contact field, SMS OTP is deferred. Existing payment/evidence flows remain demo/mock until explicitly converted and verified.
+Reuse Next.js, Supabase and the existing packages. Native Node tests, local Docker PostgreSQL 17.11, the authorization matrix and hosted-defaults checks are required gates. Server owns prices and order identity. Service-role secrets stay server-only. Keep production unchanged during local slices, hosted/Auth configuration, migrations, deploys and paid services require scoped approval. Google is the selected customer sign-in, phone is a contact field, SMS OTP is deferred. Existing payment/evidence flows remain demo/mock until explicitly converted and verified.
 
 ## Brand Commitments
 
-User confirmed the name Sạch Sạch and delegated design choices. Vietnamese copy. Public contact: 0903992813; 104/4G Nhất Chi Mai, phường Tân Bình, Thành phố Hồ Chí Minh. Opening hours are not yet supplied.
+User confirmed the name Sạch Sạch and delegated design choices. Vietnamese copy. Public contact: 0903992813, 104/4G Nhất Chi Mai, phường Tân Bình, Thành phố Hồ Chí Minh. Opening hours are not yet supplied.
 
 ## Evidence on Hand
 

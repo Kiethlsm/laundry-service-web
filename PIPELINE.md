@@ -272,7 +272,7 @@ insert into profiles (id, full_name, role) values ('<USER_ID>', 'Admin', 'admin'
 - `/admin/login`: email + mật khẩu qua Supabase Auth.
 - Mọi route `/admin/*` (trừ login) kiểm tra: đã đăng nhập VÀ `profiles.role = 'admin'`, nếu không redirect về login. Làm bằng middleware hoặc check trong server component.
 - `/admin`: bảng danh sách đơn (mã, tên khách, SĐT, tổng, trạng thái, ngày tạo), lọc theo trạng thái, tìm theo mã/SĐT.
-- `/admin/orders/[id]`: xem chi tiết, dropdown đổi trạng thái (chỉ cho phép chuyển theo thứ tự hợp lệ ở mục 4.2) và nút Hủy đơn. Khi đổi trạng thái, lịch sử tự ghi nhờ trigger; ghi thêm `changed_by` nếu làm được đơn giản.
+- `/admin/orders/[id]`: xem chi tiết, dropdown đổi trạng thái (chỉ cho phép chuyển theo thứ tự hợp lệ ở mục 4.2) và nút Hủy đơn. Khi đổi trạng thái, lịch sử tự ghi nhờ trigger, ghi thêm `changed_by` nếu làm được đơn giản.
 
 ## 6. Các Phase thực hiện
 
@@ -291,7 +291,7 @@ insert into profiles (id, full_name, role) values ('<USER_ID>', 'Admin', 'admin'
 
 ### Phase 3: Trang khách
 
-- [x] Layout chung (header menu: Trang chủ, Bảng giá, Đặt lịch, Tra cứu; footer)
+- [x] Layout chung (header menu: Trang chủ, Bảng giá, Đặt lịch, Tra cứu, footer)
 - [x] Trang chủ
 - [x] Bảng giá
 - [x] Đặt lịch + `api/orders`
@@ -306,10 +306,10 @@ insert into profiles (id, full_name, role) values ('<USER_ID>', 'Admin', 'admin'
 ### Phase 5: Kiểm thử thủ công
 
 - [ ] Đặt 1 đơn gồm nhiều nhóm dịch vụ, kiểm tra `total` đúng
-- [ ] Tra cứu đúng mã + đúng SĐT thì thấy đơn; sai SĐT thì không thấy
+- [ ] Tra cứu đúng mã + đúng SĐT thì thấy đơn, sai SĐT thì không thấy
 - [ ] Admin đổi trạng thái, timeline ở trang tra cứu cập nhật
 - [x] Thử vào `/admin` khi chưa đăng nhập → bị chuyển về login
-- [x] Xem trên màn hình điện thoại (Chromium viewport 390px; chưa thử thiết bị thật)
+- [x] Xem trên màn hình điện thoại (Chromium viewport 390px, chưa thử thiết bị thật)
 
 ### Phase 6: Deploy Vercel
 
@@ -321,15 +321,15 @@ insert into profiles (id, full_name, role) values ('<USER_ID>', 'Admin', 'admin'
 
 ### Phase 7: Hoàn thiện cho CV
 
-- [ ] README: mô tả dự án, tech stack, link demo, 3-4 ảnh chụp màn hình, sơ đồ ERD (đã có nội dung, 4 ảnh và ERD; còn link thật)
+- [ ] README: mô tả dự án, tech stack, link demo, 3-4 ảnh chụp màn hình, sơ đồ ERD (đã có nội dung, 4 ảnh và ERD, còn link thật)
 - [ ] Ghi tài khoản admin demo trong README (email + mật khẩu demo, KHÔNG dùng mật khẩu thật)
-- [ ] Đặt tên repo rõ ràng, ví dụ `laundry-service-web` (package đã mang tên này; chưa có remote)
+- [ ] Đặt tên repo rõ ràng, ví dụ `laundry-service-web` (package đã mang tên này, chưa có remote)
 
 ### Ghi nhận triển khai 17/10/2026
 
 Người dùng đã chọn bàn giao bản cục bộ và hướng dẫn vì chưa có cấu hình Supabase/GitHub/Vercel. Các checkbox triển khai bên ngoài được giữ để dùng khi thiết lập sau này.
 
-Đã hoàn thiện mã nguồn Phase 1–4; thêm `supabase/functions.sql` để ghi đơn nguyên tử, tính giá từ DB và kiểm soát chuyển trạng thái. Build/TypeScript thành công, đã xem UI 1440px/390px và chạy SQL trên PostgreSQL cục bộ tạm thời. Chi tiết: `docs/VERIFICATION.md`.
+Đã hoàn thiện mã nguồn Phase 1–4, thêm `supabase/functions.sql` để ghi đơn nguyên tử, tính giá từ DB và kiểm soát chuyển trạng thái. Build/TypeScript thành công, đã xem UI 1440px/390px và chạy SQL trên PostgreSQL cục bộ tạm thời. Chi tiết: `docs/VERIFICATION.md`.
 
 Supabase, admin thật, kiểm thử tích hợp API/Auth, GitHub và Vercel chưa được tick vì chưa có cấu hình/tài khoản. README có tài khoản demo đề xuất, không khẳng định đã tồn tại. Chưa đạt Definition of Done online cho đến khi hoàn thành các bước này.
 

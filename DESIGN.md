@@ -132,7 +132,7 @@ Blue Enamel Wash Controls. The user requested reverting the WebGL replacement to
 
 ## Colors
 
-Frontmatter records the base and home palette. Cobalt marks primary actions; ink marks selected service controls; orange marks the dial and brand punctuation. Pale blue, sand and sage distinguish service cards. Enamel gradients represent the panel faces. No WebGL material palette is in use.
+Frontmatter records the base and home palette. Cobalt marks primary actions, ink marks selected service controls, orange marks the dial and brand punctuation. Pale blue, sand and sage distinguish service cards. Enamel gradients represent the panel faces. No WebGL material palette is in use.
 
 ## Typography
 
@@ -140,45 +140,45 @@ Be Vietnam Pro is locally served. The home headline uses clamp(46px, 4.6vw, 68px
 
 ## Layout
 
-The container caps at 1248px. The hero is a 1.1fr/1fr composition with a 48px gap. Its native sticky runway is calc(100svh + 260px); the hero minimum height is min(820px, 100svh). Mobile stacks in normal flow with no additional runway. The service inventory uses three columns, staggered middle cards, then two columns on mobile with staggered even cards. Pricing, booking and tracking retain ordinary lists and forms; desktop booking keeps its sticky summary. Breakpoints remain 1050px, 760px and 359px, with a 1100px washer adjustment.
+The container caps at 1248px. The hero is a 1.1fr/1fr composition with a 48px gap. Its native sticky runway is calc(100svh + 260px), the hero minimum height is min(820px, 100svh). Mobile stacks in normal flow with no additional runway. The service inventory uses three columns, staggered middle cards, then two columns on mobile with staggered even cards. Pricing, booking and tracking retain ordinary lists and forms, desktop booking keeps its sticky summary. Breakpoints remain 1050px, 760px and 359px, with a 1100px washer adjustment.
 
 ## Elevation & Depth
 
-The restored panel uses CSS perspective 1400px and preserved 3D transforms. Side faces are 64px deep on desktop and 42px on mobile; the drum sits forward along Z. Panel shadow is 14px 32px 45px -28px #355d7855, drum shadow 5px 14px 22px -12px #42627d70, knob shadow 2px 4px 7px #597b932d, and selected desktop navigation shadow 0 3px 8px #183b690c. The ground ellipse has blur 22px and opacity .28. This is the restored CSS presentation, with no canvas or autoplaying drum.
+The restored panel uses CSS perspective 1400px and preserved 3D transforms. Side faces are 64px deep on desktop and 42px on mobile, the drum sits forward along Z. Panel shadow is 14px 32px 45px -28px #355d7855, drum shadow 5px 14px 22px -12px #42627d70, knob shadow 2px 4px 7px #597b932d, and selected desktop navigation shadow 0 3px 8px #183b690c. The ground ellipse has blur 22px and opacity .28. This is the restored CSS presentation, with no canvas or autoplaying drum.
 
 ## Shapes
 
-Service cards use 16px corners, shared buttons 12px, the panel 14px, fields 7px and category controls 6px. The hero has 48px bottom corners; the process band uses 36px, reduced on mobile. Circular dial rings, step markers and timeline points retain their specific roles.
+Service cards use 16px corners, shared buttons 12px, the panel 14px, fields 7px and category controls 6px. The hero has 48px bottom corners, the process band uses 36px, reduced on mobile. Circular dial rings, step markers and timeline points retain their specific roles.
 
 ## Components
 
-The CSS washer contains a console drawer, knob, circular service readout, six category buttons and booking link. Selection updates real starting price, duration and destination; the orange marker rotates over 420ms with cubic-bezier(.16,1,.3,1). ScrollScene coalesces passive scroll events into animation frames and updates a clamped progress value. Body rotation and drum separation follow that progress; no perpetual animation runs. Reduced motion fixes a static perspective pose and removes sticky runway. Mobile uses a gentler turn. The navigation, forms and status components preserve their established behavior and visible keyboard focus. Service emoji and card inventory remain explicit PIPELINE requirements.
+The CSS washer contains a console drawer, knob, circular service readout, six category buttons and booking link. Selection updates real starting price, duration and destination, the orange marker rotates over 420ms with cubic-bezier(.16,1,.3,1). ScrollScene coalesces passive scroll events into animation frames and updates a clamped progress value. Body rotation and drum separation follow that progress, no perpetual animation runs. Reduced motion fixes a static perspective pose and removes sticky runway. Mobile uses a gentler turn. The navigation, forms and status components preserve their established behavior and visible keyboard focus. Service emoji and card inventory remain explicit PIPELINE requirements.
 
 ## Do's and Don'ts
 
 - Preserve Vietnamese diacritics, service values and price alignment.
 - Keep native scroll, the reduced-motion fallback and accessible service buttons.
-- Preserve the user-selected CSS panel presentation; do not restore the rejected WebGL model without a new request.
+- Preserve the user-selected CSS panel presentation, do not restore the rejected WebGL model without a new request.
 - Keep operational forms still and readable.
 
 ## Readability refinement · 2026-10-24
 
-Retain Be Vietnam Pro and the existing cobalt/enamel identity. Shared reading text is 16px with 1.7–1.75 line height; supporting text and labels are 14px; actions are 15px. Headings use -0.02em tracking (-0.025em for the hero) and the hero emphasis inherits its weight. Financial values use tabular numerals. Decorative washer controls retain their separate compact scale. Public pages omit project/version branding and invented contact details. Recipient display is Nguyễn Thị Mai, account 38606688, explicitly reconfirmed by the owner; QR bytes are unchanged and bank-app verification remains required.
+Retain Be Vietnam Pro and the existing cobalt/enamel identity. Shared reading text is 16px with 1.7–1.75 line height, supporting text and labels are 14px, actions are 15px. Headings use -0.02em tracking (-0.025em for the hero) and the hero emphasis inherits its weight. Financial values use tabular numerals. Decorative washer controls retain their separate compact scale. Public pages omit project/version branding and invented contact details. Recipient display is Nguyễn Thị Mai, account 38606688, explicitly reconfirmed by the owner, QR bytes are unchanged and bank-app verification remains required.
 
 ## Owner operations
-The admin landing prioritizes a search and four work-group selectors over reports. Order rows use code/status, contact, pickup appointment/address, current cost and a named open action. The result limit and the scope of group counts are explicit. On mobile each row becomes a two-column record; no sideways page navigation is needed.
-Order detail starts with contact and a next-step explanation, followed by four mounted, selectively visible task panels. Report, quote history and original order details remain native disclosures. Selected views preserve input values; visibility controls never write orders. Existing authorization, revisions, quote acceptance, QC and ledger safeguards remain server-owned.
+The admin landing prioritizes a search and four work-group selectors over reports. Order rows use code/status, contact, pickup appointment/address, current cost and a named open action. The result limit and the scope of group counts are explicit. On mobile each row becomes a two-column record, no sideways page navigation is needed.
+Order detail starts with contact and a next-step explanation, followed by four mounted, selectively visible task panels. Report, quote history and original order details remain native disclosures. Selected views preserve input values, visibility controls never write orders. Existing authorization, revisions, quote acceptance, QC and ledger safeguards remain server-owned.
 The public footer uses an outlined location pin with the supplied address as a real Google Maps link, plus a separate call action. No decorative fake map or invented opening hours.
 
 ## Clear actions and compact home · 2026-10-25
 
-The homepage inherits cobalt/enamel and Be Vietnam Pro, replacing the sticky runway and staggered service cards with a compact hero, six-service ruled price index, two-column process narrative, and direct booking/contact actions. The accepted CSS washer and reduced-motion pose remain; progress follows normal scrolling.
+The homepage inherits cobalt/enamel and Be Vietnam Pro, replacing the sticky runway and staggered service cards with a compact hero, six-service ruled price index, two-column process narrative, and direct booking/contact actions. The accepted CSS washer and reduced-motion pose remain, progress follows normal scrolling.
 
-Admin shows the five-stage journey and save consequences. Acknowledgement uses the RPC-returned revision; success waits for rendered data at least that fresh. Cross-action writes stay disabled until synchronized. Custody badges use server-provided received/returned/QC state separately from whole-order progress. Feedback persists across disappearing forms; errors never become success. No live financial activation or SQL change.
+Admin shows the five-stage journey and save consequences. Acknowledgement uses the RPC-returned revision, success waits for rendered data at least that fresh. Cross-action writes stay disabled until synchronized. Custody badges use server-provided received/returned/QC state separately from whole-order progress. Feedback persists across disappearing forms, errors never become success. No live financial activation or SQL change.
 
 ## Readable pricing · 2026-10-25
 
-The pricing page is a single service-rate sheet with desktop category navigation. Cobalt tabular amounts use 26px/24px/22px at weight 700, aligned right on a pale blue price column; 14px units sit immediately underneath. Services use 16px medium-weight ink and wrap independently. Estimates use 14px muted text. Column headings use 13px. The heading scales 32–48px. The enamel explanation uses the established 14px panel radius. These deliberate pricing sizes extend the shared type ramp.
+The pricing page is a single service-rate sheet with desktop category navigation. Cobalt tabular amounts use 26px/24px/22px at weight 700, aligned right on a pale blue price column, 14px units sit immediately underneath. Services use 16px medium-weight ink and wrap independently. Estimates use 14px muted text. Column headings use 13px. The heading scales 32–48px. The enamel explanation uses the established 14px panel radius. These deliberate pricing sizes extend the shared type ramp.
 
 At narrow containers the estimate moves beneath the service. Very narrow containers and enlarged text stack the row to preserve legibility. Standard mobile still pairs service and price. Semantic captions/headers and native anchor navigation remain. The page explains actual-quantity pricing and estimated turnaround without changing real prices, adding fees, calculators or guarantees. Route-prefixed CSS resets legacy global table whitespace/backgrounds locally, with no configuration change.
 
@@ -186,16 +186,16 @@ At narrow containers the estimate moves beneath the service. Very narrow contain
 
 Keep the cobalt/enamel world and Be Vietnam Pro. Customer history is a ruled record list with readable amounts and explicit detail actions. Protected details show five stages, current measured quantities, a clearly separated estimate and current amount, plus shop contact. Public lookup uses the same progress language and specific recovery messages. No internal evidence, staff notes or ledger reasons reach customer detail props.
 
-Booking service rates and category controls use 14px, with 44px category targets. On mobile a fixed review shortcut keeps the current estimate findable; QR instructions are a disclosure before submission, and remain available after success. Consent meaning is unchanged. Route-scoped footer clearance and scroll margins keep focus targets above the fixed bar.
+Booking service rates and category controls use 14px, with 44px category targets. On mobile a fixed review shortcut keeps the current estimate findable, QR instructions are a disclosure before submission, and remain available after success. Consent meaning is unchanged. Route-scoped footer clearance and scroll margins keep focus targets above the fixed bar.
 
-Admin quantities come from the current immutable settlement, with complete-row validation; the original quote is preserved and separately labelled. Current amount is 30px and the quote estimate is 18px. Intake supports multiple distinctly tagged bags in one receive operation; handover is the primary payment-panel task, with historical accounting collapsed. Consequential table text uses14px. Existing SQL authorization, revision/idempotency guards, price contracts and mock financial boundaries remain intact.
+Admin quantities come from the current immutable settlement, with complete-row validation, the original quote is preserved and separately labelled. Current amount is 30px and the quote estimate is 18px. Intake supports multiple distinctly tagged bags in one receive operation, handover is the primary payment-panel task, with historical accounting collapsed. Consequential table text uses14px. Existing SQL authorization, revision/idempotency guards, price contracts and mock financial boundaries remain intact.
 
 ## Homepage readability · 2026-10-25
 
-Functional washer controls use the shared 14px label scale, including estimated duration and booking. Six choices form two columns with at least 44px CSS heights; long names wrap instead of shrinking. The decorative console keeps its compact scale. The CSS perspective and native-scroll behavior remain unchanged.
+Functional washer controls use the shared 14px label scale, including estimated duration and booking. Six choices form two columns with at least 44px CSS heights, long names wrap instead of shrinking. The decorative console keeps its compact scale. The CSS perspective and native-scroll behavior remain unchanged.
 
-The hero includes the supplied street/locality map link and phone before the machine in mobile reading order. Full contact details remain in the footer; the adjacent repeated contact strip is removed. Machine instructions and an explicit price-estimate qualification precede its controls. Service rows retain visible arrows at every breakpoint; below 359px only their decorative emoji is omitted to preserve the service name and amount. Homepage footer links use 14px text and 44px CSS heights. These are readability targets, not a claim of certified projected hit areas or WCAG conformance.
+The hero includes the supplied street/locality map link and phone before the machine in mobile reading order. Full contact details remain in the footer, the adjacent repeated contact strip is removed. Machine instructions and an explicit price-estimate qualification precede its controls. Service rows retain visible arrows at every breakpoint, below 359px only their decorative emoji is omitted to preserve the service name and amount. Homepage footer links use 14px text and 44px CSS heights. These are readability targets, not a claim of certified projected hit areas or WCAG conformance.
 
 ## Navigation feedback · 2026-10-25
 
-Public navigation prepares full routes where safe, while private account/order data stays fresh. A cold header-link transition shows a passive cobalt “Đang mở trang…” status with white14px text below the header, using the existing12px radius. Its body portal remains visible after the mobile menu closes. It does not move content, intercept clicks, animate indefinitely or estimate progress. Prefetched instant transitions skip it; longer route loading retains the visible loading paragraph and decorative skeletons.
+Public navigation prepares full routes where safe, while private account/order data stays fresh. A cold header-link transition shows a passive cobalt “Đang mở trang…” status with white14px text below the header, using the existing12px radius. Its body portal remains visible after the mobile menu closes. It does not move content, intercept clicks, animate indefinitely or estimate progress. Prefetched instant transitions skip it, longer route loading retains the visible loading paragraph and decorative skeletons.

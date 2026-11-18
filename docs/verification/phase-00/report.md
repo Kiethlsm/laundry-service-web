@@ -8,9 +8,9 @@ Branch: docs/portfolio-plan-phase0. Baseline documentation commit: e33b736. Scop
 - [x] P00_BUILD_CHECKS / B2: lint, typecheck and production build all exited0.
 - [x] P00_PICKUP_VALIDATION / B3: dependency-free controlled-clock/source-wiring check exited0.
 
-The original Date.now call was already in onSubmit, not observed during render. The installed linter nevertheless emitted the render-purity diagnostic. Module-level isFuturePickup owns clock/validity comparison and is invoked from submit; no clock is captured at module initialization or mount, and no lint rule is suppressed. Server validation is unchanged.
+The original Date.now call was already in onSubmit, not observed during render. The installed linter nevertheless emitted the render-purity diagnostic. Module-level isFuturePickup owns clock/validity comparison and is invoked from submit, no clock is captured at module initialization or mount, and no lint rule is suppressed. Server validation is unchanged.
 
-The focused check's first attempt failed only its server-file equality assertion because the check normalized one side to CRLF and the actual file used LF. Corrected both-side newline normalization; all behavior assertions and unchanged-server comparison now pass. No application change was needed for that test-check error.
+The focused check's first attempt failed only its server-file equality assertion because the check normalized one side to CRLF and the actual file used LF. Corrected both-side newline normalization, all behavior assertions and unchanged-server comparison now pass. No application change was needed for that test-check error.
 
 These checks are not browser/Auth integration proof. No order was created to test this change, no credentials were used, and no future phase/CI/test harness was implemented.
 
@@ -108,7 +108,7 @@ PASS independent server future-time check unchanged
 
 ## Reproduce focused check with existing dependencies
 
-Run from repo root; no package install, framework harness or database access.
+Run from repo root, no package install, framework harness or database access.
 
 ```powershell
 @'
@@ -158,4 +158,4 @@ console.log("PASS independent server future-time check unchanged");
 '@ | node
 ```
 
-Readable command outputs (line endings/trailing spaces normalized; exact captured output preserved in [command-results.json](command-results.json)): [before-lint.txt](before-lint.txt), [after-lint.txt](after-lint.txt), [typecheck.txt](typecheck.txt), [build.txt](build.txt), [validation.txt](validation.txt). Empty typecheck.txt is intentional: command produced no output.
+Readable command outputs (line endings/trailing spaces normalized, exact captured output preserved in [command-results.json](command-results.json)): [before-lint.txt](before-lint.txt), [after-lint.txt](after-lint.txt), [typecheck.txt](typecheck.txt), [build.txt](build.txt), [validation.txt](validation.txt). Empty typecheck.txt is intentional: command produced no output.

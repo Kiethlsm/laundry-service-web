@@ -7,9 +7,9 @@ Reproduce the diagnostic, fix the submit-time validation boundary without disabl
 | Test ID | Rules | Setup/action | Expected |
 |---|---|---|---|
 | P00_REPRO_PURITY | B1 | Run npm run lint before edit | Capture actual rule/file diagnostic and nonzero exit |
-| P00_BUILD_CHECKS | B2 | After edit run npm run lint, npx tsc --noEmit, npm run build | All exit zero; no rule/dependency/config change |
-| P00_PICKUP_VALIDATION | B3 | Focused check with controlled time; verify handler uses validation and server check unchanged | Invalid/equal/past rejected, future accepted; expired-on-later-submit rejected |
+| P00_BUILD_CHECKS | B2 | After edit run npm run lint, npx tsc --noEmit, npm run build | All exit zero, no rule/dependency/config change |
+| P00_PICKUP_VALIDATION | B3 | Focused check with controlled time, verify handler uses validation and server check unchanged | Invalid/equal/past rejected, future accepted, expired-on-later-submit rejected |
 
 - [x] Gate complete: all three checks have real passing evidence in [report](../verification/phase-00/report.md), including the expected failing reproduction and successful post-fix checks.
 
-Commit the fix and evidence on the review branch; do not push. Browser/Auth integration checks formerly in this phase are not part of the approved narrow task and are not passed by these commands.
+Commit the fix and evidence on the review branch, do not push. Browser/Auth integration checks formerly in this phase are not part of the approved narrow task and are not passed by these commands.
